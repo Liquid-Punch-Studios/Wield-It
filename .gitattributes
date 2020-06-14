@@ -40,6 +40,9 @@
 # Unity Auto-Generated
 *.meta	linguist-generated
 
+# Unity Input System
+*.inputactions eol=lf
+
 # Image
 *.bmp	filter=lfs	diff=lfs	merge=lfs	-text
 *.dds	filter=lfs	diff=lfs	merge=lfs	-text
