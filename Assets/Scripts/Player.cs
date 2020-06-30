@@ -116,14 +116,8 @@ public class Player : MonoBehaviour
 		// Bigger the difference bigger the force
 		// FIXME: Needs fine tuning, experimental
 		float speed = OnGround ? moveSpeed : airMoveSpeed;
-		if (move > 0 && playerRb.velocity.x < speed * move)
 		{
-			float force = Mathf.Clamp(speed * move - playerRb.velocity.x, 0, speed) * moveForce;
-			playerRb.AddForce(new Vector2(force, 0));
-		}
-		else if (move < 0 && playerRb.velocity.x > speed * move)
-		{
-			float force = Mathf.Clamp(speed * move - playerRb.velocity.x, -speed, 0) * moveForce;
+			float force = Mathf.Clamp(speed * move - playerRb.velocity.x, -speed, speed) / speed * moveForce;
 			playerRb.AddForce(new Vector2(force, 0));
 		}
 
@@ -161,29 +155,30 @@ public class Player : MonoBehaviour
 			}
 			else
 				hand.localPosition = pos;
-			float angle = Mathf.Atan2(pos.y - shoulderOffset.y, pos.x - shoulderOffset.x);
-			//Debug.Log("Pos: " + pos + "  Angle: " + angle);
-			handGfx.localEulerAngles = (angle * Mathf.Rad2Deg - 90) * Vector3.forward;
-			if (weaponJoint != null)
+			if (controls.Player.Angle.ReadValue<float>() == 0)
+				// Maybe check < 0.1f or something?
 			{
-				angle = -angle + (Mathf.PI / 2);
-				float modulo = Mod(realAngularOffset, Mathf.PI * 2);
-				//Debug.Log("RealAngularOffset before: " + realAngularOffset + "\tangle: " + angle + "\tmodulo: " + modulo);
-				if (Mathf.Abs(modulo - angle) * Mathf.Rad2Deg > 1)
+				float angle = Mathf.Atan2(pos.y - shoulderOffset.y, pos.x - shoulderOffset.x);
+				handGfx.localEulerAngles = (angle * Mathf.Rad2Deg - 90) * Vector3.forward;
+				if (weaponJoint != null)
 				{
-					float angleDiff = Mod(angle - modulo, Mathf.PI * 2);
-					if (angleDiff < Mathf.PI)
+					angle = -angle + (Mathf.PI / 2);
+					float modulo = Mod(realAngularOffset, Mathf.PI * 2);
+					if (Mathf.Abs(modulo - angle) * Mathf.Rad2Deg > 1)
 					{
-						realAngularOffset += angleDiff;
-						weaponJoint.angularOffset = realAngularOffset;
+						float angleDiff = Mod(angle - modulo, Mathf.PI * 2);
+						if (angleDiff < Mathf.PI)
+						{
+							realAngularOffset += angleDiff;
+							weaponJoint.angularOffset = realAngularOffset;
+						}
+						else if (angleDiff > Mathf.PI)
+						{
+							realAngularOffset -= (Mathf.PI * 2 - angleDiff);
+							weaponJoint.angularOffset = realAngularOffset;
+						}
 					}
-					else if (angleDiff > Mathf.PI)
-					{
-						realAngularOffset -= (Mathf.PI * 2 - angleDiff);
-						weaponJoint.angularOffset = realAngularOffset;
-					}
-					//Debug.Log("RealAngularOffset after: " + realAngularOffset + "\tangleDiff: " + angleDiff);
-				}
+				} 
 			}
 		}
 		// TODO: Need to figure out how to handle collision/slashing mechanics
