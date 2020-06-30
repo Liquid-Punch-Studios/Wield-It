@@ -429,11 +429,11 @@ MonoBehaviour:
   shoulderOffset: {x: 0, y: 0}
   armLength: 1.5
   wieldFactor: 0.02
-  moveSpeed: 4
-  moveForce: 1000
+  moveSpeed: 6
+  moveForce: 4000
   jumpSpeed: 8
   airMoveSpeed: 4
-  airMoveForce: 1000
+  airMoveForce: 4000
   airJumpSpeed: 8
   airJumpCount: 1
   groundLayerMask:
