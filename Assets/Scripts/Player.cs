@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
 							weaponJoint.angularOffset = realAngularOffset;
 						}
 					}
-				} 
+				}
 			}
 		}
 		// TODO: Need to figure out how to handle collision/slashing mechanics
@@ -214,7 +214,7 @@ public class Player : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if ((collision.gameObject.layer | groundLayerMask.value) != 0)
+		if ((1 << collision.gameObject.layer & groundLayerMask.value) == groundLayerMask.value)
 			onGround++;
 		if (onGround > 0)
 			airJumpLeft = airJumpCount;
@@ -222,7 +222,7 @@ public class Player : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		if ((collision.gameObject.layer | groundLayerMask.value) != 0)
+		if ((1 << collision.gameObject.layer & groundLayerMask.value) == groundLayerMask.value)
 			onGround--;
 	}
 }
