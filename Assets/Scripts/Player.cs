@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 	// allow jumping from heads of enemies?
 	public LayerMask groundLayerMask;
 
-	private Rigidbody2D playerRb;
+	private Rigidbody playerRb;
 
 	public Transform hand;
 	public Transform handGfx;
@@ -50,8 +50,8 @@ public class Player : MonoBehaviour
 			if (weapon != null)
 			{
 				//weaponData = weapon.GetComponent<Weapon>();
-				weaponRb = weapon.GetComponent<Rigidbody2D>();
-				weaponJoint = weapon.GetComponent<RelativeJoint2D>();
+				weaponRb = weapon.GetComponent<Rigidbody>();
+				weaponJoint = weapon.GetComponent<Joint>();
 				//weaponJoint.linearOffset = (weaponData.weaponHandle * weapon.transform.localScale);
 			}
 			else
@@ -62,8 +62,8 @@ public class Player : MonoBehaviour
 			}
 		}
 	}
-	private Rigidbody2D weaponRb;
-	private RelativeJoint2D weaponJoint;
+	private Rigidbody weaponRb;
+	private Joint weaponJoint;
 
 	// This controls whether weapon is held in a fixed angle
 	// Usually used when stabbing enemies and terrain, also 
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
 	// Start is called before the first frame update
 	private void Start()
 	{
-		playerRb = GetComponent<Rigidbody2D>();
+		playerRb = GetComponent<Rigidbody>();
 		Weapon = GameObject.FindGameObjectWithTag("MainWeapon");
 	}
 
@@ -159,7 +159,8 @@ public class Player : MonoBehaviour
 				// Maybe check < 0.1f or something?
 			{
 				float angle = Mathf.Atan2(pos.y - shoulderOffset.y, pos.x - shoulderOffset.x);
-				handGfx.localEulerAngles = (angle * Mathf.Rad2Deg - 90) * Vector3.forward;
+				hand.localEulerAngles = (angle * Mathf.Rad2Deg) * Vector3.forward;
+				//handGfx.localEulerAngles = (angle * Mathf.Rad2Deg - 90) * Vector3.forward;
 				if (weaponJoint != null)
 				{
 					angle = -angle + (Mathf.PI / 2);
@@ -170,12 +171,12 @@ public class Player : MonoBehaviour
 						if (angleDiff < Mathf.PI)
 						{
 							realAngularOffset += angleDiff;
-							weaponJoint.angularOffset = realAngularOffset;
+							//weaponJoint.angularOffset = realAngularOffset;
 						}
 						else if (angleDiff > Mathf.PI)
 						{
 							realAngularOffset -= (Mathf.PI * 2 - angleDiff);
-							weaponJoint.angularOffset = realAngularOffset;
+							//weaponJoint.angularOffset = realAngularOffset;
 						}
 					}
 				}
@@ -212,7 +213,7 @@ public class Player : MonoBehaviour
 	}
 	#endregion
 
-	private void OnTriggerEnter2D(Collider2D collision)
+	private void OnCollisionEnter(Collision collision)
 	{
 		if ((1 << collision.gameObject.layer & groundLayerMask.value) == groundLayerMask.value)
 			onGround++;
@@ -220,7 +221,7 @@ public class Player : MonoBehaviour
 			airJumpLeft = airJumpCount;
 	}
 
-	private void OnTriggerExit2D(Collider2D collision)
+	private void OnCollisionExit(Collision collision)
 	{
 		if ((1 << collision.gameObject.layer & groundLayerMask.value) == groundLayerMask.value)
 			onGround--;

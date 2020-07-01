@@ -15,12 +15,12 @@ TagManager:
   - 
   - 
   - Post Processing
+  - Player
+  - Enemy
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Wall
+  - PlayerWeapon
+  - EnemyWeapon
   - 
   - 
   - 
