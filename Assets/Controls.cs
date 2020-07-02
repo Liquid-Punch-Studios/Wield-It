@@ -138,6 +138,211 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Spectator"",
+            ""id"": ""3fc4b2d6-4e63-4596-bd94-692b72266687"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""3ddcf87c-8a64-4961-85a2-d2aba76b178b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Fly"",
+                    ""type"": ""Value"",
+                    ""id"": ""e8e3e747-8ccb-4cc7-aea8-6cec697b0233"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""128a8b29-8ab1-4cc3-80f5-109b7198eac9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Turn"",
+                    ""type"": ""Button"",
+                    ""id"": ""407c9280-0d4b-4e50-a15b-0c0147b05809"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""b51bbdec-35b0-47a5-9f14-b05b44819d76"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""aac18a86-94da-4380-9807-3873e1662f0f"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""1d23cacc-05d1-41cc-9980-4f6dfe1454f8"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""9ffa8994-7a36-42db-9112-b7d7f315a0f2"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""90dda0e2-caaf-42ff-8131-000c362dcb51"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""5788939c-4e3b-4391-9926-abe5833f3ef7"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""e59122fa-4325-4bb5-8864-521b1865a676"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""e184ed0a-80de-4bac-9d30-ac6b63c7c0a6"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e64d6a3c-cec7-42f2-9a66-405f3ceae252"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""29c68596-e101-496e-a774-ad829764aa44"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d846bcd-6bb6-4d9b-b7c5-9cfedc93431a"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82d9fe3d-d8b4-4a62-b54c-009506880c27"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""bd3a30c2-0da5-46ab-b11a-ec3db5c5cd39"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fly"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""82300846-b4e0-4433-9bd3-2e37f4bc4532"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fly"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""47a74939-1fab-43bf-b1c3-6ef8f74dc4c7"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fly"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -149,6 +354,12 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Down = m_Player.FindAction("Down", throwIfNotFound: true);
         m_Player_Wield = m_Player.FindAction("Wield", throwIfNotFound: true);
         m_Player_Angle = m_Player.FindAction("Angle", throwIfNotFound: true);
+        // Spectator
+        m_Spectator = asset.FindActionMap("Spectator", throwIfNotFound: true);
+        m_Spectator_Move = m_Spectator.FindAction("Move", throwIfNotFound: true);
+        m_Spectator_Fly = m_Spectator.FindAction("Fly", throwIfNotFound: true);
+        m_Spectator_Look = m_Spectator.FindAction("Look", throwIfNotFound: true);
+        m_Spectator_Turn = m_Spectator.FindAction("Turn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -259,6 +470,63 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Spectator
+    private readonly InputActionMap m_Spectator;
+    private ISpectatorActions m_SpectatorActionsCallbackInterface;
+    private readonly InputAction m_Spectator_Move;
+    private readonly InputAction m_Spectator_Fly;
+    private readonly InputAction m_Spectator_Look;
+    private readonly InputAction m_Spectator_Turn;
+    public struct SpectatorActions
+    {
+        private @Controls m_Wrapper;
+        public SpectatorActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Spectator_Move;
+        public InputAction @Fly => m_Wrapper.m_Spectator_Fly;
+        public InputAction @Look => m_Wrapper.m_Spectator_Look;
+        public InputAction @Turn => m_Wrapper.m_Spectator_Turn;
+        public InputActionMap Get() { return m_Wrapper.m_Spectator; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SpectatorActions set) { return set.Get(); }
+        public void SetCallbacks(ISpectatorActions instance)
+        {
+            if (m_Wrapper.m_SpectatorActionsCallbackInterface != null)
+            {
+                @Move.started -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnMove;
+                @Fly.started -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnFly;
+                @Fly.performed -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnFly;
+                @Fly.canceled -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnFly;
+                @Look.started -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnLook;
+                @Turn.started -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnTurn;
+                @Turn.performed -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnTurn;
+                @Turn.canceled -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnTurn;
+            }
+            m_Wrapper.m_SpectatorActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Fly.started += instance.OnFly;
+                @Fly.performed += instance.OnFly;
+                @Fly.canceled += instance.OnFly;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
+                @Turn.started += instance.OnTurn;
+                @Turn.performed += instance.OnTurn;
+                @Turn.canceled += instance.OnTurn;
+            }
+        }
+    }
+    public SpectatorActions @Spectator => new SpectatorActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -266,5 +534,12 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnDown(InputAction.CallbackContext context);
         void OnWield(InputAction.CallbackContext context);
         void OnAngle(InputAction.CallbackContext context);
+    }
+    public interface ISpectatorActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnFly(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
+        void OnTurn(InputAction.CallbackContext context);
     }
 }
