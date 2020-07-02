@@ -57,6 +57,22 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""b93a6e58-a613-4367-96e9-14a78d519e7c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f8fcccb-b1b2-4c09-8333-e60e5db8204e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -134,6 +150,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da7e0187-100b-443f-94bd-f6e18779bdec"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": ""MultiTap(tapTime=0.15,tapDelay=0.15)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b915f6d-53fd-4a71-a78e-be8d05c04ee8"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": ""MultiTap(tapTime=0.15,tapDelay=0.15)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -343,6 +381,71 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""6ff03a7f-7685-4bdc-a472-6031e21926b8"",
+            ""actions"": [
+                {
+                    ""name"": ""Mouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""43e6d4ae-16b2-44ae-b2a6-3c8881e77245"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MouseClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""44f11227-ac14-4827-b665-3cc759df9850"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Scroll"",
+                    ""type"": ""Value"",
+                    ""id"": ""7114a289-e6d8-41f6-8555-65178cabe23c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2803a397-1bbb-4418-a510-588901ca6f79"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d14abaab-6e0e-409b-9a9f-f0aa87b31b33"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76277e40-333f-4efd-8e33-c5353abd7155"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -354,12 +457,19 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Down = m_Player.FindAction("Down", throwIfNotFound: true);
         m_Player_Wield = m_Player.FindAction("Wield", throwIfNotFound: true);
         m_Player_Angle = m_Player.FindAction("Angle", throwIfNotFound: true);
+        m_Player_DashRight = m_Player.FindAction("Dash Right", throwIfNotFound: true);
+        m_Player_DashLeft = m_Player.FindAction("Dash Left", throwIfNotFound: true);
         // Spectator
         m_Spectator = asset.FindActionMap("Spectator", throwIfNotFound: true);
         m_Spectator_Move = m_Spectator.FindAction("Move", throwIfNotFound: true);
         m_Spectator_Fly = m_Spectator.FindAction("Fly", throwIfNotFound: true);
         m_Spectator_Look = m_Spectator.FindAction("Look", throwIfNotFound: true);
         m_Spectator_Turn = m_Spectator.FindAction("Turn", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_Mouse = m_UI.FindAction("Mouse", throwIfNotFound: true);
+        m_UI_MouseClick = m_UI.FindAction("MouseClick", throwIfNotFound: true);
+        m_UI_Scroll = m_UI.FindAction("Scroll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -414,6 +524,8 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Down;
     private readonly InputAction m_Player_Wield;
     private readonly InputAction m_Player_Angle;
+    private readonly InputAction m_Player_DashRight;
+    private readonly InputAction m_Player_DashLeft;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -423,6 +535,8 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Down => m_Wrapper.m_Player_Down;
         public InputAction @Wield => m_Wrapper.m_Player_Wield;
         public InputAction @Angle => m_Wrapper.m_Player_Angle;
+        public InputAction @DashRight => m_Wrapper.m_Player_DashRight;
+        public InputAction @DashLeft => m_Wrapper.m_Player_DashLeft;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -447,6 +561,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Angle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAngle;
                 @Angle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAngle;
                 @Angle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAngle;
+                @DashRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashRight;
+                @DashRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashRight;
+                @DashRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashRight;
+                @DashLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashLeft;
+                @DashLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashLeft;
+                @DashLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashLeft;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -466,6 +586,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Angle.started += instance.OnAngle;
                 @Angle.performed += instance.OnAngle;
                 @Angle.canceled += instance.OnAngle;
+                @DashRight.started += instance.OnDashRight;
+                @DashRight.performed += instance.OnDashRight;
+                @DashRight.canceled += instance.OnDashRight;
+                @DashLeft.started += instance.OnDashLeft;
+                @DashLeft.performed += instance.OnDashLeft;
+                @DashLeft.canceled += instance.OnDashLeft;
             }
         }
     }
@@ -527,6 +653,55 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public SpectatorActions @Spectator => new SpectatorActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private IUIActions m_UIActionsCallbackInterface;
+    private readonly InputAction m_UI_Mouse;
+    private readonly InputAction m_UI_MouseClick;
+    private readonly InputAction m_UI_Scroll;
+    public struct UIActions
+    {
+        private @Controls m_Wrapper;
+        public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Mouse => m_Wrapper.m_UI_Mouse;
+        public InputAction @MouseClick => m_Wrapper.m_UI_MouseClick;
+        public InputAction @Scroll => m_Wrapper.m_UI_Scroll;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void SetCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterface != null)
+            {
+                @Mouse.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMouse;
+                @Mouse.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMouse;
+                @Mouse.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMouse;
+                @MouseClick.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseClick;
+                @MouseClick.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseClick;
+                @MouseClick.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseClick;
+                @Scroll.started -= m_Wrapper.m_UIActionsCallbackInterface.OnScroll;
+                @Scroll.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnScroll;
+                @Scroll.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnScroll;
+            }
+            m_Wrapper.m_UIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Mouse.started += instance.OnMouse;
+                @Mouse.performed += instance.OnMouse;
+                @Mouse.canceled += instance.OnMouse;
+                @MouseClick.started += instance.OnMouseClick;
+                @MouseClick.performed += instance.OnMouseClick;
+                @MouseClick.canceled += instance.OnMouseClick;
+                @Scroll.started += instance.OnScroll;
+                @Scroll.performed += instance.OnScroll;
+                @Scroll.canceled += instance.OnScroll;
+            }
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -534,6 +709,8 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnDown(InputAction.CallbackContext context);
         void OnWield(InputAction.CallbackContext context);
         void OnAngle(InputAction.CallbackContext context);
+        void OnDashRight(InputAction.CallbackContext context);
+        void OnDashLeft(InputAction.CallbackContext context);
     }
     public interface ISpectatorActions
     {
@@ -541,5 +718,11 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnFly(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnMouse(InputAction.CallbackContext context);
+        void OnMouseClick(InputAction.CallbackContext context);
+        void OnScroll(InputAction.CallbackContext context);
     }
 }
