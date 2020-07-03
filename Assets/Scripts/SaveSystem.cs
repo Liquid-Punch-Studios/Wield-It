@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static string settingsPath = Application.persistentDataPath + "Settings.pp";
+    public static string settingsPath = Path.Combine(Application.persistentDataPath, "Settings.bin");
     public static void SaveSettings(MainMenuSelection menu)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -31,5 +31,4 @@ public static class SaveSystem
             return null;
         }
     }
-
 }
