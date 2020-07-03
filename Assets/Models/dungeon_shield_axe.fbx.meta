@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: 263c80eb0a50dfb43949231d00515116
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -395174433744839018
+    second: stone_fist.001|stone_fist_action
   externalObjects: {}
   materials:
     materialImportMode: 1
