@@ -44,8 +44,9 @@ public class MainMenuSelection : MonoBehaviour
     private Vector3 velocity;
 
     private bool settingsOn = false;
-    private float divider = 1500;
+    private float divider = 1000;
     private Controls cont;
+    private Animator cameraAnim;
     private float scrollPosition;
 
     
@@ -55,6 +56,7 @@ public class MainMenuSelection : MonoBehaviour
     private void Start()
     {
         scrollPosition = scrollTop;
+        cameraAnim = gameObject.GetComponent<Animator>();
         Load();
     }
 
@@ -74,9 +76,17 @@ public class MainMenuSelection : MonoBehaviour
                 switch (objectName)
                 {
                     case "Play":
+                        cameraAnim.SetBool("isAtLevels", true);
+                        break;
+
+                    case "Level1":
                         StartCoroutine(PlayButtonClick());
                         break;
-                    
+
+                    case "Return":
+                        cameraAnim.SetBool("isAtLevels", false);
+                        break;
+
                     case "Settings":
                         settingsOn = !settingsOn;
                         scrollPosition = settingsOn ? scrollMax : scrollTop;
