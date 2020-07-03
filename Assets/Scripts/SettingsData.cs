@@ -9,7 +9,9 @@ public class SettingsData
     public int difficultyVal;
     public bool violence;
     public int soundVal;
+    public bool soundMuted;
     public int musicVal;
+    public bool musicMuted;
 
     public SettingsData(MainMenuSelection menu)
     {
@@ -17,6 +19,8 @@ public class SettingsData
         difficultyVal = menu.Difficulty;
         violence = menu.Violence;
         soundVal = menu.SoundVal;
+        soundMuted = menu.SoundMuted;
         musicVal = menu.MusicVal;
+        musicMuted = menu.MusicMuted;
     }
 }
