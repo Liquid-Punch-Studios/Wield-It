@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using System.IO;
 
 public class MainMenuSelection : MonoBehaviour
 {
@@ -187,7 +188,7 @@ public class MainMenuSelection : MonoBehaviour
                 
                 if(hit.rigidbody != null)
                 {
-                    hit.rigidbody.AddForce(ray.direction * 200);
+                    hit.rigidbody.AddForce(ray.direction * 400);
                 }
 
                 if (settingsOn)
@@ -237,27 +238,40 @@ public class MainMenuSelection : MonoBehaviour
 
     public void Load()
     {
-        SettingsData data = SaveSystem.LoadSettings();
-        Difficulty = data.difficultyVal;
+        if (File.Exists(SaveSystem.settingsPath))
+        {
+            SettingsData data = SaveSystem.LoadSettings();
+            Difficulty = data.difficultyVal;
+            Quality = data.qualityVal;
+            MusicVal = data.musicVal;
+            previousMusicVal = data.musicVal;
+            MusicMuted = data.musicMuted;
+            SoundVal = data.soundVal;
+            previousSoundVal = data.soundVal;
+            SoundMuted = data.soundMuted;
+            Violence = data.violence;
+        }
+        else
+        {
+            Difficulty = 1;
+            Quality = 1;
+            MusicVal = 100;
+            previousMusicVal = MusicVal;
+            MusicMuted = false;
+            SoundVal = 100;
+            previousSoundVal = SoundVal;
+            SoundMuted = false;
+            Violence = false;
+            SaveSystem.SaveSettings(this);
+        }
         GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = difficultySteps[Difficulty];
-        Quality = data.qualityVal;
         GameObject.Find("QualityVal").GetComponent<TextMeshPro>().text = qualitySteps[Quality];
-
-        MusicVal = data.musicVal;
-        previousMusicVal = data.musicVal;
-        GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "%"+ MusicVal;
-        MusicMuted = data.musicMuted;
+        GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "%" + MusicVal;
         if (MusicMuted)
             GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "Muted";
-
-        SoundVal = data.soundVal;
-        previousSoundVal = data.soundVal;
         GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "%" + SoundVal;
-        SoundMuted = data.soundMuted;
         if (SoundMuted)
             GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "Muted";
-
-        Violence = data.violence;
         GameObject.Find("ViolenceVal").GetComponent<TextMeshPro>().text = Violence ? "ON" : "OFF";
     }
 }
