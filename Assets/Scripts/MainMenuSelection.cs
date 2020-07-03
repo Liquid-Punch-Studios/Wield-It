@@ -17,22 +17,38 @@ public class MainMenuSelection : MonoBehaviour
     public float scrollMin;
     public float scrollTop;
 
+
+    private int quality;
+    public int Quality { get { return quality; } set { quality = value; }}
+
+    private int difficulty;
+    public int Difficulty { get { return difficulty; } set { difficulty = value; } }
+
+    private int musicVal;
+    public int MusicVal { get { return musicVal; } set { musicVal = value; } }
+
+    private int soundVal;
+    public int SoundVal { get { return soundVal; } set { soundVal = value; } }
+
+    private bool violence;
+    public bool Violence { get { return violence; } set { violence = value; } }
+
+
     private Vector3 velocity;
 
     private bool settingsOn = false;
-    private bool violence = false;
     private float divider = 1500;
     private Controls cont;
     private float scrollPosition;
 
-    private int quality;
-    private int difficulty;
+    
 
     private string[] qualitySteps = { "LOW", "MEDIUM", "HIGH" };
     private string[] difficultySteps = { "EASY", "MEDIUM", "HARD" };
     private void Start()
     {
         scrollPosition = scrollTop;
+        Load();
     }
 
     void FixedUpdate()
@@ -48,7 +64,6 @@ public class MainMenuSelection : MonoBehaviour
                 string objectName = hit.collider.gameObject.name;
                 //Debug.Log(objectName);
                 TextMeshPro textComponent;
-
                 switch (objectName)
                 {
                     case "Play":
@@ -69,21 +84,21 @@ public class MainMenuSelection : MonoBehaviour
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
                         violence = !violence;
 
-                        textComponent.text = violence ? "ON" : "OFF";
+                        textComponent.text = Violence ? "ON" : "OFF";
                         break;
 
                     case "Quality":
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
                         quality = quality < qualitySteps.Length -1 ? quality + 1 : 0;
 
-                        textComponent.text = qualitySteps[quality];
+                        textComponent.text = qualitySteps[Quality];
                         break;
 
                     case "Difficulty":
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
                         difficulty = difficulty < difficultySteps.Length - 1 ? difficulty + 1 : 0;
 
-                        textComponent.text = difficultySteps[difficulty];
+                        textComponent.text = difficultySteps[Difficulty];
                         break;
                 }
 
@@ -92,6 +107,9 @@ public class MainMenuSelection : MonoBehaviour
                 {
                     hit.rigidbody.AddForce(ray.direction * 200);
                 }
+
+                if (settingsOn)
+                    SaveSystem.SaveSettings(this);
             }
         }
 
@@ -135,5 +153,18 @@ public class MainMenuSelection : MonoBehaviour
         yield return new WaitForSeconds(1);
         Application.Quit();
         yield return null;
+    }
+
+    public void Load()
+    {
+        SettingsData data = SaveSystem.LoadSettings();
+        Difficulty = data.difficultyVal;
+        GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = difficultySteps[Difficulty];
+        Quality = data.qualityVal;
+        GameObject.Find("QualityVal").GetComponent<TextMeshPro>().text = qualitySteps[Quality];
+        MusicVal = data.musicVal;
+        SoundVal = data.soundVal;
+        Violence = data.violence;
+        GameObject.Find("ViolenceVal").GetComponent<TextMeshPro>().text = Violence ? "ON" : "OFF";
     }
 }
