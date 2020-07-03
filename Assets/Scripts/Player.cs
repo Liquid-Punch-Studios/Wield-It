@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
 	// TODO: Decide if control percent for air is better
 	public int airJumpCount = 1;
 	private int airJumpLeft;
+	public float dashSpeed = 25;
+	public float dashCooldown = 2;
+	private float lastDashTime = 0;
 
 	private int onGround = 0;
 	public bool OnGround { get => onGround > 0; }
@@ -107,6 +110,14 @@ public class Player : MonoBehaviour
 	{
 		float move = controls.Player.Move.ReadValue<float>();
 
+		if (controls.Player.DashLeft.triggered ^ controls.Player.DashRight.triggered && 
+			Time.time - lastDashTime > dashCooldown) // TODO: Check if overflow is a problem
+		{
+			float dash = controls.Player.DashLeft.triggered ? -1 : controls.Player.DashRight.triggered ? 1 : 0;
+			playerRb.velocity = Vector3.right * dash * dashSpeed;
+			lastDashTime = Time.time;
+		}
+
 		// Apply some force in the direction we want to
 		// move if we're not already moving in that vector with enough speed
 		// Bigger the difference bigger the force
@@ -167,17 +178,17 @@ public class Player : MonoBehaviour
 
 	}
 
-	private void OnCollisionEnter(Collision collision)
+	private void OnTriggerEnter(Collider other)
 	{
-		if ((1 << collision.gameObject.layer & groundLayerMask.value) == groundLayerMask.value)
+		if ((1 << other.gameObject.layer & groundLayerMask.value) != 0)
 			onGround++;
 		if (onGround > 0)
 			airJumpLeft = airJumpCount;
 	}
 
-	private void OnCollisionExit(Collision collision)
+	private void OnTriggerExit(Collider other)
 	{
-		if ((1 << collision.gameObject.layer & groundLayerMask.value) == groundLayerMask.value)
+		if ((1 << other.gameObject.layer & groundLayerMask.value) != 0)
 			onGround--;
 	}
 }
