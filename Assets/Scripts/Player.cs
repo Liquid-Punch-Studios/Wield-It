@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
 	public float wieldFactor = 0.02f; /// How much the hand moves in relation to the mouse/touch delta
 	// TODO: Maybe seperate mouse & touch?
-	// FIXME: Mouse simulation for touch input is not implemented in the new inout system yet
+	// FIXME: Mouse simulation for touch input is not implemented in the new input system yet
 
 	public float moveSpeed = 4;
 	public float moveForce = 100;
@@ -69,10 +69,6 @@ public class Player : MonoBehaviour
 	// Usually used when stabbing enemies and terrain, also 
 	// makes some cool air slam possible
 	private bool fixedWeaponAngle;
-
-	// HACK: Need to keep track of angle because relative joint resets after [180, -180]
-	// We then manually edit angular offset of the joint instead of the object it is bound to
-	private float realAngularOffset;
 
 	// Awake is called once during the lifetime of the script, on its initial awake state, prior to any other functions
 	private void Awake()
@@ -160,26 +156,6 @@ public class Player : MonoBehaviour
 			{
 				float angle = Mathf.Atan2(pos.y - shoulderOffset.y, pos.x - shoulderOffset.x);
 				hand.localEulerAngles = (angle * Mathf.Rad2Deg) * Vector3.forward;
-				//handGfx.localEulerAngles = (angle * Mathf.Rad2Deg - 90) * Vector3.forward;
-				if (weaponJoint != null)
-				{
-					angle = -angle + (Mathf.PI / 2);
-					float modulo = Mod(realAngularOffset, Mathf.PI * 2);
-					if (Mathf.Abs(modulo - angle) * Mathf.Rad2Deg > 1)
-					{
-						float angleDiff = Mod(angle - modulo, Mathf.PI * 2);
-						if (angleDiff < Mathf.PI)
-						{
-							realAngularOffset += angleDiff;
-							//weaponJoint.angularOffset = realAngularOffset;
-						}
-						else if (angleDiff > Mathf.PI)
-						{
-							realAngularOffset -= (Mathf.PI * 2 - angleDiff);
-							//weaponJoint.angularOffset = realAngularOffset;
-						}
-					}
-				}
 			}
 		}
 		// TODO: Need to figure out how to handle collision/slashing mechanics
@@ -190,28 +166,6 @@ public class Player : MonoBehaviour
 	{
 
 	}
-
-	#region Input Callbacks
-	public void Move(InputAction.CallbackContext ctx)
-	{
-
-	}
-
-	public void Jump(InputAction.CallbackContext ctx)
-	{
-
-	}
-
-	public void Down(InputAction.CallbackContext ctx)
-	{
-
-	}
-
-	public void Wield(InputAction.CallbackContext ctx)
-	{
-
-	}
-	#endregion
 
 	private void OnCollisionEnter(Collision collision)
 	{
