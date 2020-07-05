@@ -367,18 +367,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9374dda76352b46b6f8fdc3563c698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  maxStamina: 100
+  health: 100
+  stamina: 100
+  healthRegen: 0
+  staminaRegen: 0.5
   shoulderOffset: {x: 0, y: 0}
   armLength: 1.5
   wieldFactor: 0.02
   moveSpeed: 8
   moveForce: 5000
   jumpSpeed: 12
+  jumpCost: 10
   airMoveSpeed: 4
   airMoveForce: 5000
   airJumpSpeed: 12
+  airJumpCost: 20
   airJumpCount: 1
   dashSpeed: 25
-  dashCooldown: 1
+  dashCost: 50
+  dashPressDuration: 0.15
+  dashReleaseDuration: 0.15
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 7168

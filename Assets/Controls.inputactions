@@ -44,22 +44,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Dash Right",
-                    "type": "Button",
-                    "id": "b93a6e58-a613-4367-96e9-14a78d519e7c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Dash Left",
-                    "type": "Button",
-                    "id": "6f8fcccb-b1b2-4c09-8333-e60e5db8204e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -137,28 +121,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "da7e0187-100b-443f-94bd-f6e18779bdec",
-                    "path": "<Keyboard>/d",
-                    "interactions": "MultiTap(tapTime=0.15,tapDelay=0.15)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash Right",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3b915f6d-53fd-4a71-a78e-be8d05c04ee8",
-                    "path": "<Keyboard>/a",
-                    "interactions": "MultiTap(tapTime=0.15,tapDelay=0.15)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
