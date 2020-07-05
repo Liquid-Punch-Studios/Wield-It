@@ -19,10 +19,8 @@ TagManager:
   - Enemy
   - Ground
   - Wall
-  - PlayerWeapon
-  - EnemyWeapon
-  - 
-  - 
+  - Player Weapon
+  - Enemy Weapon
   - 
   - 
   - 
