@@ -3,29 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[SelectionBase]
 public class Player : MonoBehaviour
 {
-	public Controls controls;
+	public float maxHealth = 100;
+	public float maxStamina = 100;
 
-	public Vector2 shoulderOffset;  /// This is the point hand & weapon rotates against
-	public float armLength = 1.5f;  /// How much further weapon can be held from shoulder
+	public float health = 100;
+	public float stamina = 100;
 
+	public float healthRegen = 0;
+	public float staminaRegen = 0.5f;
+
+	public Vector2 shoulderOffset; /// This is the point hand & weapon rotates against
+	public float armLength = 1.5f; /// How much further weapon can be held from shoulder
 	public float wieldFactor = 0.02f; /// How much the hand moves in relation to the mouse/touch delta
 	// TODO: Maybe seperate mouse & touch?
 	// FIXME: Mouse simulation for touch input is not implemented in the new input system yet
 
-	public float moveSpeed = 4;
-	public float moveForce = 100;
-	public float jumpSpeed = 8;
+	public float moveSpeed = 8;
+	public float moveForce = 5000;
+	
+	public float jumpSpeed = 12;
+	public float jumpCost = 10;
+	
 	public float airMoveSpeed = 4;
-	public float airMoveForce = 100;
-	public float airJumpSpeed = 8;
-	// TODO: Decide if control percent for air is better
+	public float airMoveForce = 5000;
+	
+	public float airJumpSpeed = 12; // TODO: Decide if control percent for air is better
+	public float airJumpCost = 10;
 	public int airJumpCount = 1;
 	private int airJumpLeft;
+
 	public float dashSpeed = 25;
-	public float dashCooldown = 2;
-	private float lastDashTime = 0;
+	public int dashCost = 50;
+	public float dashPressDuration = 0.2f;
+	public float dashReleaseDuration = 0.2f;
 
 	private int onGround = 0;
 	public bool OnGround { get => onGround > 0; }
@@ -54,8 +67,7 @@ public class Player : MonoBehaviour
 			{
 				//weaponData = weapon.GetComponent<Weapon>();
 				weaponRb = weapon.GetComponent<Rigidbody>();
-				weaponJoint = weapon.GetComponent<Joint>();
-				//weaponJoint.linearOffset = (weaponData.weaponHandle * weapon.transform.localScale);
+				weaponJoint = weapon.GetComponent<ConfigurableJoint>();
 			}
 			else
 			{
@@ -66,7 +78,7 @@ public class Player : MonoBehaviour
 		}
 	}
 	private Rigidbody weaponRb;
-	private Joint weaponJoint;
+	private ConfigurableJoint weaponJoint;
 
 	// This controls whether weapon is held in a fixed angle
 	// Usually used when stabbing enemies and terrain, also 
@@ -85,6 +97,8 @@ public class Player : MonoBehaviour
 		playerRb = GetComponent<Rigidbody>();
 		Weapon = GameObject.FindGameObjectWithTag("MainWeapon");
 	}
+
+	private Controls controls;
 
 	private void OnEnable()
 	{
@@ -105,17 +119,83 @@ public class Player : MonoBehaviour
 		return r < 0 ? r + m : r;
 	}
 
+	enum DashState
+	{
+		Out0,
+		In1,
+		Out1,
+		In2,
+	}
+
+	private DashState dashState = DashState.Out0;
+	private float dashLastInput;
+	private float dashDirection = 0;
+
 	// FixedUpdate is called once per physics frame
 	private void FixedUpdate()
 	{
+		health = Mathf.Min(maxHealth, health + healthRegen);
+		stamina = Mathf.Min(maxStamina, stamina + staminaRegen);
+
 		float move = controls.Player.Move.ReadValue<float>();
 
-		if (controls.Player.DashLeft.triggered ^ controls.Player.DashRight.triggered && 
-			Time.time - lastDashTime > dashCooldown) // TODO: Check if overflow is a problem
+		// Hand written state machine for detecting double tap input for dash
+		bool dash = false;
+		switch (dashState)
 		{
-			float dash = controls.Player.DashLeft.triggered ? -1 : controls.Player.DashRight.triggered ? 1 : 0;
-			playerRb.velocity = Vector3.right * dash * dashSpeed;
-			lastDashTime = Time.time;
+			case DashState.Out0:
+				if (Mathf.Abs(move) >= InputSystem.settings.defaultButtonPressPoint)
+				{
+					dashDirection = Mathf.Sign(move);
+					dashState = DashState.In1;
+					dashLastInput = Time.fixedTime;
+				}
+				break;
+			case DashState.In1:
+				if (Mathf.Abs(move) < InputSystem.settings.defaultButtonPressPoint)
+				{
+					if (Time.fixedTime - dashLastInput < dashPressDuration)
+					{
+						dashState = DashState.Out1;
+						dashLastInput = Time.fixedTime;
+					}
+					else
+						dashState = DashState.Out0;
+				}
+				else if (Mathf.Sign(move) != dashDirection)
+				{
+					dashDirection = Mathf.Sign(move);
+					dashLastInput = Time.fixedTime;
+				}
+				break;
+			case DashState.Out1:
+				if (Mathf.Abs(move) >= InputSystem.settings.defaultButtonPressPoint &&
+					Mathf.Sign(move) == dashDirection &&
+					Time.fixedTime - dashLastInput < dashReleaseDuration)
+				{
+					dash = true;
+					dashState = DashState.In2;
+					dashLastInput = Time.fixedTime;
+				}
+				else if (Mathf.Abs(move) >= InputSystem.settings.defaultButtonPressPoint)
+				{
+					dashDirection = Mathf.Sign(move);
+					dashState = DashState.In1;
+					dashLastInput = Time.fixedTime;
+				}
+				break;
+			case DashState.In2:
+				if (Mathf.Abs(move) < InputSystem.settings.defaultButtonPressPoint)
+				{
+					dashState = DashState.Out0;
+				}
+				break;
+		}
+		
+		if (dash && stamina >= dashCost)
+		{
+			playerRb.velocity = Vector3.right * dashDirection * dashSpeed;
+			stamina -= dashCost;
 		}
 
 		// Apply some force in the direction we want to
@@ -136,16 +216,18 @@ public class Player : MonoBehaviour
 		if (jump)
 		{
 			Vector2 vel = playerRb.velocity; // Don't touch X axis
-			if (OnGround)
+			if (OnGround && stamina >= jumpCost)
 			{
 				vel.y = jumpSpeed;
 				playerRb.velocity = vel;
+				stamina -= jumpCost;
 			}
-			else if (airJumpLeft > 0)
+			else if (airJumpLeft > 0 && stamina >= airJumpCost)
 			{
 				vel.y = airJumpSpeed;
 				playerRb.velocity = vel;
 				airJumpLeft--;
+				stamina -= airJumpCost;
 			}
 		}
 

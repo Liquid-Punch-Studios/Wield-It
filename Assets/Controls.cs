@@ -57,22 +57,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""Dash Right"",
-                    ""type"": ""Button"",
-                    ""id"": ""b93a6e58-a613-4367-96e9-14a78d519e7c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Dash Left"",
-                    ""type"": ""Button"",
-                    ""id"": ""6f8fcccb-b1b2-4c09-8333-e60e5db8204e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -150,28 +134,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Down"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""da7e0187-100b-443f-94bd-f6e18779bdec"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": ""MultiTap(tapTime=0.15,tapDelay=0.15)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3b915f6d-53fd-4a71-a78e-be8d05c04ee8"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": ""MultiTap(tapTime=0.15,tapDelay=0.15)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -457,8 +419,6 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Down = m_Player.FindAction("Down", throwIfNotFound: true);
         m_Player_Wield = m_Player.FindAction("Wield", throwIfNotFound: true);
         m_Player_Angle = m_Player.FindAction("Angle", throwIfNotFound: true);
-        m_Player_DashRight = m_Player.FindAction("Dash Right", throwIfNotFound: true);
-        m_Player_DashLeft = m_Player.FindAction("Dash Left", throwIfNotFound: true);
         // Spectator
         m_Spectator = asset.FindActionMap("Spectator", throwIfNotFound: true);
         m_Spectator_Move = m_Spectator.FindAction("Move", throwIfNotFound: true);
@@ -524,8 +484,6 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Down;
     private readonly InputAction m_Player_Wield;
     private readonly InputAction m_Player_Angle;
-    private readonly InputAction m_Player_DashRight;
-    private readonly InputAction m_Player_DashLeft;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -535,8 +493,6 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Down => m_Wrapper.m_Player_Down;
         public InputAction @Wield => m_Wrapper.m_Player_Wield;
         public InputAction @Angle => m_Wrapper.m_Player_Angle;
-        public InputAction @DashRight => m_Wrapper.m_Player_DashRight;
-        public InputAction @DashLeft => m_Wrapper.m_Player_DashLeft;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -561,12 +517,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Angle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAngle;
                 @Angle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAngle;
                 @Angle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAngle;
-                @DashRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashRight;
-                @DashRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashRight;
-                @DashRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashRight;
-                @DashLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashLeft;
-                @DashLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashLeft;
-                @DashLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDashLeft;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -586,12 +536,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Angle.started += instance.OnAngle;
                 @Angle.performed += instance.OnAngle;
                 @Angle.canceled += instance.OnAngle;
-                @DashRight.started += instance.OnDashRight;
-                @DashRight.performed += instance.OnDashRight;
-                @DashRight.canceled += instance.OnDashRight;
-                @DashLeft.started += instance.OnDashLeft;
-                @DashLeft.performed += instance.OnDashLeft;
-                @DashLeft.canceled += instance.OnDashLeft;
             }
         }
     }
@@ -709,8 +653,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnDown(InputAction.CallbackContext context);
         void OnWield(InputAction.CallbackContext context);
         void OnAngle(InputAction.CallbackContext context);
-        void OnDashRight(InputAction.CallbackContext context);
-        void OnDashLeft(InputAction.CallbackContext context);
     }
     public interface ISpectatorActions
     {
