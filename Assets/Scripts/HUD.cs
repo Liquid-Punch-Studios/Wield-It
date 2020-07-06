@@ -1,53 +1,42 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using TreeEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
-    Image healthImg;
-    Image staminaImg;
+	private Player player;
 
-    TextMeshProUGUI healthText;
+	private float uiHealth;
+	private float healthVelocity;
 
-    public float maxHealth = 100;
-    public float targetHealth;
-    private float health;
-    private float healthVelocity;
-    
-    public float maxStamina = 100;
-    public float targetStamina;
-    private float stamina;
-    private float staminaVelocity;
+	public Image healthImg;
+	public TextMeshProUGUI healthText;
 
-    private void Start()
-    {
-        healthImg = GameObject.Find("Health Bar").GetComponent<Image>();
-        staminaImg = GameObject.Find("Stamina Bar").GetComponent<Image>();
+	private float uiStamina;
+	private float staminaVelocity;
 
-        healthText = GameObject.Find("Health Text").GetComponent<TextMeshProUGUI>();
+	public Image staminaImg;
+	//public TextMeshProUGUI staminaText;
 
-        health = maxHealth;
-        stamina = maxStamina;
+	private void Start()
+	{
+		player = GameObject.Find("Player").GetComponent<Player>();
 
-        healthImg.fillAmount = 1;
-        staminaImg.fillAmount = 1;
-        healthText.text = health.ToString() + "/" + maxHealth.ToString();
-    }
+		uiHealth = player.health;
+		uiStamina = player.stamina;
+	}
 
-    private void Update()
-    {
-        Mathf.SmoothDamp(health, targetHealth, ref healthVelocity, 0.1f , 1);
-        health = (int) health  == (int) targetHealth ? targetHealth: health + healthVelocity;
-        healthImg.fillAmount = health / maxHealth;
-        healthText.text = ((int)health).ToString() + "/" + ((int)maxHealth).ToString();
-        
-        Mathf.SmoothDamp(stamina, targetStamina, ref staminaVelocity, 0.1f, 1);
-        stamina = (int)stamina == (int)targetStamina ? targetStamina : stamina + staminaVelocity;
-        staminaImg.fillAmount = stamina / maxStamina;
-    }
+	private void Update()
+	{
+		uiHealth = Mathf.SmoothDamp(uiHealth, player.health, ref healthVelocity, 0.1f, 100, Time.deltaTime);
+		healthImg.fillAmount = player.health / player.maxHealth;
+		healthText.text = ((int)player.health).ToString();
 
+		uiStamina = Mathf.SmoothDamp(uiStamina, player.stamina, ref staminaVelocity, 0.1f, 100, Time.deltaTime);
+		staminaImg.fillAmount = player.stamina / player.maxStamina;
+		//staminaText.text = ((int)player.stamina).ToString();
+	}
 }
