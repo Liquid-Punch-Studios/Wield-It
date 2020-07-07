@@ -6,72 +6,75 @@ using UnityEditor;
 [SelectionBase]
 public class Sword : MonoBehaviour
 {
+	public GameObject user;
+	private Stamina stamina;
+
 	public Vector3 weaponHandle;
 	
-	public float damageFactor = 10f;
-	public float damageSpeedTreshold = 1f;
+	public float damageFactor = 0.5f;
+	public float damageSpeedTreshold = 25;
 
-	public float staminaDrainFactor = 0.0125f;
+	public float staminaDrainFactor = 1.5f;
 
 	// How much force we need for handling the weapon
 	//public float force;
 	//public float angularForce;
-	
-	private Player player;
-	private Rigidbody playerRb;
-	private Rigidbody rb;
-	private ConfigurableJoint joint;
 
-	private JointDrive drive;
-	private JointDrive angularDrive;
-	private JointDrive driveTired;
-	private JointDrive angularDriveTired;
+	private Rigidbody handlerRb;
+	private Rigidbody weaponRb;
+	private ConfigurableJoint weaponJoint;
 
 	private void Start()
 	{
-		rb = GetComponent<Rigidbody>();
-		var playerObj = GameObject.FindGameObjectWithTag("Player");
-		player = playerObj.GetComponent<Player>();
-		playerRb = playerObj.GetComponent<Rigidbody>();
-		joint = GetComponent<ConfigurableJoint>();
+		stamina = user.GetComponent<Stamina>();
 
-		drive = driveTired = joint.xDrive;
-		//driveTired.maximumForce *= tiredForceFactor;
-
-		angularDrive = angularDriveTired = joint.angularYZDrive;
-		//angularDriveTired.maximumForce *= tiredForceFactor;
+		weaponRb = GetComponent<Rigidbody>();
+		handlerRb = user.GetComponent<Rigidbody>();
+		weaponJoint = GetComponent<ConfigurableJoint>();
 	}
 
 	private void FixedUpdate()
 	{
-		var relative = rb.velocity - playerRb.velocity;
+		var relative = weaponRb.velocity - handlerRb.velocity;
 		// Check weapon velocity relative to the player itself so we don't lose stamina by dashing etc.
 		if (relative.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold)
 		{
-			if (player.stamina > staminaDrainFactor * rb.velocity.magnitude)
-			{
-				player.stamina -= staminaDrainFactor * rb.velocity.magnitude;
-			}
-			//else
-			//{
-			//	joint.xDrive = joint.yDrive = driveTired;
-			//	joint.angularYZDrive = angularDriveTired;
-			//}
-		}
-		{
-			var tired = drive;
-			tired.positionSpring *= player.stamina / player.maxStamina;
-			joint.xDrive = joint.yDrive = tired;
-
-			var tiredAngular = angularDrive;
-			tiredAngular.positionSpring *= player.stamina / player.maxStamina;
-			joint.angularYZDrive = tiredAngular;
+			stamina.UseStamina(relative.magnitude * staminaDrainFactor * Time.fixedDeltaTime);
 		}
 	}
 
+	Dictionary<GameObject, int> triggerTracker = new Dictionary<GameObject, int>();
+
 	private void OnTriggerEnter(Collider other)
 	{
-		Debug.Log("Trigger Enter: " + other.name);
+		if (other.gameObject != user && other.GetComponent<Health>() is Health health && health != null)
+		{
+			if (triggerTracker.ContainsKey(other.gameObject))
+			{
+				if (triggerTracker[other.gameObject]++ > 0)
+					return;
+			}
+			else
+				triggerTracker.Add(other.gameObject, 1);
+			if (other.GetComponent<Rigidbody>() is Rigidbody otherRb && otherRb != null)
+			{
+				var relative = weaponRb.velocity - otherRb.velocity;
+				if (relative.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold)
+				{
+					health.ReceiveDamage(damageFactor * relative.magnitude);
+					Debug.Log((int)(damageFactor * relative.magnitude));
+					otherRb.AddForce(weaponRb.velocity * 1000);
+				}
+			}
+			else
+			{
+				if (weaponRb.velocity.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold)
+				{
+					health.ReceiveDamage(damageFactor * weaponRb.velocity.magnitude);
+					Debug.Log((int)(damageFactor * weaponRb.velocity.magnitude));
+				}
+			}
+		}
 	}
 
 	private void OnTriggerStay(Collider other)
@@ -81,11 +84,7 @@ public class Sword : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-		
-	}
-
-	private void OnCollisionEnter(Collision collision)
-	{
-		Debug.Log("Colission Enter: " + collision.gameObject.name);
+		if (triggerTracker.ContainsKey(other.gameObject))
+			triggerTracker[other.gameObject]--;
 	}
 }

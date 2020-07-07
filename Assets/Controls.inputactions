@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Up",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "dc890858-0c13-4aa8-91c6-b27b6d96462a",
                     "expectedControlType": "Button",
@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Down",
+                    "name": "Slam",
                     "type": "Button",
                     "id": "cca7b228-c552-453e-8a13-1105dfa52472",
                     "expectedControlType": "Button",
@@ -42,6 +42,14 @@
                     "type": "Button",
                     "id": "7ada5061-8388-4911-a1a8-4c2ba01f33a5",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Dash",
+                    "type": "Value",
+                    "id": "8046a645-cc1d-4b62-9641-8b76e34c0118",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 }
@@ -109,7 +117,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Up",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -120,9 +128,42 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Down",
+                    "action": "Slam",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "3170f6bc-ce79-470e-8891-5319ec4f7a72",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "6e152fcf-084d-4c28-a60c-e2cf89de471b",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a629693d-fce8-4ed6-b40c-8eae36626db4",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

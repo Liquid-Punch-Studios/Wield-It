@@ -27,7 +27,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Up"",
+                    ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""dc890858-0c13-4aa8-91c6-b27b6d96462a"",
                     ""expectedControlType"": ""Button"",
@@ -35,7 +35,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Down"",
+                    ""name"": ""Slam"",
                     ""type"": ""Button"",
                     ""id"": ""cca7b228-c552-453e-8a13-1105dfa52472"",
                     ""expectedControlType"": ""Button"",
@@ -55,6 +55,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""7ada5061-8388-4911-a1a8-4c2ba01f33a5"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Value"",
+                    ""id"": ""8046a645-cc1d-4b62-9641-8b76e34c0118"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -122,7 +130,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Up"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -133,9 +141,42 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Down"",
+                    ""action"": ""Slam"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""3170f6bc-ce79-470e-8891-5319ec4f7a72"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""6e152fcf-084d-4c28-a60c-e2cf89de471b"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""a629693d-fce8-4ed6-b40c-8eae36626db4"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -415,10 +456,11 @@ public class @Controls : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Up = m_Player.FindAction("Up", throwIfNotFound: true);
-        m_Player_Down = m_Player.FindAction("Down", throwIfNotFound: true);
+        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_Slam = m_Player.FindAction("Slam", throwIfNotFound: true);
         m_Player_Wield = m_Player.FindAction("Wield", throwIfNotFound: true);
         m_Player_Angle = m_Player.FindAction("Angle", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         // Spectator
         m_Spectator = asset.FindActionMap("Spectator", throwIfNotFound: true);
         m_Spectator_Move = m_Spectator.FindAction("Move", throwIfNotFound: true);
@@ -480,19 +522,21 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Up;
-    private readonly InputAction m_Player_Down;
+    private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_Slam;
     private readonly InputAction m_Player_Wield;
     private readonly InputAction m_Player_Angle;
+    private readonly InputAction m_Player_Dash;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Up => m_Wrapper.m_Player_Up;
-        public InputAction @Down => m_Wrapper.m_Player_Down;
+        public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @Slam => m_Wrapper.m_Player_Slam;
         public InputAction @Wield => m_Wrapper.m_Player_Wield;
         public InputAction @Angle => m_Wrapper.m_Player_Angle;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -505,18 +549,21 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Up.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUp;
-                @Up.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUp;
-                @Up.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUp;
-                @Down.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDown;
-                @Down.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDown;
-                @Down.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDown;
+                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Slam.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlam;
+                @Slam.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlam;
+                @Slam.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlam;
                 @Wield.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWield;
                 @Wield.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWield;
                 @Wield.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWield;
                 @Angle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAngle;
                 @Angle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAngle;
                 @Angle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAngle;
+                @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -524,18 +571,21 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Up.started += instance.OnUp;
-                @Up.performed += instance.OnUp;
-                @Up.canceled += instance.OnUp;
-                @Down.started += instance.OnDown;
-                @Down.performed += instance.OnDown;
-                @Down.canceled += instance.OnDown;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @Slam.started += instance.OnSlam;
+                @Slam.performed += instance.OnSlam;
+                @Slam.canceled += instance.OnSlam;
                 @Wield.started += instance.OnWield;
                 @Wield.performed += instance.OnWield;
                 @Wield.canceled += instance.OnWield;
                 @Angle.started += instance.OnAngle;
                 @Angle.performed += instance.OnAngle;
                 @Angle.canceled += instance.OnAngle;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -649,10 +699,11 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnUp(InputAction.CallbackContext context);
-        void OnDown(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnSlam(InputAction.CallbackContext context);
         void OnWield(InputAction.CallbackContext context);
         void OnAngle(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
     public interface ISpectatorActions
     {
