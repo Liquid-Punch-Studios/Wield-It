@@ -11,8 +11,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.709753, y: 1.1397872, z: 5.308605}
-  m_Center: {x: -0.02480793, y: 0.4475758, z: -0.1284113}
+  m_Size: {x: 1.709753, y: 1.5635033, z: 4.4202967}
+  m_Center: {x: -0.02480793, y: 0.65943384, z: 0.31574297}
 --- !u!95 &8006443200132971659
 Animator:
   serializedVersion: 3
@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.837883, y: 0.3211987, z: 5.9035}
-  m_Center: {x: 0.043838263, y: 0.3909713, z: -0.01646018}
+  m_Size: {x: 1.837883, y: 0.3211987, z: 4.6645937}
+  m_Center: {x: 0.043838263, y: 0.3909713, z: 0.60299313}
 --- !u!64 &8006443201414109164
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 0fdeba0d7ac0fbd439dec21d2d0604db,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0fdeba0d7ac0fbd439dec21d2d0604db,
         type: 3}
@@ -180,6 +180,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_spear_trap
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0fdeba0d7ac0fbd439dec21d2d0604db,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fdeba0d7ac0fbd439dec21d2d0604db, type: 3}
@@ -261,6 +266,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_trap_spears
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0648218815f53a14381df840a7e0ea82,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0648218815f53a14381df840a7e0ea82, type: 3}

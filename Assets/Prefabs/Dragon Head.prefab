@@ -58,17 +58,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 778c60ccd2d9a5946a9a39057f082de8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 778c60ccd2d9a5946a9a39057f082de8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.06
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 778c60ccd2d9a5946a9a39057f082de8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 778c60ccd2d9a5946a9a39057f082de8,
         type: 3}
@@ -157,15 +157,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.937
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.98
+      value: -0.222
       objectReference: {fileID: 0}
     - target: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.843
+      value: 0.073
       objectReference: {fileID: 0}
     - target: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -228,15 +228,30 @@ PrefabInstance:
       propertyPath: looping
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 198168859160489886, guid: 89956e675b749204c8e10395ce2b5fb9,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198205007009897148, guid: 89956e675b749204c8e10395ce2b5fb9,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198205007009897148, guid: 89956e675b749204c8e10395ce2b5fb9,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198260517930635872, guid: 89956e675b749204c8e10395ce2b5fb9,
         type: 3}
       propertyPath: looping
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198260517930635872, guid: 89956e675b749204c8e10395ce2b5fb9,
         type: 3}
-      propertyPath: looping
-      value: 1
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198321560017527566, guid: 89956e675b749204c8e10395ce2b5fb9,
         type: 3}
@@ -247,6 +262,11 @@ PrefabInstance:
         type: 3}
       propertyPath: looping
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198778633208645958, guid: 89956e675b749204c8e10395ce2b5fb9,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}

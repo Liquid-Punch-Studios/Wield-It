@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2978620560378485296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7698761885365646967}
+  - component: {fileID: 6033615554804789877}
+  m_Layer: 15
+  m_Name: TriggerObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7698761885365646967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2978620560378485296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4911670452309385235}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6033615554804789877
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2978620560378485296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5295482, y: 2.7696996, z: 2.3060656}
+  m_Center: {x: -0.06471616, y: -3.892751, z: 0.1765616}
 --- !u!1 &4911670452309385238
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +74,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 12.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7698761885365646967}
   m_Father: {fileID: 4911670452489287125}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -89,11 +134,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4911670452309385238}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.7535987, y: 1.8442421, z: 2.407446}
-  m_Center: {x: 0.0636425, y: -4.377878, z: 0.14523363}
+  m_Size: {x: 2.7563791, y: 6.238488, z: 2.407446}
+  m_Center: {x: 0.06503278, y: -2.1807551, z: 0.14523363}
 --- !u!95 &4911670452309385234
 Animator:
   serializedVersion: 3
@@ -159,7 +204,7 @@ GameObject:
   - component: {fileID: 4911670452602742793}
   - component: {fileID: 4911670452602742798}
   - component: {fileID: 4911670452602742794}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dungeon_pressure_plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,8 +283,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.009139, y: 0.26467788, z: 2.0052016}
-  m_Center: {x: 0.003045559, y: 0.3667208, z: -0.0004490614}
+  m_Size: {x: 2.009431, y: 0.29410446, z: 1.9592371}
+  m_Center: {x: -0.006566167, y: 0.38143408, z: -0.10562733}
 --- !u!64 &4911670452602742798
 MeshCollider:
   m_ObjectHideFlags: 0
