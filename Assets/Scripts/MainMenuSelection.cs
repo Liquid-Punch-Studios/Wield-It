@@ -240,7 +240,7 @@ public class MainMenuSelection : MonoBehaviour
     IEnumerator PlayButtonClick()
     {
         yield return new WaitForSeconds(1);
-        SceneManager.LoadSceneAsync("main", LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Demo1", LoadSceneMode.Single);
         yield return null;
     }
     IEnumerator ExitButtonClick()
