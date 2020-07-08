@@ -12,6 +12,7 @@ public class SettingsData
     public bool soundMuted;
     public int musicVal;
     public bool musicMuted;
+    public int sensitivity;
 
     public SettingsData(MainMenuSelection menu)
     {
@@ -22,5 +23,6 @@ public class SettingsData
         soundMuted = menu.SoundMuted;
         musicVal = menu.MusicVal;
         musicMuted = menu.MusicMuted;
+        sensitivity = menu.Sensitivity;
     }
 }
