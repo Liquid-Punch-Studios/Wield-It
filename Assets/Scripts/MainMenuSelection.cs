@@ -30,7 +30,7 @@ public class MainMenuSelection : MonoBehaviour
     private int musicVal;
     public int MusicVal { get { return musicVal; } set { musicVal = value; } }
 
-    public int previousSoundVal;
+    private int previousSoundVal;
     private bool soundMuted;
     public bool SoundMuted { get { return soundMuted; } set { soundMuted = value; } }
 
@@ -39,6 +39,9 @@ public class MainMenuSelection : MonoBehaviour
 
     private bool violence;
     public bool Violence { get { return violence; } set { violence = value; } }
+
+    private int sensitivity;
+    public int Sensitivity { get { return sensitivity; } set { sensitivity = value; } }
 
 
     private Vector3 velocity;
@@ -182,6 +185,18 @@ public class MainMenuSelection : MonoBehaviour
                         textComponent = GameObject.Find("SoundVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + SoundVal;
                         break;
+
+                    case "SensitivityPlus":
+                        Sensitivity = sensitivity < 100 ? sensitivity + 10 : 100;
+                        textComponent = GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>();
+                        textComponent.text = "%" + Sensitivity;
+                        break;
+
+                    case "SensitivityMinus":
+                        Sensitivity = sensitivity > 0 ? sensitivity - 10 : 0;
+                        textComponent = GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>();
+                        textComponent.text = "%" + Sensitivity;
+                        break;
                 }
 
                 
@@ -249,6 +264,7 @@ public class MainMenuSelection : MonoBehaviour
             previousSoundVal = data.soundVal;
             SoundMuted = data.soundMuted;
             Violence = data.violence;
+            Sensitivity = data.sensitivity;
         }
         else
         {
@@ -261,6 +277,7 @@ public class MainMenuSelection : MonoBehaviour
             previousSoundVal = SoundVal;
             SoundMuted = false;
             Violence = false;
+            Sensitivity = 50;
             SaveSystem.SaveSettings(this);
         }
         GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = difficultySteps[Difficulty];
@@ -272,5 +289,7 @@ public class MainMenuSelection : MonoBehaviour
         if (SoundMuted)
             GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "Muted";
         GameObject.Find("ViolenceVal").GetComponent<TextMeshPro>().text = Violence ? "ON" : "OFF";
+        GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>().text = "%" + Sensitivity;
+
     }
 }
