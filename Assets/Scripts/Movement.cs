@@ -7,6 +7,8 @@ public class Movement : MonoBehaviour
 	[HideInInspector]
 	public float move;
 
+	public Animator animator;
+
 	public float moveSpeed = 8;
 	public float moveForce = 5000;
 
@@ -63,12 +65,14 @@ public class Movement : MonoBehaviour
 		{
 			vel.y = jumpSpeed;
 			rb.velocity = vel;
+			animator.SetTrigger("jump");
 		}
 		else if (airJumpLeft > 0 && stamina.UseStamina(airJumpCost))
 		{
 			vel.y = airJumpSpeed;
 			rb.velocity = vel;
 			airJumpLeft--;
+			animator.SetTrigger("double jump");
 		}
 		else
 			return false;
@@ -118,16 +122,24 @@ public class Movement : MonoBehaviour
 
 		if (rb.velocity.y > -slamSpeedMin)
 			slamming = false;
+
+		animator.SetFloat("speed X", Mathf.Abs(rb.velocity.x / moveSpeed));
+		//animator.SetFloat("speed Y", rb.velocity.y);
 	}
 
 	private void OnTriggerEnter(Collider other)
 	{
 		if ((1 << other.gameObject.layer & groundLayerMask.value) != 0)
 			onGround++;
+		if (onGround == 1)
+		{
+			animator.SetTrigger("fell");
+		}
 		if (onGround > 0)
 		{
 			airJumpLeft = airJumpCount;
 			slamming = false;
+			animator.SetBool("on ground", true);
 		}
 	}
 
@@ -138,6 +150,9 @@ public class Movement : MonoBehaviour
 		if ((1 << other.gameObject.layer & groundLayerMask.value) != 0)
 			onGround--;
 		if (onGround < 1)
+		{
 			lastGround = Time.time;
+			animator.SetBool("on ground", false);
+		}
 	}
 }
