@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class TrapTrigger : MonoBehaviour
 {
-    public Animator anim;
-    private void OnTriggerEnter(Collider other)
-    {
-        anim.SetBool("isSet", true);
-    }
+	public Animator anim;
 
-    private void OnTriggerExit(Collider other)
-    {
-        anim.SetBool("isSet", false);
-    }
+	public LayerMask triggerLayerMask;
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if ((1 << other.gameObject.layer & triggerLayerMask.value) != 0)
+			anim.SetBool("isSet", true);
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if ((1 << other.gameObject.layer & triggerLayerMask.value) != 0)
+			anim.SetBool("isSet", false);
+	}
 }
