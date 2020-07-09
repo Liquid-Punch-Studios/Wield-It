@@ -550,6 +550,28 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.22
       objectReference: {fileID: 0}
+    - target: {fileID: -1145414106354058766, guid: aff94c82abed99847bc0c990f7dd66ca,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c467894b597f80946b99816cef5d068d, type: 2}
+    - target: {fileID: -1145414106354058766, guid: aff94c82abed99847bc0c990f7dd66ca,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b298eb6cfe5bf0c48822bc1f64f8399e, type: 2}
+    - target: {fileID: -1145414106354058766, guid: aff94c82abed99847bc0c990f7dd66ca,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 6251350979608219465, guid: aff94c82abed99847bc0c990f7dd66ca,
+        type: 3}
+    - target: {fileID: -1145414106354058766, guid: aff94c82abed99847bc0c990f7dd66ca,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: -8010376110929599330, guid: aff94c82abed99847bc0c990f7dd66ca,
+        type: 3}
     - target: {fileID: -927199367670048503, guid: aff94c82abed99847bc0c990f7dd66ca,
         type: 3}
       propertyPath: m_Name
@@ -1408,8 +1430,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -1391134871863005975, guid: 168a552e0337a7b4aad766712ef4c436,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: bd6ac12b978623046991e863317c0f54, type: 2}
     - target: {fileID: -927199367670048503, guid: 168a552e0337a7b4aad766712ef4c436,
         type: 3}
       propertyPath: m_Name
@@ -13153,6 +13174,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15408d4230c59ea438708a12877f93ab, type: 2}
+    - target: {fileID: -1504981713932161579, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -6639292466182748828, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
+        type: 3}
     - target: {fileID: -927199367670048503, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
         type: 3}
       propertyPath: m_Name
@@ -20661,6 +20693,7 @@ MonoBehaviour:
   maxSp: 100
   sp: 100
   spRegen: 50
+  spRegenAir: 25
   image: {fileID: 1574568151}
   text: {fileID: 0}
   format: '{0:F0}'
@@ -20745,6 +20778,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9374dda76352b46b6f8fdc3563c698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerGfx: {fileID: 683474244}
+  handGfx: {fileID: 114770629}
   sensitivity: 0.02
 --- !u!135 &1531291760
 SphereCollider:
@@ -20959,8 +20994,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 1531291763}
-  turnFactor: 1
-  damping: 0.5
+  turnFactor: 0.25
+  damping: 0.2
 --- !u!1 &1534942988 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
@@ -24989,12 +25024,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: c0923901b7f78724196ca4d4d4042487,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.081
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c0923901b7f78724196ca4d4d4042487,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.06
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c0923901b7f78724196ca4d4d4042487,
         type: 3}
@@ -25035,6 +25070,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: c0923901b7f78724196ca4d4d4042487,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: c0923901b7f78724196ca4d4d4042487,
         type: 3}
