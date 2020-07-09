@@ -3305,6 +3305,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1361012759604811859, guid: 5f7c6487dbe38d34299af67f8fdd0bec,
+        type: 3}
+      propertyPath: triggerLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7044374130557044624, guid: 5f7c6487dbe38d34299af67f8fdd0bec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3992,6 +3997,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 186426924}
+  triggerLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!33 &349341422
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9410,6 +9418,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1361012759604811859, guid: 5f7c6487dbe38d34299af67f8fdd0bec,
+        type: 3}
+      propertyPath: triggerLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7044374130557044624, guid: 5f7c6487dbe38d34299af67f8fdd0bec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9560,6 +9573,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1361012759604811859, guid: 5f7c6487dbe38d34299af67f8fdd0bec,
+        type: 3}
+      propertyPath: triggerLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7044374130557044624, guid: 5f7c6487dbe38d34299af67f8fdd0bec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18872,6 +18890,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Stone Fist Trap '
       objectReference: {fileID: 0}
+    - target: {fileID: 4911670452602742794, guid: 45d9447b0cf20db4888df50a36a1ea01,
+        type: 3}
+      propertyPath: triggerLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45d9447b0cf20db4888df50a36a1ea01, type: 3}
 --- !u!4 &1373733238 stripped
@@ -19488,6 +19511,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8006443201414109166, guid: a4d204c9adacbb74eb151d73b529a178,
+        type: 3}
+      propertyPath: triggerLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 8006443201553234962, guid: a4d204c9adacbb74eb151d73b529a178,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19557,6 +19585,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1361012759604811859, guid: 5f7c6487dbe38d34299af67f8fdd0bec,
+        type: 3}
+      propertyPath: triggerLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7044374130557044624, guid: 5f7c6487dbe38d34299af67f8fdd0bec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24383,6 +24416,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_elevator
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b554e7378ba999848a6daaa8ca1e5985,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b554e7378ba999848a6daaa8ca1e5985, type: 3}
 --- !u!4 &1757211245 stripped
@@ -27409,6 +27447,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1361012759604811859, guid: 5f7c6487dbe38d34299af67f8fdd0bec,
+        type: 3}
+      propertyPath: triggerLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7044374130557044624, guid: 5f7c6487dbe38d34299af67f8fdd0bec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30108,6 +30151,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1361012759604811859, guid: 5f7c6487dbe38d34299af67f8fdd0bec,
+        type: 3}
+      propertyPath: triggerLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7044374130557044624, guid: 5f7c6487dbe38d34299af67f8fdd0bec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30271,3 +30319,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1457886074}
+  triggerLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
