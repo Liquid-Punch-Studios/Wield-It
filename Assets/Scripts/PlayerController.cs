@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
 	private Handler handler;
 	private Movement movement;
 
+	public Transform playerGfx;
+	public Transform handGfx;
+
 	/// <summary>
 	/// How much the hand moves in relation to the mouse delta
 	/// </summary>
@@ -56,7 +59,12 @@ public class PlayerController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		float horizontal = controls.Player.Move.ReadValue<float>();
-		movement.move = horizontal;
+		var dir = Mathf.Sign(movement.move = horizontal);
+		if (dir != 0 && controls.Player.Move.triggered)
+		{
+			playerGfx.localScale = new Vector3(dir * Mathf.Abs(playerGfx.localScale.x), playerGfx.localScale.y, playerGfx.localScale.z);
+			handGfx.localScale = new Vector3(handGfx.localScale.x, dir * Mathf.Abs(handGfx.localScale.y), handGfx.localScale.z);
+		}
 
 		if (controls.Player.Dash.triggered)
 			movement.Dash(controls.Player.Dash.ReadValue<float>());
