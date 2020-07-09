@@ -131,14 +131,12 @@ public class Movement : MonoBehaviour
 	{
 		if ((1 << other.gameObject.layer & groundLayerMask.value) != 0)
 			onGround++;
-		if (onGround == 1)
-		{
-			animator.SetTrigger("fell");
-		}
+
 		if (onGround > 0)
 		{
 			airJumpLeft = airJumpCount;
 			slamming = false;
+			animator.SetTrigger("fell");
 			animator.SetBool("on ground", true);
 		}
 	}
@@ -152,6 +150,7 @@ public class Movement : MonoBehaviour
 		if (onGround < 1)
 		{
 			lastGround = Time.time;
+			animator.ResetTrigger("fell");
 			animator.SetBool("on ground", false);
 		}
 	}
