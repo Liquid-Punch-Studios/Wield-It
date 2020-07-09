@@ -26,6 +26,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.12073241, y: 1.4016445, z: 4.293401}
   m_Center: {x: -0.011472784, y: 0.13662899, z: 0.72779846}
+--- !u!65 &2588208906555646697
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789082632390748459}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01955285, y: 1.3685343, z: 4.293401}
+  m_Center: {x: 0.083444834, y: 0.2749473, z: 0.72779846}
+--- !u!65 &8580143189283439432
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789082632390748459}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.032880075, y: 1.3707039, z: 4.293401}
+  m_Center: {x: -0.096002474, y: 0.27386248, z: 0.72779846}
 --- !u!95 &6136523819010844586
 Animator:
   serializedVersion: 3
@@ -45,32 +71,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &8580143189283439432
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789082632390748459}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.032880075, y: 1.3707039, z: 4.293401}
-  m_Center: {x: -0.096002474, y: 0.27386248, z: 0.72779846}
---- !u!65 &2588208906555646697
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789082632390748459}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.01955285, y: 1.3685343, z: 4.293401}
-  m_Center: {x: 0.083444834, y: 0.2749473, z: 0.72779846}
 --- !u!1 &3414057803175807081
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +266,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: c11b7d9810c942546a0c96f121517819,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c75e3de9f3c1f04aa35e26318ad3e3f, type: 2}
+    - target: {fileID: -1504981713932161579, guid: c11b7d9810c942546a0c96f121517819,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -4660651839558579860, guid: c11b7d9810c942546a0c96f121517819,
+        type: 3}
     - target: {fileID: -927199367670048503, guid: c11b7d9810c942546a0c96f121517819,
         type: 3}
       propertyPath: m_Name
