@@ -19,7 +19,12 @@ public class Stamina : MonoBehaviour
 	/// <summary>
 	/// Stamina regeneration per second
 	/// </summary>
-	public float spRegen = 25f;
+	public float spRegen = 50f;
+
+	/// <summary>
+	/// Stamina regeneration per second while not on ground
+	/// </summary>
+	public float spRegenAir = 25f;
 
 	/// <summary>
 	/// Image to update fill amount for UI stuff & HUD
@@ -36,14 +41,17 @@ public class Stamina : MonoBehaviour
 	/// </summary>
 	public string format = "{0:F0}/{1:F0}";
 
+	private Movement movement;
+
 	private void Start()
 	{
+		movement = GetComponent<Movement>();
 		lastSp = (int)sp;
 	}
 
 	private void FixedUpdate()
 	{
-		sp = Mathf.Clamp(sp + spRegen * Time.fixedDeltaTime, 0, maxSp);
+		sp = Mathf.Clamp(sp + (movement.OnGround ? spRegen : spRegenAir) * Time.fixedDeltaTime, 0, maxSp);
 	}
 
 	private int lastSp;
