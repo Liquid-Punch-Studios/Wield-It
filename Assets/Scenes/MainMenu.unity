@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -51,7 +51,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 12
@@ -188,6 +188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_floor (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8fa28fc9812f9746a3ce283ce1aac5d, type: 3}
 --- !u!4 &5331273 stripped
@@ -211,7 +216,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!108 &12144510
 Light:
@@ -224,8 +229,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.91174537, b: 0.514151, a: 1}
-  m_Intensity: 4
+  m_Color: {r: 1, g: 0.94435483, b: 0.7, a: 1}
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -350,6 +355,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 7438af4d4bdd863418fe5d24e57e141d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: 7438af4d4bdd863418fe5d24e57e141d,
         type: 3}
       propertyPath: m_Name
@@ -418,7 +428,7 @@ Transform:
   - {fileID: 41024892}
   - {fileID: 1348088841}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &33034799 stripped
 GameObject:
@@ -804,6 +814,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_pillar (6)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 607f9fbdba1250b4ebef19a5a07da220,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607f9fbdba1250b4ebef19a5a07da220, type: 3}
 --- !u!4 &41024892 stripped
@@ -829,8 +844,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 12, z: 2.4}
-  m_Center: {x: 0, y: 6, z: 0}
+  m_Size: {x: 1.2, y: 6, z: 1.2}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1001 &41135600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -898,6 +913,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_pillar (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 607f9fbdba1250b4ebef19a5a07da220,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607f9fbdba1250b4ebef19a5a07da220, type: 3}
 --- !u!4 &41135601 stripped
@@ -923,8 +943,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 12, z: 2.4}
-  m_Center: {x: 0, y: 6, z: 0}
+  m_Size: {x: 1.2, y: 6, z: 1.2}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &52337339
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,7 +982,7 @@ Transform:
   - {fileID: 1799845670}
   - {fileID: 823361946}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 29.281002, y: 28.645, z: 0}
 --- !u!1 &58611740 stripped
 GameObject:
@@ -1440,7 +1460,7 @@ Transform:
   - {fileID: 998869359}
   - {fileID: 1714268826}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &96088073
 PrefabInstance:
@@ -1508,6 +1528,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_floor (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8fa28fc9812f9746a3ce283ce1aac5d, type: 3}
@@ -2448,6 +2473,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_wall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 35028b8ff7f1b654a960b3b57d6fa171,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35028b8ff7f1b654a960b3b57d6fa171, type: 3}
 --- !u!4 &134809028 stripped
@@ -2874,6 +2904,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_wall (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 35028b8ff7f1b654a960b3b57d6fa171,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35028b8ff7f1b654a960b3b57d6fa171, type: 3}
@@ -3583,6 +3618,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_pillar (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 607f9fbdba1250b4ebef19a5a07da220,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607f9fbdba1250b4ebef19a5a07da220, type: 3}
 --- !u!1 &309545456 stripped
@@ -4180,7 +4220,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 69b09b3a25554f142a91184cf2caba01,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 69b09b3a25554f142a91184cf2caba01,
         type: 3}
@@ -4227,6 +4267,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 69b09b3a25554f142a91184cf2caba01,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
+    - target: {fileID: -1504981713932161579, guid: 69b09b3a25554f142a91184cf2caba01,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15408d4230c59ea438708a12877f93ab, type: 2}
     - target: {fileID: -927199367670048503, guid: 69b09b3a25554f142a91184cf2caba01,
         type: 3}
       propertyPath: m_Name
@@ -4535,8 +4585,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 12, z: 2.4}
-  m_Center: {x: 0, y: 6, z: 0}
+  m_Size: {x: 1.2, y: 6, z: 1.2}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1001 &439535624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4603,6 +4653,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_wall (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 35028b8ff7f1b654a960b3b57d6fa171,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35028b8ff7f1b654a960b3b57d6fa171, type: 3}
@@ -4969,6 +5024,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_pillar (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 607f9fbdba1250b4ebef19a5a07da220,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607f9fbdba1250b4ebef19a5a07da220, type: 3}
 --- !u!4 &473603626 stripped
@@ -4994,8 +5054,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 12, z: 2.4}
-  m_Center: {x: 0, y: 6, z: 0}
+  m_Size: {x: 1.2, y: 6, z: 1.2}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1001 &479364392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5062,6 +5122,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_wall (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 35028b8ff7f1b654a960b3b57d6fa171,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35028b8ff7f1b654a960b3b57d6fa171, type: 3}
@@ -5158,6 +5223,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 292d2248baf533647838cdb27dd9b370,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: 292d2248baf533647838cdb27dd9b370,
         type: 3}
       propertyPath: m_Name
@@ -5367,6 +5437,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2998131337682586573, guid: 3443933595b804b4b8aae98717654d43,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985144962899191138, guid: 3443933595b804b4b8aae98717654d43,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786179893863037755, guid: 3443933595b804b4b8aae98717654d43,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6615432464560585041, guid: 3443933595b804b4b8aae98717654d43,
         type: 3}
       propertyPath: m_RootOrder
@@ -5525,6 +5610,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 7438af4d4bdd863418fe5d24e57e141d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: 7438af4d4bdd863418fe5d24e57e141d,
         type: 3}
       propertyPath: m_Name
@@ -6823,6 +6913,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 35028b8ff7f1b654a960b3b57d6fa171,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35028b8ff7f1b654a960b3b57d6fa171, type: 3}
 --- !u!1 &623775073 stripped
@@ -7202,6 +7297,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 292d2248baf533647838cdb27dd9b370,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: 292d2248baf533647838cdb27dd9b370,
         type: 3}
       propertyPath: m_Name
@@ -7749,7 +7849,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: b1b0790a2baef604b90c1410aff2caa8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.73
+      value: 9.38
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b1b0790a2baef604b90c1410aff2caa8,
         type: 3}
@@ -8188,6 +8288,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_pillar (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 607f9fbdba1250b4ebef19a5a07da220,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607f9fbdba1250b4ebef19a5a07da220, type: 3}
 --- !u!4 &749759552 stripped
@@ -8390,8 +8495,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 12, z: 2.4}
-  m_Center: {x: 0, y: 6, z: 0}
+  m_Size: {x: 1.2, y: 6, z: 1.2}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1001 &783060312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9280,6 +9385,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_wall (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 35028b8ff7f1b654a960b3b57d6fa171,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35028b8ff7f1b654a960b3b57d6fa171, type: 3}
@@ -10223,7 +10333,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!108 &977929643
 Light:
@@ -10236,8 +10346,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.91174537, b: 0.514151, a: 1}
-  m_Intensity: 4
+  m_Color: {r: 1, g: 0.94435483, b: 0.7, a: 1}
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -10366,6 +10476,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_wall (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 35028b8ff7f1b654a960b3b57d6fa171,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35028b8ff7f1b654a960b3b57d6fa171, type: 3}
@@ -11064,6 +11179,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_wall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 35028b8ff7f1b654a960b3b57d6fa171,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35028b8ff7f1b654a960b3b57d6fa171, type: 3}
 --- !u!1001 &1080626679
@@ -11132,12 +11252,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: -1444460858095362738, guid: ba3e44ae2f1b91d4487c241f21dd8d80,
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
+    - target: {fileID: -1504981713932161579, guid: ba3e44ae2f1b91d4487c241f21dd8d80,
         type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd6ac12b978623046991e863317c0f54, type: 2}
     - target: {fileID: -927199367670048503, guid: ba3e44ae2f1b91d4487c241f21dd8d80,
         type: 3}
       propertyPath: m_Name
       value: dungeon_shield_sword
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ba3e44ae2f1b91d4487c241f21dd8d80,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba3e44ae2f1b91d4487c241f21dd8d80, type: 3}
@@ -11156,7 +11285,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 7c6344ddcd10ce04ea094d38f0526228,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.611999
+      value: 7.48
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7c6344ddcd10ce04ea094d38f0526228,
         type: 3}
@@ -11203,6 +11332,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 7c6344ddcd10ce04ea094d38f0526228,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: 7c6344ddcd10ce04ea094d38f0526228,
         type: 3}
       propertyPath: m_Name
@@ -11278,6 +11412,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: e5f462a27036c7848b4d9123838c6e81,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15408d4230c59ea438708a12877f93ab, type: 2}
     - target: {fileID: -927199367670048503, guid: e5f462a27036c7848b4d9123838c6e81,
         type: 3}
       propertyPath: m_Name
@@ -11765,12 +11904,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: -1444460858095362738, guid: 263c80eb0a50dfb43949231d00515116,
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
+    - target: {fileID: -1504981713932161579, guid: 263c80eb0a50dfb43949231d00515116,
         type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd6ac12b978623046991e863317c0f54, type: 2}
     - target: {fileID: -927199367670048503, guid: 263c80eb0a50dfb43949231d00515116,
         type: 3}
       propertyPath: m_Name
       value: dungeon_shield_axe
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 263c80eb0a50dfb43949231d00515116,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263c80eb0a50dfb43949231d00515116, type: 3}
@@ -11840,6 +11988,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_pillar
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 607f9fbdba1250b4ebef19a5a07da220,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607f9fbdba1250b4ebef19a5a07da220, type: 3}
@@ -11989,6 +12142,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
         type: 3}
       propertyPath: m_Name
@@ -12134,6 +12292,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
         type: 3}
       propertyPath: m_Name
@@ -12533,7 +12696,7 @@ Transform:
   - {fileID: 2091673821}
   - {fileID: 1906568705}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 21.320002, y: -10.996, z: 0}
 --- !u!1001 &1193487754
 PrefabInstance:
@@ -12601,6 +12764,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_floor (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8fa28fc9812f9746a3ce283ce1aac5d, type: 3}
@@ -12670,6 +12838,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_floor (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8fa28fc9812f9746a3ce283ce1aac5d, type: 3}
@@ -12891,6 +13064,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_floor
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8fa28fc9812f9746a3ce283ce1aac5d, type: 3}
 --- !u!4 &1281950361 stripped
@@ -13076,6 +13254,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2998131337682586573, guid: 3443933595b804b4b8aae98717654d43,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985144962899191138, guid: 3443933595b804b4b8aae98717654d43,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786179893863037755, guid: 3443933595b804b4b8aae98717654d43,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6615432464560585041, guid: 3443933595b804b4b8aae98717654d43,
         type: 3}
       propertyPath: m_RootOrder
@@ -13255,6 +13448,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_wall (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 35028b8ff7f1b654a960b3b57d6fa171,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35028b8ff7f1b654a960b3b57d6fa171, type: 3}
 --- !u!4 &1346164389 stripped
@@ -13349,6 +13547,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_pillar (7)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 607f9fbdba1250b4ebef19a5a07da220,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607f9fbdba1250b4ebef19a5a07da220, type: 3}
 --- !u!4 &1348088841 stripped
@@ -13374,8 +13577,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 12, z: 2.4}
-  m_Center: {x: 0, y: 6, z: 0}
+  m_Size: {x: 1.2, y: 6, z: 1.2}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &1348537670
 GameObject:
   m_ObjectHideFlags: 0
@@ -13993,7 +14196,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!108 &1379453914
 Light:
@@ -14006,8 +14209,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.91174537, b: 0.514151, a: 1}
-  m_Intensity: 3
+  m_Color: {r: 1, g: 0.94435483, b: 0.7, a: 1}
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14254,7 +14457,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 74b79febc2efc9a4a8ae9e6adeee5def,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.389999
+      value: 9.26
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 74b79febc2efc9a4a8ae9e6adeee5def,
         type: 3}
@@ -14301,6 +14504,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 74b79febc2efc9a4a8ae9e6adeee5def,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: 74b79febc2efc9a4a8ae9e6adeee5def,
         type: 3}
       propertyPath: m_Name
@@ -14380,6 +14588,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
         type: 3}
       propertyPath: m_Name
@@ -14547,7 +14760,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 7c6344ddcd10ce04ea094d38f0526228,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.541999
+      value: 7.47
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7c6344ddcd10ce04ea094d38f0526228,
         type: 3}
@@ -14594,6 +14807,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 7c6344ddcd10ce04ea094d38f0526228,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: 7c6344ddcd10ce04ea094d38f0526228,
         type: 3}
       propertyPath: m_Name
@@ -14943,6 +15161,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_floor (7)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8fa28fc9812f9746a3ce283ce1aac5d, type: 3}
 --- !u!4 &1482955415 stripped
@@ -15017,6 +15240,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_floor (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8fa28fc9812f9746a3ce283ce1aac5d, type: 3}
@@ -15601,10 +15829,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 337e68cb94e012742acbcf1c5da78872,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd6ac12b978623046991e863317c0f54, type: 2}
+    - target: {fileID: -1504981713932161579, guid: 337e68cb94e012742acbcf1c5da78872,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
+    - target: {fileID: -1504981713932161579, guid: 337e68cb94e012742acbcf1c5da78872,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15408d4230c59ea438708a12877f93ab, type: 2}
     - target: {fileID: -927199367670048503, guid: 337e68cb94e012742acbcf1c5da78872,
         type: 3}
       propertyPath: m_Name
       value: dungeon_shield_mace
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 337e68cb94e012742acbcf1c5da78872,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 337e68cb94e012742acbcf1c5da78872, type: 3}
@@ -15670,6 +15918,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 292d2248baf533647838cdb27dd9b370,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: 292d2248baf533647838cdb27dd9b370,
         type: 3}
       propertyPath: m_Name
@@ -16225,7 +16478,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1651301567
 GameObject:
@@ -16466,7 +16719,7 @@ Transform:
   - {fileID: 749759552}
   - {fileID: 1696425952}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1679712342
 GameObject:
@@ -16950,6 +17203,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_wall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 35028b8ff7f1b654a960b3b57d6fa171,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35028b8ff7f1b654a960b3b57d6fa171, type: 3}
 --- !u!4 &1707151973 stripped
@@ -17335,6 +17593,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_handcuff (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: aeaf694555a4f934dbef5f698b2f1dfe,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aeaf694555a4f934dbef5f698b2f1dfe, type: 3}
 --- !u!1001 &1768397020
@@ -17399,6 +17662,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 292d2248baf533647838cdb27dd9b370,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: 292d2248baf533647838cdb27dd9b370,
         type: 3}
       propertyPath: m_Name
@@ -17601,7 +17869,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!108 &1798824321
 Light:
@@ -17614,8 +17882,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.91174537, b: 0.514151, a: 1}
-  m_Intensity: 4
+  m_Color: {r: 1, g: 0.94435483, b: 0.7, a: 1}
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -18023,7 +18291,7 @@ Transform:
   - {fileID: 830648917}
   - {fileID: 490710026}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 22.491001, z: 0}
 --- !u!1 &1841924228
 GameObject:
@@ -18794,6 +19062,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5412778
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
         type: 3}
       propertyPath: m_Name
@@ -18968,7 +19241,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: b1b0790a2baef604b90c1410aff2caa8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.73
+      value: 9.39
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b1b0790a2baef604b90c1410aff2caa8,
         type: 3}
@@ -19094,6 +19367,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
         type: 3}
       propertyPath: m_Name
@@ -19979,6 +20257,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_pillar (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 607f9fbdba1250b4ebef19a5a07da220,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607f9fbdba1250b4ebef19a5a07da220, type: 3}
 --- !u!4 &2049193203 stripped
@@ -20004,8 +20287,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 12, z: 2.4}
-  m_Center: {x: 0, y: 6, z: 0}
+  m_Size: {x: 1.2, y: 6, z: 1.2}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &2060907006
 GameObject:
   m_ObjectHideFlags: 0
@@ -20567,6 +20850,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_floor (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d8fa28fc9812f9746a3ce283ce1aac5d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8fa28fc9812f9746a3ce283ce1aac5d, type: 3}
 --- !u!1 &2080408518 stripped
@@ -20823,6 +21111,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_wall
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 35028b8ff7f1b654a960b3b57d6fa171,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35028b8ff7f1b654a960b3b57d6fa171, type: 3}
 --- !u!1001 &2100409518
@@ -20887,6 +21180,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     - target: {fileID: -927199367670048503, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
         type: 3}
       propertyPath: m_Name
@@ -21281,6 +21579,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: keys_hooked
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 81086b700b6136e42828aeec16e1a1f8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81086b700b6136e42828aeec16e1a1f8, type: 3}
 --- !u!1 &2131668793 stripped
@@ -21300,8 +21603,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 12, z: 2.4}
-  m_Center: {x: 0, y: 6, z: 0}
+  m_Size: {x: 1.2, y: 6, z: 1.2}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &2135474080 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 292d2248baf533647838cdb27dd9b370,
@@ -21420,6 +21723,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2998131337682586573, guid: 3443933595b804b4b8aae98717654d43,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985144962899191138, guid: 3443933595b804b4b8aae98717654d43,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786179893863037755, guid: 3443933595b804b4b8aae98717654d43,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6615432464560585041, guid: 3443933595b804b4b8aae98717654d43,
         type: 3}
       propertyPath: m_RootOrder
