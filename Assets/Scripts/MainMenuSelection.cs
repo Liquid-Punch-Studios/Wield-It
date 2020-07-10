@@ -17,8 +17,6 @@ public class MainMenuSelection : MonoBehaviour
     public Material wood;
     public Material darkWood;
 
-    public int levelCount;
-
     public float scrollMax;
     public float scrollMin;
     public float scrollTop;
@@ -48,9 +46,6 @@ public class MainMenuSelection : MonoBehaviour
 
     private int sensitivity;
     public int Sensitivity { get { return sensitivity; } set { sensitivity = value; } }
-    
-    private int level;
-    public int Level { get { return level; } set { level = value; } }
 
 
     private Vector3 velocity;
@@ -97,8 +92,7 @@ public class MainMenuSelection : MonoBehaviour
                         string levelNumber = m.Success ? m.Value : "1";
                         if (Int32.TryParse(levelNumber,out clickedLevel))
                         {
-                            Debug.Log(clickedLevel + "/" + level);
-                            if (clickedLevel <= level)
+                            if (clickedLevel <= Level.lastLevel)
                                 StartCoroutine(PlayButtonClick(objectName));
                         }
                        
@@ -271,6 +265,15 @@ public class MainMenuSelection : MonoBehaviour
 
     public void Load()
     {
+        if (File.Exists(SaveSystem.levelPath))
+        {
+            SaveSystem.LoadLastLevel();
+        }
+        else
+        {
+            SaveSystem.SaveLastLevel();
+        }
+
         if (File.Exists(SaveSystem.settingsPath))
         {
             SettingsData data = SaveSystem.LoadSettings();
@@ -284,7 +287,6 @@ public class MainMenuSelection : MonoBehaviour
             SoundMuted = data.soundMuted;
             Violence = data.violence;
             Sensitivity = data.sensitivity;
-            Level = data.level;
         }
         else
         {
@@ -298,7 +300,7 @@ public class MainMenuSelection : MonoBehaviour
             SoundMuted = false;
             Violence = false;
             Sensitivity = 50;
-            Level = 1;
+            Level.lastLevel = 1;
             SaveSystem.SaveSettings(this);
         }
         GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = difficultySteps[Difficulty];
@@ -312,13 +314,13 @@ public class MainMenuSelection : MonoBehaviour
         GameObject.Find("ViolenceVal").GetComponent<TextMeshPro>().text = Violence ? "ON" : "OFF";
         GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>().text = "%" + Sensitivity;
 
-        GameObject[] levelLogs = new GameObject[levelCount];
+        GameObject[] levelLogs = new GameObject[Level.levelCount];
 
-        for (int i = 0; i< levelCount; i++)
+        for (int i = 0; i< Level.levelCount; i++)
         {
             levelLogs[i] = GameObject.Find("Demo" + (i+1).ToString());
             TextMeshPro text = levelLogs[i].GetComponentInChildren<TextMeshPro>();
-            if (i <= level - 1)
+            if (i <= Level.lastLevel - 1)
             {
                 levelLogs[i].GetComponent<MeshRenderer>().material = wood;
                 text.color = new Color(1, 1, 1);
