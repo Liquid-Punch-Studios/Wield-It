@@ -1,0 +1,20 @@
+Tahta menü tıklama sesi 2 varyasyon
+Zincir sesi iniş çıkış (settings)
+Meşale yanma (devamlı)
+Karakter hareketleri:
+	yürüme: taşta, tahta köprüde
+	zıplama: karakter sesi, yere inme
+	dash: air whip/woosh
+	slam down: karakter ve kılıç yere çarpma
+Karakter hasar alma: kılıç kesiği, 
+Kılıç kalkana çarpma
+Kılıç metal zırha çarpma
+Demir parmaklık kapı açılış/kapanış
+Tuzaklar sesleri:
+	Pendulum sallanma
+	Sürgülü tahta platformlar giriş/çıkış
+	Kaya yumruk iniş, çarpma
+	Giyotin iniş çıkış
+	Alev püskürtme
+	Dikenli merdane hareketi
+Tahta platform kırılma
