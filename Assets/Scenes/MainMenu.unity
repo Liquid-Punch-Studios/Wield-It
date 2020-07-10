@@ -1707,7 +1707,6 @@ MonoBehaviour:
   carrier: {fileID: 618099898}
   wood: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
   darkWood: {fileID: 2100000, guid: 6c75e3de9f3c1f04aa35e26318ad3e3f, type: 2}
-  levelCount: 3
   scrollMax: 9.5
   scrollMin: 5.5
   scrollTop: 15

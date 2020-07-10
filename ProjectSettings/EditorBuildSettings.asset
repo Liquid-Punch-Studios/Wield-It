@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Demo2.unity
     guid: cf44f4e4dc8adda418eae2b901351c41
   - enabled: 1
+    path: Assets/Scenes/Demo3.unity
+    guid: 9184af4f75b57554fad2e65ebdd44c50
+  - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: cd65a2c87556cb641bd16f664471e995
   - enabled: 1

@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System;
 
 public static class SaveSystem
 {
     public static string settingsPath = Path.Combine(Application.persistentDataPath, "Settings.bin");
+    public static string levelPath = Path.Combine(Application.persistentDataPath, "level.bin");
     public static void SaveSettings(MainMenuSelection menu)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -29,6 +31,30 @@ public static class SaveSystem
         {
             Debug.LogError("Save File Not Found at " + settingsPath);
             return null;
+        }
+    }
+
+    public static void SaveLastLevel()
+    {
+        FileStream stream = new FileStream(levelPath, FileMode.Create);
+        BinaryWriter bw = new BinaryWriter(stream);
+        bw.Write(Level.lastLevel);
+        stream.Close();
+    }
+
+    public static void LoadLastLevel()
+    {
+        if (File.Exists(levelPath))
+        {
+            FileStream stream = new FileStream(levelPath, FileMode.Open);
+            BinaryReader br = new BinaryReader(stream);
+            Level.lastLevel = br.ReadInt32();
+            Debug.Log(Level.lastLevel);
+            stream.Close();
+        }
+        else
+        {
+            Debug.LogError("Save File Not Found at " + levelPath);
         }
     }
 }
