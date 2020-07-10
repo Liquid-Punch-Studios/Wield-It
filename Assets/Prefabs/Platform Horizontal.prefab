@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 383573479844819869}
+  - component: {fileID: 7925270039241216974}
   m_Layer: 0
   m_Name: Platform Horizontal
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7925270039241216974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383573479844819868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b38bba39791ab44883e605a88aba853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
 --- !u!1 &383573480402252880
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,8 +56,8 @@ GameObject:
   m_Component:
   - component: {fileID: 383573480402252881}
   - component: {fileID: 383573480402252882}
-  - component: {fileID: 383573480402252892}
   - component: {fileID: 383573480402252883}
+  - component: {fileID: 6543211894053714699}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -89,18 +103,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &383573480402252892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383573480402252880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4df76a552340a7418007663510a1389, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &383573480402252883
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -114,6 +116,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.51412, y: 0.22127807, z: 2.878365}
   m_Center: {x: 0.51331997, y: 0.5058879, z: -2.3805826}
+--- !u!114 &6543211894053714699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383573480402252880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4df76a552340a7418007663510a1389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &383573480833617408
 BoxCollider:
   m_ObjectHideFlags: 0
