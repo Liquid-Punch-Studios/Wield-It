@@ -7,11 +7,17 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using System.IO;
+using System.Text.RegularExpressions;
 
 public class MainMenuSelection : MonoBehaviour
 {
     public Camera cam;
     public Rigidbody carrier;
+
+    public Material wood;
+    public Material darkWood;
+
+    public int levelCount;
 
     public float scrollMax;
     public float scrollMin;
@@ -42,6 +48,9 @@ public class MainMenuSelection : MonoBehaviour
 
     private int sensitivity;
     public int Sensitivity { get { return sensitivity; } set { sensitivity = value; } }
+    
+    private int level;
+    public int Level { get { return level; } set { level = value; } }
 
 
     private Vector3 velocity;
@@ -82,8 +91,17 @@ public class MainMenuSelection : MonoBehaviour
                         cameraAnim.SetBool("isAtLevels", true);
                         break;
 
-                    case "Level1":
-                        StartCoroutine(PlayButtonClick());
+                    case string a when a.Contains("Demo"):
+                        int clickedLevel;
+                        Match m = Regex.Match(objectName, @"\d+");
+                        string levelNumber = m.Success ? m.Value : "1";
+                        if (Int32.TryParse(levelNumber,out clickedLevel))
+                        {
+                            Debug.Log(clickedLevel + "/" + level);
+                            if (clickedLevel <= level)
+                                StartCoroutine(PlayButtonClick(objectName));
+                        }
+                       
                         break;
 
                     case "Return":
@@ -237,10 +255,11 @@ public class MainMenuSelection : MonoBehaviour
         cont.Disable();
     }
 
-    IEnumerator PlayButtonClick()
+    IEnumerator PlayButtonClick(string objName)
     {
         yield return new WaitForSeconds(1);
-        SceneManager.LoadSceneAsync("Demo1", LoadSceneMode.Single);
+        Debug.Log(objName);
+        SceneManager.LoadSceneAsync(objName, LoadSceneMode.Single);
         yield return null;
     }
     IEnumerator ExitButtonClick()
@@ -265,6 +284,7 @@ public class MainMenuSelection : MonoBehaviour
             SoundMuted = data.soundMuted;
             Violence = data.violence;
             Sensitivity = data.sensitivity;
+            Level = data.level;
         }
         else
         {
@@ -278,6 +298,7 @@ public class MainMenuSelection : MonoBehaviour
             SoundMuted = false;
             Violence = false;
             Sensitivity = 50;
+            Level = 1;
             SaveSystem.SaveSettings(this);
         }
         GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = difficultySteps[Difficulty];
@@ -291,5 +312,25 @@ public class MainMenuSelection : MonoBehaviour
         GameObject.Find("ViolenceVal").GetComponent<TextMeshPro>().text = Violence ? "ON" : "OFF";
         GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>().text = "%" + Sensitivity;
 
+        GameObject[] levelLogs = new GameObject[levelCount];
+
+        for (int i = 0; i< levelCount; i++)
+        {
+            levelLogs[i] = GameObject.Find("Demo" + (i+1).ToString());
+            TextMeshPro text = levelLogs[i].GetComponentInChildren<TextMeshPro>();
+            if (i <= level - 1)
+            {
+                levelLogs[i].GetComponent<MeshRenderer>().material = wood;
+                text.color = new Color(1, 1, 1);
+            }
+
+            else
+            {
+                levelLogs[i].GetComponent<MeshRenderer>().material = darkWood;
+                text.color = new Color(0.35f, 0.35f, 0.35f);
+            }
+                
+        }
     }
+
 }
