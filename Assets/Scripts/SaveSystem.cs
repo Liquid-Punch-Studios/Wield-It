@@ -49,7 +49,6 @@ public static class SaveSystem
             FileStream stream = new FileStream(levelPath, FileMode.Open);
             BinaryReader br = new BinaryReader(stream);
             Level.lastLevel = br.ReadInt32();
-            Debug.Log(Level.lastLevel);
             stream.Close();
         }
         else
