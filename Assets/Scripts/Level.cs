@@ -14,13 +14,4 @@ public static class Level
             lastLevel++;
     }
 
-    public static IEnumerator LoadLevelDelayed(float delay, int level)
-    {
-        yield return new WaitForSeconds(delay);
-        if (level <= levelCount)
-            SceneManager.LoadSceneAsync(level, LoadSceneMode.Single);
-        else
-            SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
-        yield return null;
-    }
 }
