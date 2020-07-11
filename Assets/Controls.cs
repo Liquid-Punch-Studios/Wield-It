@@ -65,6 +65,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""75f43a28-0a52-4a48-a60d-c9c7cf6d4bac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -177,6 +185,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0450caf-dff9-4a1b-abf9-ff73b6b07109"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -461,6 +480,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Wield = m_Player.FindAction("Wield", throwIfNotFound: true);
         m_Player_Angle = m_Player.FindAction("Angle", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         // Spectator
         m_Spectator = asset.FindActionMap("Spectator", throwIfNotFound: true);
         m_Spectator_Move = m_Spectator.FindAction("Move", throwIfNotFound: true);
@@ -527,6 +547,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Wield;
     private readonly InputAction m_Player_Angle;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_Interaction;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -537,6 +558,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Wield => m_Wrapper.m_Player_Wield;
         public InputAction @Angle => m_Wrapper.m_Player_Angle;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -564,6 +586,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Interaction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @Interaction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @Interaction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -586,6 +611,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Interaction.started += instance.OnInteraction;
+                @Interaction.performed += instance.OnInteraction;
+                @Interaction.canceled += instance.OnInteraction;
             }
         }
     }
@@ -704,6 +732,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnWield(InputAction.CallbackContext context);
         void OnAngle(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
     }
     public interface ISpectatorActions
     {
