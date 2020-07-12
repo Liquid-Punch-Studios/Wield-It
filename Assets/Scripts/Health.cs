@@ -38,6 +38,7 @@ public class Health : MonoBehaviour
 
 	private void Start()
 	{
+		dmgTimeTable = new Dictionary<string, float>();
 		lastHp = (int)hp;
 	}
 
@@ -61,14 +62,39 @@ public class Health : MonoBehaviour
 		}
 	}
 
+	private Dictionary<string, float> dmgTimeTable;
+	
 	/// <summary>
 	/// Systematically receive damage to decrease hp and return
-	/// whether the object is dead after the damage taken
+	/// whether the damage is successfully dealt.
 	/// </summary>
 	/// <param name="damage">Amount of damage to receive</param>
-	public bool ReceiveDamage(float damage)
+	public bool ReceiveDamage(float damage, string key = null, float cooldown = 0)
 	{
-		hp = Mathf.Clamp(hp - damage, 0, maxHp);
-		return hp == 0;
+		if (key != null)
+		{
+			if (dmgTimeTable.TryGetValue(key, out float lastDmgTime))
+			{
+				if (Time.time - lastDmgTime > cooldown)
+				{
+					hp = Mathf.Clamp(hp - damage, 0, maxHp);
+					dmgTimeTable[key] = Time.time;
+					return true;
+				}
+			}
+			else
+			{
+				hp = Mathf.Clamp(hp - damage, 0, maxHp);
+				dmgTimeTable.Add(key, Time.time);
+				return true;
+			}
+		}
+		else
+		{
+			hp = Mathf.Clamp(hp - damage, 0, maxHp);
+			return true;
+		}
+		
+		return false;
 	}
 }
