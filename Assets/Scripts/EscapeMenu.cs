@@ -10,14 +10,12 @@ using UnityEngine.SceneManagement;
 
 public class EscapeMenu : MonoBehaviour
 {
-
     private GameObject escapeMenu;
     private GameObject settingsMenu;
     private GameObject darkMask;
 
-
     private bool isSettingsOpen;
-    private bool isPaused= false;
+    private bool isPaused = false;
     private Controls controls;
 
     private SettingsData settings;
@@ -25,13 +23,26 @@ public class EscapeMenu : MonoBehaviour
     private string[] qualitySteps = { "LOW", "MEDIUM", "HIGH" };
     private string[] difficultySteps = { "EASY", "MEDIUM", "HARD" };
 
-
     private void Start()
     {
         settings = new SettingsData();
         escapeMenu = transform.Find("DarkMask").Find("EscapeMenu").gameObject;
         settingsMenu = transform.Find("DarkMask").Find("Settings").gameObject;
         darkMask = transform.Find("DarkMask").gameObject;
+    }
+
+    public void FixedUpdate()
+    {
+        if (!isPaused && controls.Player.EscapeMenu.triggered)
+        {
+            Time.timeScale = 0;
+
+            InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInDynamicUpdate;
+            darkMask.SetActive(true);
+            escapeMenu.SetActive(true);
+
+            isPaused = true;
+        }
     }
 
     private void Update()
@@ -48,7 +59,6 @@ public class EscapeMenu : MonoBehaviour
             isPaused = false;
         }
     }
-
 
     public void LoadSettings()
     {
@@ -74,19 +84,6 @@ public class EscapeMenu : MonoBehaviour
 
     }
 
-    public void FixedUpdate()
-    {
-        if (!isPaused && controls.Player.EscapeMenu.triggered)
-        {
-            Time.timeScale = 0;
-
-            InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInDynamicUpdate;
-            darkMask.SetActive(true);
-            escapeMenu.SetActive(true);
-
-            isPaused = true;
-        }
-    }
     private void OnEnable()
     {
         if (controls == null)
@@ -98,6 +95,7 @@ public class EscapeMenu : MonoBehaviour
     {
         controls.Disable();
     }
+
     public void ResumeClick()
     {
         Time.timeScale = 1;
@@ -127,6 +125,7 @@ public class EscapeMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
     public void BackClick()
     {
         settingsMenu.SetActive(false);
@@ -193,5 +192,4 @@ public class EscapeMenu : MonoBehaviour
         settings.qualityVal = settings.qualityVal < qualitySteps.Length - 1 ? settings.qualityVal + 1 : 0;
         GameObject.Find("Quality Value").GetComponent<TextMeshProUGUI>().text = qualitySteps[settings.qualityVal];
     }
-
 }

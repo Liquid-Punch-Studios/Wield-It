@@ -1,9 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class HazardCollision : MonoBehaviour
 {
+	/// <summary>
+	/// Controls whether the hazard is active.
+	/// </summary>
+	public bool active = true;
+
 	/// <summary>
 	/// Amount of damage to deal when an object is in the hazardous area (trigger).
 	/// </summary>
@@ -30,9 +36,19 @@ public class HazardCollision : MonoBehaviour
 	/// </summary>
 	public float cooldown = 0.5f;
 
+	public void Activate()
+	{
+		active = true;
+	}
+
+	public void Deactivate()
+	{
+		active = false;
+	}
+
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (cooldown != 0)
+		if (!active || cooldown != 0)
 			return;
 		
 		if (collision.gameObject.GetComponent<Health>() is Health health)
@@ -61,7 +77,7 @@ public class HazardCollision : MonoBehaviour
 
 	private void OnCollisionStay(Collision collision)
 	{
-		if (cooldown == 0)
+		if (!active || cooldown == 0)
 			return;
 		
 		if (collision.gameObject.GetComponent<Health>() is Health health)

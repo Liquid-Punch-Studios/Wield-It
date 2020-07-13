@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2595299581339507919}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Roller Half Circular
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &7099763555080010658
+--- !u!136 &1514579520997739887
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,10 +42,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.55
-  m_Height: 6.2
+  m_Radius: 0.48833042
+  m_Height: 6.545689
   m_Direction: 2
-  m_Center: {x: 0.000000059604645, y: 0.0000005066395, z: -0.00000023841858}
+  m_Center: {x: 0.000000059604645, y: 0.00000047683716, z: -0.00000023841858}
 --- !u!95 &2595299579673753453
 Animator:
   serializedVersion: 3
@@ -65,51 +65,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &6708534417973470491
-GameObject:
+--- !u!114 &2028800747145586630
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5348968202994510868}
-  - component: {fileID: 5081032562069831258}
-  m_Layer: 15
-  m_Name: TriggerObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5348968202994510868
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6708534417973470491}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7025316322557435732}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &5081032562069831258
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6708534417973470491}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 6279625511230303559}
   m_Enabled: 1
-  m_Radius: 0.6
-  m_Height: 6.22
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0224c01084eecab4fb6bc00db2b3c24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  damage: 40
+  force: 500
+  direction: {x: 0, y: 0, z: 0}
+  key: Roller
+  cooldown: 0.5
 --- !u!1001 &2595299580297065550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -191,6 +164,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_roller_trap
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9092b269e7b1c99458a18a0abf8fb93a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9092b269e7b1c99458a18a0abf8fb93a, type: 3}
@@ -277,6 +255,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_half_circular_path
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0c27f0d9ca5a3294a8da692d0d6026ea,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c27f0d9ca5a3294a8da692d0d6026ea, type: 3}

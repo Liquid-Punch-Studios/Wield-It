@@ -9,10 +9,10 @@ BoxCollider:
   m_GameObject: {fileID: 2034910965021039846}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1.709753, y: 1.5635033, z: 4.4202967}
-  m_Center: {x: -0.02480793, y: 0.65943384, z: 0.31574297}
+  m_Size: {x: 1.5221069, y: 1.9378815, z: 4.3170238}
+  m_Center: {x: 0.00047767162, y: 0.27079034, z: 0.29697824}
 --- !u!95 &8006443200132971659
 Animator:
   serializedVersion: 3
@@ -32,19 +32,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &8006443201414109152
-BoxCollider:
+--- !u!114 &6775526375472850987
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2034910965882203285}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_GameObject: {fileID: 2034910965021039846}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.837883, y: 0.3211987, z: 4.6645937}
-  m_Center: {x: 0.043838263, y: 0.3909713, z: 0.60299313}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b313f515f4ee445bb2e3f9c04d3d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 80
+  force: 200
+  direction: {x: 0, y: 1, z: 0}
+  key: Spear
+  cooldown: 0
 --- !u!64 &8006443201414109164
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -72,6 +76,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 8006443200132971659}
+  triggerLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &8006443201553234963
 GameObject:
   m_ObjectHideFlags: 0

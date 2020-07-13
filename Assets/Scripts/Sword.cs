@@ -47,7 +47,7 @@ public class Sword : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject != user && other.GetComponent<Health>() is Health health && health != null)
+		if (other.gameObject != user && other.GetComponent<Health>() is Health health)
 		{
 			if (triggerTracker.ContainsKey(other.gameObject))
 			{
@@ -56,7 +56,7 @@ public class Sword : MonoBehaviour
 			}
 			else
 				triggerTracker.Add(other.gameObject, 1);
-			if (other.GetComponent<Rigidbody>() is Rigidbody otherRb && otherRb != null)
+			if (other.GetComponent<Rigidbody>() is Rigidbody otherRb)
 			{
 				var relative = weaponRb.velocity - otherRb.velocity;
 				if (relative.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold)
@@ -72,6 +72,7 @@ public class Sword : MonoBehaviour
 				{
 					health.ReceiveDamage(damageFactor * weaponRb.velocity.magnitude);
 					Debug.Log((int)(damageFactor * weaponRb.velocity.magnitude));
+					weaponRb.AddForce(weaponRb.velocity * -500);
 				}
 			}
 		}

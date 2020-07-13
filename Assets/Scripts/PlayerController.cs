@@ -55,19 +55,29 @@ public class PlayerController : MonoBehaviour
 		return r < 0 ? r + m : r;
 	}
 
-	// FixedUpdate is called once per physics frame
-	private void FixedUpdate()
+	public void ChangeDirection(float dir)
 	{
-		float horizontal = controls.Player.Move.ReadValue<float>();
-		var dir = Mathf.Sign(movement.move = horizontal);
-		if (dir != 0 && controls.Player.Move.triggered)
+		if ((dir = Mathf.Sign(dir)) != 0)
 		{
 			playerGfx.localScale = new Vector3(dir * Mathf.Abs(playerGfx.localScale.x), playerGfx.localScale.y, playerGfx.localScale.z);
 			handGfx.localScale = new Vector3(handGfx.localScale.x, dir * Mathf.Abs(handGfx.localScale.y), handGfx.localScale.z);
 		}
+	}
 
+	// FixedUpdate is called once per physics frame
+	private void FixedUpdate()
+	{
+		float horizontal = controls.Player.Move.ReadValue<float>();
+		movement.move = horizontal;
+		if (controls.Player.Move.triggered)
+			ChangeDirection(horizontal);
+		
 		if (controls.Player.Dash.triggered)
-			movement.Dash(controls.Player.Dash.ReadValue<float>());
+		{
+			var dash = controls.Player.Dash.ReadValue<float>();
+			if (movement.Dash(dash))
+				ChangeDirection(dash);
+		}
 
 		if (controls.Player.Slam.triggered)
 			movement.Slam();

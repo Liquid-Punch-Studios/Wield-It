@@ -916,8 +916,6 @@ GameObject:
   - component: {fileID: 9057914721081831267}
   - component: {fileID: 67320682074215765}
   - component: {fileID: 6040350363139828140}
-  - component: {fileID: 4093378144768394367}
-  - component: {fileID: 4093378144768394364}
   m_Layer: 11
   m_Name: dungeon_breakable_ground
   m_TagString: Untagged
@@ -932,7 +930,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5471720346917526896}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 114.4, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -989,32 +987,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4093378144768394367
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5471720346917526896}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.349801, y: 0.25128978, z: 5.3488293}
-  m_Center: {x: 3.834683, y: -0.072720334, z: -2.5571055}
---- !u!65 &4093378144768394364
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5471720346917526896}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.1337442, y: 0.25128978, z: 5.3488293}
-  m_Center: {x: -3.7595754, y: -0.072720334, z: -2.5571055}
 --- !u!1 &6037507351759715924
 GameObject:
   m_ObjectHideFlags: 0

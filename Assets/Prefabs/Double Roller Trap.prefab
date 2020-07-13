@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2029645760164884998}
   - component: {fileID: 2029645759722862545}
   - component: {fileID: 2029645759722862544}
-  - component: {fileID: 6920535774298992162}
   - component: {fileID: 2029645759722862542}
-  m_Layer: 0
+  - component: {fileID: 4018481024045543676}
+  - component: {fileID: 1700824915291973239}
+  m_Layer: 15
   m_Name: dungeon_double_roller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,8 +31,7 @@ Transform:
   m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -3.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2483205353053552833}
+  m_Children: []
   m_Father: {fileID: 2029645761124331879}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -84,19 +84,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6920535774298992162
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029645759722862547}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.48298267, y: 1.6987016, z: 6.6000004}
-  m_Center: {x: 0.024690047, y: 0.00512892, z: -0.14411807}
 --- !u!95 &2029645759722862542
 Animator:
   serializedVersion: 3
@@ -116,6 +103,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &4018481024045543676
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029645759722862547}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5414531, y: 1.7006447, z: 5.2718086}
+  m_Center: {x: 0.012238562, y: -0.0033994913, z: -0.14433908}
+--- !u!114 &1700824915291973239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029645759722862547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0224c01084eecab4fb6bc00db2b3c24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  damage: 40
+  force: 500
+  direction: {x: 0, y: 0, z: 0}
+  key: DoubleRoller
+  cooldown: 0.5
 --- !u!1 &2029645761124331878
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2029645761124331879}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Double Roller Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,50 +166,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7680894449679921002
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2483205353053552833}
-  - component: {fileID: 1783909328813954180}
-  m_Layer: 15
-  m_Name: Trigger Object
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2483205353053552833
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7680894449679921002}
-  m_LocalRotation: {x: -0.000000021855694, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2029645760164884998}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1783909328813954180
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7680894449679921002}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5414531, y: 1.7006447, z: 5.2718086}
-  m_Center: {x: 0.012238562, y: -0.0033994913, z: -0.14433908}
 --- !u!1001 &4743769481931110585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,6 +232,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_straight_path
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0424f6e47a5ef0b44b06c2d31f60611c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0424f6e47a5ef0b44b06c2d31f60611c, type: 3}

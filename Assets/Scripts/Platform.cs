@@ -6,11 +6,13 @@ public class Platform : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        other.transform.parent = gameObject.transform;
+        if (other.GetComponent<Rigidbody>() != null)
+            other.transform.parent = gameObject.transform;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.transform.parent = null;
+        if (other.GetComponent<Rigidbody>() != null)
+            other.transform.parent = null;
     }
 }

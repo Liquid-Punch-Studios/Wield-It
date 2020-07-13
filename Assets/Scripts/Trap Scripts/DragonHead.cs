@@ -4,48 +4,51 @@ using UnityEngine;
 
 public class DragonHead : MonoBehaviour
 {
-    public ParticleSystem fireParticleSystem;
+	public ParticleSystem dragonBreath;
 
+	public HazardTrigger trigger;
 
-    public float playTime;
-    public float pauseTime;
+	public float playTime;
+	public float pauseTime;
 
-    private float playTimer;
-    private float pauseTimer;
+	private float playTimer;
+	private float pauseTimer;
 
-    private bool playing = false;
+	private bool playing = false;
 
-    private void Start()
-    {
-        pauseTimer = pauseTime;
-        playTimer = playTime;
-    }
+	private void Start()
+	{
+		pauseTimer = pauseTime;
+		playTimer = playTime;
+	}
 
-    void Update()
-    {
-        float now = Time.deltaTime;
-        
-        if (playing)
-        {
-            if(!fireParticleSystem.isPlaying)
-                fireParticleSystem.Play(true);
-            playTimer -= now;
-            if (playTimer <= 0.0f)
-            {
-                playing = false;
-                playTimer = playTime;
-            }
-        }
-        else
-        {
-            if(fireParticleSystem.isPlaying)
-                fireParticleSystem.Stop(true);
-            pauseTimer -= now;
-            if (pauseTimer <= 0.0f)
-            {
-                playing = true;
-                pauseTimer = pauseTime;
-            }
-        }
-    }
+	void FixedUpdate()
+	{
+		float timePassed = Time.fixedDeltaTime;
+
+		if (playing)
+		{
+			playTimer -= timePassed;
+			if (playTimer <= 0.0f)
+			{
+				playing = false;
+				playTimer = playTime;
+				if (dragonBreath.isPlaying)
+					dragonBreath.Stop(true);
+				trigger.Deactivate();
+			}
+		}
+		else
+		{
+			pauseTimer -= timePassed;
+			if (pauseTimer <= 0.0f)
+			{
+				playing = true;
+				pauseTimer = pauseTime;
+				if (!dragonBreath.isPlaying)
+					dragonBreath.Play();
+				trigger.Activate();
+			}
+		}
+	}
 }
