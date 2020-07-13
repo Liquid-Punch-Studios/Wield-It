@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4327100445434448715}
   - component: {fileID: 6274017818699851410}
   - component: {fileID: 2607624734780436584}
-  - component: {fileID: 2607624734780440470}
   m_Layer: 11
   m_Name: dungeon_log1 (3)
   m_TagString: Untagged
@@ -114,19 +113,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &2607624734780440470
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2607624734780440471}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5327065, y: 0.91252136, z: 0.087593675}
-  m_Center: {x: 0.07079664, y: -0.0042758435, z: 0.119046554}
 --- !u!1 &6274017819870179243
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +124,7 @@ GameObject:
   - component: {fileID: 6274017819870179242}
   - component: {fileID: 6382754624942351658}
   - component: {fileID: 5747038238871307418}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Toggling Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,6 +245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_dispanser
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7cf9561376c3c2a4ba25bc049509889c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cf9561376c3c2a4ba25bc049509889c, type: 3}

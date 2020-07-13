@@ -14,7 +14,30 @@ public class Health : MonoBehaviour
 	/// <summary>
 	/// Current Health
 	/// </summary>
-	public float hp = 100;
+	private float hp = 100;
+	public float Hp
+	{
+		get
+		{
+			return hp;
+		}
+		set
+		{
+			hp = value;
+
+			if (image != null)
+				image.fillAmount = Hp / maxHp;
+
+			if (lastHp != (int)Hp && text != null)
+			{
+				// FIXME: This produces so much garbage
+				text.text = string.Format(format, Hp, maxHp);
+				lastHp = (int)Hp;
+			}
+		}
+	}
+
+	private int lastHp;
 
 	/// <summary>
 	/// HP regeneration per second
@@ -39,31 +62,16 @@ public class Health : MonoBehaviour
 	private void Start()
 	{
 		dmgTimeTable = new Dictionary<string, float>();
-		lastHp = (int)hp;
+		lastHp = (int)Hp;
 	}
 
 	private void FixedUpdate()
 	{
-		hp = Mathf.Clamp(hp + hpRegen * Time.fixedDeltaTime, 0, maxHp);
-	}
-
-	private int lastHp;
-
-	private void Update()
-	{
-		if (image != null)
-			image.fillAmount = hp / maxHp;
-
-		if (lastHp != (int)hp && text != null)
-		{
-			// FIXME: This produces so much garbage
-			text.text = string.Format(format, hp, maxHp);
-			lastHp = (int)hp;
-		}
+		Hp = Mathf.Clamp(Hp + hpRegen * Time.fixedDeltaTime, 0, maxHp);
 	}
 
 	private Dictionary<string, float> dmgTimeTable;
-	
+
 	/// <summary>
 	/// Systematically receive damage to decrease hp and return
 	/// whether the damage is successfully dealt.
@@ -77,21 +85,21 @@ public class Health : MonoBehaviour
 			{
 				if (Time.time - lastDmgTime > cooldown)
 				{
-					hp = Mathf.Clamp(hp - damage, 0, maxHp);
+					Hp = Mathf.Clamp(Hp - damage, 0, maxHp);
 					dmgTimeTable[key] = Time.time;
 					return true;
 				}
 			}
 			else
 			{
-				hp = Mathf.Clamp(hp - damage, 0, maxHp);
+				Hp = Mathf.Clamp(Hp - damage, 0, maxHp);
 				dmgTimeTable.Add(key, Time.time);
 				return true;
 			}
 		}
 		else
 		{
-			hp = Mathf.Clamp(hp - damage, 0, maxHp);
+			Hp = Mathf.Clamp(Hp - damage, 0, maxHp);
 			return true;
 		}
 		

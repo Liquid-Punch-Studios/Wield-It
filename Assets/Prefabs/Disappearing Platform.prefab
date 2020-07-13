@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7044374129554460328}
   - component: {fileID: 1361012759604811858}
   - component: {fileID: 1361012759604811859}
-  - component: {fileID: 1361012759604811692}
   m_Layer: 11
   m_Name: dungeon_log1 (3)
   m_TagString: Untagged
@@ -128,19 +127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1361012759604811858}
---- !u!65 &1361012759604811692
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361012759604811693}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5327065, y: 0.91252136, z: 0.087593675}
-  m_Center: {x: 0.07079664, y: -0.0042758435, z: 0.119046554}
+  triggerLayerMask:
+    serializedVersion: 2
+    m_Bits: 1536
 --- !u!1 &7044374130557044625
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7044374130557044624}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Disappearing Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,6 +228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_dispanser
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7cf9561376c3c2a4ba25bc049509889c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cf9561376c3c2a4ba25bc049509889c, type: 3}

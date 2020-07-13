@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &1282992165491344033
+--- !u!65 &8443293618218082910
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11,8 +11,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.017187374, y: 0.01681444, z: 0.00080585614}
-  m_Center: {x: -0.00041981816, y: 0.00028476893, z: -0.0000376581}
+  m_Size: {x: 0.016688596, y: 0.016688598, z: 0.0013814495}
+  m_Center: {x: 7.395571e-32, y: -1.1295149e-23, z: -0.0000000020963853}
 --- !u!95 &2840944056691031350
 Animator:
   serializedVersion: 3
@@ -32,50 +32,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &653757989370660257
-GameObject:
+--- !u!114 &8658658537165597508
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8200837337094704493}
-  - component: {fileID: 6059309812611536798}
-  m_Layer: 15
-  m_Name: Trigger Object
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8200837337094704493
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653757989370660257}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3781965731569723699}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6059309812611536798
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653757989370660257}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_GameObject: {fileID: 155202746570447648}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.016608646, y: 0.0170038, z: 0.0020468226}
-  m_Center: {x: 0.00030200003, y: -0.000021739004, z: 0.000009173601}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b313f515f4ee445bb2e3f9c04d3d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  force: 1
+  direction: {x: 0, y: 1, z: 0}
+  key: Saw
+  cooldown: 0.01
 --- !u!64 &4448482967638009047
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -142,7 +115,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 0424f6e47a5ef0b44b06c2d31f60611c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.04
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0424f6e47a5ef0b44b06c2d31f60611c,
         type: 3}
@@ -203,6 +176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dungeon_straight_path
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0424f6e47a5ef0b44b06c2d31f60611c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0424f6e47a5ef0b44b06c2d31f60611c, type: 3}

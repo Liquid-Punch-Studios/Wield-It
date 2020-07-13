@@ -102,6 +102,13 @@ public class Movement : MonoBehaviour
 		return slamming = true;
 	}
 
+	public void ResetState()
+	{
+		onGround = 0;
+		dashing = slamming = false;
+		move = 0;
+	}
+
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
