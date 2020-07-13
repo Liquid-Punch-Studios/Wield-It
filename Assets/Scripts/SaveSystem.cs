@@ -16,6 +16,15 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
     }
+
+    public static void SaveSettings(SettingsData data)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream stream = new FileStream(settingsPath, FileMode.Create);
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
     public static SettingsData LoadSettings()
     {
         if (File.Exists(settingsPath))

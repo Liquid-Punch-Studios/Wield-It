@@ -25,4 +25,16 @@ public class SettingsData
         musicMuted = menu.MusicMuted;
         sensitivity = menu.Sensitivity;
     }
+
+    public SettingsData()
+    {
+        qualityVal = 1;
+        difficultyVal = 1;
+        violence = false;
+        soundVal = 100;
+        soundMuted = false;
+        musicVal = 100;
+        musicMuted = false;
+        sensitivity = 50;
+    }
 }

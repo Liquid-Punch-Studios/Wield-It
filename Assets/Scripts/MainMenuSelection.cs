@@ -268,7 +268,6 @@ public class MainMenuSelection : MonoBehaviour
         if (File.Exists(SaveSystem.levelPath))
         {
             SaveSystem.LoadLastLevel();
-            Debug.Log(Level.lastLevel);
         }
         else
         {
