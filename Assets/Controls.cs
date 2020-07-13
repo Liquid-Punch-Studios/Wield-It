@@ -73,6 +73,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""EscapeMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""69f93ba8-746a-47c7-9964-0c2dae55c945"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -194,6 +202,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ebd88f0-cc93-4379-a501-47937cc4a8f3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EscapeMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -431,6 +450,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)""
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""1b6f24fd-ac0f-4e2c-a4e0-4bc8793fe3b2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
                 }
             ],
             ""bindings"": [
@@ -466,6 +493,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d88c84f-582e-4aac-997d-3905fc642fe9"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -481,6 +519,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Angle = m_Player.FindAction("Angle", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
+        m_Player_EscapeMenu = m_Player.FindAction("EscapeMenu", throwIfNotFound: true);
         // Spectator
         m_Spectator = asset.FindActionMap("Spectator", throwIfNotFound: true);
         m_Spectator_Move = m_Spectator.FindAction("Move", throwIfNotFound: true);
@@ -492,6 +531,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_UI_Mouse = m_UI.FindAction("Mouse", throwIfNotFound: true);
         m_UI_MouseClick = m_UI.FindAction("MouseClick", throwIfNotFound: true);
         m_UI_Scroll = m_UI.FindAction("Scroll", throwIfNotFound: true);
+        m_UI_Exit = m_UI.FindAction("Exit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -548,6 +588,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Angle;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Interaction;
+    private readonly InputAction m_Player_EscapeMenu;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -559,6 +600,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Angle => m_Wrapper.m_Player_Angle;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
+        public InputAction @EscapeMenu => m_Wrapper.m_Player_EscapeMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -589,6 +631,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Interaction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
                 @Interaction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
                 @Interaction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @EscapeMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscapeMenu;
+                @EscapeMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscapeMenu;
+                @EscapeMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscapeMenu;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -614,6 +659,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Interaction.started += instance.OnInteraction;
                 @Interaction.performed += instance.OnInteraction;
                 @Interaction.canceled += instance.OnInteraction;
+                @EscapeMenu.started += instance.OnEscapeMenu;
+                @EscapeMenu.performed += instance.OnEscapeMenu;
+                @EscapeMenu.canceled += instance.OnEscapeMenu;
             }
         }
     }
@@ -682,6 +730,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_Mouse;
     private readonly InputAction m_UI_MouseClick;
     private readonly InputAction m_UI_Scroll;
+    private readonly InputAction m_UI_Exit;
     public struct UIActions
     {
         private @Controls m_Wrapper;
@@ -689,6 +738,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Mouse => m_Wrapper.m_UI_Mouse;
         public InputAction @MouseClick => m_Wrapper.m_UI_MouseClick;
         public InputAction @Scroll => m_Wrapper.m_UI_Scroll;
+        public InputAction @Exit => m_Wrapper.m_UI_Exit;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -707,6 +757,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Scroll.started -= m_Wrapper.m_UIActionsCallbackInterface.OnScroll;
                 @Scroll.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnScroll;
                 @Scroll.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnScroll;
+                @Exit.started -= m_Wrapper.m_UIActionsCallbackInterface.OnExit;
+                @Exit.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnExit;
+                @Exit.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnExit;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -720,6 +773,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Scroll.started += instance.OnScroll;
                 @Scroll.performed += instance.OnScroll;
                 @Scroll.canceled += instance.OnScroll;
+                @Exit.started += instance.OnExit;
+                @Exit.performed += instance.OnExit;
+                @Exit.canceled += instance.OnExit;
             }
         }
     }
@@ -733,6 +789,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnAngle(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
+        void OnEscapeMenu(InputAction.CallbackContext context);
     }
     public interface ISpectatorActions
     {
@@ -746,5 +803,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnMouse(InputAction.CallbackContext context);
         void OnMouseClick(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
     }
 }
