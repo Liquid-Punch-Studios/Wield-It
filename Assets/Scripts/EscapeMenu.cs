@@ -10,6 +10,9 @@ using UnityEngine.SceneManagement;
 
 public class EscapeMenu : MonoBehaviour
 {
+    public Health playerHealth;
+    public GameObject clickToRespawn;
+
     private GameObject escapeMenu;
     private GameObject settingsMenu;
     private GameObject darkMask;
@@ -33,6 +36,17 @@ public class EscapeMenu : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if(playerHealth.Hp <= 0)
+        {
+            darkMask.SetActive(true);
+            clickToRespawn.SetActive(true);
+            if (controls.Player.Angle.triggered)
+            {
+                clickToRespawn.SetActive(false);
+                darkMask.SetActive(false);
+            }
+                
+        }
         if (!isPaused && controls.Player.EscapeMenu.triggered)
         {
             Time.timeScale = 0;
