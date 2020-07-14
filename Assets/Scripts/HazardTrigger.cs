@@ -57,10 +57,10 @@ public class HazardTrigger : MonoBehaviour
 		if (cooldown != 0)
 			return;
 
-		if (other.gameObject.GetComponent<Health>() is Health health)
+		if (other.gameObject.TryGetComponent<Health>(out Health health))
 		{
 			if (health.ReceiveDamage(damage, key, cooldown) &&
-				other.gameObject.GetComponent<Rigidbody>() is Rigidbody rb)
+				other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
 			{
 				if (direction == Vector3.zero)
 				{
@@ -79,10 +79,10 @@ public class HazardTrigger : MonoBehaviour
 		if (cooldown == 0)
 			return;
 		
-		if (other.gameObject.GetComponent<Health>() is Health health)
+		if (other.gameObject.TryGetComponent<Health>(out Health health))
 		{
 			if (health.ReceiveDamage(damage, key, cooldown) &&
-				other.gameObject.GetComponent<Rigidbody>() is Rigidbody rb)
+				other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
 			{
 				if (direction == Vector3.zero)
 				{

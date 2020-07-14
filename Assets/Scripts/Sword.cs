@@ -56,7 +56,7 @@ public class Sword : MonoBehaviour
 			}
 			else
 				triggerTracker.Add(other.gameObject, 1);
-			if (other.GetComponent<Rigidbody>() is Rigidbody otherRb)
+			if (other.TryGetComponent<Rigidbody>(out Rigidbody otherRb))
 			{
 				var relative = weaponRb.velocity - otherRb.velocity;
 				if (relative.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold)
@@ -72,7 +72,7 @@ public class Sword : MonoBehaviour
 				{
 					health.ReceiveDamage(damageFactor * weaponRb.velocity.magnitude);
 					Debug.Log((int)(damageFactor * weaponRb.velocity.magnitude));
-					weaponRb.AddForce(weaponRb.velocity * -500);
+					//weaponRb.AddForce(weaponRb.velocity * -500);
 				}
 			}
 		}

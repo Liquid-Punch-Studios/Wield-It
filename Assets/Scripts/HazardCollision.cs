@@ -51,10 +51,10 @@ public class HazardCollision : MonoBehaviour
 		if (!active || cooldown != 0)
 			return;
 		
-		if (collision.gameObject.GetComponent<Health>() is Health health)
+		if (collision.gameObject.TryGetComponent<Health>(out Health health))
 		{
 			if (health.ReceiveDamage(damage, key, cooldown) &&
-				collision.gameObject.GetComponent<Rigidbody>() is Rigidbody rb)
+				collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
 			{
 				if (direction == Vector3.zero)
 				{
@@ -80,10 +80,10 @@ public class HazardCollision : MonoBehaviour
 		if (!active || cooldown == 0)
 			return;
 		
-		if (collision.gameObject.GetComponent<Health>() is Health health)
+		if (collision.gameObject.TryGetComponent<Health>(out Health health))
 		{
 			if (health.ReceiveDamage(damage, key, cooldown) &&
-				collision.gameObject.GetComponent<Rigidbody>() is Rigidbody rb)
+				collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
 			{
 				if (direction == Vector3.zero)
 				{

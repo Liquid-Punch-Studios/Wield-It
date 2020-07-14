@@ -9,8 +9,7 @@ public class TutorialSpot : MonoBehaviour
     public LayerMask triggerLayerMask;
     public GameObject button;
     public GameObject tutorial;
-    public TextMeshProUGUI buttonText;
-    public TextMeshProUGUI tutorialText;
+
     private bool playerInCollider;
     private Controls controls;
     
