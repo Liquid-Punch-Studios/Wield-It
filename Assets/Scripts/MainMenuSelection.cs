@@ -13,6 +13,7 @@ public class MainMenuSelection : MonoBehaviour
 {
     public Camera cam;
     public Rigidbody carrier;
+    public Animator creditsAnim;
 
     public Material wood;
     public Material darkWood;
@@ -51,6 +52,7 @@ public class MainMenuSelection : MonoBehaviour
     private Vector3 velocity;
 
     private bool settingsOn = false;
+    private bool creditsOn = false;
     private float divider = 1000;
     private Controls cont;
     private Animator cameraAnim;
@@ -103,9 +105,17 @@ public class MainMenuSelection : MonoBehaviour
                         break;
 
                     case "Settings":
+                        creditsOn = false;
+                        creditsAnim.SetBool("isSet", false);
                         settingsOn = !settingsOn;
                         scrollPosition = settingsOn ? scrollMax : scrollTop;
+                        break;
 
+                    case "Credits":
+                        settingsOn = false;
+                        scrollPosition = scrollTop;
+                        creditsOn = !creditsOn;
+                        creditsAnim.SetBool("isSet", creditsOn);
                         break;
 
                     case "Exit":
