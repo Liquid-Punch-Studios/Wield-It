@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,7 @@ public class LevelChanger : MonoBehaviour
     private void Start()
     {
         anim = gameObject.GetComponentInChildren<Animator>();
+        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "Level " + SceneManager.GetActiveScene().buildIndex;
     }
 
     public void LoadNextLevel()
