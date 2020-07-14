@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public static class Level
 {
     public static int lastLevel = 1;
-    public static int levelCount = 2;
+    public static int levelCount = 3;
 
     public static void NextLevel(int currentLevel)
     {
