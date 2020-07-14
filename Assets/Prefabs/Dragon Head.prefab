@@ -49,8 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragonBreath: {fileID: 6403403253185382717}
   trigger: {fileID: 8071766956008746199}
-  playTime: 5
-  pauseTime: 2
+  playTime: 2
+  pauseTime: 1.5
 --- !u!136 &1975499882494013671
 CapsuleCollider:
   m_ObjectHideFlags: 0

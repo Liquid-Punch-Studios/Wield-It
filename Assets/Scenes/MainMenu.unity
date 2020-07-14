@@ -2076,7 +2076,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3008,7 +3008,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
         type: 3}
       propertyPath: m_Name
-      value: Sound
+      value: SoundCredits
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c81541ba7cbecb149b3aeb4869e3a2eb, type: 3}
@@ -4029,7 +4029,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7438af4d4bdd863418fe5d24e57e141d,
         type: 3}
       propertyPath: m_Name
-      value: Programmer
+      value: ProgrammerCredits
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7438af4d4bdd863418fe5d24e57e141d, type: 3}
@@ -19066,7 +19066,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c81541ba7cbecb149b3aeb4869e3a2eb,
         type: 3}
       propertyPath: m_Name
-      value: Graphics
+      value: GraphicsCredits
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c81541ba7cbecb149b3aeb4869e3a2eb, type: 3}
@@ -26993,7 +26993,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 292d2248baf533647838cdb27dd9b370,
         type: 3}
       propertyPath: m_Name
-      value: Project Lead
+      value: Project LeadCredits
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292d2248baf533647838cdb27dd9b370, type: 3}
