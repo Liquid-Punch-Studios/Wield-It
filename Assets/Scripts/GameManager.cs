@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
 	public Controls controls;
 
+	public Transform respawnPoint;
+
 	private Health playerHealth;
 	private Stamina playerStamina;
 	private Movement playerMovement;
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
 		playerStamina = player.GetComponent<Stamina>();
 		playerMovement = player.GetComponent<Movement>();
 		playerRb = player.GetComponent<Rigidbody>();
-		spawnPoint = player.transform.position;
+		spawnPoint = respawnPoint.position;
 
 		weaponRb = weapon.GetComponent<Rigidbody>();
 		weaponJoint = weapon.GetComponent<ConfigurableJoint>();
