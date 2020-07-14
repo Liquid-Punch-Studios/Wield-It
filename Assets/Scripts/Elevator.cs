@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Elevator : MonoBehaviour
 {
+	public Rigidbody door;
 	Animator anim;
 
 	public LayerMask triggerLayerMask;
@@ -21,6 +22,7 @@ public class Elevator : MonoBehaviour
 			anim.SetBool("isSet", true);
 			GameObject.Find("Level Changer").GetComponentInChildren<LevelChanger>().LoadNextLevel();
 			SaveSystem.SaveLastLevel();
+			door.isKinematic = false;
 		}
 	}
 
