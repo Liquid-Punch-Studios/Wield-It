@@ -1,0 +1,57 @@
+Liquid Punch Studios
+
+Art Director
+	Muhammed Eren Aydın
+
+Technical Director
+	Ahmet Sait
+
+Lead Programmer
+	Ahmet Sait
+
+Level Designer
+	Muhammed Eren Aydın
+
+UI Designer
+	Muhammed Eren Aydın
+
+Lighting Artist
+	Ahmet Sait
+
+Scripters
+	Ahmet Sait
+	Muhammed Eren Aydın
+
+Visual Effects Designer
+	Ahmet Sait
+
+Lead Systems Programmer
+	Ahmet Sait
+
+Senior Systems Programmer
+	Muhammed Eren Aydın
+
+Lead Animation Artist
+	Muhammed Eren Aydın
+
+Lead Physics Programmer
+	Ahmet Sait
+
+Music Director
+	Muhammed Eren Aydın
+
+Audio Director
+	Ahmet Sait
+
+Additional Sound Effects
+	Zapsplat.com
+
+Music Composer
+	Antti Luode
+
+Sound Designer
+	Mehmet Çolak
+
+Quality Assurance
+	Ahmet Sait
+	Muhammed Eren Aydın
