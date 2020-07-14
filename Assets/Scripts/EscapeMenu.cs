@@ -17,7 +17,7 @@ public class EscapeMenu : MonoBehaviour
     private GameObject settingsMenu;
     private GameObject darkMask;
 
-    private bool isSettingsOpen;
+    private bool isDead;
     private bool isPaused = false;
     private Controls controls;
 
@@ -36,17 +36,22 @@ public class EscapeMenu : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if(playerHealth.Hp <= 0)
+        isDead = playerHealth.Hp <= 0;
+
+        if (isDead)
         {
             darkMask.SetActive(true);
             clickToRespawn.SetActive(true);
-            if (controls.Player.Angle.triggered)
-            {
-                clickToRespawn.SetActive(false);
-                darkMask.SetActive(false);
-            }
-                
         }
+        else
+        {
+            clickToRespawn.SetActive(false);
+            darkMask.SetActive(false);
+        }
+
+        if (controls.Player.Angle.triggered)
+            isDead = false;
+
         if (!isPaused && controls.Player.EscapeMenu.triggered)
         {
             Time.timeScale = 0;
