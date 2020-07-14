@@ -13,7 +13,7 @@ public class MainMenuSelection : MonoBehaviour
 {
     public Camera cam;
     public Rigidbody carrier;
-    public Animator creditsAnim;
+    public GameObject credits;
 
     public Material wood;
     public Material darkWood;
@@ -76,8 +76,7 @@ public class MainMenuSelection : MonoBehaviour
             RaycastHit hit;
             Vector2 vec = cont.UI.Mouse.ReadValue<Vector2>();
             Ray ray = cam.ScreenPointToRay(vec);
-
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit) && !creditsOn)
             {
                 string objectName = hit.collider.gameObject.name;
                 //Debug.Log(objectName);
@@ -105,8 +104,6 @@ public class MainMenuSelection : MonoBehaviour
                         break;
 
                     case "Settings":
-                        creditsOn = false;
-                        creditsAnim.SetBool("isSet", false);
                         settingsOn = !settingsOn;
                         scrollPosition = settingsOn ? scrollMax : scrollTop;
                         break;
@@ -115,7 +112,8 @@ public class MainMenuSelection : MonoBehaviour
                         settingsOn = false;
                         scrollPosition = scrollTop;
                         creditsOn = !creditsOn;
-                        creditsAnim.SetBool("isSet", creditsOn);
+                        credits.SetActive(true);
+                        credits.GetComponent<Animator>().SetBool("isSet", true);
                         break;
 
                     case "Exit":
@@ -221,8 +219,7 @@ public class MainMenuSelection : MonoBehaviour
                         break;
                 }
 
-                
-                if(hit.rigidbody != null)
+                if (hit.rigidbody != null)
                 {
                     hit.rigidbody.AddForce(ray.direction * 400);
                 }
@@ -231,6 +228,7 @@ public class MainMenuSelection : MonoBehaviour
                     SaveSystem.SaveSettings(this);
             }
         }
+
 
         
         Vector2 scrollMovement = cont.UI.Scroll.ReadValue<Vector2>();
@@ -246,6 +244,15 @@ public class MainMenuSelection : MonoBehaviour
         }
         
 
+    }
+    private void Update()
+    {
+        if (creditsOn && (Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame))
+        {
+            creditsOn = false;
+            credits.SetActive(false);
+            credits.GetComponent<Animator>().SetBool("isSet", false);
+        }
     }
     private void OnEnable()
     {
