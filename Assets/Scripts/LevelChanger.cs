@@ -13,7 +13,11 @@ public class LevelChanger : MonoBehaviour
     private void Start()
     {
         anim = gameObject.GetComponentInChildren<Animator>();
-        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        TextMeshProUGUI tmp = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        else
+            tmp.gameObject.SetActive(false);
     }
 
     public void LoadNextLevel()
