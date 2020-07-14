@@ -92,6 +92,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6095312883336880970}
     m_Modifications:
+    - target: {fileID: -7429092467851340922, guid: ad1a008ed023a9441832bbd8b7a5305c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b298eb6cfe5bf0c48822bc1f64f8399e, type: 2}
+    - target: {fileID: -7429092467851340922, guid: ad1a008ed023a9441832bbd8b7a5305c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
+    - target: {fileID: -7429092467851340922, guid: ad1a008ed023a9441832bbd8b7a5305c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: caf5f8a3f487b944381ddc59035c3efe, type: 2}
+    - target: {fileID: -7429092467851340922, guid: ad1a008ed023a9441832bbd8b7a5305c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 30daaa887c10bff4cb65fc268d5c47dc, type: 2}
     - target: {fileID: -4216859302048453862, guid: ad1a008ed023a9441832bbd8b7a5305c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -152,6 +172,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_Dummy
       objectReference: {fileID: 0}
+    - target: {fileID: 2419053928226519621, guid: ad1a008ed023a9441832bbd8b7a5305c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad1a008ed023a9441832bbd8b7a5305c, type: 3}
 --- !u!4 &8109929098573219924 stripped
