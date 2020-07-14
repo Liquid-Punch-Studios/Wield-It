@@ -10,7 +10,8 @@ public class SlamBreak : MonoBehaviour
 	{
 		if ((1 << other.gameObject.layer & triggerLayerMask.value) != 0)
 		{
-			if (other.gameObject.GetComponent<Movement>().Slamming)
+			Debug.Log(other.name);
+			if (other.gameObject.TryGetComponent<Movement>(out Movement movement) && movement.Slamming)
 			{
 				transform.Find("Original Door").gameObject.SetActive(false);
 				Vector3 exp = transform.Find("Explosion").transform.position;
