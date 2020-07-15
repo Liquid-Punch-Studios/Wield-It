@@ -4619,6 +4619,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 640123604}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &243472013 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7041604921001397262, guid: 298ab2437a92c0a439c0b68f1c5080d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 640123604}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243472010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02d7da2edddf1443b89caf302561153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &243472020 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 7041604921001397303, guid: 298ab2437a92c0a439c0b68f1c5080d4,
@@ -18883,7 +18895,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerHealth
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 243472013}
     - target: {fileID: 692646983324299310, guid: c51681bd87849754e89e4bbc90e33abe,
         type: 3}
       propertyPath: m_Name
