@@ -12,8 +12,11 @@ public class TurnAhead : MonoBehaviour
 
 	void Update()
 	{
-		var rot = transform.localRotation.eulerAngles;
-		rot.y = Mathf.SmoothDampAngle(rot.y, followTarget.velocity.x * turnFactor, ref turnVelocity, damping);
-		transform.localRotation = Quaternion.Euler(rot);
+		if (followTarget.gameObject.activeInHierarchy)
+		{
+			var rot = transform.localRotation.eulerAngles;
+			rot.y = Mathf.SmoothDampAngle(rot.y, followTarget.velocity.x * turnFactor, ref turnVelocity, damping);
+			transform.localRotation = Quaternion.Euler(rot);
+		}
 	}
 }
