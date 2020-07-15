@@ -16,6 +16,8 @@ public class Sword : MonoBehaviour
 
 	public float staminaDrainFactor = 1.5f;
 
+	public GameObject hitParticle;
+
 	// How much force we need for handling the weapon
 	//public float force;
 	//public float angularForce;
@@ -63,6 +65,9 @@ public class Sword : MonoBehaviour
 				{
 					health.ReceiveDamage(damageFactor * relative.magnitude);
 					Debug.Log((int)(damageFactor * relative.magnitude));
+					var clash = other.ClosestPoint(transform.position);
+					var p = Instantiate(hitParticle);
+					p.transform.position = clash;
 					otherRb.AddForce(weaponRb.velocity * 1000);
 				}
 			}
@@ -72,6 +77,9 @@ public class Sword : MonoBehaviour
 				{
 					health.ReceiveDamage(damageFactor * weaponRb.velocity.magnitude);
 					Debug.Log((int)(damageFactor * weaponRb.velocity.magnitude));
+					var clash = other.ClosestPoint(transform.position);
+					var p = Instantiate(hitParticle);
+					p.transform.position = clash;
 					//weaponRb.AddForce(weaponRb.velocity * -500);
 				}
 			}
