@@ -159,6 +159,15 @@ public class EscapeMenu : MonoBehaviour
         settingsMenu.SetActive(false);
         escapeMenu.SetActive(true);
         SaveSystem.SaveSettings(settings);
+        AudioPlayer.load = true;
+        StartCoroutine(loadClose());
+    }
+
+    IEnumerator loadClose()
+    {
+        yield return new WaitForSeconds(0.1f);
+        AudioPlayer.load = false;
+        yield return null;
     }
 
     public void Violence()
