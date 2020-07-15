@@ -13,7 +13,7 @@ public class Persistence : MonoBehaviour
         else
         {
 			Destroy(gameObject);
-			return;
+			return; 
         }
 		DontDestroyOnLoad(gameObject);
 	}
