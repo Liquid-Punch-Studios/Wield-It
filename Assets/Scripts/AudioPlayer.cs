@@ -5,11 +5,19 @@ using UnityEngine.Audio;
 
 public class AudioPlayer : MonoBehaviour
 {
+	public enum AudioType // your custom enumeration
+	{
+		Music,
+		Sound,
+	};
+	public AudioType audioType;
+
 	public AudioSource[] audioList;
 	public bool playOnAwake = false;
 
 	private void Awake()
 	{
+		LoadVolume();
 		if (playOnAwake)
 			PlayRandom();
 	}
@@ -28,4 +36,17 @@ public class AudioPlayer : MonoBehaviour
 		else
 			Debug.LogError("Invalid audio index: " + audioIndex);
 	}
+
+	public void LoadVolume()
+    {
+		SettingsData settings = SaveSystem.LoadSettings();
+		foreach(AudioSource audio in audioList)
+        {
+			if (audioType == AudioType.Music)
+				audio.volume = settings.musicVal * 0.2f / 100f;
+			if (audioType == AudioType.Sound)
+				audio.volume = settings.soundVal * 2 / 100f;
+		}
+		
+    }
 }

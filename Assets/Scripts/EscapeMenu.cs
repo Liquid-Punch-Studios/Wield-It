@@ -19,6 +19,7 @@ public class EscapeMenu : MonoBehaviour
 
     private bool isDead;
     private bool isPaused = false;
+    private bool isPlayed = false;
     private Controls controls;
 
     private SettingsData settings;
@@ -44,6 +45,9 @@ public class EscapeMenu : MonoBehaviour
         {
             darkMask.SetActive(true);
             clickToRespawn.SetActive(true);
+            if(!isPlayed)
+            GameObject.Find("BloodSounds").GetComponent<AudioPlayer>().PlayRandom();
+            isPlayed = true;
         }
         else
         {
@@ -52,7 +56,11 @@ public class EscapeMenu : MonoBehaviour
         }
 
         if (controls.Player.Angle.triggered)
+        {
             isDead = false;
+            isPlayed = false;
+        }
+            
 
         if (!isPaused && controls.Player.EscapeMenu.triggered)
         {
@@ -61,7 +69,6 @@ public class EscapeMenu : MonoBehaviour
             InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInDynamicUpdate;
             darkMask.SetActive(true);
             escapeMenu.SetActive(true);
-
             isPaused = true;
         }
     }
@@ -76,7 +83,7 @@ public class EscapeMenu : MonoBehaviour
             darkMask.SetActive(false);
             escapeMenu.SetActive(false);
             settingsMenu.SetActive(false);
-
+            isPlayed = false;
             isPaused = false;
         }
     }

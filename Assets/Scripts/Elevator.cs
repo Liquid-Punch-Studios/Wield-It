@@ -19,6 +19,7 @@ public class Elevator : MonoBehaviour
 	{
 		if ((1 << other.gameObject.layer & triggerLayerMask.value) != 0)
         {
+			gameObject.GetComponent<AudioPlayer>().PlayRandom();
 			anim.SetBool("isSet", true);
 			GameObject.Find("Level Changer").GetComponentInChildren<LevelChanger>().LoadNextLevel();
 			SaveSystem.SaveLastLevel();

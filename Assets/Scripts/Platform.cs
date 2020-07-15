@@ -8,6 +8,7 @@ public class Platform : MonoBehaviour
     {
         if (other.GetComponent<Rigidbody>() != null)
             other.transform.parent = gameObject.transform;
+        
     }
 
     private void OnTriggerExit(Collider other)
