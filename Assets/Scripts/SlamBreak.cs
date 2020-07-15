@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class SlamBreak : MonoBehaviour
 {
-	public LayerMask triggerLayerMask;
+	public GameObject brokenDoor;
+	public Transform explosionPoint;
+	public AudioPlayer breakSound;
 
-	private void OnTriggerEnter(Collider other)
+	public void Break()
 	{
-		if ((1 << other.gameObject.layer & triggerLayerMask.value) != 0)
-		{
-			Debug.Log(other.name);
-			if (other.gameObject.TryGetComponent<Movement>(out Movement movement) && movement.Slamming)
-			{
-				transform.Find("Original Door").gameObject.SetActive(false);
-				Vector3 exp = transform.Find("Explosion").transform.position;
-				GameObject go = transform.Find("Broken Door").gameObject;
-				go.SetActive(true);
-				foreach (Transform child in go.transform)
-				{
-					child.GetComponent<Rigidbody>().AddExplosionForce(1000, exp, 100);
-				}
-			}
-		}
+		Vector3 explosion = explosionPoint.position;
+
+		gameObject.SetActive(false);
+		brokenDoor.SetActive(true);
+		foreach (Transform pieces in brokenDoor.transform)
+			pieces.GetComponent<Rigidbody>().AddExplosionForce(1000, explosion, 100);
+
+		breakSound?.PlayRandom();
 	}
 }

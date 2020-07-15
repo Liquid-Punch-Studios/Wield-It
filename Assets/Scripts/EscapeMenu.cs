@@ -32,6 +32,8 @@ public class EscapeMenu : MonoBehaviour
         escapeMenu = transform.Find("DarkMask").Find("EscapeMenu").gameObject;
         settingsMenu = transform.Find("DarkMask").Find("Settings").gameObject;
         darkMask = transform.Find("DarkMask").gameObject;
+
+        playerHealth = GameObject.Find("Player").GetComponent<Health>();
     }
 
     public void FixedUpdate()
