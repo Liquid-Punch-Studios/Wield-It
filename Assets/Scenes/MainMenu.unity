@@ -11481,9 +11481,9 @@ MonoBehaviour:
     Physics Programmer</b>\r\n<i>Ahmet Sait Ko\xE7ak</i>\r\n\r\n<b>Music Director</b>\r\n<i>Muhammed
     Eren Ayd\u0131n</i>\r\n\r\n<b>Audio Director</b>\r\n<i>Ahmet Sait Ko\xE7ak</i>\r\n\r\n<b>Additional
     Sound Effects</b>\r\n<i>Zapsplat.com</i>\r\n\r\n<b>Music Composer</b>\r\n<i>Antti
-    Luode</i>\r\n\r\n<b>Sound Designer</b>\r\n<i>Mehmet \xC7olak</i>\r\n\n<b>Font
-    Designer</b>\n<i>Wojciech Kalinowski</i>\r\r\n\n<b>Quality Assurance</b>\r\n<i>Ahmet
-    Sait Ko\xE7ak</i>\r\n<i>Muhammed Eren Ayd\u0131n</i>\r\n"
+    Luode</i>\r\n\r\n<b>Sound Designer</b>\r\n<i>Muhammet Eren Ayd\u0131n</i>\n<i>Mehmet
+    \xC7olak</i>\r\n\n<b>Font Designer</b>\n<i>Wojciech Kalinowski</i>\r\r\n\n<b>Quality
+    Assurance</b>\r\n<i>Ahmet Sait Ko\xE7ak</i>\r\n<i>Muhammed Eren Ayd\u0131n</i>\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
   m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
@@ -11553,12 +11553,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 977447334}
-    characterCount: 807
+    characterCount: 827
     spriteCount: 0
-    spaceCount: 123
-    wordCount: 105
+    spaceCount: 126
+    wordCount: 108
     linkCount: 0
-    lineCount: 60
+    lineCount: 61
     pageCount: 1
     materialCount: 3
   m_isUsingLegacyAnimationComponent: 0

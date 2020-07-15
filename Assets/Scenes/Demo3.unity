@@ -34227,7 +34227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224ea3ee2d59ac240b5862a150479b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioType: 0
+  audioType: 1
   audioList:
   - {fileID: 1950315267}
   playOnAwake: 1
