@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 
 public class MainMenuSelection : MonoBehaviour
 {
+
     public Camera cam;
     public Rigidbody carrier;
     public GameObject credits;
@@ -58,12 +59,20 @@ public class MainMenuSelection : MonoBehaviour
     private Animator cameraAnim;
     private float scrollPosition;
 
+    private AudioPlayer musics;
+    private AudioPlayer woodSounds;
+    private AudioPlayer chainSounds;
+
     private string[] qualitySteps = { "LOW", "MEDIUM", "HIGH" };
 
     private string[] difficultySteps = { "EASY", "MEDIUM", "HARD" };
 
     private void Start()
     {
+
+        woodSounds = GameObject.Find("WoodImpact").GetComponent<AudioPlayer>();
+        chainSounds = GameObject.Find("ChainImpact").GetComponent<AudioPlayer>();
+        musics = gameObject.GetComponent<AudioPlayer>();
         scrollPosition = scrollTop;
         cameraAnim = gameObject.GetComponent<Animator>();
         Load();
@@ -160,7 +169,7 @@ public class MainMenuSelection : MonoBehaviour
                         MusicVal = MusicMuted ? 0 : previousMusicVal;
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
                         textComponent.text = MusicMuted ? "Muted" : "%" + musicVal;
-
+                        UpdateMusicVolume(MusicVal);
                         break;
 
                     case "MusicPlus":
@@ -170,6 +179,7 @@ public class MainMenuSelection : MonoBehaviour
                         previousMusicVal = MusicVal;
                         textComponent = GameObject.Find("MusicVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + MusicVal;
+                        UpdateMusicVolume(musicVal);
                         break;
 
                     case "MusicMinus":
@@ -179,6 +189,7 @@ public class MainMenuSelection : MonoBehaviour
                         previousMusicVal = MusicVal;
                         textComponent = GameObject.Find("MusicVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + MusicVal;
+                        UpdateMusicVolume(musicVal);
                         break;
 
                     case "Sound":
@@ -192,7 +203,7 @@ public class MainMenuSelection : MonoBehaviour
                             SoundVal = previousSoundVal;
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
                         textComponent.text = SoundMuted ? "Muted" : "%" + SoundVal;
-                        Debug.Log(previousSoundVal);
+                        UpdateSoundVolume(SoundVal);
                         break;
 
                     case "SoundPlus":
@@ -202,6 +213,7 @@ public class MainMenuSelection : MonoBehaviour
                         previousSoundVal = SoundVal;
                         textComponent = GameObject.Find("SoundVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + SoundVal;
+                        UpdateSoundVolume(SoundVal);
                         break;
 
                     case "SoundMinus":
@@ -211,6 +223,7 @@ public class MainMenuSelection : MonoBehaviour
                         previousSoundVal = SoundVal;
                         textComponent = GameObject.Find("SoundVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + SoundVal;
+                        UpdateSoundVolume(SoundVal);
                         break;
 
                     case "SensitivityPlus":
@@ -229,6 +242,10 @@ public class MainMenuSelection : MonoBehaviour
                 if (hit.rigidbody != null)
                 {
                     hit.rigidbody.AddForce(ray.direction * 400);
+                    if (hit.transform.tag == "Wood")
+                        woodSounds.PlayRandom();
+                    else if (hit.transform.tag == "Chain")
+                        chainSounds.PlayRandom();
                 }
 
                 if (settingsOn)
@@ -250,11 +267,29 @@ public class MainMenuSelection : MonoBehaviour
             scrollPosition = scrollPosition > scrollMax ? scrollMax : scrollPosition;
         }
     }
-    
-    private void Update()
+
+    private void UpdateMusicVolume(int volume)
     {
+        foreach(AudioSource audio in musics.audioList)
+        {
+            audio.volume = volume / 100.0f;
+        }
     }
-    
+
+    private void UpdateSoundVolume(int volume)
+    {
+        foreach (AudioSource audio in chainSounds.audioList)
+        {
+            audio.volume = volume / 100.0f;
+        }
+
+        foreach (AudioSource audio in woodSounds.audioList)
+        {
+            audio.volume = volume / 100.0f;
+        }
+    }
+
+
     private void OnEnable()
     {
         if (cont == null)
@@ -324,14 +359,20 @@ public class MainMenuSelection : MonoBehaviour
         }
         GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = difficultySteps[Difficulty];
         GameObject.Find("QualityVal").GetComponent<TextMeshPro>().text = qualitySteps[Quality];
+
         GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "%" + MusicVal;
         if (MusicMuted)
             GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "Muted";
+        UpdateMusicVolume(MusicVal);
+
         GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "%" + SoundVal;
         if (SoundMuted)
             GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "Muted";
+        UpdateSoundVolume(SoundVal);
+
         GameObject.Find("ViolenceVal").GetComponent<TextMeshPro>().text = Violence ? "ON" : "OFF";
         GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>().text = "%" + Sensitivity;
+
 
         GameObject[] levelLogs = new GameObject[Level.levelCount];
 

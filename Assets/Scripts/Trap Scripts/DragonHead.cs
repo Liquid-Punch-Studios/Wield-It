@@ -8,6 +8,8 @@ public class DragonHead : MonoBehaviour
 
 	public HazardTrigger trigger;
 
+	public AudioPlayer audio;
+
 	public float playTime;
 	public float pauseTime;
 
@@ -15,6 +17,7 @@ public class DragonHead : MonoBehaviour
 	private float pauseTimer;
 
 	private bool playing = false;
+	private bool isAudioPlayed = false;
 
 	private void Start()
 	{
@@ -28,11 +31,14 @@ public class DragonHead : MonoBehaviour
 
 		if (playing)
 		{
+			if(!isAudioPlayed)
+				audio.PlayRandom();
+			isAudioPlayed = true;
 			playTimer -= timePassed;
 			if (playTimer <= 0.0f)
 			{
 				playing = false;
-				playTimer = playTime;
+				pauseTimer = pauseTime;
 				if (dragonBreath.isPlaying)
 					dragonBreath.Stop(true);
 				trigger.Deactivate();
@@ -40,11 +46,14 @@ public class DragonHead : MonoBehaviour
 		}
 		else
 		{
+			isAudioPlayed = false;
+			foreach(AudioSource a in audio.audioList)
+				a.Stop();
 			pauseTimer -= timePassed;
 			if (pauseTimer <= 0.0f)
 			{
 				playing = true;
-				pauseTimer = pauseTime;
+				playTimer = playTime;
 				if (!dragonBreath.isPlaying)
 					dragonBreath.Play();
 				trigger.Activate();

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - MainWeapon
+  - Wood
+  - Chain
   layers:
   - Default
   - TransparentFX
