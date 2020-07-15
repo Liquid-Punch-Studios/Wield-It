@@ -23,7 +23,7 @@ public class MainMenuSelection : MonoBehaviour
     public float scrollTop;
 
     private int quality;
-    public int Quality { get { return quality; } set { quality = value; }}
+    public int Quality { get { return quality; } set { quality = value; } }
 
     private int difficulty;
     public int Difficulty { get { return difficulty; } set { difficulty = value; } }
@@ -58,10 +58,10 @@ public class MainMenuSelection : MonoBehaviour
     private Animator cameraAnim;
     private float scrollPosition;
 
-    
-
     private string[] qualitySteps = { "LOW", "MEDIUM", "HIGH" };
+
     private string[] difficultySteps = { "EASY", "MEDIUM", "HARD" };
+
     private void Start()
     {
         scrollPosition = scrollTop;
@@ -71,6 +71,13 @@ public class MainMenuSelection : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (creditsOn && (Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame))
+        {
+            creditsOn = false;
+            credits.GetComponent<Animator>().SetBool("isSet", false);
+            credits.SetActive(false);
+        }
+
         if (cont.UI.MouseClick.triggered)
         {
             RaycastHit hit;
@@ -111,7 +118,7 @@ public class MainMenuSelection : MonoBehaviour
                     case "Credits":
                         settingsOn = false;
                         scrollPosition = scrollTop;
-                        creditsOn = !creditsOn;
+                        creditsOn = true;
                         credits.SetActive(true);
                         credits.GetComponent<Animator>().SetBool("isSet", true);
                         break;
@@ -242,18 +249,12 @@ public class MainMenuSelection : MonoBehaviour
             scrollPosition = scrollPosition < scrollMin ? scrollMin : scrollPosition;
             scrollPosition = scrollPosition > scrollMax ? scrollMax : scrollPosition;
         }
-        
-
     }
+    
     private void Update()
     {
-        if (creditsOn && (Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame))
-        {
-            creditsOn = false;
-            credits.SetActive(false);
-            credits.GetComponent<Animator>().SetBool("isSet", false);
-        }
     }
+    
     private void OnEnable()
     {
         if (cont == null)
@@ -273,6 +274,7 @@ public class MainMenuSelection : MonoBehaviour
         SceneManager.LoadSceneAsync(objName, LoadSceneMode.Single);
         yield return null;
     }
+    
     IEnumerator ExitButtonClick()
     {
         yield return new WaitForSeconds(1);
