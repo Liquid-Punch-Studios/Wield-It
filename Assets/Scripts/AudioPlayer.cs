@@ -51,9 +51,9 @@ public class AudioPlayer : MonoBehaviour
 		foreach(AudioSource audio in audioList)
         {
 			if (audioType == AudioType.Music)
-				audio.volume = settings.musicVal * 0.2f / 100f;
+				audio.volume = settings.musicVal / 100f;
 			if (audioType == AudioType.Sound)
-				audio.volume = settings.soundVal * 2 / 100f;
+				audio.volume = settings.soundVal / 100f;
 		}
 		
     }

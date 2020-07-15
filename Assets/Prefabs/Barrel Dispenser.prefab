@@ -66,7 +66,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrelPrefab: {fileID: 6658050636334284545, guid: 73568b4a8d190764387461844269ecbe,
     type: 3}
-  tick: 5
+  tick: 1
+  prefabLasts: 2
+  thrust: 50
 --- !u!1001 &7357605638715970216
 PrefabInstance:
   m_ObjectHideFlags: 0
