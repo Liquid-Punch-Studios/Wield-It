@@ -59,7 +59,7 @@ public class MainMenuSelection : MonoBehaviour
     private Animator cameraAnim;
     private float scrollPosition;
 
-    private AudioPlayer musics;
+    public AudioPlayer musics;
     private AudioPlayer woodSounds;
     private AudioPlayer chainSounds;
 
@@ -72,7 +72,6 @@ public class MainMenuSelection : MonoBehaviour
 
         woodSounds = GameObject.Find("WoodImpact").GetComponent<AudioPlayer>();
         chainSounds = GameObject.Find("ChainImpact").GetComponent<AudioPlayer>();
-        musics = gameObject.GetComponent<AudioPlayer>();
         scrollPosition = scrollTop;
         cameraAnim = gameObject.GetComponent<Animator>();
         Load();
