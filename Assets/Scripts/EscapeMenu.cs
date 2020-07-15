@@ -18,7 +18,6 @@ public class EscapeMenu : MonoBehaviour
     private GameObject darkMask;
 
     private bool isDead;
-    private bool isPaused = false;
     private bool isPlayed = false;
     private Controls controls;
 
@@ -133,8 +132,6 @@ public class EscapeMenu : MonoBehaviour
         darkMask.SetActive(false);
         escapeMenu.SetActive(false);
         settingsMenu.SetActive(false);
-
-        isPaused = false;
     }
 
     public void SettingsClick()
