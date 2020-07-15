@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &7090478572762160391
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789082632165312277}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.03604862, y: 0.0010678985, z: 0.59169763}
-  m_Center: {x: 0.00000011920929, y: 0.010466036, z: 0.28584883}
 --- !u!65 &8580143189283439432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21,7 +8,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789082632390748459}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3199999, y: 1.295378, z: 4.293401}
@@ -45,7 +32,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5970553705214844754
+--- !u!114 &981527944908814765
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,9 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1789082632390748459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00b313f515f4ee445bb2e3f9c04d3d59, type: 3}
+  m_Script: {fileID: 11500000, guid: 0224c01084eecab4fb6bc00db2b3c24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 1
   damage: 100
   force: 100
   direction: {x: 0, y: -1, z: 0}
@@ -178,12 +166,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c22eba5a31c548d43a44ce057d7e6645, type: 3}
---- !u!1 &1789082632165312277 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: c22eba5a31c548d43a44ce057d7e6645,
-    type: 3}
-  m_PrefabInstance: {fileID: 7779392464016088604}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3354971664728077574 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: c22eba5a31c548d43a44ce057d7e6645,
