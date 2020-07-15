@@ -46,7 +46,7 @@ public class EscapeMenu : MonoBehaviour
             darkMask.SetActive(true);
             clickToRespawn.SetActive(true);
             if(!isPlayed)
-            GameObject.Find("BloodSounds").GetComponent<AudioPlayer>().PlayRandom();
+                GameObject.Find("BloodSounds").GetComponent<AudioPlayer>().PlayRandom();
             isPlayed = true;
         }
         else
@@ -62,29 +62,30 @@ public class EscapeMenu : MonoBehaviour
         }
             
 
-        if (!isPaused && controls.Player.EscapeMenu.triggered)
+        if (Time.timeScale == 1 && controls.Player.EscapeMenu.triggered)
         {
-            Time.timeScale = 0;
-
             InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInDynamicUpdate;
-            darkMask.SetActive(true);
-            escapeMenu.SetActive(true);
-            isPaused = true;
+            Time.timeScale = 0;
         }
     }
 
     private void Update()
     {
-        if (isPaused && controls.Player.EscapeMenu.triggered)
+        if (Time.timeScale == 0 && controls.Player.EscapeMenu.triggered)
         {
             Time.timeScale = 1;
-
             InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
-            darkMask.SetActive(false);
-            escapeMenu.SetActive(false);
+        }
+        if (Time.timeScale == 0)
+        {
+            darkMask.SetActive(true);
+            escapeMenu.SetActive(true);
+        }
+        else
+        {
             settingsMenu.SetActive(false);
-            isPlayed = false;
-            isPaused = false;
+            escapeMenu.SetActive(false);
+            darkMask.SetActive(false);
         }
     }
 
