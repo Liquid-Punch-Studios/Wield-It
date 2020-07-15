@@ -79,9 +79,13 @@ public class EscapeMenu : MonoBehaviour
         {
             darkMask.SetActive(true);
             escapeMenu.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
-        else
+        else if (!isDead)
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             settingsMenu.SetActive(false);
             escapeMenu.SetActive(false);
             darkMask.SetActive(false);
@@ -132,6 +136,8 @@ public class EscapeMenu : MonoBehaviour
         darkMask.SetActive(false);
         escapeMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void SettingsClick()

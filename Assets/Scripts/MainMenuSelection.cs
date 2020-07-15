@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 using System.IO;
 using System.Text.RegularExpressions;
 
@@ -69,7 +68,8 @@ public class MainMenuSelection : MonoBehaviour
 
     private void Start()
     {
-
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         woodSounds = GameObject.Find("WoodImpact").GetComponent<AudioPlayer>();
         chainSounds = GameObject.Find("ChainImpact").GetComponent<AudioPlayer>();
         scrollPosition = scrollTop;
