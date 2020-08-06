@@ -5107,6 +5107,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3886722147190547545, guid: aac8878c3fc6d86479e439bc8e02aead,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+        type: 2}
     - target: {fileID: 4093378145844070310, guid: aac8878c3fc6d86479e439bc8e02aead,
         type: 3}
       propertyPath: m_Size.z
@@ -5132,6 +5138,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: dungeon_breakable_ground
       objectReference: {fileID: 0}
+    - target: {fileID: 7877483320279060829, guid: aac8878c3fc6d86479e439bc8e02aead,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+        type: 2}
     - target: {fileID: 9057914721081831267, guid: aac8878c3fc6d86479e439bc8e02aead,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8732,7 +8744,8 @@ AudioSource:
   m_GameObject: {fileID: 481789485}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3909954722333983860, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 83f5c19c9a45d8c4584767ab8ad7dfb0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -8831,7 +8844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224ea3ee2d59ac240b5862a150479b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioType: 0
   audioList:
   - {fileID: 481789487}
   playOnAwake: 1
@@ -9917,18 +9929,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607f9fbdba1250b4ebef19a5a07da220, type: 3}
---- !u!114 &570885145 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 692646982189202228, guid: c51681bd87849754e89e4bbc90e33abe,
-    type: 3}
-  m_PrefabInstance: {fileID: 1059532488}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &573204433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11278,21 +11278,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7041604921001397260, guid: 298ab2437a92c0a439c0b68f1c5080d4,
-        type: 3}
-      propertyPath: weapon
-      value: 
-      objectReference: {fileID: 334001319}
-    - target: {fileID: 7041604921001397262, guid: 298ab2437a92c0a439c0b68f1c5080d4,
-        type: 3}
-      propertyPath: image
-      value: 
-      objectReference: {fileID: 570885145}
-    - target: {fileID: 7041604921001397263, guid: 298ab2437a92c0a439c0b68f1c5080d4,
-        type: 3}
-      propertyPath: image
-      value: 
-      objectReference: {fileID: 1019601473}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 298ab2437a92c0a439c0b68f1c5080d4, type: 3}
 --- !u!1001 &641337966
@@ -17620,18 +17605,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1017942013}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1019601473 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 692646981497598584, guid: c51681bd87849754e89e4bbc90e33abe,
-    type: 3}
-  m_PrefabInstance: {fileID: 1059532488}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1020266803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23453,7 +23426,7 @@ MonoBehaviour:
   player: {fileID: 243472010}
   weapon: {fileID: 334001319}
   hand: {fileID: 1349554546}
-  death: {fileID: 1582817328237454169, guid: 84460e26217b05148940f81b611f731b, type: 3}
+  deadPlayerPrefab: {fileID: 0}
   respawnPoint: {fileID: 338433427}
 --- !u!4 &1333048184
 Transform:
@@ -31161,7 +31134,8 @@ AudioSource:
   m_GameObject: {fileID: 1771221055}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 0c79d6764c2b7e946b3dedcc94df05ea, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -31257,7 +31231,8 @@ AudioSource:
   m_GameObject: {fileID: 1771221055}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 3200540df18bc4d4fa8c3ff79384039f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -31353,7 +31328,8 @@ AudioSource:
   m_GameObject: {fileID: 1771221055}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 35fc4ee22e2a6e141b7b14aa372420b3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -31449,7 +31425,8 @@ AudioSource:
   m_GameObject: {fileID: 1771221055}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c5741c93f1b41a044a88e6731794db2c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -31545,7 +31522,8 @@ AudioSource:
   m_GameObject: {fileID: 1771221055}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 7eeea011c5d447945a1732cd7268c5f2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -31644,7 +31622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224ea3ee2d59ac240b5862a150479b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioType: 1
   audioList:
   - {fileID: 1771221061}
   - {fileID: 1771221060}
@@ -34239,7 +34216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224ea3ee2d59ac240b5862a150479b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioType: 1
   audioList:
   - {fileID: 1950315267}
   playOnAwake: 1

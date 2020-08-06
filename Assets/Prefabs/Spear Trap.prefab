@@ -22,7 +22,7 @@ AudioSource:
   m_GameObject: {fileID: 2034910965021039846}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 9bbb9f8985fd62c45b3a752dd6783e5a, type: 3}
   m_PlayOnAwake: 1
@@ -141,7 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224ea3ee2d59ac240b5862a150479b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioType: 1
   audioList:
   - {fileID: 7863273235989942664}
   playOnAwake: 0
@@ -157,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b313f515f4ee445bb2e3f9c04d3d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 1
   damage: 80
   force: 200
   direction: {x: 0, y: 1, z: 0}

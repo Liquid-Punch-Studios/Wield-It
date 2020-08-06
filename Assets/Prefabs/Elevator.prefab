@@ -219,7 +219,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.3120002, y: -0.8012499, z: -1.6399996}
+  m_ConnectedAnchor: {x: 1.3119968, y: -0.8012499, z: -1.6399994}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -386,7 +386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224ea3ee2d59ac240b5862a150479b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioType: 1
   audioList:
   - {fileID: 5103083035098397672}
   - {fileID: 7831868301409687419}
@@ -400,7 +399,8 @@ AudioSource:
   m_GameObject: {fileID: 7786543413913439180}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: b0ba61693a2314144acaf65c46cb7d7c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -496,7 +496,8 @@ AudioSource:
   m_GameObject: {fileID: 7786543413913439180}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: d7ce44c3c0f99684fb480156f4de5e99, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
