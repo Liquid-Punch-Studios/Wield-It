@@ -5,6 +5,11 @@ using UnityEngine;
 public class HazardTrigger : MonoBehaviour
 {
 	/// <summary>
+	/// Controls whether the hazard is active.
+	/// </summary>
+	public bool active = true;
+
+	/// <summary>
 	/// Amount of damage to deal when an object is in the hazardous area (trigger).
 	/// </summary>
 	[Tooltip("Amount of damage to deal when an object is in the hazardous area (trigger).")]
@@ -52,7 +57,7 @@ public class HazardTrigger : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (cooldown != 0)
+		if (!active || cooldown != 0)
 			return;
 
 		if (other.gameObject.TryGetComponent<Health>(out Health health))
@@ -74,7 +79,7 @@ public class HazardTrigger : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
-		if (cooldown == 0)
+		if (!active || cooldown == 0)
 			return;
 		
 		if (other.gameObject.TryGetComponent<Health>(out Health health))

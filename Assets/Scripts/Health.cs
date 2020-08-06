@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,65 +10,54 @@ public class Health : MonoBehaviour
 	/// <summary>
 	/// Max Health
 	/// </summary>
-	public float maxHp = 100;
+	[SerializeField]
+	private float maxHp = 100;
+	public float MaxHp
+	{
+		get { return maxHp; }
+		set
+		{
+			var old = maxHp;
+			if (old != value)
+			{
+				maxHp = value;
+				MaxHpChanged?.Invoke(this, EventArgs.Empty);
+			}
+		}
+	}
+	public event EventHandler MaxHpChanged;
 
 	/// <summary>
 	/// Current Health
 	/// </summary>
+	[SerializeField]
 	private float hp = 100;
 	public float Hp
 	{
-		get
-		{
-			return hp;
-		}
+		get { return hp; }
 		set
 		{
-			hp = value;
-
-			if (image != null)
-				image.fillAmount = Hp / maxHp;
-
-			if (lastHp != (int)Hp && text != null)
+			var old = hp;
+			if (old != value)
 			{
-				// FIXME: This produces so much garbage
-				text.text = string.Format(format, Hp, maxHp);
-				lastHp = (int)Hp;
+				hp = value;
+				HpChanged?.Invoke(this, EventArgs.Empty);
+				if ((int)old != (int)value)
+					HpIntChanged?.Invoke(this, EventArgs.Empty);
 			}
 		}
 	}
-
-	private int lastHp;
-
-	/// <summary>
-	/// HP regeneration per second
-	/// </summary>
-	public float hpRegen = 0; // Might decide otherwise idk
-
-	/// <summary>
-	/// Image to update fill amount for UI stuff & HUD
-	/// </summary>
-	public Image image;
-
-	/// <summary>
-	/// Text element to update as the 
-	/// </summary>
-	public TextMeshProUGUI text;
+	public event EventHandler HpChanged;
+	public event EventHandler HpIntChanged;
 
 	/// <summary>
 	/// Format to use while updating the text element
 	/// </summary>
-	public string format = "{0:F0}/{1:F0}";
+	//public string format = "{0:F0}/{1:F0}";
 
 	private void Start()
 	{
 		dmgTimeTable = new Dictionary<string, float>();
-		lastHp = (int)Hp;
-	}
-
-	private void FixedUpdate()
-	{
-		Hp = Mathf.Clamp(Hp + hpRegen * Time.fixedDeltaTime, 0, maxHp);
 	}
 
 	private Dictionary<string, float> dmgTimeTable;

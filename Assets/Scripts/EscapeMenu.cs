@@ -21,14 +21,14 @@ public class EscapeMenu : MonoBehaviour
     private bool isPlayed = false;
     private Controls controls;
 
-    private SettingsData settings;
+    private GameSettings settings;
 
     private string[] qualitySteps = { "LOW", "MEDIUM", "HIGH" };
     private string[] difficultySteps = { "EASY", "MEDIUM", "HARD" };
 
     private void Start()
     {
-        settings = new SettingsData();
+        settings = new GameSettings();
         escapeMenu = transform.Find("DarkMask").Find("EscapeMenu").gameObject;
         settingsMenu = transform.Find("DarkMask").Find("Settings").gameObject;
         darkMask = transform.Find("DarkMask").gameObject;
@@ -94,25 +94,25 @@ public class EscapeMenu : MonoBehaviour
 
     public void LoadSettings()
     {
-        SettingsData data = SaveSystem.LoadSettings();
-        settings.difficultyVal = data.difficultyVal;
-        settings.qualityVal = data.qualityVal;
-        settings.musicVal = data.musicVal;
-        settings.musicMuted = data.musicMuted;
-        settings.soundVal = data.soundVal;
-        settings.soundMuted = data.soundMuted;
-        settings.violence = data.violence;
-        settings.sensitivity = data.sensitivity;
-        GameObject.Find("Difficulty Value").GetComponent<TextMeshProUGUI>().text = difficultySteps[settings.difficultyVal];
-        GameObject.Find("Quality Value").GetComponent<TextMeshProUGUI>().text = qualitySteps[settings.qualityVal];
-        GameObject.Find("Music Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.musicVal;
-        if (settings.musicMuted)
-            GameObject.Find("Music Value").GetComponent<TextMeshProUGUI>().text = "Muted";
-        GameObject.Find("Sound Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.soundVal;
-        if (settings.soundMuted)
-            GameObject.Find("Sound Value").GetComponent<TextMeshProUGUI>().text = "Muted";
-        GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text = settings.violence ? "ON" : "OFF";
-        GameObject.Find("Sensitivity Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.sensitivity;
+        //GameSettings data = SaveSystem.LoadSettings();
+        //settings.difficultyVal = data.difficultyVal;
+        //settings.qualityVal = data.qualityVal;
+        //settings.musicVal = data.musicVal;
+        //settings.musicMuted = data.musicMuted;
+        //settings.soundVal = data.soundVal;
+        //settings.effectsMuted = data.effectsMuted;
+        //settings.violence = data.violence;
+        //settings.sensitivity = data.sensitivity;
+        //GameObject.Find("Difficulty Value").GetComponent<TextMeshProUGUI>().text = difficultySteps[settings.difficultyVal];
+        //GameObject.Find("Quality Value").GetComponent<TextMeshProUGUI>().text = qualitySteps[settings.qualityVal];
+        //GameObject.Find("Music Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.musicVal;
+        //if (settings.musicMuted)
+        //    GameObject.Find("Music Value").GetComponent<TextMeshProUGUI>().text = "Muted";
+        //GameObject.Find("Sound Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.soundVal;
+        //if (settings.effectsMuted)
+        //    GameObject.Find("Sound Value").GetComponent<TextMeshProUGUI>().text = "Muted";
+        //GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text = settings.violence ? "ON" : "OFF";
+        //GameObject.Find("Sensitivity Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.sensitivity;
 
     }
 
@@ -162,75 +162,75 @@ public class EscapeMenu : MonoBehaviour
     {
         settingsMenu.SetActive(false);
         escapeMenu.SetActive(true);
-        SaveSystem.SaveSettings(settings);
-        AudioPlayer.load = true;
+        //SaveSystem.SaveSettings(settings);
+        //AudioPlayer.load = true;
         StartCoroutine(loadClose());
     }
 
     IEnumerator loadClose()
     {
         yield return new WaitForSeconds(0.1f);
-        AudioPlayer.load = false;
+        //AudioPlayer.load = false;
         yield return null;
     }
 
-    public void Violence()
-    {
-        settings.violence = !settings.violence;
-        GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text = settings.violence ? "ON" : "OFF";
-    }
+    //public void Violence()
+    //{
+    //    settings.violence = !settings.violence;
+    //    GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text = settings.violence ? "ON" : "OFF";
+    //}
 
-    public void MusicDecrease()
-    {
-        if (settings.musicVal > 0)
-            settings.musicVal -= 10;
-        GameObject.Find("Music Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.musicVal;
-    }
+    //public void MusicDecrease()
+    //{
+    //    if (settings.musicVal > 0)
+    //        settings.musicVal -= 10;
+    //    GameObject.Find("Music Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.musicVal;
+    //}
 
-    public void MusicIncrease()
-    {
-        if (settings.musicVal < 100)
-            settings.musicVal += 10;
-        GameObject.Find("Music Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.musicVal;
-    }
+    //public void MusicIncrease()
+    //{
+    //    if (settings.musicVal < 100)
+    //        settings.musicVal += 10;
+    //    GameObject.Find("Music Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.musicVal;
+    //}
 
-    public void SoundDecrease()
-    {
-        if (settings.soundVal > 0)
-            settings.soundVal -= 10;
-        GameObject.Find("Sound Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.soundVal;
-    }
+    //public void SoundDecrease()
+    //{
+    //    if (settings.soundVal > 0)
+    //        settings.soundVal -= 10;
+    //    GameObject.Find("Sound Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.soundVal;
+    //}
 
-    public void SoundIncrease()
-    {
-        if (settings.soundVal < 100)
-            settings.soundVal += 10;
-        GameObject.Find("Sound Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.soundVal;
-    }
+    //public void SoundIncrease()
+    //{
+    //    if (settings.soundVal < 100)
+    //        settings.soundVal += 10;
+    //    GameObject.Find("Sound Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.soundVal;
+    //}
 
-    public void SensitivityDecrease()
-    {
-        if (settings.sensitivity > 0)
-            settings.sensitivity -= 10;
-        GameObject.Find("Sensitivity Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.sensitivity;
-    }
+    //public void SensitivityDecrease()
+    //{
+    //    if (settings.sensitivity > 0)
+    //        settings.sensitivity -= 10;
+    //    GameObject.Find("Sensitivity Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.sensitivity;
+    //}
 
-    public void SensitivityIncrease()
-    {
-        if (settings.sensitivity < 100)
-            settings.sensitivity += 10;
-        GameObject.Find("Sensitivity Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.sensitivity;
-    }
+    //public void SensitivityIncrease()
+    //{
+    //    if (settings.sensitivity < 100)
+    //        settings.sensitivity += 10;
+    //    GameObject.Find("Sensitivity Value").GetComponent<TextMeshProUGUI>().text = "%" + settings.sensitivity;
+    //}
 
-    public void DifficultyNext()
-    {
-        settings.difficultyVal = settings.difficultyVal < difficultySteps.Length - 1 ? settings.difficultyVal + 1 : 0;
-        GameObject.Find("Difficulty Value").GetComponent<TextMeshProUGUI>().text = difficultySteps[settings.difficultyVal];
-    }
+    //public void DifficultyNext()
+    //{
+    //    settings.difficultyVal = settings.difficultyVal < difficultySteps.Length - 1 ? settings.difficultyVal + 1 : 0;
+    //    GameObject.Find("Difficulty Value").GetComponent<TextMeshProUGUI>().text = difficultySteps[settings.difficultyVal];
+    //}
 
-    public void QualityNext()
-    {
-        settings.qualityVal = settings.qualityVal < qualitySteps.Length - 1 ? settings.qualityVal + 1 : 0;
-        GameObject.Find("Quality Value").GetComponent<TextMeshProUGUI>().text = qualitySteps[settings.qualityVal];
-    }
+    //public void QualityNext()
+    //{
+    //    settings.qualityVal = settings.qualityVal < qualitySteps.Length - 1 ? settings.qualityVal + 1 : 0;
+    //    GameObject.Find("Quality Value").GetComponent<TextMeshProUGUI>().text = qualitySteps[settings.qualityVal];
+    //}
 }
