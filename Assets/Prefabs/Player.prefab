@@ -60,7 +60,7 @@ AudioSource:
   m_GameObject: {fileID: 291036548125036178}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: ef8c0ce64b079e94d872acd118f1f895, type: 3}
   m_PlayOnAwake: 0
@@ -157,7 +157,7 @@ AudioSource:
   m_GameObject: {fileID: 291036548125036178}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 01f8d7f3898cb264082c0662de03ce21, type: 3}
   m_PlayOnAwake: 0
@@ -254,7 +254,7 @@ AudioSource:
   m_GameObject: {fileID: 291036548125036178}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 9e591304dc2b8bd498cfef748ece7eea, type: 3}
   m_PlayOnAwake: 0
@@ -384,7 +384,7 @@ AudioSource:
   m_GameObject: {fileID: 1250233110546051131}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 208f1d609870cd74b95c8c5cfd5e63ba, type: 3}
   m_PlayOnAwake: 0
@@ -481,7 +481,7 @@ AudioSource:
   m_GameObject: {fileID: 1250233110546051131}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 42279d92007e06e418d18bcaed501c09, type: 3}
   m_PlayOnAwake: 0
@@ -578,7 +578,7 @@ AudioSource:
   m_GameObject: {fileID: 1250233110546051131}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 2869b0f31b14c374a9e080319a8f1caa, type: 3}
   m_PlayOnAwake: 0
@@ -743,7 +743,7 @@ AudioSource:
   m_GameObject: {fileID: 4986339935529740524}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 6a928ffced7c1f84c98f82eb0a807a89, type: 3}
   m_PlayOnAwake: 0
@@ -840,7 +840,7 @@ AudioSource:
   m_GameObject: {fileID: 4986339935529740524}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: e8821b74b64baf4429b523f8bdbdf52a, type: 3}
   m_PlayOnAwake: 0
@@ -937,7 +937,7 @@ AudioSource:
   m_GameObject: {fileID: 4986339935529740524}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 1011853653c40b64caea86969b21f5d3, type: 3}
   m_PlayOnAwake: 0
@@ -1287,6 +1287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02d7da2edddf1443b89caf302561153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 100
+  hp: 100
 --- !u!114 &7041604921001397263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,9 +1305,6 @@ MonoBehaviour:
   sp: 100
   spRegen: 50
   spRegenAir: 25
-  image: {fileID: 0}
-  text: {fileID: 0}
-  format: '{0:F0}'
 --- !u!1 &7041604921034604155
 GameObject:
   m_ObjectHideFlags: 0
