@@ -27,13 +27,26 @@ public class SettingsManager : Singleton<SettingsManager>
 		GraphicsApplied = true;
 	}
 
+	public void LoadGraphics()
+	{
+		Settings.Resolution = Screen.currentResolution;
+		Settings.GraphicsQuality = QualitySettings.GetQualityLevel();
+
+		GraphicsApplied = true;
+	}
+
 	private void Awake()
 	{
 		FilePath = Path.Combine(Application.persistentDataPath, "settings.xml");
 		if (File.Exists(FilePath))
 		{
 			Settings = GameSettings.Load(FilePath);
+			ApplyGraphics();
 			Debug.Log("Loaded settings from " + FilePath);
+		}
+		else
+		{
+			LoadGraphics();
 		}
 	}
 
@@ -45,8 +58,6 @@ public class SettingsManager : Singleton<SettingsManager>
 
 	private void OnEnable()
 	{
-		Settings.GraphicsQuality = QualitySettings.GetQualityLevel();
-
 		Settings.GraphicsQualityChanged += Settings_GraphicsQualityChanged;
 		Settings.GraphicsQualityChanged += Settings_GraphicsChanged;
 		Settings.ResolutionChanged		+= Settings_GraphicsChanged;
