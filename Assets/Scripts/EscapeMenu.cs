@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 
 public class EscapeMenu : MonoBehaviour
 {
-    public Health playerHealth;
+    private Health playerHealth;
     public GameObject clickToRespawn;
 
     private GameObject escapeMenu;
@@ -115,6 +115,14 @@ public class EscapeMenu : MonoBehaviour
         settingsMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void RestartClick()
+    {
+        Time.timeScale = 1;
+        escapeMenu.SetActive(false);
+        darkMask.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void SettingsClick()
