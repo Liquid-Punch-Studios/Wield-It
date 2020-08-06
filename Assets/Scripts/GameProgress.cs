@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -44,9 +45,7 @@ public class GameProgress
 		return completedLevels.TryGetValue(level, out difficulty);
 	}
 
-	public static readonly string filePath = Path.Combine(Application.persistentDataPath, "progress.json");
-
-	public void Save()
+	public void Save(string filePath)
 	{
 		using (StreamWriter sw = new StreamWriter(filePath))
 		{
@@ -55,7 +54,7 @@ public class GameProgress
 		Saved = true;
 	}
 
-	public void Load()
+	public void Load(string filePath)
 	{
 		try
 		{
