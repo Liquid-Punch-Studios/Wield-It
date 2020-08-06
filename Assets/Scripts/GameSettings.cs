@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Serialization;
 using System.IO;
 using UnityEngine;
 
 public class GameSettings
 {
 	private bool saved = false;
+	[XmlIgnore]
 	public bool Saved
 	{
 		get { return saved; }
@@ -257,9 +260,10 @@ public class GameSettings
 
 	public void Save(string filePath)
 	{
+		XmlSerializer xs = new XmlSerializer(typeof(GameSettings));
 		using (StreamWriter sw = new StreamWriter(filePath))
 		{
-			sw.Write(JsonUtility.ToJson(this, true));
+			xs.Serialize(sw, this);
 		}
 		Saved = true;
 	}
@@ -268,9 +272,10 @@ public class GameSettings
 	{
 		try
 		{
+			XmlSerializer xs = new XmlSerializer(typeof(GameSettings));
 			using (StreamReader sr = new StreamReader(filePath))
 			{
-				JsonUtility.FromJsonOverwrite(sr.ReadToEnd(), this);
+				xs.Deserialize(sr);
 			}
 			Saved = true;
 		}

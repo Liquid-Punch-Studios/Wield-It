@@ -21,14 +21,8 @@ public class EscapeMenu : MonoBehaviour
     private bool isPlayed = false;
     private Controls controls;
 
-    private GameSettings settings;
-
-    private string[] qualitySteps = { "LOW", "MEDIUM", "HIGH" };
-    private string[] difficultySteps = { "EASY", "MEDIUM", "HARD" };
-
     private void Start()
     {
-        settings = new GameSettings();
         escapeMenu = transform.Find("DarkMask").Find("EscapeMenu").gameObject;
         settingsMenu = transform.Find("DarkMask").Find("Settings").gameObject;
         darkMask = transform.Find("DarkMask").gameObject;
