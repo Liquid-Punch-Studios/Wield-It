@@ -81,11 +81,10 @@ public class MainMenuSelection : MonoBehaviour
                         int clickedLevel;
                         Match m = Regex.Match(objectName, @"\d+");
                         string levelNumber = m.Success ? m.Value : "1";
-                        if (Int32.TryParse(levelNumber,out clickedLevel))
-                        {
-                            if (clickedLevel <= Level.lastLevel)
-                                StartCoroutine(PlayButtonClick(objectName));
-                        }
+                        //if (Int32.TryParse(levelNumber,out clickedLevel))
+                        //{
+                            StartCoroutine(PlayButtonClick(objectName));
+                        //}
                        
                         break;
 
