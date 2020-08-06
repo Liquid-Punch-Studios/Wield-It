@@ -90,23 +90,37 @@ public class SettingsManager : Singleton<SettingsManager>
 		GraphicsApplied = false;
 	}
 
-	private float ToDecibel(float value)
+	private float LinearToDecibel(float linear)
 	{
-		return value * 80 - 80;
+		float dB;
+
+		if (linear != 0)
+			dB = 20.0f * Mathf.Log10(linear);
+		else
+			dB = -144.0f;
+
+		return dB;
+	}
+
+	private float DecibelToLinear(float dB)
+	{
+		float linear = Mathf.Pow(10.0f, dB / 20.0f);
+
+		return linear;
 	}
 
 	private void Settings_MasterSoundChanged(object sender, EventArgs e)
 	{
-		audioMixer.SetFloat("MasterVolume", ToDecibel(Settings.MasterSound));
+		audioMixer.SetFloat("MasterVolume", LinearToDecibel(Settings.MasterSound));
 	}
 
 	private void Settings_EffectsSoundChanged(object sender, EventArgs e)
 	{
-		audioMixer.SetFloat("EffectsVolume", ToDecibel(Settings.EffectsSound));
+		audioMixer.SetFloat("EffectsVolume", LinearToDecibel(Settings.EffectsSound));
 	}
 
 	private void Settings_MusicSoundChanged(object sender, EventArgs e)
 	{
-		audioMixer.SetFloat("MusicVolume", ToDecibel(Settings.MusicSound));
+		audioMixer.SetFloat("MusicVolume", LinearToDecibel(Settings.MusicSound));
 	}
 }
