@@ -40,10 +40,12 @@ public class Health : MonoBehaviour
 			var old = hp;
 			if (old != value)
 			{
-				hp = value;
+				hp = Mathf.Clamp(value, 0, MaxHp);
 				HpChanged?.Invoke(this, EventArgs.Empty);
 				if ((int)old != (int)value)
 					HpIntChanged?.Invoke(this, EventArgs.Empty);
+				if (hp <= 0)
+					Died?.Invoke(this, EventArgs.Empty);
 			}
 		}
 	}
