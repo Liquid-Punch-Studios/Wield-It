@@ -50,7 +50,14 @@ public class SettingsManager : Singleton<SettingsManager>
 		}
 	}
 
-	private void OnDestroy()
+    private void Start()
+    {
+		audioMixer.SetFloat("MasterVolume", LinearToDecibel(Settings.MasterSound));
+		audioMixer.SetFloat("EffectsVolume", LinearToDecibel(Settings.EffectsSound));
+		audioMixer.SetFloat("MusicVolume", LinearToDecibel(Settings.MusicSound));
+	}
+
+    private void OnDestroy()
 	{
 		Settings.Save(FilePath);
 		Debug.Log("Saved settings to " + FilePath);

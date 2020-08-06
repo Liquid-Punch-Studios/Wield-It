@@ -23,15 +23,15 @@ public class LevelChanger : MonoBehaviour
     public void LoadNextLevel()
     {
         int level = SceneManager.GetActiveScene().buildIndex;
-        if (level < Level.levelCount)
-        {
-            Level.NextLevel(level);
-            levelToLoad = level + 1;
-        }
+        
+        if (level == SceneManager.sceneCountInBuildSettings - 1 )
+            levelToLoad = 0;
         else
         {
-            levelToLoad = 0;
+            ProgressManager.Instance.Progress.CompleteLevel(level, SettingsManager.Instance.Settings.Difficulty);
+            levelToLoad = level + 1;
         }
+        
         anim.SetTrigger("fadeOut");
     }
 
