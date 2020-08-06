@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
+	public GameSettings settings;
+
 	public GameObject player;
 	public GameObject weapon;
 	public GameObject hand;
 
-	public GameObject death;
+	public GameObject deadPlayerPrefab;
 
 	public Controls controls;
 
@@ -39,16 +41,50 @@ public class GameManager : MonoBehaviour
 		if (controls == null)
 			controls = new Controls();
 		controls.Enable();
+
+		SceneManager.sceneLoaded		+= SceneManager_sceneLoaded;
+		SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
 	}
 
 	private void OnDisable()
 	{
+		SceneManager.activeSceneChanged	-= SceneManager_activeSceneChanged;
+		SceneManager.sceneLoaded		-= SceneManager_sceneLoaded;
+		
 		controls.Disable();
 	}
 
-	private void Start()
+	private void SceneManager_activeSceneChanged(Scene current, Scene next)
 	{
+		Debug.Log($"Scene Changed: {current.name} => {next.name}");
+
+		player = null;
+		weapon = null;
+
+		playerHealth = null;
+
+		playerStamina = null;
+		playerMovement = null;
+		playerRb = null;
+		spawnPoint = Vector3.zero;
+
+		weaponRb = null;
+		weaponJoint = null;
+		weaponPosition = Vector3.zero;
+		weaponRotation = Quaternion.identity;
+
+		handRb = null;
+	}
+
+	private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode mode)
+	{
+		Debug.Log($"Scene Loaded: {scene.name}\n    handle: {scene.handle}\n    index: {scene.buildIndex}\n    path: {scene.path}");
+
+		player = GameObject.FindGameObjectWithTag("Player");
+		weapon = GameObject.FindGameObjectWithTag("MainWeapon");
+		
 		playerHealth = player.GetComponent<Health>();
+		
 		playerStamina = player.GetComponent<Stamina>();
 		playerMovement = player.GetComponent<Movement>();
 		playerRb = player.GetComponent<Rigidbody>();
@@ -62,14 +98,18 @@ public class GameManager : MonoBehaviour
 		handRb = hand.GetComponent<Rigidbody>();
 	}
 
+	private void Start()
+	{
+	}
+
 	private void FixedUpdate()
 	{
-		if (playerHealth.Hp == 0)
+		if (playerHealth != null && playerHealth.Hp == 0)
 		{
 			if (player.activeSelf)
 			{
 				player.SetActive(false);
-				var body = Instantiate(death);
+				var body = Instantiate(deadPlayerPrefab);
 				body.transform.SetPositionAndRotation(player.transform.position, player.transform.rotation);
 
 				foreach (Rigidbody rb in body.GetComponentsInChildren<Rigidbody>())
@@ -83,7 +123,7 @@ public class GameManager : MonoBehaviour
 			}
 			else if (controls.Player.Angle.triggered)
 			{
-				playerHealth.Hp = playerHealth.maxHp;
+				playerHealth.Hp = playerHealth.MaxHp;
 				playerStamina.sp = playerStamina.maxSp;
 				playerRb.velocity = Vector3.zero;
 				playerRb.angularVelocity = Vector3.zero;

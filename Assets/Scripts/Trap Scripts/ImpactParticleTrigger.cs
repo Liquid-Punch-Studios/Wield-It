@@ -5,12 +5,12 @@ using UnityEngine;
 public class ImpactParticleTrigger : MonoBehaviour
 {
 	public ParticleSystem particle;
-	public AudioPlayer audio;
+	public AudioPlayer audioPlayer;
 
 	public void Trigger()
 	{
 		particle.Play(true);
-		if(audio != null)
-			audio.PlayRandom();
+		if(audioPlayer != null)
+			audioPlayer.PlayRandom();
 	}
 }

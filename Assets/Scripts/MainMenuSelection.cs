@@ -247,8 +247,8 @@ public class MainMenuSelection : MonoBehaviour
                         chainSounds.PlayRandom();
                 }
 
-                if (settingsOn)
-                    SaveSystem.SaveSettings(this);
+                //if (settingsOn)
+                //    SaveSystem.SaveSettings(this);
             }
         }
 
@@ -318,80 +318,80 @@ public class MainMenuSelection : MonoBehaviour
 
     public void Load()
     {
-        if (File.Exists(SaveSystem.levelPath))
-        {
-            SaveSystem.LoadLastLevel();
-        }
-        else
-        {
-            SaveSystem.SaveLastLevel();
-        }
+        //if (File.Exists(SaveSystem.levelPath))
+        //{
+        //    SaveSystem.LoadLastLevel();
+        //}
+        //else
+        //{
+        //    SaveSystem.SaveLastLevel();
+        //}
 
-        if (File.Exists(SaveSystem.settingsPath))
-        {
-            SettingsData data = SaveSystem.LoadSettings();
-            Difficulty = data.difficultyVal;
-            Quality = data.qualityVal;
-            MusicVal = data.musicVal;
-            previousMusicVal = data.musicVal;
-            MusicMuted = data.musicMuted;
-            SoundVal = data.soundVal;
-            previousSoundVal = data.soundVal;
-            SoundMuted = data.soundMuted;
-            Violence = data.violence;
-            Sensitivity = data.sensitivity;
-        }
-        else
-        {
-            Difficulty = 1;
-            Quality = 1;
-            MusicVal = 100;
-            previousMusicVal = MusicVal;
-            MusicMuted = false;
-            SoundVal = 100;
-            previousSoundVal = SoundVal;
-            SoundMuted = false;
-            Violence = false;
-            Sensitivity = 50;
-            Level.lastLevel = 1;
-            SaveSystem.SaveSettings(this);
-        }
-        GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = difficultySteps[Difficulty];
-        GameObject.Find("QualityVal").GetComponent<TextMeshPro>().text = qualitySteps[Quality];
+        //if (File.Exists(SaveSystem.settingsPath))
+        //{
+        //    GameSettings data = SaveSystem.LoadSettings();
+        //    Difficulty = data.difficultyVal;
+        //    Quality = data.qualityVal;
+        //    MusicVal = data.musicVal;
+        //    previousMusicVal = data.musicVal;
+        //    MusicMuted = data.musicMuted;
+        //    SoundVal = data.soundVal;
+        //    previousSoundVal = data.soundVal;
+        //    SoundMuted = data.effectsMuted;
+        //    Violence = data.violence;
+        //    Sensitivity = data.sensitivity;
+        //}
+        //else
+        //{
+        //    Difficulty = 1;
+        //    Quality = 1;
+        //    MusicVal = 100;
+        //    previousMusicVal = MusicVal;
+        //    MusicMuted = false;
+        //    SoundVal = 100;
+        //    previousSoundVal = SoundVal;
+        //    SoundMuted = false;
+        //    Violence = false;
+        //    Sensitivity = 50;
+        //    Level.lastLevel = 1;
+        //    SaveSystem.SaveSettings(this);
+        //}
+        //GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = difficultySteps[Difficulty];
+        //GameObject.Find("QualityVal").GetComponent<TextMeshPro>().text = qualitySteps[Quality];
 
-        GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "%" + MusicVal;
-        if (MusicMuted)
-            GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "Muted";
-        UpdateMusicVolume(MusicVal);
+        //GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "%" + MusicVal;
+        //if (MusicMuted)
+        //    GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "Muted";
+        //UpdateMusicVolume(MusicVal);
 
-        GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "%" + SoundVal;
-        if (SoundMuted)
-            GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "Muted";
-        UpdateSoundVolume(SoundVal);
+        //GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "%" + SoundVal;
+        //if (SoundMuted)
+        //    GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "Muted";
+        //UpdateSoundVolume(SoundVal);
 
-        GameObject.Find("ViolenceVal").GetComponent<TextMeshPro>().text = Violence ? "ON" : "OFF";
-        GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>().text = "%" + Sensitivity;
+        //GameObject.Find("ViolenceVal").GetComponent<TextMeshPro>().text = Violence ? "ON" : "OFF";
+        //GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>().text = "%" + Sensitivity;
 
 
-        GameObject[] levelLogs = new GameObject[Level.levelCount];
+        //GameObject[] levelLogs = new GameObject[Level.levelCount];
 
-        for (int i = 0; i< Level.levelCount; i++)
-        {
-            levelLogs[i] = GameObject.Find("Demo" + (i+1).ToString());
-            TextMeshPro text = levelLogs[i].GetComponentInChildren<TextMeshPro>();
-            if (i <= Level.lastLevel - 1)
-            {
-                levelLogs[i].GetComponent<MeshRenderer>().material = wood;
-                text.color = new Color(1, 1, 1);
-            }
+        //for (int i = 0; i< Level.levelCount; i++)
+        //{
+        //    levelLogs[i] = GameObject.Find("Demo" + (i+1).ToString());
+        //    TextMeshPro text = levelLogs[i].GetComponentInChildren<TextMeshPro>();
+        //    if (i <= Level.lastLevel - 1)
+        //    {
+        //        levelLogs[i].GetComponent<MeshRenderer>().material = wood;
+        //        text.color = new Color(1, 1, 1);
+        //    }
 
-            else
-            {
-                levelLogs[i].GetComponent<MeshRenderer>().material = darkWood;
-                text.color = new Color(0.35f, 0.35f, 0.35f);
-            }
+        //    else
+        //    {
+        //        levelLogs[i].GetComponent<MeshRenderer>().material = darkWood;
+        //        text.color = new Color(0.35f, 0.35f, 0.35f);
+        //    }
                 
-        }
+        //}
     }
 
 }

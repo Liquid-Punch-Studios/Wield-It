@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 [SelectionBase]
 public class PlayerController : MonoBehaviour
 {
+	private GameManager game;
+	private SettingsManager settings;
+
 	private Health health;
 	private Stamina stamina;
 	private Handler handler;
@@ -29,6 +32,9 @@ public class PlayerController : MonoBehaviour
 	// Start is called before the first frame update
 	private void Start()
 	{
+		game = GameObject.FindObjectOfType<GameManager>();
+		settings = GameObject.FindObjectOfType<SettingsManager>();
+
 		health = GetComponent<Health>();
 		stamina = GetComponent<Stamina>();
 		handler = GetComponent<Handler>();

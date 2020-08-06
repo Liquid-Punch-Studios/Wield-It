@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224ea3ee2d59ac240b5862a150479b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioType: 1
   audioList:
   - {fileID: 5429983884881266633}
   - {fileID: 2138364898162381309}
@@ -679,7 +678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224ea3ee2d59ac240b5862a150479b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioType: 1
   audioList:
   - {fileID: 5885716495291495084}
   - {fileID: 3885848951877611374}
@@ -731,7 +729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224ea3ee2d59ac240b5862a150479b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioType: 1
   audioList:
   - {fileID: 3452478677345598308}
   - {fileID: 4240972771703690008}
@@ -1290,11 +1287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02d7da2edddf1443b89caf302561153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
-  hpRegen: 0
-  image: {fileID: 0}
-  text: {fileID: 0}
-  format: '{0:F0}'
 --- !u!114 &7041604921001397263
 MonoBehaviour:
   m_ObjectHideFlags: 0
