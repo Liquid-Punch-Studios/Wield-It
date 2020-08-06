@@ -127,7 +127,7 @@ public class GameSettings
 			var old = masterVolume;
 			if (old != value)
 			{
-				masterVolume = value;
+				masterVolume = Mathf.Clamp(value, 0f, 1f);
 				Saved = false;
 				MasterVolumeChanged?.Invoke(this, EventArgs.Empty);
 				MasterSoundChanged?.Invoke(this, EventArgs.Empty);
@@ -167,7 +167,7 @@ public class GameSettings
 			var old = effectsVolume;
 			if (old != value)
 			{
-				effectsVolume = value;
+				effectsVolume = Mathf.Clamp(value, 0f, 1f);
 				Saved = false;
 				EffectsVolumeChanged?.Invoke(this, EventArgs.Empty);
 				EffectsSoundChanged?.Invoke(this, EventArgs.Empty);
@@ -207,7 +207,7 @@ public class GameSettings
 			var old = musicVolume;
 			if (old != value)
 			{
-				musicVolume = value;
+				musicVolume = Mathf.Clamp(value, 0f, 1f);
 				Saved = false;
 				MusicVolumeChanged?.Invoke(this, EventArgs.Empty);
 				MusicSoundChanged?.Invoke(this, EventArgs.Empty);
@@ -249,7 +249,7 @@ public class GameSettings
 			var old = sensitivity;
 			if (old != value)
 			{
-				sensitivity = value;
+				sensitivity = Mathf.Clamp(value, 0.25f, 4f);
 				Saved = false;
 				SensitivityChanged?.Invoke(this, EventArgs.Empty);
 			}
