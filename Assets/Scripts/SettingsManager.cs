@@ -31,7 +31,10 @@ public class SettingsManager : Singleton<SettingsManager>
 	{
 		FilePath = Path.Combine(Application.persistentDataPath, "settings.xml");
 		if (File.Exists(FilePath))
-			Settings.Load(FilePath);
+		{
+			Settings = GameSettings.Load(FilePath);
+			Debug.Log("Loaded settings from " + FilePath);
+		}
 	}
 
 	private void OnDestroy()
@@ -76,18 +79,23 @@ public class SettingsManager : Singleton<SettingsManager>
 		GraphicsApplied = false;
 	}
 
+	private float ToDecibel(float value)
+	{
+		return value * 80 - 80;
+	}
+
 	private void Settings_MasterSoundChanged(object sender, EventArgs e)
 	{
-		audioMixer.SetFloat("MasterVolume", Settings.MasterSound);
+		audioMixer.SetFloat("MasterVolume", ToDecibel(Settings.MasterSound));
 	}
 
 	private void Settings_EffectsSoundChanged(object sender, EventArgs e)
 	{
-		audioMixer.SetFloat("EffectsVolume", Settings.EffectsSound);
+		audioMixer.SetFloat("EffectsVolume", ToDecibel(Settings.EffectsSound));
 	}
 
 	private void Settings_MusicSoundChanged(object sender, EventArgs e)
 	{
-		audioMixer.SetFloat("MusicVolume", Settings.MusicSound);
+		audioMixer.SetFloat("MusicVolume", ToDecibel(Settings.MusicSound));
 	}
 }

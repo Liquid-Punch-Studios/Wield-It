@@ -268,21 +268,14 @@ public class GameSettings
 		Saved = true;
 	}
 
-	public void Load(string filePath)
+	public static GameSettings Load(string filePath)
 	{
-		try
+		XmlSerializer xs = new XmlSerializer(typeof(GameSettings));
+		using (StreamReader sr = new StreamReader(filePath))
 		{
-			XmlSerializer xs = new XmlSerializer(typeof(GameSettings));
-			using (StreamReader sr = new StreamReader(filePath))
-			{
-				xs.Deserialize(sr);
-			}
-			Saved = true;
-		}
-		catch (Exception)
-		{
-			Saved = false;
-			throw;
+			var obj = (GameSettings)xs.Deserialize(sr);
+			obj.saved = true;
+			return obj;
 		}
 	}
 }
