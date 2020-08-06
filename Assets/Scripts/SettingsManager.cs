@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class SettingsManager : Singleton<SettingsManager>
 
 	public AudioMixer audioMixer;
 
-	public static string FilePath { get; private set; }
+	public string FilePath { get; private set; }
 
 	public void ApplyGraphics()
 	{
@@ -37,7 +38,8 @@ public class SettingsManager : Singleton<SettingsManager>
 
 	private void OnEnable()
 	{
-		Settings.Load(FilePath);
+		if (File.Exists(FilePath))
+			Settings.Load(FilePath);
 
 		Settings.GraphicsQualityChanged += Settings_GraphicsQualityChanged;
 		Settings.GraphicsQualityChanged += Settings_GraphicsChanged;
