@@ -13,8 +13,9 @@ public class HUD : MonoBehaviour
 
 	private void Start()
 	{
-		health = GameManager.Instance.player.GetComponent<Health>();
-		stamina = GameManager.Instance.player.GetComponent<Stamina>();
+		var player = GameObject.FindGameObjectWithTag("Player");
+		health = player.GetComponent<Health>();
+		stamina = player.GetComponent<Stamina>();
 	}
 
 	private void OnEnable()
