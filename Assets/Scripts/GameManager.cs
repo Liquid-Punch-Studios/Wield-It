@@ -124,7 +124,7 @@ public class GameManager : Singleton<GameManager>
 			else if (controls.Player.Angle.triggered)
 			{
 				playerHealth.Hp = playerHealth.MaxHp;
-				playerStamina.sp = playerStamina.maxSp;
+				playerStamina.Sp = playerStamina.MaxSp;
 				playerRb.velocity = Vector3.zero;
 				playerRb.angularVelocity = Vector3.zero;
 				player.transform.localPosition = spawnPoint;
