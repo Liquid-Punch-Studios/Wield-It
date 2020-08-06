@@ -11,7 +11,7 @@ public class Stamina : MonoBehaviour
 	/// Max Stamina
 	/// </summary>
 	[SerializeField]
-	public float maxSp = 100;
+	private float maxSp = 100;
 	public float MaxSp
 	{
 		get { return maxSp; }
@@ -31,7 +31,7 @@ public class Stamina : MonoBehaviour
 	/// Current Stamina
 	/// </summary>
 	[SerializeField]
-	public float sp = 100;
+	private float sp = 100;
 	public float Sp
 	{
 		get { return sp; }
@@ -54,7 +54,7 @@ public class Stamina : MonoBehaviour
 	/// Stamina regeneration per second
 	/// </summary>
 	[SerializeField]
-	public float spRegen = 50f;
+	private float spRegen = 50f;
 	public float SpRegen
 	{
 		get { return spRegen; }
@@ -74,7 +74,7 @@ public class Stamina : MonoBehaviour
 	/// Stamina regeneration per second while not on ground
 	/// </summary>
 	[SerializeField]
-	public float spRegenAir = 25f;
+	private float spRegenAir = 25f;
 	public float SpRegenAir
 	{
 		get { return spRegenAir; }

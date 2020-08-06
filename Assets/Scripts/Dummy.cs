@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dummy : Health
+public class Dummy : MonoBehaviour
 {
 	public Animator animator;
 
