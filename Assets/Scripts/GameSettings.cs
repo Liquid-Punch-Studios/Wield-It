@@ -284,8 +284,7 @@ public class GameSettings
 
 public enum Difficulty
 {
-	Easy = -1,
-	Normal = 0,
-	Hard = 1,
-	Master = 2,
+	Easy,
+	Normal,
+	Hard,
 }
