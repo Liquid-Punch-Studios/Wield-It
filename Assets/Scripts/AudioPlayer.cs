@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 public class AudioPlayer : MonoBehaviour
 {
 	public AudioSource[] audioList;
+
 	public bool playOnAwake = false;
 
 	public event System.EventHandler<int> AudioPlaying;
@@ -16,7 +17,7 @@ public class AudioPlayer : MonoBehaviour
 			PlayRandom();
 	}
 
-    public void PlayRandom()
+	public void PlayRandom()
 	{
 		int index = Random.Range(0, audioList.Length);
 		var audio = audioList[index];

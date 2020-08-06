@@ -50,6 +50,8 @@ public class Health : MonoBehaviour
 	public event EventHandler HpChanged;
 	public event EventHandler HpIntChanged;
 
+	public event EventHandler Died;
+
 	/// <summary>
 	/// Format to use while updating the text element
 	/// </summary>

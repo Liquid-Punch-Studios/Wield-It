@@ -39,7 +39,7 @@ public class MainMenuSelection : MonoBehaviour
 
     private void Start()
     {
-        
+        Load();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         woodSounds = GameObject.Find("WoodImpact").GetComponent<AudioPlayer>();
@@ -232,7 +232,6 @@ public class MainMenuSelection : MonoBehaviour
 
     private void OnEnable()
     {
-        Load();
         if (cont == null)
             cont = new Controls();
         cont.Enable();

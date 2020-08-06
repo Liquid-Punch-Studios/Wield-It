@@ -29,17 +29,19 @@ public class SettingsManager : Singleton<SettingsManager>
 
 	private void Awake()
 	{
-		FilePath = Path.Combine(Application.persistentDataPath, "settings.json");
+		FilePath = Path.Combine(Application.persistentDataPath, "settings.xml");
+		if (File.Exists(FilePath))
+			Settings.Load(FilePath);
 	}
-	
+
 	private void OnDestroy()
 	{
+		Settings.Save(FilePath);
+		Debug.Log("Saved settings to " + FilePath);
 	}
 
 	private void OnEnable()
 	{
-		if (File.Exists(FilePath))
-			Settings.Load(FilePath);
 		Settings.GraphicsQuality = QualitySettings.GetQualityLevel();
 
 		Settings.GraphicsQualityChanged += Settings_GraphicsQualityChanged;
@@ -54,9 +56,6 @@ public class SettingsManager : Singleton<SettingsManager>
 
 	private void OnDisable()
 	{
-		Settings.Save(FilePath);
-		Debug.Log("Saved settings to " + FilePath);
-
 		Settings.MusicSoundChanged		-= Settings_MusicSoundChanged;
 		Settings.EffectsSoundChanged	-= Settings_EffectsSoundChanged;
 		Settings.MasterSoundChanged		-= Settings_MasterSoundChanged;
