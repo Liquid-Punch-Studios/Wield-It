@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 public class MainMenuSelection : MonoBehaviour
 {
@@ -22,33 +23,6 @@ public class MainMenuSelection : MonoBehaviour
     public float scrollMin;
     public float scrollTop;
 
-    private int quality;
-    public int Quality { get { return quality; } set { quality = value; } }
-
-    private int difficulty;
-    public int Difficulty { get { return difficulty; } set { difficulty = value; } }
-
-    private bool musicMuted;
-    public bool MusicMuted { get { return musicMuted; } set { musicMuted = value; } }
-
-    private int previousMusicVal;
-    private int musicVal;
-    public int MusicVal { get { return musicVal; } set { musicVal = value; } }
-
-    private int previousSoundVal;
-    private bool soundMuted;
-    public bool SoundMuted { get { return soundMuted; } set { soundMuted = value; } }
-
-    private int soundVal;
-    public int SoundVal { get { return soundVal; } set { soundVal = value; } }
-
-    private bool violence;
-    public bool Violence { get { return violence; } set { violence = value; } }
-
-    private int sensitivity;
-    public int Sensitivity { get { return sensitivity; } set { sensitivity = value; } }
-
-
     private Vector3 velocity;
 
     private bool settingsOn = false;
@@ -61,20 +35,17 @@ public class MainMenuSelection : MonoBehaviour
     public AudioPlayer musics;
     private AudioPlayer woodSounds;
     private AudioPlayer chainSounds;
-
-    private string[] qualitySteps = { "LOW", "MEDIUM", "HIGH" };
-
-    private string[] difficultySteps = { "EASY", "MEDIUM", "HARD" };
+    
 
     private void Start()
     {
+        
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         woodSounds = GameObject.Find("WoodImpact").GetComponent<AudioPlayer>();
         chainSounds = GameObject.Find("ChainImpact").GetComponent<AudioPlayer>();
         scrollPosition = scrollTop;
         cameraAnim = gameObject.GetComponent<Animator>();
-        Load();
     }
 
     void FixedUpdate()
@@ -96,6 +67,7 @@ public class MainMenuSelection : MonoBehaviour
                 string objectName = hit.collider.gameObject.name;
                 //Debug.Log(objectName);
                 TextMeshPro textComponent;
+                var settings = SettingsManager.Instance.Settings;
                 switch (objectName)
                 {
                     case "Play":
@@ -134,107 +106,76 @@ public class MainMenuSelection : MonoBehaviour
                     case "Exit":
                         StartCoroutine(ExitButtonClick());
                         break;
+                        /*
+                                            case "Violence":
+                                                textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
+                                                SettingsManager.Instance.Settings.Violence = !SettingsManager.Instance.Settings.Violence;
 
-                    case "Violence":
-                        textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
-                        violence = !violence;
-
-                        textComponent.text = Violence ? "ON" : "OFF";
-                        break;
+                                                textComponent.text = Violence ? "ON" : "OFF";
+                                                break;*/
 
                     case "Quality":
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
-                        quality = quality < qualitySteps.Length -1 ? quality + 1 : 0;
-
-                        textComponent.text = qualitySteps[Quality];
+                        settings.GraphicsQuality = (settings.GraphicsQuality + 1) % QualitySettings.names.Length;
+                        textComponent.text = QualitySettings.names[settings.GraphicsQuality];
                         break;
 
                     case "Difficulty":
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
-                        difficulty = difficulty < difficultySteps.Length - 1 ? difficulty + 1 : 0;
-
-                        textComponent.text = difficultySteps[Difficulty];
+                        settings.Difficulty = (Difficulty)((int)(settings.Difficulty + 1) % Enum.GetNames(typeof(Difficulty)).Length);
+                        textComponent.text = settings.Difficulty.ToString();
                         break;
 
                     case "Music":
-                        MusicMuted = !MusicMuted;
-                        if (MusicMuted)
-                        {
-                            previousMusicVal = MusicVal;
-                            MusicVal = 0;
-                        }
-                        else
-                            MusicVal = previousSoundVal;
-                        MusicVal = MusicMuted ? 0 : previousMusicVal;
+                        settings.MusicMuted = !settings.MusicMuted;
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
-                        textComponent.text = MusicMuted ? "Muted" : "%" + musicVal;
-                        UpdateMusicVolume(MusicVal);
+                        textComponent.text = settings.MusicMuted ? "Muted" : "%" + Mathf.Round(settings.MusicVolume * 100);
                         break;
 
                     case "MusicPlus":
-                        MusicMuted = false;
-                        MusicVal = previousMusicVal;
-                        MusicVal = MusicVal < 100 ? (MusicMuted ? previousMusicVal + 10 : MusicVal + 10) : 100;
-                        previousMusicVal = MusicVal;
+                        settings.MusicMuted = false;
+                        settings.MusicVolume = settings.MusicVolume < 1 ? settings.MusicVolume + 0.1f : 1;
                         textComponent = GameObject.Find("MusicVal").GetComponent<TextMeshPro>();
-                        textComponent.text = "%" + MusicVal;
-                        UpdateMusicVolume(musicVal);
+                        textComponent.text = "%" + Mathf.Round(settings.MusicVolume * 100);
                         break;
 
                     case "MusicMinus":
-                        MusicMuted = false;
-                        MusicVal = previousMusicVal;
-                        MusicVal = MusicVal > 0 ? (MusicMuted ? previousMusicVal - 10 : MusicVal - 10) : 0;
-                        previousMusicVal = MusicVal;
+                        settings.MusicMuted = false;
+                        settings.MusicVolume = settings.MusicVolume > 0 ? settings.MusicVolume - 0.1f : 0;
                         textComponent = GameObject.Find("MusicVal").GetComponent<TextMeshPro>();
-                        textComponent.text = "%" + MusicVal;
-                        UpdateMusicVolume(musicVal);
+                        textComponent.text = "%" + Mathf.Round(settings.MusicVolume * 100);
                         break;
 
                     case "Sound":
-                        SoundMuted = !SoundMuted;
-                        if (SoundMuted)
-                        {
-                            previousSoundVal = SoundVal;
-                            SoundVal = 0;
-                        }
-                        else
-                            SoundVal = previousSoundVal;
+                        settings.EffectsMuted = !settings.EffectsMuted;
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
-                        textComponent.text = SoundMuted ? "Muted" : "%" + SoundVal;
-                        UpdateSoundVolume(SoundVal);
+                        textComponent.text = settings.EffectsMuted ? "Muted" : "%" + Mathf.Round(settings.EffectsVolume * 100);
                         break;
 
                     case "SoundPlus":
-                        SoundVal = previousSoundVal;
-                        SoundMuted = false;
-                        SoundVal = SoundVal < 100 ? (SoundMuted ? previousSoundVal + 10 : SoundVal + 10) : 100;
-                        previousSoundVal = SoundVal;
+                        settings.EffectsMuted = false;
+                        settings.EffectsVolume = settings.EffectsVolume < 1 ? settings.EffectsVolume + 0.1f : 1;
                         textComponent = GameObject.Find("SoundVal").GetComponent<TextMeshPro>();
-                        textComponent.text = "%" + SoundVal;
-                        UpdateSoundVolume(SoundVal);
+                        textComponent.text = "%" + Mathf.Round(settings.EffectsVolume * 100);
                         break;
 
                     case "SoundMinus":
-                        SoundMuted = false;
-                        SoundVal = previousSoundVal;
-                        SoundVal = SoundVal > 0 ? (SoundMuted ? previousSoundVal - 10 : SoundVal - 10) : 0;
-                        previousSoundVal = SoundVal;
+                        settings.EffectsMuted = false;
+                        settings.EffectsVolume = settings.EffectsVolume > 0 ? settings.EffectsVolume - 0.1f : 0;
                         textComponent = GameObject.Find("SoundVal").GetComponent<TextMeshPro>();
-                        textComponent.text = "%" + SoundVal;
-                        UpdateSoundVolume(SoundVal);
+                        textComponent.text = "%" + Mathf.Round(settings.EffectsVolume * 100);
                         break;
 
                     case "SensitivityPlus":
-                        Sensitivity = sensitivity < 100 ? sensitivity + 10 : 100;
+                        settings.Sensitivity = settings.Sensitivity < 1 ? settings.Sensitivity + 0.1f : 1;
                         textComponent = GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>();
-                        textComponent.text = "%" + Sensitivity;
+                        textComponent.text = settings.Sensitivity.ToString("F2", CultureInfo.InvariantCulture);
                         break;
 
                     case "SensitivityMinus":
-                        Sensitivity = sensitivity > 0 ? sensitivity - 10 : 0;
+                        settings.Sensitivity = settings.Sensitivity > 0 ? settings.Sensitivity - 0.1f : 0;
                         textComponent = GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>();
-                        textComponent.text = "%" + Sensitivity;
+                        textComponent.text = settings.Sensitivity.ToString("F2", CultureInfo.InvariantCulture);
                         break;
                 }
 
@@ -291,6 +232,7 @@ public class MainMenuSelection : MonoBehaviour
 
     private void OnEnable()
     {
+        Load();
         if (cont == null)
             cont = new Controls();
         cont.Enable();
@@ -318,80 +260,21 @@ public class MainMenuSelection : MonoBehaviour
 
     public void Load()
     {
-        //if (File.Exists(SaveSystem.levelPath))
-        //{
-        //    SaveSystem.LoadLastLevel();
-        //}
-        //else
-        //{
-        //    SaveSystem.SaveLastLevel();
-        //}
+        var settings = SettingsManager.Instance.Settings;
 
-        //if (File.Exists(SaveSystem.settingsPath))
-        //{
-        //    GameSettings data = SaveSystem.LoadSettings();
-        //    Difficulty = data.difficultyVal;
-        //    Quality = data.qualityVal;
-        //    MusicVal = data.musicVal;
-        //    previousMusicVal = data.musicVal;
-        //    MusicMuted = data.musicMuted;
-        //    SoundVal = data.soundVal;
-        //    previousSoundVal = data.soundVal;
-        //    SoundMuted = data.effectsMuted;
-        //    Violence = data.violence;
-        //    Sensitivity = data.sensitivity;
-        //}
-        //else
-        //{
-        //    Difficulty = 1;
-        //    Quality = 1;
-        //    MusicVal = 100;
-        //    previousMusicVal = MusicVal;
-        //    MusicMuted = false;
-        //    SoundVal = 100;
-        //    previousSoundVal = SoundVal;
-        //    SoundMuted = false;
-        //    Violence = false;
-        //    Sensitivity = 50;
-        //    Level.lastLevel = 1;
-        //    SaveSystem.SaveSettings(this);
-        //}
-        //GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = difficultySteps[Difficulty];
-        //GameObject.Find("QualityVal").GetComponent<TextMeshPro>().text = qualitySteps[Quality];
+        GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = settings.Difficulty.ToString();
+        GameObject.Find("QualityVal").GetComponent<TextMeshPro>().text = QualitySettings.names[settings.GraphicsQuality];
 
-        //GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "%" + MusicVal;
-        //if (MusicMuted)
-        //    GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "Muted";
-        //UpdateMusicVolume(MusicVal);
+        GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text  = "%" + Mathf.Round(settings.MusicVolume * 100);
+        if (settings.MusicMuted)
+            GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "Muted";
 
-        //GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "%" + SoundVal;
-        //if (SoundMuted)
-        //    GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "Muted";
-        //UpdateSoundVolume(SoundVal);
+        GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "%" + Mathf.Round(settings.EffectsVolume * 100);
+        if (settings.EffectsMuted)
+            GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "Muted";
 
-        //GameObject.Find("ViolenceVal").GetComponent<TextMeshPro>().text = Violence ? "ON" : "OFF";
-        //GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>().text = "%" + Sensitivity;
+        GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>().text = settings.Sensitivity.ToString("F2", CultureInfo.InvariantCulture);
 
-
-        //GameObject[] levelLogs = new GameObject[Level.levelCount];
-
-        //for (int i = 0; i< Level.levelCount; i++)
-        //{
-        //    levelLogs[i] = GameObject.Find("Demo" + (i+1).ToString());
-        //    TextMeshPro text = levelLogs[i].GetComponentInChildren<TextMeshPro>();
-        //    if (i <= Level.lastLevel - 1)
-        //    {
-        //        levelLogs[i].GetComponent<MeshRenderer>().material = wood;
-        //        text.color = new Color(1, 1, 1);
-        //    }
-
-        //    else
-        //    {
-        //        levelLogs[i].GetComponent<MeshRenderer>().material = darkWood;
-        //        text.color = new Color(0.35f, 0.35f, 0.35f);
-        //    }
-                
-        //}
     }
 
 }

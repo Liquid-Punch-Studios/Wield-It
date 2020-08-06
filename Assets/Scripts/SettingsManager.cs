@@ -40,6 +40,7 @@ public class SettingsManager : Singleton<SettingsManager>
 	{
 		if (File.Exists(FilePath))
 			Settings.Load(FilePath);
+		Settings.GraphicsQuality = QualitySettings.GetQualityLevel();
 
 		Settings.GraphicsQualityChanged += Settings_GraphicsQualityChanged;
 		Settings.GraphicsQualityChanged += Settings_GraphicsChanged;
