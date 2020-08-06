@@ -48,6 +48,9 @@ public class MainMenuSelection : MonoBehaviour
         cameraAnim = gameObject.GetComponent<Animator>();
     }
 
+    float AddPercent(float value, int percent) => (Mathf.RoundToInt(value * 100) + percent) / 100f;
+    int GetPercent(float value) => Mathf.RoundToInt(value * 100);
+
     void FixedUpdate()
     {
         if (creditsOn && (Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame))
@@ -134,14 +137,14 @@ public class MainMenuSelection : MonoBehaviour
 
                     case "MusicPlus":
                         settings.MusicMuted = false;
-                        settings.MusicVolume = settings.MusicVolume < 1 ? settings.MusicVolume + 0.1f : 1;
+                        settings.MusicVolume = AddPercent(settings.MusicVolume, 10);
                         textComponent = GameObject.Find("MusicVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + Mathf.Round(settings.MusicVolume * 100);
                         break;
 
                     case "MusicMinus":
                         settings.MusicMuted = false;
-                        settings.MusicVolume = settings.MusicVolume > 0 ? settings.MusicVolume - 0.1f : 0;
+                        settings.MusicVolume = AddPercent(settings.MusicVolume, -10);
                         textComponent = GameObject.Find("MusicVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + Mathf.Round(settings.MusicVolume * 100);
                         break;
@@ -154,26 +157,26 @@ public class MainMenuSelection : MonoBehaviour
 
                     case "SoundPlus":
                         settings.EffectsMuted = false;
-                        settings.EffectsVolume = settings.EffectsVolume < 1 ? settings.EffectsVolume + 0.1f : 1;
+                        settings.EffectsVolume = AddPercent(settings.EffectsVolume, 10);
                         textComponent = GameObject.Find("SoundVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + Mathf.Round(settings.EffectsVolume * 100);
                         break;
 
                     case "SoundMinus":
                         settings.EffectsMuted = false;
-                        settings.EffectsVolume = settings.EffectsVolume > 0 ? settings.EffectsVolume - 0.1f : 0;
+                        settings.EffectsVolume = AddPercent(settings.EffectsVolume, -10);
                         textComponent = GameObject.Find("SoundVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + Mathf.Round(settings.EffectsVolume * 100);
                         break;
 
                     case "SensitivityPlus":
-                        settings.Sensitivity = settings.Sensitivity < 1 ? settings.Sensitivity + 0.1f : 1;
+                        settings.Sensitivity = AddPercent(settings.Sensitivity, 5);
                         textComponent = GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>();
                         textComponent.text = settings.Sensitivity.ToString("F2", CultureInfo.InvariantCulture);
                         break;
 
                     case "SensitivityMinus":
-                        settings.Sensitivity = settings.Sensitivity > 0 ? settings.Sensitivity - 0.1f : 0;
+                        settings.Sensitivity = AddPercent(settings.Sensitivity, -5);
                         textComponent = GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>();
                         textComponent.text = settings.Sensitivity.ToString("F2", CultureInfo.InvariantCulture);
                         break;
