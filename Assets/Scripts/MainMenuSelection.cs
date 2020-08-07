@@ -31,6 +31,7 @@ public class MainMenuSelection : MonoBehaviour
     private Controls cont;
     private Animator cameraAnim;
     private float scrollPosition;
+    private bool prevSettings = false;
 
     public AudioPlayer musics;
     private AudioPlayer woodSounds;
@@ -108,13 +109,13 @@ public class MainMenuSelection : MonoBehaviour
                     case "Exit":
                         StartCoroutine(ExitButtonClick());
                         break;
-                        /*
-                                            case "Violence":
-                                                textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
-                                                SettingsManager.Instance.Settings.Violence = !SettingsManager.Instance.Settings.Violence;
 
-                                                textComponent.text = Violence ? "ON" : "OFF";
-                                                break;*/
+                    case "DisplayMode":
+                        textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
+                        settings.DisplayMode = (FullScreenMode)((int)(settings.DisplayMode + 1) % Enum.GetNames(typeof(FullScreenMode)).Length);
+                        textComponent.text = settings.DisplayMode.ToString();
+
+                        break;
 
                     case "Quality":
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
@@ -202,9 +203,20 @@ public class MainMenuSelection : MonoBehaviour
             , ref velocity, .5f, .25f, Time.fixedDeltaTime);
         carrier.transform.position += velocity;
 
+
+        var audio = carrier.GetComponent<AudioPlayer>();
+
+        if (settingsOn != prevSettings)
+        {
+            audio.PlayRandom();
+            prevSettings = settingsOn;
+        }
+
         if (settingsOn)
         {
-            scrollPosition += scrollMovement.y / divider;
+            if (scrollMovement.y != 0 && scrollPosition != scrollMax && scrollPosition != scrollMin)
+                audio.PlayRandom();
+            scrollPosition -= scrollMovement.y / divider;
             scrollPosition = scrollPosition < scrollMin ? scrollMin : scrollPosition;
             scrollPosition = scrollPosition > scrollMax ? scrollMax : scrollPosition;
         }
