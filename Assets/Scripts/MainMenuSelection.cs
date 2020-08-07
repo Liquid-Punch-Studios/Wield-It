@@ -32,12 +32,11 @@ public class MainMenuSelection : MonoBehaviour
     private Animator cameraAnim;
     private float scrollPosition;
     private bool prevSettings = false;
+    private bool prevCredits = false;
 
     public AudioPlayer musics;
     private AudioPlayer woodSounds;
     private AudioPlayer chainSounds;
-    
-
     private void Start()
     {
         Load();
@@ -54,19 +53,13 @@ public class MainMenuSelection : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (creditsOn && (Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame))
-        {
-            creditsOn = false;
-            credits.GetComponent<Animator>().SetBool("isSet", false);
-            credits.SetActive(false);
-        }
 
-        if (cont.UI.MouseClick.triggered)
+        if (!creditsOn && cont.UI.MouseClick.triggered)
         {
             RaycastHit hit;
             Vector2 vec = cont.UI.Mouse.ReadValue<Vector2>();
             Ray ray = cam.ScreenPointToRay(vec);
-            if (Physics.Raycast(ray, out hit) && !creditsOn)
+            if (Physics.Raycast(ray, out hit))
             {
                 string objectName = hit.collider.gameObject.name;
                 //Debug.Log(objectName);
@@ -111,10 +104,11 @@ public class MainMenuSelection : MonoBehaviour
                         break;
 
                     case "DisplayMode":
+                        /*
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
-                        settings.DisplayMode = (FullScreenMode)((int)(settings.DisplayMode + 1) % Enum.GetNames(typeof(FullScreenMode)).Length);
-                        textComponent.text = settings.DisplayMode.ToString();
-
+                        settings.DisplayMode = Screen.fullScreen ? FullScreenMode.ExclusiveFullScreen : FullScreenMode.Windowed;
+                        textComponent.text = Screen.fullScreen ? "ON" : "OFF"; 
+                        */
                         break;
 
                     case "Quality":
@@ -196,8 +190,14 @@ public class MainMenuSelection : MonoBehaviour
             }
         }
 
+        else if (creditsOn && (Keyboard.current.anyKey.wasPressedThisFrame || cont.UI.MouseClick.triggered))
+        {
+            creditsOn = false;
+            credits.GetComponent<Animator>().SetBool("isSet", false);
+            credits.SetActive(false);
+        }
 
-        
+
         Vector2 scrollMovement = cont.UI.Scroll.ReadValue<Vector2>();
         Vector3.SmoothDamp(carrier.transform.position, new Vector3(carrier.transform.position.x, scrollPosition, carrier.transform.position.z)
             , ref velocity, .5f, .25f, Time.fixedDeltaTime);
@@ -216,7 +216,7 @@ public class MainMenuSelection : MonoBehaviour
         {
             if (scrollMovement.y != 0 && scrollPosition != scrollMax && scrollPosition != scrollMin)
                 audio.PlayRandom();
-            scrollPosition -= scrollMovement.y / divider;
+            scrollPosition += scrollMovement.y / divider;
             scrollPosition = scrollPosition < scrollMin ? scrollMin : scrollPosition;
             scrollPosition = scrollPosition > scrollMax ? scrollMax : scrollPosition;
         }
