@@ -21,7 +21,7 @@ public class AudioPlayer : MonoBehaviour
 	{
 		int index = Random.Range(0, audioList.Length);
 		var audio = audioList[index];
-		//if (!audio.isPlaying) // TODO: Check if sound replays or plays a new one
+		if (!audio.isPlaying) // TODO: Check if sound replays or plays a new one
 			audio.Play();
 		AudioPlaying?.Invoke(this, index);
 	}
