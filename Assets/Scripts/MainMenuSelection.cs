@@ -184,9 +184,6 @@ public class MainMenuSelection : MonoBehaviour
                     else if (hit.transform.tag == "Chain")
                         chainSounds.PlayRandom();
                 }
-
-                //if (settingsOn)
-                //    SaveSystem.SaveSettings(this);
             }
         }
 
@@ -274,7 +271,6 @@ public class MainMenuSelection : MonoBehaviour
     public void Load()
     {
         var settings = SettingsManager.Instance.Settings;
-
         GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = settings.Difficulty.ToString();
         GameObject.Find("QualityVal").GetComponent<TextMeshPro>().text = QualitySettings.names[settings.GraphicsQuality];
 

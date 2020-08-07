@@ -41,7 +41,10 @@ public class SettingsManager : Singleton<SettingsManager>
 		if (File.Exists(FilePath))
 		{
 			Settings = GameSettings.Load(FilePath);
-			ApplyGraphics();
+			if (Settings.Resolution.height == 0 || Settings.Resolution.width == 0)
+				LoadGraphics();
+			else
+				ApplyGraphics();
 			Debug.Log("Loaded settings from " + FilePath);
 		}
 		else
