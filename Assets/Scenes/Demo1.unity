@@ -18695,6 +18695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1315882003}
   - component: {fileID: 1315882005}
+  - component: {fileID: 1315882006}
   - component: {fileID: 1315882004}
   m_Layer: 0
   m_Name: Music
@@ -18830,6 +18831,18 @@ MonoBehaviour:
   audioList:
   - {fileID: 1315882004}
   playOnAwake: 1
+--- !u!114 &1315882006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315882002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d3a74ca33d19d45b13378ebdaad8ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1316239540 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 607f9fbdba1250b4ebef19a5a07da220,
