@@ -104,11 +104,11 @@ public class MainMenuSelection : MonoBehaviour
                         break;
 
                     case "DisplayMode":
-                        /*
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
-                        settings.DisplayMode = Screen.fullScreen ? FullScreenMode.ExclusiveFullScreen : FullScreenMode.Windowed;
-                        textComponent.text = Screen.fullScreen ? "ON" : "OFF"; 
-                        */
+                        //settings.DisplayMode = Screen.fullScreen ? FullScreenMode.Windowed : FullScreenMode.FullScreenWindow;
+                        Screen.fullScreen = !Screen.fullScreen;
+                        textComponent.text = Screen.fullScreen ? "Windowed" : "Fullscreen";
+
                         break;
 
                     case "Quality":
@@ -271,9 +271,10 @@ public class MainMenuSelection : MonoBehaviour
     public void Load()
     {
         var settings = SettingsManager.Instance.Settings;
+
         GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = settings.Difficulty.ToString();
         GameObject.Find("QualityVal").GetComponent<TextMeshPro>().text = QualitySettings.names[settings.GraphicsQuality];
-
+        GameObject.Find("DisplayModeVal").GetComponent<TextMeshPro>().text = Screen.fullScreen ? "Fullscreen" : "Windowed";
         GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text  = "%" + Mathf.Round(settings.MusicVolume * 100);
         if (settings.MusicMuted)
             GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "Muted";
