@@ -30,7 +30,6 @@ public class EscapeMenu : MonoBehaviour
         escapeMenu = transform.Find("DarkMask").Find("EscapeMenu").gameObject;
         settingsMenu = transform.Find("DarkMask").Find("Settings").gameObject;
         darkMask = transform.Find("DarkMask").gameObject;
-
         playerHealth = GameObject.Find("Player").GetComponent<Health>();
     }
 
@@ -150,11 +149,11 @@ public class EscapeMenu : MonoBehaviour
     }
 
 
-    /*public void Violence()
+    public void Violence()
     {
-        settings.violence = !settings.violence;
-        GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text = settings.violence ? "ON" : "OFF";
-    }*/
+        Screen.fullScreen = !Screen.fullScreen;
+        GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text = Screen.fullScreen ? "Windowed" : "Fullscreen";
+    }
 
     float AddPercent(float value, int percent) => (Mathf.RoundToInt(value * 100) + percent) / 100f;
     int GetPercent(float value) => Mathf.RoundToInt(value * 100);
@@ -223,5 +222,6 @@ public class EscapeMenu : MonoBehaviour
         GameObject.Find("Sensitivity Value").GetComponent<TextMeshProUGUI>().text = settings.Sensitivity.ToString();
         GameObject.Find("Difficulty Value").GetComponent<TextMeshProUGUI>().text = settings.Difficulty.ToString();
         GameObject.Find("Quality Value").GetComponent<TextMeshProUGUI>().text = QualitySettings.names[settings.GraphicsQuality];
+        GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text = !Screen.fullScreen ? "Windowed" : "Fullscreen";
     }
 }

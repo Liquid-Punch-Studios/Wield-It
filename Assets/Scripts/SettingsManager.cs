@@ -37,15 +37,18 @@ public class SettingsManager : Singleton<SettingsManager>
 
 	private void Awake()
 	{
+
 		FilePath = Path.Combine(Application.persistentDataPath, "settings.xml");
 		if (File.Exists(FilePath))
 		{
 			Settings = GameSettings.Load(FilePath);
+			Debug.Log("Loaded settings from " + FilePath);
+			if (IsNull)
+				return;
 			if (Settings.Resolution.height == 0 || Settings.Resolution.width == 0)
 				LoadGraphics();
 			else
 				ApplyGraphics();
-			Debug.Log("Loaded settings from " + FilePath);
 		}
 		else
 		{
