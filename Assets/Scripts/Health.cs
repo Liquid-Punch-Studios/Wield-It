@@ -66,6 +66,8 @@ public class Health : MonoBehaviour
 
 	private Dictionary<string, float> dmgTimeTable;
 
+	public event EventHandler<float> DamageReceived;
+
 	/// <summary>
 	/// Systematically receive damage to decrease hp and return
 	/// whether the damage is successfully dealt.
@@ -81,6 +83,7 @@ public class Health : MonoBehaviour
 				{
 					Hp = Mathf.Clamp(Hp - damage, 0, maxHp);
 					dmgTimeTable[key] = Time.time;
+					DamageReceived?.Invoke(this, damage);
 					return true;
 				}
 			}
@@ -88,12 +91,14 @@ public class Health : MonoBehaviour
 			{
 				Hp = Mathf.Clamp(Hp - damage, 0, maxHp);
 				dmgTimeTable.Add(key, Time.time);
+				DamageReceived?.Invoke(this, damage);
 				return true;
 			}
 		}
 		else
 		{
 			Hp = Mathf.Clamp(Hp - damage, 0, maxHp);
+			DamageReceived?.Invoke(this, damage);
 			return true;
 		}
 		
