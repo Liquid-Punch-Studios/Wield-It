@@ -11,6 +11,11 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	private static object @lock = new object();
 	private static T instance;
 
+	public static bool IsNull
+	{
+		get => instance == null;
+	}
+
 	/// <summary>
 	/// Access singleton instance through this propriety.
 	/// </summary>
