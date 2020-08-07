@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 	/// <summary>
 	/// How much the hand moves in relation to the mouse delta
 	/// </summary>
-	public float sensitivity = 0.02f;
+	const float sensitivity = 0.02f;
 
 	// Awake is called once during the lifetime of the script, on its initial awake state, prior to any other functions
 	private void Awake()
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
 		// Weapon movement delta
 		Vector2 wield = controls.Player.Wield.ReadValue<Vector2>();
-		handler.Wield(wield * sensitivity);
+		handler.Wield(wield * sensitivity * SettingsManager.Instance.Settings.Sensitivity);
 
 		handler.fixedWeaponAngle = controls.Player.Angle.ReadValue<float>() > InputSystem.settings.defaultButtonPressPoint;
 	}
