@@ -79,14 +79,14 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3159386391466907222, guid: 098309674639ba6459d22fe44c24af3b, type: 3}
-  - {fileID: 783490054726553254, guid: 098309674639ba6459d22fe44c24af3b, type: 3}
-  - {fileID: -6478536213147159724, guid: 098309674639ba6459d22fe44c24af3b, type: 3}
+  - {fileID: 2100000, guid: 21665958d53ebea4fb7d8dca4f66bc04, type: 2}
+  - {fileID: 2100000, guid: 21665958d53ebea4fb7d8dca4f66bc04, type: 2}
+  - {fileID: 2100000, guid: fa65bff7c2f24fa4084c44da7cd265bf, type: 2}
   - {fileID: 6251350979608219465, guid: 098309674639ba6459d22fe44c24af3b, type: 3}
   - {fileID: 4409831712305878004, guid: 098309674639ba6459d22fe44c24af3b, type: 3}
-  - {fileID: -5655203664150830630, guid: 098309674639ba6459d22fe44c24af3b, type: 3}
-  - {fileID: -1391134871863005975, guid: 098309674639ba6459d22fe44c24af3b, type: 3}
-  - {fileID: -1444460858095362738, guid: 098309674639ba6459d22fe44c24af3b, type: 3}
+  - {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
+  - {fileID: 2100000, guid: bd6ac12b978623046991e863317c0f54, type: 2}
+  - {fileID: 2100000, guid: 006021ab7b7b47042b2092f18942d45f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2248871979581448861}
   m_Layer: 0
-  m_Name: Knight Enemy
+  m_Name: Knight Enemy Dead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

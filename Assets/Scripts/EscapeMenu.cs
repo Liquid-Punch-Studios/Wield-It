@@ -19,6 +19,7 @@ public class EscapeMenu : MonoBehaviour
     private GameObject darkMask;
 
     private bool isDead;
+    private bool menuOpened = false;
     private bool isPlayed = false;
     private Controls controls;
 
@@ -58,31 +59,36 @@ public class EscapeMenu : MonoBehaviour
         }
             
 
-        if (Time.timeScale == 1 && controls.Player.EscapeMenu.triggered)
+        if (!menuOpened && controls.Player.EscapeMenu.triggered)
         {
             InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInDynamicUpdate;
+            menuOpened = true;
             Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
     private void Update()
     {
-        if (Time.timeScale == 0 && controls.Player.EscapeMenu.triggered)
-        {
-            Time.timeScale = 1;
-            InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
-        }
-        if (Time.timeScale == 0)
-        {
-            darkMask.SetActive(true);
-            escapeMenu.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else if (!isDead)
+        if (menuOpened && controls.Player.EscapeMenu.triggered)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            Time.timeScale = 1;
+            menuOpened = false;
+            InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
+        }
+        if (menuOpened)
+        {
+            darkMask.SetActive(true);
+            escapeMenu.SetActive(true);
+            
+        }
+        else if (!isDead)
+        {
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
             settingsMenu.SetActive(false);
             escapeMenu.SetActive(false);
             darkMask.SetActive(false);
@@ -107,7 +113,7 @@ public class EscapeMenu : MonoBehaviour
     public void ResumeClick()
     {
         Time.timeScale = 1;
-
+        menuOpened = false;
         InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
         darkMask.SetActive(false);
         escapeMenu.SetActive(false);
@@ -119,6 +125,7 @@ public class EscapeMenu : MonoBehaviour
     public void RestartClick()
     {
         Time.timeScale = 1;
+        menuOpened = false;
         escapeMenu.SetActive(false);
         darkMask.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -133,6 +140,7 @@ public class EscapeMenu : MonoBehaviour
 
     public void MainMenuClick()
     {
+        menuOpened = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
