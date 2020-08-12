@@ -444,6 +444,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
+                    ""name"": ""MouseRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""9eaa0cb8-51ed-4c9f-b1c2-da1e8e48070a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
+                },
+                {
                     ""name"": ""Scroll"",
                     ""type"": ""Value"",
                     ""id"": ""7114a289-e6d8-41f6-8555-65178cabe23c"",
@@ -455,6 +463,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""name"": ""Exit"",
                     ""type"": ""Button"",
                     ""id"": ""1b6f24fd-ac0f-4e2c-a4e0-4bc8793fe3b2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
+                },
+                {
+                    ""name"": ""Tab"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4055920-377d-4548-82af-ee745cfa0a54"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)""
@@ -504,6 +520,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0bb4b660-68b5-49f1-a463-953671f8eb4a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7cf2908-0c19-4723-9b15-b746f7854b5b"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -530,8 +568,10 @@ public class @Controls : IInputActionCollection, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Mouse = m_UI.FindAction("Mouse", throwIfNotFound: true);
         m_UI_MouseClick = m_UI.FindAction("MouseClick", throwIfNotFound: true);
+        m_UI_MouseRelease = m_UI.FindAction("MouseRelease", throwIfNotFound: true);
         m_UI_Scroll = m_UI.FindAction("Scroll", throwIfNotFound: true);
         m_UI_Exit = m_UI.FindAction("Exit", throwIfNotFound: true);
+        m_UI_Tab = m_UI.FindAction("Tab", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -729,16 +769,20 @@ public class @Controls : IInputActionCollection, IDisposable
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_Mouse;
     private readonly InputAction m_UI_MouseClick;
+    private readonly InputAction m_UI_MouseRelease;
     private readonly InputAction m_UI_Scroll;
     private readonly InputAction m_UI_Exit;
+    private readonly InputAction m_UI_Tab;
     public struct UIActions
     {
         private @Controls m_Wrapper;
         public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Mouse => m_Wrapper.m_UI_Mouse;
         public InputAction @MouseClick => m_Wrapper.m_UI_MouseClick;
+        public InputAction @MouseRelease => m_Wrapper.m_UI_MouseRelease;
         public InputAction @Scroll => m_Wrapper.m_UI_Scroll;
         public InputAction @Exit => m_Wrapper.m_UI_Exit;
+        public InputAction @Tab => m_Wrapper.m_UI_Tab;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -754,12 +798,18 @@ public class @Controls : IInputActionCollection, IDisposable
                 @MouseClick.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseClick;
                 @MouseClick.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseClick;
                 @MouseClick.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseClick;
+                @MouseRelease.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseRelease;
+                @MouseRelease.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseRelease;
+                @MouseRelease.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseRelease;
                 @Scroll.started -= m_Wrapper.m_UIActionsCallbackInterface.OnScroll;
                 @Scroll.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnScroll;
                 @Scroll.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnScroll;
                 @Exit.started -= m_Wrapper.m_UIActionsCallbackInterface.OnExit;
                 @Exit.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnExit;
                 @Exit.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnExit;
+                @Tab.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTab;
+                @Tab.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTab;
+                @Tab.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTab;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -770,12 +820,18 @@ public class @Controls : IInputActionCollection, IDisposable
                 @MouseClick.started += instance.OnMouseClick;
                 @MouseClick.performed += instance.OnMouseClick;
                 @MouseClick.canceled += instance.OnMouseClick;
+                @MouseRelease.started += instance.OnMouseRelease;
+                @MouseRelease.performed += instance.OnMouseRelease;
+                @MouseRelease.canceled += instance.OnMouseRelease;
                 @Scroll.started += instance.OnScroll;
                 @Scroll.performed += instance.OnScroll;
                 @Scroll.canceled += instance.OnScroll;
                 @Exit.started += instance.OnExit;
                 @Exit.performed += instance.OnExit;
                 @Exit.canceled += instance.OnExit;
+                @Tab.started += instance.OnTab;
+                @Tab.performed += instance.OnTab;
+                @Tab.canceled += instance.OnTab;
             }
         }
     }
@@ -802,7 +858,9 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnMouse(InputAction.CallbackContext context);
         void OnMouseClick(InputAction.CallbackContext context);
+        void OnMouseRelease(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
+        void OnTab(InputAction.CallbackContext context);
     }
 }

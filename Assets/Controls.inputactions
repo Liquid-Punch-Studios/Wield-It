@@ -431,6 +431,14 @@
                     "interactions": "Press"
                 },
                 {
+                    "name": "MouseRelease",
+                    "type": "Button",
+                    "id": "9eaa0cb8-51ed-4c9f-b1c2-da1e8e48070a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
                     "name": "Scroll",
                     "type": "Value",
                     "id": "7114a289-e6d8-41f6-8555-65178cabe23c",
@@ -442,6 +450,14 @@
                     "name": "Exit",
                     "type": "Button",
                     "id": "1b6f24fd-ac0f-4e2c-a4e0-4bc8793fe3b2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
+                    "name": "Tab",
+                    "type": "Button",
+                    "id": "c4055920-377d-4548-82af-ee745cfa0a54",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press(behavior=1)"
@@ -489,6 +505,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0bb4b660-68b5-49f1-a463-953671f8eb4a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b7cf2908-0c19-4723-9b15-b746f7854b5b",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
