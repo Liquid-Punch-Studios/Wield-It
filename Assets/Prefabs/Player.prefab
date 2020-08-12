@@ -1218,7 +1218,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerGfx: {fileID: 2648814292970063111}
   handGfx: {fileID: 2648814292749611332}
-  sensitivity: 0.02
 --- !u!114 &7041604921001397260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1563,7 +1562,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: aff94c82abed99847bc0c990f7dd66ca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7
+      value: -1.076
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: aff94c82abed99847bc0c990f7dd66ca,
         type: 3}
