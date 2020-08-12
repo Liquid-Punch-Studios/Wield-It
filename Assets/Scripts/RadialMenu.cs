@@ -23,10 +23,27 @@ public class RadialMenu : MonoBehaviour
 
     Health playerHealth;
 
-    int segment;
+    public static int segment;
     float segmentAngle;
 
     bool menuOpened = false;
+
+    bool isDead = false;
+
+    public bool IsDead
+    {
+        get { return isDead; }
+        set
+        {
+            var old = isDead;
+            if (old != value)
+            {
+                isDead = value;
+                if (!isDead)
+                    ChangeWeapon();
+            }
+        }
+    }
 
     //GameObject[] baseTexts;
 
@@ -62,13 +79,14 @@ public class RadialMenu : MonoBehaviour
         menuObj = GameObject.Find("Menu");
         highlight = GameObject.Find("Highlight").GetComponent<Image>();
         Reload();
+        ChangeWeapon();
         menuObj.SetActive(false);
     }
 
     public void FixedUpdate()
     {
-        var isDead = playerHealth.Hp <= 0;
-        if (!menuOpened && controls.UI.Tab.triggered && !isDead)
+        IsDead = playerHealth.Hp <= 0;
+        if (!menuOpened && controls.UI.Tab.triggered && !IsDead)
         {
             InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInDynamicUpdate;
             menuOpened = true;
@@ -113,14 +131,7 @@ public class RadialMenu : MonoBehaviour
 
             if (controls.UI.MouseRelease.triggered)
             {
-                foreach (var a in GameObject.FindGameObjectsWithTag("MainWeapon"))
-                    Destroy(a);
-                var weapon = Instantiate(menu[segment].prefab);
-                weapon.transform.position = player.transform.Find("Hand").position;
-                weapon.transform.rotation = player.transform.Find("Hand").rotation;
-                player.GetComponent<Handler>().weapon = weapon;
-                weapon.GetComponent<Sword>().user = player;
-                weapon.GetComponent<ConfigurableJoint>().connectedBody = player.transform.Find("Hand").GetComponent<Rigidbody>();
+                ChangeWeapon();
                 
 
                 menuObj.SetActive(false);
@@ -179,5 +190,17 @@ public class RadialMenu : MonoBehaviour
             Image.transform.localPosition = new Vector3(150 * Mathf.Cos(radian), 150 * Mathf.Sin(radian));
             Image.transform.rotation = Quaternion.Euler(0, 0, (Mathf.Atan2(weapon.Holder.transform.localPosition.y, weapon.Holder.transform.localPosition.x)) * 180 / Mathf.PI);
         }
+    }
+
+    public void ChangeWeapon()
+    {
+        foreach (var a in GameObject.FindGameObjectsWithTag("MainWeapon"))
+            Destroy(a);
+        var weapon = Instantiate(menu[segment].prefab);
+        weapon.transform.position = player.transform.Find("Hand").position;
+        weapon.transform.rotation = player.transform.Find("Hand").rotation;
+        player.GetComponent<Handler>().weapon = weapon;
+        weapon.GetComponent<Sword>().user = player;
+        weapon.GetComponent<ConfigurableJoint>().connectedBody = player.transform.Find("Hand").GetComponent<Rigidbody>();
     }
 }

@@ -87,8 +87,8 @@ public class EscapeMenu : MonoBehaviour
         }
         else if (!isDead)
         {
-            //Cursor.lockState = CursorLockMode.Locked;
-            //Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             settingsMenu.SetActive(false);
             escapeMenu.SetActive(false);
             darkMask.SetActive(false);
