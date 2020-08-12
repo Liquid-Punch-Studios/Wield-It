@@ -5,7 +5,7 @@ using UnityEngine;
 public class DungeonDoor : MonoBehaviour
 {
 
-    public Health playerHealth;
+    public Health enemyHealth;
 
     Animator anim;
     AudioSource audio;
@@ -23,12 +23,12 @@ public class DungeonDoor : MonoBehaviour
 
     private void OnEnable()
     {
-        playerHealth.Died += PlayerHealth_Died;
+        enemyHealth.Died += EnemyHealth_Died;
     }
 
-    private void PlayerHealth_Died(object sender, System.EventArgs e)
+    private void EnemyHealth_Died(object sender, System.EventArgs e)
     {
-        anim.SetBool("IsSet", true);
+        anim.SetBool("isSet", true);
         audio.Play();
     }
 }
