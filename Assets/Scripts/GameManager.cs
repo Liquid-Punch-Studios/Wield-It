@@ -90,10 +90,14 @@ public class GameManager : Singleton<GameManager>
 		playerRb = player.GetComponent<Rigidbody>();
 		spawnPoint = respawnPoint.position;
 
-		weaponRb = weapon.GetComponent<Rigidbody>();
-		weaponJoint = weapon.GetComponent<ConfigurableJoint>();
-		weaponPosition = weapon.transform.position;
-		weaponRotation = weapon.transform.rotation;
+		if (weapon != null)
+        {
+			weaponRb = weapon.GetComponent<Rigidbody>();
+			weaponJoint = weapon.GetComponent<ConfigurableJoint>();
+			weaponPosition = weapon.transform.position;
+			weaponRotation = weapon.transform.rotation;
+		}
+		
 
 		handRb = hand.GetComponent<Rigidbody>();
 	}
@@ -134,11 +138,14 @@ public class GameManager : Singleton<GameManager>
 
 				player.SetActive(true);
 
-				weaponRb.velocity = Vector3.zero;
-				weaponRb.angularVelocity = Vector3.zero;
-				weapon.transform.localPosition = weaponPosition;
-				weapon.transform.localRotation = weaponRotation;
-				weaponJoint.connectedBody = handRb;
+				if (weapon != null)
+                {
+					weaponRb.velocity = Vector3.zero;
+					weaponRb.angularVelocity = Vector3.zero;
+					weapon.transform.localPosition = weaponPosition;
+					weapon.transform.localRotation = weaponRotation;
+					weaponJoint.connectedBody = handRb;
+				}
 
 				//Time.timeScale = 1;
 				//Time.fixedDeltaTime *= 4;
