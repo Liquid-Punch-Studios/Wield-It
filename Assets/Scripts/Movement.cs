@@ -94,7 +94,7 @@ public class Movement : MonoBehaviour
 		if (stamina.UseStamina(dashCost))
 		{
 			rb.velocity = Vector3.right * (lastDashDir = Mathf.Sign(direction)) * dashSpeed;
-
+			animator.SetTrigger("dash");
 			dashAudio?.PlayRandom();
 		}
 		else
@@ -108,7 +108,7 @@ public class Movement : MonoBehaviour
 		if (!OnGround && stamina.UseStamina(slamCost))
 		{
 			rb.velocity = Vector3.down * slamSpeed;
-
+			animator.SetBool("slam", true);
 			slamAudio?.PlayRandom();
 		}
 		else
@@ -143,7 +143,11 @@ public class Movement : MonoBehaviour
 			dashing = false;
 
 		if (rb.velocity.y > -slamSpeedMin)
+        {
 			slamming = false;
+			animator.SetBool("slam", false);
+		}
+			
 
 		animator.SetFloat("speed X", Mathf.Abs(rb.velocity.x / moveSpeed));
 		//animator.SetFloat("speed Y", rb.velocity.y);
@@ -154,7 +158,6 @@ public class Movement : MonoBehaviour
 		if ((1 << other.gameObject.layer & groundLayerMask.value) != 0)
 		{
 			onGround++;
-
 			if (onGround == 1)
 				landAudio?.PlayRandom();
 
