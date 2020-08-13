@@ -32,12 +32,15 @@ public class EnemyAI : MonoBehaviour
         set { state = value; }
     }
 
-	public IEnumerable Hit()
-	{
-		damageTrigger.Activate();
-		yield return new WaitForSeconds(0.1f);
-		damageTrigger.Deactivate();
-	}
+	//NOT WORKING
+	//AttackStart / AttackEnd Used Instead
+	//public IEnumerable Hit()
+	//{
+	//	damageTrigger.Activate();
+	//	yield return new WaitForSeconds(0.1f);
+	//	damageTrigger.Deactivate();
+	//}
+	
 
 	private void Start()
 	{
@@ -47,6 +50,9 @@ public class EnemyAI : MonoBehaviour
 		movement = GetComponent<Movement>();
 		health = GetComponent<Health>();
 		health.Died += Health_Died;
+		damageTrigger = GetComponentInChildren<HazardTrigger>();
+		
+		damageTrigger.Deactivate();
 	}
 
 	private void FixedUpdate()
@@ -94,6 +100,7 @@ public class EnemyAI : MonoBehaviour
 				}
 				else
 					animator.SetTrigger("attack");
+					
 
 				break;
 			case AIState.Vulnerable:
@@ -121,15 +128,23 @@ public class EnemyAI : MonoBehaviour
 	public void ResetState()
     {
 		animator.SetBool("stun", false);
-		gameObject.GetComponentInChildren<HazardTrigger>().Activate();
 		State = AIState.Attacking;
+	}
+
+	public void AttackStart()
+    {
+		damageTrigger.Activate();
+	}
+
+	public void AttackEnd()
+    {
+		damageTrigger.Deactivate();
 	}
 
     private void OnCollisionEnter(Collision collision)
     {
 		if (collision.gameObject.TryGetComponent(out Movement mov) && mov.Dashing && State != AIState.Vulnerable)
         {
-			gameObject.GetComponentInChildren<HazardTrigger>().Deactivate();
 			State = AIState.Vulnerable;
 			rb.AddForce(collision.rigidbody.velocity * 8000);
 		}
