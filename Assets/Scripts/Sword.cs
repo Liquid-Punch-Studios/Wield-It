@@ -63,8 +63,11 @@ public class Sword : MonoBehaviour
 				var relative = weaponRb.velocity - otherRb.velocity;
 				if (relative.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold)
 				{
-					health.ReceiveDamage(damageFactor * relative.magnitude);
-					Debug.Log((int)(damageFactor * relative.magnitude));
+					if(other.TryGetComponent(out EnemyAI ai) && ai.State == AIState.Vulnerable)
+                    {
+						health.ReceiveDamage(damageFactor * relative.magnitude);
+					}
+					Debug.Log("Damage: " + (int)(damageFactor * relative.magnitude) + "\tHP: " + (int)health.Hp);
 					var clash = other.ClosestPoint(transform.position);
 					var p = Instantiate(hitParticle);
 					p.transform.position = clash;
