@@ -26,6 +26,11 @@ public class EnemyAI : MonoBehaviour
 	private Health health;
 
 	private AIState state;
+	public AIState State
+    {
+        get { return state; }
+        set { state = value; }
+    }
 
 	public IEnumerable Hit()
 	{
@@ -55,49 +60,44 @@ public class EnemyAI : MonoBehaviour
 
 		movement.move = 0;
 		animator.SetFloat("speed X", rb.velocity.x);
-		switch (state)
+
+		switch (State)
 		{
 			case AIState.Idle:
 				if (Physics.Raycast(transform.position, enemyToPlayer, out RaycastHit hit, visionRange, LayerMask.GetMask("Player", "Wall", "Ground")))
 				{
 					if (hit.transform == player)
                     {
-						state = AIState.Set;
+						State = AIState.Set;
 						animator.SetTrigger("set");
 					}
 				}
 				break;
 			case AIState.Set:
-				if (Physics.Raycast(transform.position, enemyToPlayer, out RaycastHit hit2, (visionRange + attackRange) / 2, LayerMask.GetMask("Player", "Wall", "Ground")))
+				if (enemyToPlayer.x < (visionRange + attackRange) / 2)
 				{
-					if (hit2.transform == player)
-					{
-						state = AIState.Attacking;
-					}
-					
+					State = AIState.Attacking;
 				}
                 else
                 {
-					state = AIState.Idle;
+					State = AIState.Idle;
 				}
 					
 				break;
 			case AIState.Attacking:
 				if (enemyToPlayer.sqrMagnitude > visionRange * visionRange)
-					state = AIState.Idle;
-				else if (enemyToPlayer.sqrMagnitude > attackRange * attackRange)
+					State = AIState.Idle;
+				else if (enemyToPlayer.sqrMagnitude > attackRange * attackRange) 
 				{
 					float move = Mathf.Sign(enemyToPlayer.x);
 					movement.move = move;
 				}
-				
 				else
-				{
 					animator.SetTrigger("attack");
-				}
+
 				break;
 			case AIState.Vulnerable:
-
+					animator.SetBool("stun", true);
 				break;
 			default:
 				break;
@@ -117,5 +117,22 @@ public class EnemyAI : MonoBehaviour
 		}
         Destroy(gameObject);
 	}
+
+	public void ResetState()
+    {
+		animator.SetBool("stun", false);
+		gameObject.GetComponentInChildren<HazardTrigger>().Activate();
+		State = AIState.Attacking;
+	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+		if (collision.gameObject.TryGetComponent(out Movement mov) && mov.Dashing && State != AIState.Vulnerable)
+        {
+			gameObject.GetComponentInChildren<HazardTrigger>().Deactivate();
+			State = AIState.Vulnerable;
+			rb.AddForce(collision.rigidbody.velocity * 8000);
+		}
+    }
 
 }
