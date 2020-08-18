@@ -54,6 +54,8 @@ MonoBehaviour:
   staminaDrainFactor: 1.5
   hitParticle: {fileID: 1020884129286210536, guid: b4f6e91911274464f8b1b3f57a846e88,
     type: 3}
+  bloodHitParticle: {fileID: 8994636525159094759, guid: 055651271fbf2f24192a459128f208ee,
+    type: 3}
 --- !u!54 &5132373805545235797
 Rigidbody:
   m_ObjectHideFlags: 0
