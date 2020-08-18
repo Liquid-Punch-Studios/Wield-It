@@ -8,7 +8,7 @@ public enum AIState
 	Idle,
 	Set,
 	Attacking,
-	Vulnerable,
+	Stun,
 }
 
 public class EnemyAI : MonoBehaviour
@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour
 
 	public HazardTrigger damageTrigger;
 	public GameObject deadEnemyPrefab;
+	public bool vulnerable;
+
 	private Transform player;
 
 	private Animator animator;
@@ -98,12 +100,15 @@ public class EnemyAI : MonoBehaviour
 					float move = Mathf.Sign(enemyToPlayer.x);
 					movement.move = move;
 				}
-				else
+                else
+                {
+					var rnd = new System.Random();
+					animator.SetInteger("attackType", rnd.Next(0, 4));
 					animator.SetTrigger("attack");
 					
-
+				}
 				break;
-			case AIState.Vulnerable:
+			case AIState.Stun:
 					animator.SetBool("stun", true);
 				break;
 			default:
@@ -120,7 +125,7 @@ public class EnemyAI : MonoBehaviour
 		foreach (Rigidbody rigid in body.GetComponentsInChildren<Rigidbody>())
 		{
 			rigid.velocity = rb.velocity;
-			rigid.AddExplosionForce(50, body.transform.position, 5, 1, ForceMode.Impulse);
+			rigid.AddExplosionForce(200, body.transform.position, 5, 1, ForceMode.Impulse);
 		}
         Destroy(gameObject);
 	}
@@ -141,11 +146,20 @@ public class EnemyAI : MonoBehaviour
 		damageTrigger.Deactivate();
 	}
 
-    private void OnCollisionEnter(Collision collision)
+	public void SetVulnerable()
     {
-		if (collision.gameObject.TryGetComponent(out Movement mov) && mov.Dashing && State != AIState.Vulnerable)
+		vulnerable = true;
+    }
+
+	public void ResetVulnerable()
+	{
+		vulnerable = false;
+	}
+	private void OnCollisionEnter(Collision collision)
+    {
+		if (collision.gameObject.TryGetComponent(out Movement mov) && mov.Dashing && State != AIState.Stun)
         {
-			State = AIState.Vulnerable;
+			State = AIState.Stun;
 			rb.AddForce(collision.rigidbody.velocity * 8000);
 		}
     }

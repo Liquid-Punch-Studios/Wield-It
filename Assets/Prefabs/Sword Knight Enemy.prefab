@@ -229,6 +229,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5483635174600295941}
+  - component: {fileID: 1148487463866428378}
+  - component: {fileID: 4607333548112228174}
   m_Layer: 0
   m_Name: Bone.007_end
   m_TagString: Untagged
@@ -251,6 +253,37 @@ Transform:
   m_Father: {fileID: 7127132373213110573}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1148487463866428378
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3196505981689849566}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.652636, y: 1, z: 6.2370486}
+  m_Center: {x: -1.3213483, y: -0.0000012774925, z: -4.170816}
+--- !u!114 &4607333548112228174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3196505981689849566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b313f515f4ee445bb2e3f9c04d3d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  damage: 20
+  force: 100
+  direction: {x: 0, y: 0, z: 0}
+  key: Enemy
+  cooldown: 0.5
 --- !u!1 &3893533582933046454
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,8 +561,9 @@ MonoBehaviour:
   visionRange: 8
   attackRange: 3
   damageTrigger: {fileID: 0}
-  deadEnemyPrefab: {fileID: 2985535802024317070, guid: 9d6d2f47d1ff08d4b9db430e6272e037,
+  deadEnemyPrefab: {fileID: 3743537713681025228, guid: b9f43f6ff364c4b42aa8a0658f01db76,
     type: 3}
+  vulnerable: 1
 --- !u!114 &6341500413415013532
 MonoBehaviour:
   m_ObjectHideFlags: 0
