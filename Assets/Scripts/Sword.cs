@@ -17,6 +17,7 @@ public class Sword : MonoBehaviour
 	public float staminaDrainFactor = 1.5f;
 
 	public GameObject hitParticle;
+	public GameObject bloodHitParticle;
 
 	// How much force we need for handling the weapon
 	//public float force;
@@ -63,13 +64,17 @@ public class Sword : MonoBehaviour
 				var relative = weaponRb.velocity - otherRb.velocity;
 				if (relative.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold)
 				{
-					if(other.TryGetComponent(out EnemyAI ai) && ai.State == AIState.Vulnerable)
+					GameObject p;
+					if (other.TryGetComponent(out EnemyAI ai) && ai.vulnerable)
                     {
 						health.ReceiveDamage(damageFactor * relative.magnitude);
+						p = Instantiate(bloodHitParticle);
 					}
+					else
+						p = Instantiate(hitParticle);
 					Debug.Log("Damage: " + (int)(damageFactor * relative.magnitude) + "\tHP: " + (int)health.Hp);
 					var clash = other.ClosestPoint(transform.position);
-					var p = Instantiate(hitParticle);
+					
 					p.transform.position = clash;
 					otherRb.AddForce(weaponRb.velocity * 1000);
 				}
