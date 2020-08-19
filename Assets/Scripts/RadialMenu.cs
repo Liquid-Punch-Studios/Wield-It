@@ -132,7 +132,6 @@ public class RadialMenu : MonoBehaviour
             if (controls.UI.MouseRelease.triggered)
             {
                 ChangeWeapon();
-                
 
                 menuObj.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
@@ -140,9 +139,7 @@ public class RadialMenu : MonoBehaviour
                 Time.timeScale = 1;
                 menuOpened = false;
                 InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
-
             }
-
         }
     }
 

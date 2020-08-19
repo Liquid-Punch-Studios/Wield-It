@@ -12,6 +12,8 @@ public class Handler : MonoBehaviour
 	private Rigidbody weaponRb;
 	private ConfigurableJoint weaponJoint;
 
+	public GameObject thrownWeaponPrefab;
+
 	private Rigidbody playerRb;
 
 	/// <summary>
@@ -53,6 +55,27 @@ public class Handler : MonoBehaviour
 				float angle = Mathf.Atan2(pos.y - shoulderOffset.y, pos.x - shoulderOffset.x);
 				hand.localEulerAngles = (angle * Mathf.Rad2Deg) * Vector3.forward;
 			}
+		}
+	}
+
+	public void Throw()
+	{
+		if (thrownWeaponPrefab == null)
+		{
+			Debug.Log("Thrown weapon prefab is null.");
+			return;
+		}
+
+		Vector3 pos = weapon.transform.position;
+		Quaternion rot = weapon.transform.rotation;
+		Vector3 vel = weaponRb.velocity;
+		Vector3 ang = weaponRb.angularVelocity;
+
+		var obj = Instantiate(thrownWeaponPrefab, pos, rot);
+		if (obj.TryGetComponent<Rigidbody>(out Rigidbody rb))
+		{
+			rb.velocity = vel;
+			rb.angularVelocity = ang;
 		}
 	}
 
