@@ -43,7 +43,7 @@ public class SettingsManager : Singleton<SettingsManager>
 		{
 			Settings = GameSettings.Load(FilePath);
 			Debug.Log("Loaded settings from " + FilePath);
-			if (IsNull)
+			if (!Initialized)
 				return;
 			if (Settings.Resolution.height == 0 || Settings.Resolution.width == 0)
 				LoadGraphics();

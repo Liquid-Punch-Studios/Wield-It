@@ -110,11 +110,10 @@ public class Movement : MonoBehaviour
 			rb.velocity = Vector3.down * slamSpeed;
 			animator.SetBool("slam", true);
 			slamAudio?.PlayRandom();
+			return slamming = true;
 		}
 		else
 			return false;
-
-		return slamming = true;
 	}
 
 	public void ResetState()

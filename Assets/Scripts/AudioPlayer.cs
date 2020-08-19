@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+/// <summary>
+/// 
+/// </summary>
 public class AudioPlayer : MonoBehaviour
 {
 	public AudioSource[] audioList;
 
 	public bool playOnAwake = false;
 
-	public event System.EventHandler<int> AudioPlaying;
+	public event System.EventHandler<int> Triggered;
 
 	private void Awake()
 	{
@@ -21,9 +24,8 @@ public class AudioPlayer : MonoBehaviour
 	{
 		int index = Random.Range(0, audioList.Length);
 		var audio = audioList[index];
-		if (!audio.isPlaying) // TODO: Check if sound replays or plays a new one
-			audio.Play();
-		AudioPlaying?.Invoke(this, index);
+		audio.Play(); // TODO: Check if sound replays or plays a new one
+		Triggered?.Invoke(this, index);
 	}
 
 	public void Play(int audioIndex)
@@ -31,7 +33,7 @@ public class AudioPlayer : MonoBehaviour
 		if (audioIndex < audioList.Length)
 		{
 			audioList[audioIndex].Play(); // TODO: Check if sound replays or plays a new one
-			AudioPlaying?.Invoke(this, audioIndex);
+			Triggered?.Invoke(this, audioIndex);
 		}
 		else
 			Debug.LogError("Invalid audio index: " + audioIndex);

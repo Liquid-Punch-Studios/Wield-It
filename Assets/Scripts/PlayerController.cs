@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 	private Handler handler;
 	private Movement movement;
 
+	//public bool throwable;
+
 	public Transform playerGfx;
 	public Transform handGfx;
 
@@ -96,6 +98,14 @@ public class PlayerController : MonoBehaviour
 		handler.Wield(wield * sensitivity * SettingsManager.Instance.Settings.Sensitivity);
 
 		handler.fixedWeaponAngle = controls.Player.Angle.ReadValue<float>() > InputSystem.settings.defaultButtonPressPoint;
+		
+		if (controls.Player.Angle.triggered)
+		{
+			if (handler.weapon.TryGetComponent<ThrownWeapon>(out ThrownWeapon weapon))
+			{
+				handler.Throw();
+			}
+		}
 	}
 
 	// Update is called once per frame
