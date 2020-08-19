@@ -64,7 +64,7 @@ public class Handler : MonoBehaviour
 		}
 	}
 
-	public void Throw()
+	public void Throw(Vector2 vec)
 	{
 		if (thrownWeaponPrefab == null)
 		{
@@ -74,7 +74,7 @@ public class Handler : MonoBehaviour
 
 		Vector3 pos = weapon.transform.position;
 		Quaternion rot = weapon.transform.rotation;
-		Vector3 vel = weaponRb.velocity;
+		Vector3 vel = vec;
 		Vector3 ang = weaponRb.angularVelocity;
 
 		var obj = Instantiate(thrownWeaponPrefab, pos, rot);

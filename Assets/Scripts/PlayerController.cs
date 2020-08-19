@@ -73,6 +73,9 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+
+	Vector3 startPoint;
+
 	// FixedUpdate is called once per physics frame
 	private void FixedUpdate()
 	{
@@ -97,15 +100,21 @@ public class PlayerController : MonoBehaviour
 		Vector2 wield = controls.Player.Wield.ReadValue<Vector2>();
 		handler.Wield(wield * sensitivity * SettingsManager.Instance.Settings.Sensitivity);
 
-		handler.fixedWeaponAngle = controls.Player.Angle.ReadValue<float>() > InputSystem.settings.defaultButtonPressPoint;
+		if (!handler.weapon.GetComponent<Sword>().throwable)
+			handler.fixedWeaponAngle = controls.Player.Angle.ReadValue<float>() > InputSystem.settings.defaultButtonPressPoint;
+
 		
-		if (controls.Player.Angle.triggered)
+		if (controls.Player.ClickRelease.triggered)
 		{
+
 			if (handler.weapon.GetComponent<Sword>().throwable)
 			{
-				handler.Throw();
+				handler.Throw(8 * (handGfx.position - startPoint));
 			}
 		}
+		else if (Mouse.current.leftButton.wasPressedThisFrame)
+			startPoint = handGfx.position;
+
 	}
 
 	// Update is called once per frame
