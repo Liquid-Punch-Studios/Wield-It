@@ -81,6 +81,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ClickRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""bde1e516-71b2-44a7-80e6-4dcd1a0b86c2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -213,6 +221,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""EscapeMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""809eec82-c9d6-4e50-9548-1f53ef093a12"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ClickRelease"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -558,6 +577,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_EscapeMenu = m_Player.FindAction("EscapeMenu", throwIfNotFound: true);
+        m_Player_ClickRelease = m_Player.FindAction("ClickRelease", throwIfNotFound: true);
         // Spectator
         m_Spectator = asset.FindActionMap("Spectator", throwIfNotFound: true);
         m_Spectator_Move = m_Spectator.FindAction("Move", throwIfNotFound: true);
@@ -629,6 +649,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_EscapeMenu;
+    private readonly InputAction m_Player_ClickRelease;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -641,6 +662,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputAction @EscapeMenu => m_Wrapper.m_Player_EscapeMenu;
+        public InputAction @ClickRelease => m_Wrapper.m_Player_ClickRelease;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -674,6 +696,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @EscapeMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscapeMenu;
                 @EscapeMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscapeMenu;
                 @EscapeMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscapeMenu;
+                @ClickRelease.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickRelease;
+                @ClickRelease.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickRelease;
+                @ClickRelease.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickRelease;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -702,6 +727,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @EscapeMenu.started += instance.OnEscapeMenu;
                 @EscapeMenu.performed += instance.OnEscapeMenu;
                 @EscapeMenu.canceled += instance.OnEscapeMenu;
+                @ClickRelease.started += instance.OnClickRelease;
+                @ClickRelease.performed += instance.OnClickRelease;
+                @ClickRelease.canceled += instance.OnClickRelease;
             }
         }
     }
@@ -846,6 +874,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnEscapeMenu(InputAction.CallbackContext context);
+        void OnClickRelease(InputAction.CallbackContext context);
     }
     public interface ISpectatorActions
     {
