@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6930268576762927499}
   - component: {fileID: 6930268576762927493}
   - component: {fileID: 6539418603611401564}
+  - component: {fileID: 7415789290562133119}
   m_Layer: 13
   m_Name: Kunai Thrown
   m_TagString: MainWeapon
@@ -61,8 +62,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8995358, y: 0.28391862, z: 1}
-  m_Center: {x: -0.45126432, y: -1.2502163e-22, z: -5.130957e-16}
+  m_Size: {x: 0.8226838, y: 0.28391862, z: 1}
+  m_Center: {x: 0.6078882, y: 0, z: 0}
 --- !u!114 &6539418603611401564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +78,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   impact: 20
+--- !u!65 &7415789290562133119
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930268576762927494}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.54042226, y: 0.2362448, z: 1}
+  m_Center: {x: -0.10002583, y: -0.0012421012, z: 0}
 --- !u!1001 &111025867068090249
 PrefabInstance:
   m_ObjectHideFlags: 0
