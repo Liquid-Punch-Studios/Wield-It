@@ -10,6 +10,12 @@ public class Handler : MonoBehaviour
 
 	public GameObject weapon;
 	private Rigidbody weaponRb;
+	public Rigidbody WeaponRb
+    {
+        get { return weaponRb; }
+        set { weaponRb = value; }
+    }
+
 	private ConfigurableJoint weaponJoint;
 
 	public GameObject thrownWeaponPrefab;

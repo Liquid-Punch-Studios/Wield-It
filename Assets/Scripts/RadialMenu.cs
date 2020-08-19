@@ -20,7 +20,7 @@ public class RadialMenu : MonoBehaviour
     GameObject menuObj;
     GameObject baseTextObj;
     Controls controls;
-
+    Handler handler;
     Health playerHealth;
 
     public static int segment;
@@ -74,6 +74,7 @@ public class RadialMenu : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        handler = player.GetComponent<Handler>();
         playerHealth = GameObject.Find("Player").GetComponent<Health>();
         baseTextObj = GameObject.Find("BaseTexts");
         menuObj = GameObject.Find("Menu");
@@ -196,8 +197,9 @@ public class RadialMenu : MonoBehaviour
         var weapon = Instantiate(menu[segment].prefab);
         weapon.transform.position = player.transform.Find("Hand").position;
         weapon.transform.rotation = player.transform.Find("Hand").rotation;
-        player.GetComponent<Handler>().weapon = weapon;
         weapon.GetComponent<Sword>().user = player;
         weapon.GetComponent<ConfigurableJoint>().connectedBody = player.transform.Find("Hand").GetComponent<Rigidbody>();
+        handler.weapon = weapon;
+        handler.WeaponRb = weapon.GetComponent<Rigidbody>();
     }
 }
