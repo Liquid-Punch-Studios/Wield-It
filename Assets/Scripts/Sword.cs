@@ -19,6 +19,8 @@ public class Sword : MonoBehaviour
 	public GameObject hitParticle;
 	public GameObject bloodHitParticle;
 
+	public bool throwable = false;
+
 	// How much force we need for handling the weapon
 	//public float force;
 	//public float angularForce;

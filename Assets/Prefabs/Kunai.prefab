@@ -57,6 +57,7 @@ MonoBehaviour:
     type: 3}
   bloodHitParticle: {fileID: 8994636525159094759, guid: 055651271fbf2f24192a459128f208ee,
     type: 3}
+  throwable: 1
 --- !u!54 &5606402994583295703
 Rigidbody:
   m_ObjectHideFlags: 0

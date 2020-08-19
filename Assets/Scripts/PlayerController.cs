@@ -101,10 +101,10 @@ public class PlayerController : MonoBehaviour
 		
 		if (controls.Player.Angle.triggered)
 		{
-			//if (handler.weapon.TryGetComponent<ThrownWeapon>(out ThrownWeapon weapon))
-			//{
+			if (handler.weapon.GetComponent<Sword>().throwable)
+			{
 				handler.Throw();
-			//}
+			}
 		}
 	}
 
