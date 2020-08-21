@@ -15021,6 +15021,17 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6986047968715829319, guid: b55c7ec7baf86a74f96a219817f170c3,
+        type: 3}
+      propertyPath: texts.Array.data[0]
+      value: Shielded enemies only become vulnerable when stunned
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986047968715829319, guid: b55c7ec7baf86a74f96a219817f170c3,
+        type: 3}
+      propertyPath: texts.Array.data[1]
+      value: "Kalkanl\u0131 d\xFC\u015Fmanlar sadece at\u0131l\u0131narak hasar alabilir
+        hale gelirler"
+      objectReference: {fileID: 0}
     - target: {fileID: 8240232419736251356, guid: b55c7ec7baf86a74f96a219817f170c3,
         type: 3}
       propertyPath: m_textInfo.characterCount

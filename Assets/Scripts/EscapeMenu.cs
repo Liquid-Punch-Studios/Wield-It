@@ -215,6 +215,13 @@ public class EscapeMenu : MonoBehaviour
         GameObject.Find("Difficulty Value").GetComponent<TextMeshProUGUI>().text = settings.Difficulty.ToString();
     }
 
+    public void LanguageNext()
+    {
+        var settings = SettingsManager.Instance.Settings;
+        settings.Language = (Language)((int)(settings.Language + 1) % Enum.GetNames(typeof(Language)).Length);
+        GameObject.Find("Language Value").GetComponent<TextMeshProUGUI>().text = settings.Language.ToString();
+    }
+
     public void QualityNext()
     {
         var settings = SettingsManager.Instance.Settings;
@@ -229,6 +236,7 @@ public class EscapeMenu : MonoBehaviour
         GameObject.Find("Sound Value").GetComponent<TextMeshProUGUI>().text = "%" + GetPercent(settings.EffectsVolume);
         GameObject.Find("Sensitivity Value").GetComponent<TextMeshProUGUI>().text = settings.Sensitivity.ToString();
         GameObject.Find("Difficulty Value").GetComponent<TextMeshProUGUI>().text = settings.Difficulty.ToString();
+        GameObject.Find("Language Value").GetComponent<TextMeshProUGUI>().text = settings.Language.ToString();
         GameObject.Find("Quality Value").GetComponent<TextMeshProUGUI>().text = QualitySettings.names[settings.GraphicsQuality];
         GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text = !Screen.fullScreen ? "Windowed" : "Fullscreen";
     }
