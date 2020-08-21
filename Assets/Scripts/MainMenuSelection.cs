@@ -32,6 +32,7 @@ public class MainMenuSelection : MonoBehaviour
     private Animator cameraAnim;
     private float scrollPosition;
     private bool prevSettings = false;
+    private bool isLevelClicked = false;
 
     public AudioPlayer musics;
     private AudioPlayer woodSounds;
@@ -263,7 +264,12 @@ public class MainMenuSelection : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Debug.Log(objName);
-        SceneManager.LoadSceneAsync(objName, LoadSceneMode.Single);
+        if (!isLevelClicked)
+        {
+            SceneManager.LoadSceneAsync(objName, LoadSceneMode.Single);
+            isLevelClicked = true;
+        }
+        
         yield return null;
     }
     
