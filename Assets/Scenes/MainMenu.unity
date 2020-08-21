@@ -1259,6 +1259,7 @@ GameObject:
   - component: {fileID: 72871255}
   - component: {fileID: 72871254}
   - component: {fileID: 72871253}
+  - component: {fileID: 72871257}
   m_Layer: 0
   m_Name: Level3Text
   m_TagString: Untagged
@@ -1308,8 +1309,8 @@ MonoBehaviour:
 
     Level 3'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1433,7 +1434,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
+  - {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1454,6 +1455,23 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &72871257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72871251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - 'Demo
+
+    Level 3'
+  - "Demo\nB\xF6l\xFCm 3"
 --- !u!1 &73229078
 GameObject:
   m_ObjectHideFlags: 0
@@ -2701,6 +2719,7 @@ GameObject:
   - component: {fileID: 145390425}
   - component: {fileID: 145390424}
   - component: {fileID: 145390423}
+  - component: {fileID: 145390427}
   m_Layer: 0
   m_Name: Level9Text
   m_TagString: Untagged
@@ -2748,8 +2767,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2873,7 +2892,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
+  - {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2894,6 +2913,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &145390427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145390421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - Level
+  - "B\xF6l\xFCm"
 --- !u!1001 &151189174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4313,6 +4347,7 @@ GameObject:
   - component: {fileID: 363063203}
   - component: {fileID: 363063202}
   - component: {fileID: 363063201}
+  - component: {fileID: 363063205}
   m_Layer: 0
   m_Name: Level7Text
   m_TagString: Untagged
@@ -4360,8 +4395,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4485,7 +4520,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
+  - {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4506,6 +4541,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &363063205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363063199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - Level
+  - "B\xF6l\xFCm"
 --- !u!1 &383664845 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: ba4d6f52abe5dae4e96f78239baa194c,
@@ -8397,6 +8447,7 @@ GameObject:
   - component: {fileID: 628723097}
   - component: {fileID: 628723096}
   - component: {fileID: 628723095}
+  - component: {fileID: 628723099}
   m_Layer: 0
   m_Name: Level10Text
   m_TagString: Untagged
@@ -8444,8 +8495,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8569,7 +8620,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
+  - {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8590,6 +8641,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &628723099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628723093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - Level
+  - "B\xF6l\xFCm"
 --- !u!4 &638222354 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 263c80eb0a50dfb43949231d00515116,
@@ -8929,6 +8995,7 @@ GameObject:
   - component: {fileID: 660007542}
   - component: {fileID: 660007541}
   - component: {fileID: 660007540}
+  - component: {fileID: 660007544}
   m_Layer: 0
   m_Name: Level8Text
   m_TagString: Untagged
@@ -8976,8 +9043,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -9101,7 +9168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
+  - {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9122,6 +9189,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &660007544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660007538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - Level
+  - "B\xF6l\xFCm"
 --- !u!1 &660805075 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: ba4d6f52abe5dae4e96f78239baa194c,
@@ -9704,6 +9786,7 @@ GameObject:
   - component: {fileID: 737005026}
   - component: {fileID: 737005025}
   - component: {fileID: 737005024}
+  - component: {fileID: 737005029}
   m_Layer: 0
   m_Name: Level1Text
   m_TagString: Untagged
@@ -9734,8 +9817,8 @@ MonoBehaviour:
 
     Level 1'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -9859,7 +9942,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
+  - {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9899,6 +9982,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0.026408195, y: -0.04267645}
   m_SizeDelta: {x: 0.5170233, y: 0.22054112}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &737005029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737005023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - 'Demo
+
+    Level 1'
+  - "Demo\nB\xF6l\xFCm 1"
 --- !u!1001 &747315003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10359,6 +10459,7 @@ GameObject:
   - component: {fileID: 802334499}
   - component: {fileID: 802334498}
   - component: {fileID: 802334497}
+  - component: {fileID: 802334501}
   m_Layer: 0
   m_Name: Level4Text
   m_TagString: Untagged
@@ -10408,8 +10509,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -10533,7 +10634,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
+  - {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10554,6 +10655,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &802334501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802334495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - Level
+  - "B\xF6l\xFCm"
 --- !u!1001 &806991027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12334,7 +12450,7 @@ MonoBehaviour:
     Eren Ayd\u0131n</i>\r\n\r\n<b>Teknik Direkt\xF6r</b>\r\n<i>Ahmet Sait Ko\xE7ak</i>\r\n\r\n<b>Programlama
     Amiri</b>\r\n<i>Ahmet Sait Ko\xE7ak</i>\r\n\r\n<b>B\xF6l\xFCm Tasar\u0131mc\u0131s\u0131</b>\r\n<i>Muhammed
     Eren Ayd\u0131n</i>\r\n\r\n<b>UI Tasar\u0131mc\u0131s\u0131</b>\r\n<i>Muhammed
-    Eren Ayd\u0131n</i>\r\n\r\n<b>I\u015F\u0131l Sanat\xE7\u0131s\u0131</b>\r\n<i>Ahmet
+    Eren Ayd\u0131n</i>\r\n\r\n<b>I\u015F\u0131k Sanat\xE7\u0131s\u0131</b>\r\n<i>Ahmet
     Sait Ko\xE7ak</i>\r\n\r\n<b>Betik Yaz\u0131c\u0131lar\u0131</b>\r\n<i>Ahmet Sait
     Ko\xE7ak</i>\r\n<i>Muhammed Eren Ayd\u0131n</i>\r\n\r\n<b>G\xF6rsel Efekt Tasar\u0131mc\u0131s\u0131</b>\r\n<i>Ahmet
     Sait Ko\xE7ak</i>\r\n\r\n<b>Sistem Programlama Amiri</b>\r\n<i>Ahmet Sait Ko\xE7ak</i>\r\n\r\n<b>Tecr\xFCbeli
@@ -12345,7 +12461,7 @@ MonoBehaviour:
     Ses Efektleri</b>\r\n<i>Zapsplat.com</i>\r\n\r\n<b>M\xFCzik Bestecisi</b>\r\n<i>Antti
     Luode</i>\r\n\r\n<b>Ses Tasar\u0131mc\u0131lar\u0131</b>\r\n<i>Muhammet Eren
     Ayd\u0131n</i>\n<i>Mehmet \xC7olak</i>\r\n\n<b>Yaz\u0131 Stili Tasar\u0131mc\u0131s\u0131</b>\n<i>Wojciech
-    Kalinowski</i>\r\r\n\n<b>Quality Assurance</b>\r\n<i>Ahmet Sait Ko\xE7ak</i>\r\n<i>Muhammed
+    Kalinowski</i>\r\r\n\n<b>Kalite Kontrol</b>\r\n<i>Ahmet Sait Ko\xE7ak</i>\r\n<i>Muhammed
     Eren Ayd\u0131n</i>\r\n"
 --- !u!1 &977929642
 GameObject:
@@ -13834,6 +13950,7 @@ GameObject:
   - component: {fileID: 1120580764}
   - component: {fileID: 1120580763}
   - component: {fileID: 1120580762}
+  - component: {fileID: 1120580766}
   m_Layer: 0
   m_Name: Level2Text
   m_TagString: Untagged
@@ -13885,8 +14002,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -14010,7 +14127,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
+  - {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14031,6 +14148,23 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1120580766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120580760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - 'Demo
+
+    Level 2'
+  - "Demo\nB\xF6l\xFCm 2"
 --- !u!1 &1126457229
 GameObject:
   m_ObjectHideFlags: 0
@@ -14822,6 +14956,7 @@ GameObject:
   - component: {fileID: 1185001054}
   - component: {fileID: 1185001053}
   - component: {fileID: 1185001052}
+  - component: {fileID: 1185001056}
   m_Layer: 0
   m_Name: Level6Text
   m_TagString: Untagged
@@ -14869,8 +15004,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -14994,7 +15129,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
+  - {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15015,6 +15150,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1185001056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185001050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - Level
+  - "B\xF6l\xFCm"
 --- !u!1 &1186359253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 9969f4aa126c87e469abfc3152985da8,
@@ -16265,6 +16415,7 @@ GameObject:
   - component: {fileID: 1348537674}
   - component: {fileID: 1348537673}
   - component: {fileID: 1348537672}
+  - component: {fileID: 1348537676}
   m_Layer: 0
   m_Name: Level5Text
   m_TagString: Untagged
@@ -16314,8 +16465,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -16439,7 +16590,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
+  - {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16460,6 +16611,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1348537676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348537670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - Level
+  - "B\xF6l\xFCm"
 --- !u!1 &1366935586 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 292d2248baf533647838cdb27dd9b370,
@@ -21512,6 +21678,7 @@ GameObject:
   - component: {fileID: 1841924232}
   - component: {fileID: 1841924231}
   - component: {fileID: 1841924230}
+  - component: {fileID: 1841924234}
   m_Layer: 0
   m_Name: Level12Text
   m_TagString: Untagged
@@ -21561,8 +21728,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -21686,7 +21853,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
+  - {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21707,6 +21874,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1841924234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841924228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - Level
+  - "B\xF6l\xFCm"
 --- !u!1001 &1847067365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23645,6 +23827,7 @@ GameObject:
   - component: {fileID: 2060907010}
   - component: {fileID: 2060907009}
   - component: {fileID: 2060907008}
+  - component: {fileID: 2060907012}
   m_Layer: 0
   m_Name: Level11Text
   m_TagString: Untagged
@@ -23692,8 +23875,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -23817,7 +24000,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
+  - {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23838,6 +24021,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2060907012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060907006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - Level
+  - "B\xF6l\xFCm"
 --- !u!4 &2061932477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 69b09b3a25554f142a91184cf2caba01,
