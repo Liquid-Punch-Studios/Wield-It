@@ -24395,7 +24395,7 @@ PrefabInstance:
     - target: {fileID: 6986047968715829319, guid: b55c7ec7baf86a74f96a219817f170c3,
         type: 3}
       propertyPath: texts.Array.data[1]
-      value: "D\xFC\u015Fman\u0131 at\u0131larak sersemletmeyi deneyin"
+      value: "D\xFC\u015Fman\u0131n \xFCzerine at\u0131larak sersemletmeyi deneyin"
       objectReference: {fileID: 0}
     - target: {fileID: 8240232419736251356, guid: b55c7ec7baf86a74f96a219817f170c3,
         type: 3}

@@ -99,7 +99,7 @@ MonoBehaviour:
   user: {fileID: 7041604921001397249, guid: 298ab2437a92c0a439c0b68f1c5080d4, type: 3}
   weaponHandle: {x: 0, y: 0, z: 0}
   damageFactor: 0.5
-  damageSpeedTreshold: 25
+  damageSpeedTreshold: 15
   staminaDrainFactor: 1.5
   hitParticle: {fileID: 1020884129286210536, guid: b4f6e91911274464f8b1b3f57a846e88,
     type: 3}
@@ -107,7 +107,7 @@ MonoBehaviour:
     type: 3}
   thrownWeaponPrefab: {fileID: 6930268576762927494, guid: 596775a1e254d534e90a4a313d1100fc,
     type: 3}
-  throwable: 1
+  throwable: 0
 --- !u!65 &5713121544115293137
 BoxCollider:
   m_ObjectHideFlags: 0
