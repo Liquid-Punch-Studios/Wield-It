@@ -55,12 +55,11 @@ public class GameSettings
             {
 				language = value;
 				Saved = false;
-				LanguageChanged?.Invoke(this, EventArgs.Empty);
-            }
+				MultiLanguage.changed = !MultiLanguage.changed;
+
+			}
 		}
     }
-
-	public event EventHandler LanguageChanged;
 
 	#endregion
 

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MultiLanguage : MonoBehaviour
 {
+	private bool oldChanged;
+	public static bool changed;
 	private TMP_Text tmp;
 
 	[TextArea]
@@ -17,18 +19,17 @@ public class MultiLanguage : MonoBehaviour
 		tmp.text = texts[(int)SettingsManager.Instance.Settings.Language];
 	}
 
-	private void OnEnable()
-	{
-		SettingsManager.Instance.Settings.LanguageChanged += Settings_LanguageChanged;
-	}
+    private void Update()
+    {
+        if (changed != oldChanged)
+        {
+			tmp.text = texts[(int)SettingsManager.Instance.Settings.Language];
+			oldChanged = changed;
+		}
+    }
 
-	private void OnDisable()
+    private static void Settings_LanguageChanged()
 	{
-		//SettingsManager.Instance.Settings.LanguageChanged -= Settings_LanguageChanged;
-	}
-
-	private void Settings_LanguageChanged(object sender, System.EventArgs e)
-	{
-		tmp.text = texts[(int)SettingsManager.Instance.Settings.Language];
+		
 	}
 }
