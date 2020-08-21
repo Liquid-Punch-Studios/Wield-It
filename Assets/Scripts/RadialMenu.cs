@@ -111,7 +111,7 @@ public class RadialMenu : MonoBehaviour
     {
         if (menuOpened && controls.UI.Tab.triggered)
         {
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             Time.timeScale = 1;
             menuObj.SetActive(false);
@@ -145,7 +145,7 @@ public class RadialMenu : MonoBehaviour
                 ChangeWeapon();
 
                 menuObj.SetActive(false);
-                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 Time.timeScale = 1;
                 menuOpened = false;

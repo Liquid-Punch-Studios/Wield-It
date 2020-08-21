@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7975551132388712290}
   - component: {fileID: 7784266052663666336}
   - component: {fileID: 8240232419736251356}
+  - component: {fileID: 7313644545359963351}
   m_Layer: 0
   m_Name: Title Text
   m_TagString: Untagged
@@ -66,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tutorial
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29cb265bb07270344bc46dacde4f7197, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 29cb265bb07270344bc46dacde4f7197,
+  m_fontAsset: {fileID: 11400000, guid: 6ced40c91cf4b0f439a2caac9a88290f, type: 2}
+  m_sharedMaterial: {fileID: -2508575719624379378, guid: 6ced40c91cf4b0f439a2caac9a88290f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -157,6 +158,21 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7313644545359963351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2200843329994985619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c215b73951169bb418955d84d9eca748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - Tutorial
+  - "\xD6\u011Fretici"
 --- !u!1 &6367656543495824381
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,8 +940,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Description
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e10d638eccc822499bdec5e056e7ae4, type: 2}
-  m_sharedMaterial: {fileID: -2021623962259538946, guid: 2e10d638eccc822499bdec5e056e7ae4,
+  m_fontAsset: {fileID: 11400000, guid: 1b8f3c80a27ff614487c68c59ab734ee, type: 2}
+  m_sharedMaterial: {fileID: 7581398162937863844, guid: 1b8f3c80a27ff614487c68c59ab734ee,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
