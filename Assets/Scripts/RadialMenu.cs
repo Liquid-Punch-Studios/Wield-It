@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,6 @@ using UnityEngine.UI;
 public class RadialMenu : MonoBehaviour
 {
 
-
     Image highlight;
 
     GameObject player;
@@ -22,6 +22,7 @@ public class RadialMenu : MonoBehaviour
     Controls controls;
     Handler handler;
     Health playerHealth;
+    TextMeshProUGUI throwableRemain;
 
     public static int segment;
     float segmentAngle;
@@ -56,8 +57,15 @@ public class RadialMenu : MonoBehaviour
         public Sprite sprite;
         public GameObject prefab;
 
-        private Image image;
+        private int amount = 5;
+        public int Amount
+        {
+            get { return amount; }
+            set { amount = value; }
+        }
 
+        private Image image;
+        
         private GameObject holder;
         public GameObject Holder
         {
@@ -79,6 +87,8 @@ public class RadialMenu : MonoBehaviour
         baseTextObj = GameObject.Find("BaseTexts");
         menuObj = GameObject.Find("Menu");
         highlight = GameObject.Find("Highlight").GetComponent<Image>();
+        throwableRemain = GameObject.Find("ThrowableRemaining").GetComponent<TextMeshProUGUI>();
+        throwableRemain.enabled = false;
         Reload();
         ChangeWeapon();
         menuObj.SetActive(false);
@@ -101,7 +111,7 @@ public class RadialMenu : MonoBehaviour
     {
         if (menuOpened && controls.UI.Tab.triggered)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
             Time.timeScale = 1;
             menuObj.SetActive(false);
@@ -135,11 +145,20 @@ public class RadialMenu : MonoBehaviour
                 ChangeWeapon();
 
                 menuObj.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = false;
                 Time.timeScale = 1;
                 menuOpened = false;
                 InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
+            }
+        }
+
+        else 
+        {
+            if(menu[segment].Amount <= 0)
+            {
+                segment = 0;
+                ChangeWeapon();
             }
         }
     }
@@ -192,14 +211,19 @@ public class RadialMenu : MonoBehaviour
 
     public void ChangeWeapon()
     {
-        foreach (var a in GameObject.FindGameObjectsWithTag("MainWeapon"))
-            Destroy(a);
-        var weapon = Instantiate(menu[segment].prefab);
-        weapon.transform.position = player.transform.Find("Hand").position;
-        weapon.transform.rotation = player.transform.Find("Hand").rotation;
-        weapon.GetComponent<Sword>().user = player;
-        weapon.GetComponent<ConfigurableJoint>().connectedBody = player.transform.Find("Hand").GetComponent<Rigidbody>();
-        handler.weapon = weapon;
-        handler.WeaponRb = weapon.GetComponent<Rigidbody>();
+        if (menu[segment].Amount >= 0)
+        {
+            foreach (var a in GameObject.FindGameObjectsWithTag("MainWeapon"))
+                Destroy(a);
+            var weapon = Instantiate(menu[segment].prefab);
+            Debug.Log("Segment: " + segment + "\tWeapon Name" + weapon.name);
+            weapon.transform.position = player.transform.Find("Hand").position;
+            weapon.transform.rotation = player.transform.Find("Hand").rotation;
+            weapon.GetComponent<Sword>().user = player;
+            throwableRemain.enabled = weapon.GetComponent<Sword>().throwable ? true : false;
+            weapon.GetComponent<ConfigurableJoint>().connectedBody = player.transform.Find("Hand").GetComponent<Rigidbody>();
+            handler.weapon = weapon;
+            handler.WeaponRb = weapon.GetComponent<Rigidbody>();
+        }
     }
 }

@@ -73,7 +73,7 @@ public class EscapeMenu : MonoBehaviour
     {
         if (menuOpened && controls.Player.EscapeMenu.triggered)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
             Time.timeScale = 1;
             menuOpened = false;
@@ -87,7 +87,7 @@ public class EscapeMenu : MonoBehaviour
         }
         else if (!isDead)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
             settingsMenu.SetActive(false);
             escapeMenu.SetActive(false);
@@ -118,7 +118,7 @@ public class EscapeMenu : MonoBehaviour
         darkMask.SetActive(false);
         escapeMenu.SetActive(false);
         settingsMenu.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
     }
 

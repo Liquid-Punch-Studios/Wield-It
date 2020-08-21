@@ -18,7 +18,7 @@ public class Sword : MonoBehaviour
 
 	public GameObject hitParticle;
 	public GameObject bloodHitParticle;
-
+	public GameObject thrownWeaponPrefab;
 	public bool throwable = false;
 
 	// How much force we need for handling the weapon

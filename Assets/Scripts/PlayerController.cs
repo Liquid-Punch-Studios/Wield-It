@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 	// Awake is called once during the lifetime of the script, on its initial awake state, prior to any other functions
 	private void Awake()
 	{
-		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.lockState = CursorLockMode.Confined;
 		Cursor.visible = false;
 	}
 

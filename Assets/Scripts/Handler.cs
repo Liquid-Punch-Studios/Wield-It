@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,7 +19,6 @@ public class Handler : MonoBehaviour
 
 	private ConfigurableJoint weaponJoint;
 
-	public GameObject thrownWeaponPrefab;
 
 	private Rigidbody playerRb;
 
@@ -66,18 +66,24 @@ public class Handler : MonoBehaviour
 
 	public void Throw(Vector2 vec)
 	{
+		var throwableRemain = GameObject.Find("ThrowableRemaining").GetComponent<TextMeshProUGUI>();
+		GameObject thrownWeaponPrefab = weapon.GetComponent<Sword>().thrownWeaponPrefab;
+		
 		if (thrownWeaponPrefab == null)
 		{
 			Debug.Log("Thrown weapon prefab is null.");
 			return;
 		}
+		var radialWeapon = GameObject.Find("RadialMenu").GetComponent<RadialMenu>().menu[RadialMenu.segment];
 
+		if (radialWeapon.Amount <= 0) return;
 		Vector3 pos = weapon.transform.position;
 		Quaternion rot = weapon.transform.rotation;
 		Vector3 vel = vec;
 		Vector3 ang = weaponRb.angularVelocity;
 
 		var obj = Instantiate(thrownWeaponPrefab, pos, rot);
+		throwableRemain.text = --radialWeapon.Amount + "/5";
 		if (obj.TryGetComponent<Rigidbody>(out Rigidbody rb))
 		{
 			rb.velocity = vel;

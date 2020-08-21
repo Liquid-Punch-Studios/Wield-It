@@ -8,11 +8,11 @@ public class DungeonDoor : MonoBehaviour
     public Health enemyHealth;
 
     Animator anim;
-    AudioSource audio;
+    AudioSource audioSrc;
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        audio = gameObject.GetComponent<AudioSource>();
+        audioSrc = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -29,6 +29,6 @@ public class DungeonDoor : MonoBehaviour
     private void EnemyHealth_Died(object sender, System.EventArgs e)
     {
         anim.SetBool("isSet", true);
-        audio.Play();
+        audioSrc.Play();
     }
 }
