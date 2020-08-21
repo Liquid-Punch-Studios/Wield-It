@@ -172,6 +172,14 @@ public class MainMenuSelection : MonoBehaviour
                         textComponent = GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>();
                         textComponent.text = settings.Sensitivity.ToString("F2", CultureInfo.InvariantCulture);
                         break;
+
+                    case "Language":
+                        textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
+                        settings.Language = (Language)((int)(settings.Language + 1) % Enum.GetNames(typeof(Language)).Length);
+                        textComponent.text = settings.Language.ToString();
+                        break;
+                    default:
+                        break;
                 }
 
                 if (hit.rigidbody != null)
@@ -280,7 +288,7 @@ public class MainMenuSelection : MonoBehaviour
         GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "%" + Mathf.Round(settings.EffectsVolume * 100);
         if (settings.EffectsMuted)
             GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "Muted";
-
+        GameObject.Find("LanguageVal").GetComponent<TextMeshPro>().text = settings.Language.ToString();
         GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>().text = settings.Sensitivity.ToString("F2", CultureInfo.InvariantCulture);
 
     }

@@ -42,6 +42,26 @@ public class GameSettings
 		}
 	}
 	public event EventHandler DifficultyChanged;
+
+	private Language language = Language.English;
+
+	public Language Language
+    {
+        get { return language; }
+        set 
+		{
+			var old = language;
+			if(old != value)
+            {
+				language = value;
+				Saved = false;
+				LanguageChanged?.Invoke(this, EventArgs.Empty);
+            }
+		}
+    }
+
+	public event EventHandler LanguageChanged;
+
 	#endregion
 
 	#region Graphics
@@ -285,4 +305,10 @@ public enum Difficulty
 	Easy,
 	Normal,
 	Hard,
+}
+
+public enum Language
+{
+	English,
+	Turkish
 }

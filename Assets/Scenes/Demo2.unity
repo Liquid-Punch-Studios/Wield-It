@@ -24387,6 +24387,16 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6986047968715829319, guid: b55c7ec7baf86a74f96a219817f170c3,
+        type: 3}
+      propertyPath: texts.Array.data[0]
+      value: Try to stun the Enemy with dashing
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986047968715829319, guid: b55c7ec7baf86a74f96a219817f170c3,
+        type: 3}
+      propertyPath: texts.Array.data[1]
+      value: "D\xFC\u015Fman\u0131 at\u0131larak sersemletmeyi deneyin"
+      objectReference: {fileID: 0}
     - target: {fileID: 8240232419736251356, guid: b55c7ec7baf86a74f96a219817f170c3,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -29666,6 +29676,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 692646982390907597, guid: c51681bd87849754e89e4bbc90e33abe,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692646982390907597, guid: c51681bd87849754e89e4bbc90e33abe,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692646982390907597, guid: c51681bd87849754e89e4bbc90e33abe,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 692646983324299306, guid: c51681bd87849754e89e4bbc90e33abe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29775,6 +29800,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 692646983343609797, guid: c51681bd87849754e89e4bbc90e33abe,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692646983343609797, guid: c51681bd87849754e89e4bbc90e33abe,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692646983343609797, guid: c51681bd87849754e89e4bbc90e33abe,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c51681bd87849754e89e4bbc90e33abe, type: 3}
