@@ -32,7 +32,6 @@ public class MainMenuSelection : MonoBehaviour
     private Animator cameraAnim;
     private float scrollPosition;
     private bool prevSettings = false;
-    private bool prevCredits = false;
 
     public AudioPlayer musics;
     private AudioPlayer woodSounds;
@@ -40,7 +39,7 @@ public class MainMenuSelection : MonoBehaviour
     private void Start()
     {
         Load();
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         woodSounds = GameObject.Find("WoodImpact").GetComponent<AudioPlayer>();
         chainSounds = GameObject.Find("ChainImpact").GetComponent<AudioPlayer>();
@@ -72,7 +71,6 @@ public class MainMenuSelection : MonoBehaviour
                         break;
 
                     case string a when a.Contains("Demo"):
-                        int clickedLevel;
                         Match m = Regex.Match(objectName, @"\d+");
                         string levelNumber = m.Success ? m.Value : "1";
                         //if (Int32.TryParse(levelNumber,out clickedLevel))

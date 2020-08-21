@@ -30,5 +30,10 @@ public class ThrownWeapon : MonoBehaviour
 				other.attachedRigidbody.AddForceAtPosition(impact * rb.velocity, transform.position, ForceMode.Impulse);
 			}
 		}
+
+		if ((other.TryGetComponent(out Health health)) && !other.CompareTag("Player"))
+		{
+			health.ReceiveDamage(damage);
+        }
 	}
 }
