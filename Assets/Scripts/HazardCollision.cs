@@ -36,7 +36,14 @@ public class HazardCollision : MonoBehaviour
 	/// </summary>
 	public float cooldown = 0.5f;
 
-	public void Activate()
+	GameObject bloodEffect;
+
+    private void Start()
+    {
+		bloodEffect = (GameObject)Resources.Load("BloodHitEffect");
+    }
+
+    public void Activate()
 	{
 		active = true;
 	}
@@ -85,6 +92,10 @@ public class HazardCollision : MonoBehaviour
 			if (health.ReceiveDamage(damage, key, cooldown) &&
 				collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
 			{
+				var p = Instantiate(bloodEffect);
+				p.transform.position = collision.contacts[0].point;
+				p.transform.parent = collision.transform;
+				
 				if (direction == Vector3.zero)
 				{
 					Vector3 sum = new Vector3();

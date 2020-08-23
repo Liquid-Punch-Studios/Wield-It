@@ -17,8 +17,8 @@ public class Sword : MonoBehaviour
 
 	public float staminaDrainFactor = 1.5f;
 
-	public GameObject hitParticle;
-	public GameObject bloodHitParticle;
+	private GameObject hitParticle;
+	private GameObject bloodHitParticle;
 	public GameObject thrownWeaponPrefab;
 	public bool throwable = false;
 
@@ -35,8 +35,9 @@ public class Sword : MonoBehaviour
 	private void Start()
 	{
 		damageIndicator = (GameObject)Resources.Load("DamageIndicator");
+		bloodHitParticle = (GameObject)Resources.Load("BloodHitEffect");
+		hitParticle = (GameObject)Resources.Load("HitEffect");
 		stamina = user.GetComponent<Stamina>();
-
 		weaponRb = GetComponent<Rigidbody>();
 		handlerRb = user.GetComponent<Rigidbody>();
 		weaponJoint = GetComponent<ConfigurableJoint>();
@@ -70,7 +71,7 @@ public class Sword : MonoBehaviour
 				var relative = weaponRb.velocity - otherRb.velocity;
 				if (relative.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold)
 				{
-					GameObject p, di = new GameObject();
+					GameObject p, di;
 					di = Instantiate(damageIndicator);
 					if (other.TryGetComponent(out EnemyAI ai) && ai.vulnerable)
                     {
@@ -78,12 +79,10 @@ public class Sword : MonoBehaviour
 						health.ReceiveDamage(damage);
 						p = Instantiate(bloodHitParticle);
 						di.GetComponentInChildren<TextMeshPro>().text = "-" + (int)damage;
-						//Debug.Log("Damage: " + (int)(damage) + "\tHP: " + (int)health.Hp);
 					}
                     else
                     {
 						p = Instantiate(hitParticle);
-						//di = Instantiate(damageIndicator);
 						di.transform.Find("Block").gameObject.SetActive(true);
 						di.GetComponentInChildren<TextMeshPro>().gameObject.SetActive(false);
 					}
@@ -92,7 +91,7 @@ public class Sword : MonoBehaviour
 					var clash = other.ClosestPoint(transform.position);
 					
 					p.transform.position = clash;
-					Debug.Log(other.gameObject.name);
+					p.transform.parent = other.transform;
 					di.transform.position = other.transform.Find("DISpawn").position;
 					otherRb.AddForce(weaponRb.velocity * 1000);
 				}

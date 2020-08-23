@@ -43,10 +43,11 @@ public class HazardTrigger : MonoBehaviour
 	public float cooldown = 0.5f;
 
 	GameObject di;
-
+	GameObject bloodEffect;
     private void Start()
     {
 		di = (GameObject)Resources.Load("DamageIndicator");
+		bloodEffect = (GameObject)Resources.Load("BloodHitEffect");
     }
 
     public void Activate()
@@ -98,12 +99,16 @@ public class HazardTrigger : MonoBehaviour
 			if (health.ReceiveDamage(damage, key, cooldown) &&
 				other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
 			{
+				var p = Instantiate(bloodEffect);
+				p.transform.position = other.ClosestPoint(transform.position);
+				p.transform.parent = other.transform;
 
-				var ins= Instantiate(di, other.transform.Find("DISpawn").position, Quaternion.identity);
+
+				var ins = Instantiate(di, other.transform.Find("DISpawn").position, Quaternion.identity);
 				ins.GetComponentInChildren<TextMeshPro>().text = "-" + damage;
 				if (direction == Vector3.zero)
 				{
-					rb.AddForce((other.transform.position - this.transform.position).normalized * force *5, ForceMode.Impulse);
+					rb.AddForce((other.transform.position - this.transform.position).normalized * force * 5, ForceMode.Impulse);
 				}
 				else
 				{
