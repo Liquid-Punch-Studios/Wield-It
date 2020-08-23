@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HazardTrigger : MonoBehaviour
@@ -41,7 +42,14 @@ public class HazardTrigger : MonoBehaviour
 	[Tooltip("Indicates the time required to pass until the hazard can hit the same object.")]
 	public float cooldown = 0.5f;
 
-	public void Activate()
+	GameObject di;
+
+    private void Start()
+    {
+		di = (GameObject)Resources.Load("DamageIndicator");
+    }
+
+    public void Activate()
 	{
 		foreach (Collider collider in GetComponents<Collider>())
 			if (collider.isTrigger)
@@ -54,6 +62,7 @@ public class HazardTrigger : MonoBehaviour
 			if (collider.isTrigger)
 				collider.enabled = false;
 	}
+	
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -65,6 +74,8 @@ public class HazardTrigger : MonoBehaviour
 			if (health.ReceiveDamage(damage, key, cooldown) &&
 				other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
 			{
+
+				Instantiate(di, other.transform.Find("DISpawn").position, Quaternion.identity);
 				if (direction == Vector3.zero)
 				{
 					rb.AddForce((other.transform.position - this.transform.position).normalized * force, ForceMode.Impulse);
@@ -87,9 +98,12 @@ public class HazardTrigger : MonoBehaviour
 			if (health.ReceiveDamage(damage, key, cooldown) &&
 				other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
 			{
+
+				var ins= Instantiate(di, other.transform.Find("DISpawn").position, Quaternion.identity);
+				ins.GetComponentInChildren<TextMeshPro>().text = "-" + damage;
 				if (direction == Vector3.zero)
 				{
-					rb.AddForce((other.transform.position - this.transform.position).normalized * force, ForceMode.Impulse);
+					rb.AddForce((other.transform.position - this.transform.position).normalized * force *5, ForceMode.Impulse);
 				}
 				else
 				{

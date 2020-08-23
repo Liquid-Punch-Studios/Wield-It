@@ -62,7 +62,7 @@ public class Movement : MonoBehaviour
 
 	private Rigidbody rb;
 	private Stamina stamina;
-
+	private Health health;
 	public bool Jump()
 	{
 		Vector2 vel = rb.velocity; // Don't touch X axis
@@ -86,6 +86,11 @@ public class Movement : MonoBehaviour
 
 		return true;
 	}
+
+	public void Hurt()
+    {
+		animator.SetTrigger("hurt");
+    }
 
 	private float lastDashDir;
 
@@ -127,6 +132,8 @@ public class Movement : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 		stamina = GetComponent<Stamina>();
+		health = gameObject.GetComponent<Health>();
+		health.HpChanged += Health_HpChanged;
 	}
 
 	private void FixedUpdate()
@@ -191,4 +198,10 @@ public class Movement : MonoBehaviour
 			}
 		}
 	}
+
+
+    private void Health_HpChanged(object sender, System.EventArgs e)
+    {
+		Hurt();
+    }
 }
