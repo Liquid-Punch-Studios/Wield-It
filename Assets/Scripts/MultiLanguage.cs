@@ -13,10 +13,16 @@ public class MultiLanguage : MonoBehaviour
 	[TextArea]
 	public string[] texts;
 
-	private void Start()
+    private void OnEnable()
+    {
+		//SettingsManager.Instance.Settings.LanguageChanged += Settings_LanguageChanged;
+	}
+
+    private void Start()
 	{
 		tmp = GetComponent<TMP_Text>();
 		tmp.text = texts[(int)SettingsManager.Instance.Settings.Language];
+		oldChanged = changed;
 	}
 
     private void Update()
@@ -27,9 +33,9 @@ public class MultiLanguage : MonoBehaviour
 			oldChanged = changed;
 		}
     }
-
-    private static void Settings_LanguageChanged()
+	/*
+	private void Settings_LanguageChanged(object sender, System.EventArgs e)
 	{
-		
-	}
+		tmp.text = texts[(int)SettingsManager.Instance.Settings.Language];
+	}*/
 }

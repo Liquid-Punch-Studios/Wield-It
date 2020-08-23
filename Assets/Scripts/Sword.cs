@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using TMPro;
 
 [SelectionBase]
 public class Sword : MonoBehaviour
@@ -25,12 +26,15 @@ public class Sword : MonoBehaviour
 	//public float force;
 	//public float angularForce;
 
+	private GameObject damageIndicator;
+
 	private Rigidbody handlerRb;
 	private Rigidbody weaponRb;
 	private ConfigurableJoint weaponJoint;
 
 	private void Start()
 	{
+		damageIndicator = (GameObject)Resources.Load("DamageIndicator");
 		stamina = user.GetComponent<Stamina>();
 
 		weaponRb = GetComponent<Rigidbody>();
@@ -66,18 +70,29 @@ public class Sword : MonoBehaviour
 				var relative = weaponRb.velocity - otherRb.velocity;
 				if (relative.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold)
 				{
-					GameObject p;
+					GameObject p,di;
+					di = Instantiate(damageIndicator);
 					if (other.TryGetComponent(out EnemyAI ai) && ai.vulnerable)
                     {
-						health.ReceiveDamage(damageFactor * relative.magnitude);
+						var damage = damageFactor * relative.magnitude;
+						health.ReceiveDamage(damage);
 						p = Instantiate(bloodHitParticle);
+						di.GetComponentInChildren<TextMeshPro>().text = "-" + (int)damage;
+						Debug.Log("Damage: " + (int)(damage) + "\tHP: " + (int)health.Hp);
 					}
-					else
+                    else
+                    {
 						p = Instantiate(hitParticle);
-					Debug.Log("Damage: " + (int)(damageFactor * relative.magnitude) + "\tHP: " + (int)health.Hp);
+						di.transform.Find("Block").gameObject.SetActive(true);
+						di.GetComponentInChildren<TextMeshPro>().gameObject.SetActive(false);
+					}
+						
+					
 					var clash = other.ClosestPoint(transform.position);
 					
 					p.transform.position = clash;
+					Debug.Log(other.gameObject.name);
+					di.transform.position = other.transform.Find("DISpawn").position;
 					otherRb.AddForce(weaponRb.velocity * 1000);
 				}
 			}
