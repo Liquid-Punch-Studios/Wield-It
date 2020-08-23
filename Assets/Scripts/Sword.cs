@@ -70,7 +70,7 @@ public class Sword : MonoBehaviour
 				var relative = weaponRb.velocity - otherRb.velocity;
 				if (relative.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold)
 				{
-					GameObject p,di;
+					GameObject p, di = new GameObject();
 					di = Instantiate(damageIndicator);
 					if (other.TryGetComponent(out EnemyAI ai) && ai.vulnerable)
                     {
@@ -78,11 +78,12 @@ public class Sword : MonoBehaviour
 						health.ReceiveDamage(damage);
 						p = Instantiate(bloodHitParticle);
 						di.GetComponentInChildren<TextMeshPro>().text = "-" + (int)damage;
-						Debug.Log("Damage: " + (int)(damage) + "\tHP: " + (int)health.Hp);
+						//Debug.Log("Damage: " + (int)(damage) + "\tHP: " + (int)health.Hp);
 					}
                     else
                     {
 						p = Instantiate(hitParticle);
+						//di = Instantiate(damageIndicator);
 						di.transform.Find("Block").gameObject.SetActive(true);
 						di.GetComponentInChildren<TextMeshPro>().gameObject.SetActive(false);
 					}

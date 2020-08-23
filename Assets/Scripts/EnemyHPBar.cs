@@ -17,7 +17,10 @@ public class EnemyHPBar : MonoBehaviour
     {
         health.HpChanged -= Health_HpChanged;
     }
-
+    private void FixedUpdate()
+    {
+        transform.rotation = Quaternion.identity;
+    }
     private void Health_HpChanged(object sender, System.EventArgs e)
     {
         hpBar.fillAmount = health.Hp / health.MaxHp;

@@ -63,8 +63,10 @@ public class EnemyAI : MonoBehaviour
 
 		if (Mathf.Sign(enemyToPlayer.x) < 0)
 			transform.rotation = Quaternion.LookRotation(Vector3.forward,Vector3.up);
-		else
+
+        else
 			transform.rotation = Quaternion.LookRotation(Vector3.back, Vector3.up);
+
 
 		movement.move = 0;
 		animator.SetFloat("speed X", rb.velocity.x);
