@@ -5,6 +5,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameSettings
 {
@@ -56,10 +57,11 @@ public class GameSettings
 				language = value;
 				Saved = false;
 				MultiLanguage.changed = !MultiLanguage.changed;
-
 			}
 		}
     }
+
+	public event EventHandler LanguageChanged;
 
 	#endregion
 
