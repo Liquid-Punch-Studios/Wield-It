@@ -90,7 +90,9 @@ public class Movement : MonoBehaviour
 	public void Hurt()
     {
 		animator.SetTrigger("hurt");
-    }
+		if (transform.Find("HurtSounds").TryGetComponent(out AudioPlayer a))
+			a.PlayRandom();
+	}
 
 	private float lastDashDir;
 
