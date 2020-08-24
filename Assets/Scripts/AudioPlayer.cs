@@ -29,6 +29,15 @@ public class AudioPlayer : MonoBehaviour
 		Triggered?.Invoke(this, index);
 	}
 
+	public void PlayOneShotRandom(float pitchShift = 0)
+	{
+		int index = Random.Range(0, audioList.Length);
+		var audio = audioList[index];
+		audio.pitch = Mathf.Clamp(Random.Range(1 - pitchShift, 1 + pitchShift), 0.1f, 10f);
+		audio.PlayOneShot(audio.clip);
+		Triggered?.Invoke(this, index);
+	}
+
 	public void Play(int audioIndex)
 	{
 		if (audioIndex < audioList.Length)

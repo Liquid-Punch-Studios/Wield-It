@@ -122,7 +122,7 @@ public class RadialMenu : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Time.timeScale = 0;
+            Time.timeScale = 0.25f;
             menuObj.SetActive(true);
             Vector2 mousePos = controls.UI.Mouse.ReadValue<Vector2>();
             mousePos.x -= Screen.width / 2f;
