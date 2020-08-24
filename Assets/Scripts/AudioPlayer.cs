@@ -20,10 +20,11 @@ public class AudioPlayer : MonoBehaviour
 			PlayRandom();
 	}
 
-	public void PlayRandom()
+	public void PlayRandom(float pitchShift = 0)
 	{
 		int index = Random.Range(0, audioList.Length);
 		var audio = audioList[index];
+		audio.pitch = Mathf.Clamp(Random.Range(1 - pitchShift, 1 + pitchShift), 0.1f, 10f);
 		audio.Play(); // TODO: Check if sound replays or plays a new one
 		Triggered?.Invoke(this, index);
 	}

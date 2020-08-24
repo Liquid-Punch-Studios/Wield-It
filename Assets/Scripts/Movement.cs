@@ -71,7 +71,7 @@ public class Movement : MonoBehaviour
 			vel.y = jumpSpeed;
 			rb.velocity = vel;
 			animator.SetTrigger("jump");
-			jumpAudio?.PlayRandom();
+			jumpAudio?.PlayRandom(0.1f);
 		}
 		else if (airJumpLeft > 0 && stamina.UseStamina(airJumpCost))
 		{
@@ -79,7 +79,7 @@ public class Movement : MonoBehaviour
 			rb.velocity = vel;
 			airJumpLeft--;
 			animator.SetTrigger("double jump");
-			airJumpAudio?.PlayRandom();
+			airJumpAudio?.PlayRandom(0.1f);
 		}
 		else
 			return false;
@@ -91,7 +91,7 @@ public class Movement : MonoBehaviour
     {
 		animator.SetTrigger("hurt");
 		if (transform.Find("HurtSounds").TryGetComponent(out AudioPlayer a))
-			a.PlayRandom();
+			a.PlayRandom(0.1f);
 	}
 
 	private float lastDashDir;
@@ -102,7 +102,7 @@ public class Movement : MonoBehaviour
 		{
 			rb.velocity = Vector3.right * (lastDashDir = Mathf.Sign(direction)) * dashSpeed;
 			animator.SetTrigger("dash");
-			dashAudio?.PlayRandom();
+			dashAudio?.PlayRandom(0.1f);
 		}
 		else
 			return false;
@@ -116,7 +116,7 @@ public class Movement : MonoBehaviour
 		{
 			rb.velocity = Vector3.down * slamSpeed;
 			animator.SetBool("slam", true);
-			slamAudio?.PlayRandom();
+			slamAudio?.PlayRandom(0.1f);
 			return slamming = true;
 		}
 		else
@@ -167,7 +167,7 @@ public class Movement : MonoBehaviour
 		{
 			onGround++;
 			if (onGround == 1)
-				landAudio?.PlayRandom();
+				landAudio?.PlayRandom(0.1f);
 
 			if (onGround > 0)
 			{

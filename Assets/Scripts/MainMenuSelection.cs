@@ -187,9 +187,9 @@ public class MainMenuSelection : MonoBehaviour
                 {
                     hit.rigidbody.AddForce(ray.direction * 400);
                     if (hit.transform.tag == "Wood")
-                        woodSounds.PlayRandom();
+                        woodSounds.PlayRandom(0.1f);
                     else if (hit.transform.tag == "Chain")
-                        chainSounds.PlayRandom();
+                        chainSounds.PlayRandom(0.1f);
                 }
             }
         }
@@ -212,7 +212,7 @@ public class MainMenuSelection : MonoBehaviour
 
         if (settingsOn != prevSettings)
         {
-            audio.PlayRandom();
+            audio.PlayRandom(0.1f);
             prevSettings = settingsOn;
         }
 

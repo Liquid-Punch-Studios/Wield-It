@@ -11,6 +11,6 @@ public class ImpactParticleTrigger : MonoBehaviour
 	{
 		particle.Play(true);
 		if(audioPlayer != null)
-			audioPlayer.PlayRandom();
+			audioPlayer.PlayRandom(0.05f);
 	}
 }
