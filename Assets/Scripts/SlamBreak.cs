@@ -17,6 +17,6 @@ public class SlamBreak : MonoBehaviour
 		foreach (Transform pieces in brokenDoor.transform)
 			pieces.GetComponent<Rigidbody>().AddExplosionForce(1000, explosion, 100);
 
-		breakSound?.PlayRandom();
+		breakSound?.PlayRandom(0.1f);
 	}
 }
