@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SlamBreak : MonoBehaviour
 {
 	public GameObject brokenDoor;
 	public Transform explosionPoint;
 	public AudioPlayer breakSound;
+	public CinemachineImpulseSource impulse;
 
 	public void Break()
 	{
@@ -18,5 +20,6 @@ public class SlamBreak : MonoBehaviour
 			pieces.GetComponent<Rigidbody>().AddExplosionForce(1000, explosion, 100);
 
 		breakSound?.PlayRandom(0.1f);
+		impulse.GenerateImpulse();
 	}
 }
