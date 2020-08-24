@@ -100,8 +100,8 @@ public class PlayerController : MonoBehaviour
 		Vector2 wield = controls.Player.Wield.ReadValue<Vector2>();
 		handler.Wield(wield * sensitivity * SettingsManager.Instance.Settings.Sensitivity);
 
-		if (!handler.weapon.GetComponent<Sword>().throwable)
-			handler.fixedWeaponAngle = controls.Player.Angle.ReadValue<float>() > InputSystem.settings.defaultButtonPressPoint;
+		
+		handler.fixedWeaponAngle = controls.Player.Angle.ReadValue<float>() > InputSystem.settings.defaultButtonPressPoint;
 
 		
 		if (controls.Player.ClickRelease.triggered)
