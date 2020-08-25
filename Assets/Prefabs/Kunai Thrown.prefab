@@ -76,6 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87cdedf4e067804cb4de46ec1b910ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerLayerMask:
+    serializedVersion: 2
+    m_Bits: 8704
   damage: 20
   impact: 20
 --- !u!65 &7415789290562133119

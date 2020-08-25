@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
                 {
 					sum += p;
                 }
-				Debug.Log("Sum: " + sum);
+
 				if ((8*sum).magnitude > 10)
 					handler.Throw(-8 * sum);
 			}

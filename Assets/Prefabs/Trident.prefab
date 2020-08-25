@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7042906305107334096}
   - component: {fileID: 2408342459965800322}
   - component: {fileID: 2132456828392985823}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Trident
   m_TagString: MainWeapon
   m_Icon: {fileID: 0}
@@ -101,10 +101,6 @@ MonoBehaviour:
   damageFactor: 0.5
   damageSpeedTreshold: 15
   staminaDrainFactor: 1.5
-  hitParticle: {fileID: 1020884129286210536, guid: b4f6e91911274464f8b1b3f57a846e88,
-    type: 3}
-  bloodHitParticle: {fileID: 8994636525159094759, guid: 055651271fbf2f24192a459128f208ee,
-    type: 3}
   thrownWeaponPrefab: {fileID: 0}
   throwable: 0
 --- !u!65 &7042906305107334096
