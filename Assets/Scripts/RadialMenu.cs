@@ -216,11 +216,11 @@ public class RadialMenu : MonoBehaviour
             foreach (var a in GameObject.FindGameObjectsWithTag("MainWeapon"))
                 Destroy(a);
             var weapon = Instantiate(menu[segment].prefab);
-            Debug.Log("Segment: " + segment + "\tWeapon Name" + weapon.name);
+            Debug.Log("Segment: " + segment + "\tWeapon Name: " + weapon.name);
             weapon.transform.position = player.transform.Find("Hand").position;
             weapon.transform.rotation = player.transform.Find("Hand").rotation;
             weapon.GetComponent<Sword>().user = player;
-            throwableRemain.enabled = weapon.GetComponent<Sword>().throwable ? true : false;
+            throwableRemain.enabled = weapon.GetComponent<Sword>().throwable;
             weapon.GetComponent<ConfigurableJoint>().connectedBody = player.transform.Find("Hand").GetComponent<Rigidbody>();
             handler.weapon = weapon;
             handler.WeaponRb = weapon.GetComponent<Rigidbody>();

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6930268576762927499}
   - component: {fileID: 6930268576762927493}
   - component: {fileID: 6539418603611401564}
-  - component: {fileID: 7415789290562133119}
   m_Layer: 13
   m_Name: Spear Thrown
   m_TagString: Untagged
@@ -78,13 +77,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 100
   impact: 20
---- !u!65 &7415789290562133119
+--- !u!65 &4655143532689741104
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6930268576762927494}
+  m_GameObject: {fileID: 8745210394446495943}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -168,8 +167,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: weapon_spear
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: de64e2f037e8a5343ab4efe8fec3f77e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de64e2f037e8a5343ab4efe8fec3f77e, type: 3}
+--- !u!1 &8745210394446495943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: de64e2f037e8a5343ab4efe8fec3f77e,
+    type: 3}
+  m_PrefabInstance: {fileID: 755715865613621710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5694348033842442964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: de64e2f037e8a5343ab4efe8fec3f77e,

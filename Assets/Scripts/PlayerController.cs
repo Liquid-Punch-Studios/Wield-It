@@ -73,7 +73,8 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-
+	int maxPoint = 10;
+	Queue<Vector3> points = new Queue<Vector3>();
 	Vector3 startPoint;
 
 	// FixedUpdate is called once per physics frame
@@ -102,18 +103,33 @@ public class PlayerController : MonoBehaviour
 
 		
 		handler.fixedWeaponAngle = controls.Player.Angle.ReadValue<float>() > InputSystem.settings.defaultButtonPressPoint;
+		if (handler.weapon.GetComponent<Sword>().throwable)
+			handler.fixedWeaponAngle = handler.weapon.name == "Spear(Clone)" ? handler.fixedWeaponAngle : false;
 
-		
 		if (controls.Player.ClickRelease.triggered)
 		{
-
 			if (handler.weapon.GetComponent<Sword>().throwable)
 			{
-				handler.Throw(8 * (handGfx.position - startPoint));
+				Vector3 sum = new Vector3();
+				foreach(Vector3 p in points)
+                {
+					sum += p;
+                }
+				Debug.Log("Sum: " + sum);
+				if ((8*sum).magnitude > 10)
+					handler.Throw(-8 * sum);
 			}
 		}
-		else if (Mouse.current.leftButton.wasPressedThisFrame)
+		else if (Mouse.current.leftButton.isPressed)
+        {
+			if (points.Count >= maxPoint)
+            {
+				points.Dequeue();
+            }
+			points.Enqueue(startPoint - handGfx.position);
 			startPoint = handGfx.position;
+		}
+			
 
 	}
 
