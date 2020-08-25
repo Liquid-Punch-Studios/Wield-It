@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 5396943027710235049}
   - component: {fileID: 333386379437728238}
   - component: {fileID: 7021709373571194593}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Mace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,8 +392,8 @@ MonoBehaviour:
   damageFactor: 0.5
   damageSpeedTreshold: 25
   staminaDrainFactor: 1.5
-  hitParticle: {fileID: 1020884129286210536, guid: b4f6e91911274464f8b1b3f57a846e88,
-    type: 3}
+  thrownWeaponPrefab: {fileID: 0}
+  throwable: 0
 --- !u!1 &1422641514860315175
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +649,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.4, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.632267, y: 0.015075445, z: 0.00000012165447}
+  m_ConnectedAnchor: {x: 3.5694308, y: 3.4250755, z: -6.104648}
   m_UseSpring: 0
   m_Spring:
     spring: 0
