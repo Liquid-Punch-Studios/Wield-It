@@ -19,6 +19,8 @@ public class ThrownWeapon : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		
+
 		if (other.TryGetComponent<MaterialData>(out MaterialData mat) && mat.CanBeStabbed)
 		{
 			rb.velocity = Vector3.zero;
@@ -31,7 +33,7 @@ public class ThrownWeapon : MonoBehaviour
 			}
 		}
 
-		if ((other.TryGetComponent(out Health health)) && !other.CompareTag("Player"))
+		if ((other.TryGetComponent(out Health health)) && other.TryGetComponent(out EnemyAI ai) && ai.vulnerable)
 		{
 			health.ReceiveDamage(damage);
         }
