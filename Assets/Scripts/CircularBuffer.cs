@@ -15,8 +15,6 @@ public class CircularBuffer<T> : IList<T>, IReadOnlyList<T>
 
 	private static T GetCircular(T[] array, int offset, int length, int index)
 	{
-		if (index < 0 || index >= length)
-			throw new IndexOutOfRangeException("Index is out of range.");
 		if (length > array.Length)
 			throw new ArgumentOutOfRangeException(nameof(length));
 
@@ -25,8 +23,6 @@ public class CircularBuffer<T> : IList<T>, IReadOnlyList<T>
 
 	private static T SetCircular(T[] array, int offset, int length, int index, T value)
 	{
-		if (index < 0 || index >= length)
-			throw new IndexOutOfRangeException("Index is out of range.");
 		if (length > array.Length)
 			throw new ArgumentOutOfRangeException(nameof(length));
 
@@ -45,10 +41,14 @@ public class CircularBuffer<T> : IList<T>, IReadOnlyList<T>
 	{
 		get
 		{
+			if (index < 0 || index >= Count)
+				throw new IndexOutOfRangeException("Index is out of range.");
 			return GetCircular(buffer, cursor, Count, index);
 		}
 		set
 		{
+			if (index < 0 || index >= Count)
+				throw new IndexOutOfRangeException("Index is out of range.");
 			SetCircular(buffer, cursor, Count, index, value);
 		}
 	}
@@ -70,8 +70,8 @@ public class CircularBuffer<T> : IList<T>, IReadOnlyList<T>
 		}
 		else //if (Count == buffer.Length)
 		{
-			buffer[cursor++] = item;
-			cursor = Mod(cursor, buffer.Length);
+			SetCircular(buffer, cursor, buffer.Length, cursor, item);
+			cursor = Mod(cursor + 1, buffer.Length);
 		}
 	}
 
