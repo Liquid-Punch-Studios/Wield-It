@@ -116,8 +116,7 @@ public class PlayerController : MonoBehaviour
 					sum += p;
                 }
 
-				if ((8*sum).magnitude > 10)
-					handler.Throw(-8 * sum);
+				handler.Throw(-8 * sum);
 			}
 		}
 		else if (Mouse.current.leftButton.isPressed)
