@@ -3613,6 +3613,28 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[6].name
+      value: Mace
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[6].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e8237dd46ac9224eaa23aaa2b283106,
+        type: 3}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[6].prefab
+      value: 
+      objectReference: {fileID: 467927054870053498, guid: 2ef7d2a58493cd14680f5bbfbe5b4e0f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea70f98924d2d244d8c3dfaf8f9a8adf, type: 3}
 --- !u!1001 &382925253

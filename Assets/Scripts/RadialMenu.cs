@@ -224,6 +224,12 @@ public class RadialMenu : MonoBehaviour
             weapon.GetComponent<ConfigurableJoint>().connectedBody = player.transform.Find("Hand").GetComponent<Rigidbody>();
             handler.weapon = weapon;
             handler.WeaponRb = weapon.GetComponent<Rigidbody>();
+
+            if (weapon.TryGetComponent(out Mace _))
+            {
+                for (int i = weapon.transform.childCount-1; i >= 0 ; i--)
+                    weapon.transform.GetChild(i).parent = null;
+            }
         }
     }
 }
