@@ -60,6 +60,12 @@ ModelImporter:
   - first:
       74: -1991086978713171187
     second: SwordKnight|Idle
+  - first:
+      74: 9200272466962697861
+    second: Armature|SwordStab
+  - first:
+      74: 120608704589439447
+    second: Armature|SwordSwing
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -373,7 +379,7 @@ ModelImporter:
       takeName: Armature|SwordStab
       internalID: 0
       firstFrame: 0
-      lastFrame: 35
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -418,7 +424,7 @@ ModelImporter:
       takeName: Armature|SwordSwing
       internalID: 0
       firstFrame: 0
-      lastFrame: 35
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

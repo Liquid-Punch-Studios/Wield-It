@@ -30,6 +30,48 @@ ModelImporter:
   - first:
       74: -1820453503494001656
     second: SpearPush
+  - first:
+      74: 8251744619797504277
+    second: Armature|_
+  - first:
+      74: -8105546038471958846
+    second: Armature|Double Jump
+  - first:
+      74: -8945691123924629249
+    second: SpearKnight|Idle
+  - first:
+      74: 1079665108409675491
+    second: Armature|Jump
+  - first:
+      74: 2255707603342613374
+    second: Armature|Push
+  - first:
+      74: -7551964380084998518
+    second: SpearKnight|Run
+  - first:
+      74: 1235213234022721315
+    second: Armature|Scene
+  - first:
+      74: -6595870536907429172
+    second: SpearKnight|Set
+  - first:
+      74: -7605684959570508923
+    second: Armature|Slide
+  - first:
+      74: 7315757586770730288
+    second: SpearKnight|SpearAttack1
+  - first:
+      74: 843619007290247608
+    second: SpearKnight|SpearAttack2
+  - first:
+      74: -7684828704119261781
+    second: SpearKnight|SpearAttack3
+  - first:
+      74: 1982136495307655951
+    second: SpearKnight|Stun
+  - first:
+      74: -8044352953599128521
+    second: SpearKnight|SetIdle
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -59,11 +101,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
-      takeName: Scene
+      name: SpearKnight|Idle
+      takeName: Armature|Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 21
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -88,11 +130,40 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Set
-      takeName: Scene
+      name: SpearKnight|Run
+      takeName: Armature|Run
       internalID: 0
-      firstFrame: 30
-      lastFrame: 51
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: SpearKnight|Set
+      takeName: Armature|Set
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -117,11 +188,40 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: SpearAttack1
-      takeName: Scene
+      name: SpearKnight|SetIdle
+      takeName: Armature|SetIdle
       internalID: 0
-      firstFrame: 60
-      lastFrame: 81
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: SpearKnight|Stun
+      takeName: Armature|Stun
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -141,10 +241,27 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.3995045
-        functionName: Hit
+      - time: 0
+        functionName: SetVulnerable
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: 624eba03dac92824f9a0960923535c71,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9909365
+        functionName: ResetVulnerable
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 624eba03dac92824f9a0960923535c71,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.99395776
+        functionName: ResetState
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 624eba03dac92824f9a0960923535c71,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -153,11 +270,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Dizzy
-      takeName: Scene
+      name: SpearKnight|SpearAttack1
+      takeName: Armature|SpearAttack1
       internalID: 0
-      firstFrame: 90
-      lastFrame: 131
+      firstFrame: 0
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -176,17 +293,33 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.5875244
+        functionName: AttackStart
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 624eba03dac92824f9a0960923535c71,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6555891
+        functionName: AttackEnd
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 624eba03dac92824f9a0960923535c71,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Run
-      takeName: Scene
+      name: SpearKnight|SpearAttack2
+      takeName: Armature|SpearAttack2
       internalID: 0
-      firstFrame: 167
-      lastFrame: 186
+      firstFrame: 0
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -205,17 +338,33 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.5558912
+        functionName: AttackStart
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 624eba03dac92824f9a0960923535c71,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6525679
+        functionName: AttackEnd
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 624eba03dac92824f9a0960923535c71,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: SetIdle
-      takeName: Scene
+      name: SpearKnight|SpearAttack3
+      takeName: Armature|SpearAttack3
       internalID: 0
-      firstFrame: 140
-      lastFrame: 160
+      firstFrame: 0
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -234,94 +383,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: SpearAttack2
-      takeName: Scene
-      internalID: 0
-      firstFrame: 190
-      lastFrame: 210
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: SpearAttack3
-      takeName: Scene
-      internalID: 0
-      firstFrame: 215
-      lastFrame: 235
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: SpearPush
-      takeName: Scene
-      internalID: 0
-      firstFrame: 235
-      lastFrame: 250
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
+      events:
+      - time: 0.564196
+        functionName: AttackStart
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 624eba03dac92824f9a0960923535c71,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6646525
+        functionName: AttackEnd
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 624eba03dac92824f9a0960923535c71,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
