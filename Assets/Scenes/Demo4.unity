@@ -11680,6 +11680,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1135892667}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &1135892681 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7041604921001397303, guid: 298ab2437a92c0a439c0b68f1c5080d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1135892667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1144607950 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 35028b8ff7f1b654a960b3b57d6fa171,
@@ -20533,6 +20539,21 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1135892670}
+    - target: {fileID: 6280579918362714660, guid: 31b2390d5c479234e90972d42b8e08d3,
+        type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 1135892670}
+    - target: {fileID: 6280579918362714661, guid: 31b2390d5c479234e90972d42b8e08d3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280579918362714661, guid: 31b2390d5c479234e90972d42b8e08d3,
+        type: 3}
+      propertyPath: followTarget
+      value: 
+      objectReference: {fileID: 1135892681}
     - target: {fileID: 6280579918362714662, guid: 31b2390d5c479234e90972d42b8e08d3,
         type: 3}
       propertyPath: m_LocalPosition.x
