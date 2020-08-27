@@ -64,10 +64,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.48150826
-  m_Height: 4.598918
+  m_Radius: 0.6
+  m_Height: 4.5
   m_Direction: 2
-  m_Center: {x: 0, y: -0.19107962, z: -3.0566173}
+  m_Center: {x: 0, y: -0.2, z: -3}
 --- !u!114 &8071766956008746199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +116,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
