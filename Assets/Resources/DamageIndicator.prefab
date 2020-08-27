@@ -513,5 +513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTimer: 1
+  destroyType: 1
   destructionTimer: 1
+  fadeSpeed: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1017827864155056580}
   - component: {fileID: 931579698966182498}
+  - component: {fileID: -6716042983098115198}
   - component: {fileID: 931028093556038908}
   - component: {fileID: 5814054589513553133}
   - component: {fileID: 6386838490008869426}
@@ -4764,6 +4765,21 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &-6716042983098115198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020884129286210536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 1
+  destructionTimer: 1
+  fadeSpeed: 0
 --- !u!199 &931028093556038908
 ParticleSystemRenderer:
   serializedVersion: 6
