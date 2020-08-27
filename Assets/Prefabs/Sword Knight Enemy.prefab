@@ -607,6 +607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visionRange: 8
   attackRange: 3
+  attackCooldown: 2
   damageTrigger: {fileID: 4607333548112228174}
   deadEnemyPrefab: {fileID: 3743537713681025228, guid: b9f43f6ff364c4b42aa8a0658f01db76,
     type: 3}

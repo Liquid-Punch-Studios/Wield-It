@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour
 {
 	public float visionRange;
 	public float attackRange;
+	public float attackCooldown;
+	private float lastAttackTime;
 
 	public HazardTrigger damageTrigger;
 	public GameObject deadEnemyPrefab;
@@ -102,12 +104,12 @@ public class EnemyAI : MonoBehaviour
 					float move = Mathf.Sign(enemyToPlayer.x);
 					movement.move = move;
 				}
-                else
+                else if (Time.fixedTime - lastAttackTime > attackCooldown)
                 {
 					var rnd = new System.Random();
 					animator.SetInteger("attackType", rnd.Next(0, 4));
 					animator.SetTrigger("attack");
-					
+					lastAttackTime = Time.fixedTime;
 				}
 				break;
 			case AIState.Stun:
