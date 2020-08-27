@@ -51,7 +51,7 @@ public class SelfDestruct : MonoBehaviour
         {
             foreach (UnityEngine.Material m in gameObject.GetComponentInChildren<Renderer>().materials)
             {
-                fadeAmount = m.color.a - (fadeSpeed * Time.deltaTime);
+                fadeAmount = m.color.a - (fadeSpeed * Time.fixedDeltaTime);
 
                 m.color = new Color(m.color.r, m.color.g, m.color.b, fadeAmount);
             }
@@ -67,7 +67,6 @@ public class SelfDestruct : MonoBehaviour
     {
         foreach (UnityEngine.Material m in gameObject.GetComponentInChildren<Renderer>().materials)
         {
-            m.SetFloat("_Mode", 2);
             m.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
             m.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
             m.SetInt("_ZWrite", 0);
