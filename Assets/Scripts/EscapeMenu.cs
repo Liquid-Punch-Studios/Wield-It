@@ -40,6 +40,7 @@ public class EscapeMenu : MonoBehaviour
 
         if (isDead)
         {
+            controls.Player.Disable();
             darkMask.SetActive(true);
             clickToRespawn.SetActive(true);
             if(!isPlayed)
@@ -48,11 +49,12 @@ public class EscapeMenu : MonoBehaviour
         }
         else
         {
+            controls.Player.Enable();
             clickToRespawn.SetActive(false);
             darkMask.SetActive(false);
         }
 
-        if (controls.Player.Angle.triggered)
+        if (controls.UI.MouseClick.triggered)
         {
             isDead = false;
             isPlayed = false;
