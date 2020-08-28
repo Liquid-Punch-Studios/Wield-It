@@ -71,7 +71,6 @@ public class EnemyAI : MonoBehaviour
 
 
 		movement.move = 0;
-		animator.SetFloat("speed X", rb.velocity.x);
 
 		switch (State)
 		{

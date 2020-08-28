@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 	/// <summary>
 	/// How much the hand moves in relation to the mouse delta
 	/// </summary>
+	private Controls controls;
+
 	const float sensitivity = 0.02f;
 
 	// Awake is called once during the lifetime of the script, on its initial awake state, prior to any other functions
@@ -44,7 +46,7 @@ public class PlayerController : MonoBehaviour
 		movement = GetComponent<Movement>();
 	}
 
-	private Controls controls;
+	
 
 
 	/// Helper function for math-like positive modulus
@@ -122,9 +124,12 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-	// Update is called once per frame
-	private void Update()
+	public void DisablePlayerController()
+    {
+		controls.Player.Disable();
+    }
+	public void EnablePlayerController()
 	{
-
+		controls.Player.Enable();
 	}
 }

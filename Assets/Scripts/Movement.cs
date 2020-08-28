@@ -158,7 +158,7 @@ public class Movement : MonoBehaviour
 			
 
 		animator.SetFloat("speed X", Mathf.Abs(rb.velocity.x / moveSpeed));
-		//animator.SetFloat("speed Y", rb.velocity.y);
+		animator.SetFloat("speed Y", rb.velocity.y);
 	}
 
 	private void OnTriggerEnter(Collider other)
