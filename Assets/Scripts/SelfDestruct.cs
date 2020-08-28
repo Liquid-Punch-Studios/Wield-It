@@ -14,11 +14,11 @@ public class SelfDestruct : MonoBehaviour
         FadeAfterTimer,
     }
 
-    public DestroyType destroyType = DestroyType.Timer;
+    public DestroyType destroyType = DestroyType.None;
     public float destructionTimer = 1;
     public float fadeSpeed = 1;
 
-    void Start()
+    private void OnEnable()
     {
         switch (destroyType)
         {
