@@ -9,17 +9,16 @@ public class ThrownWeapon : MonoBehaviour
 	
 	[Tooltip("Impulse that will be applied to the rigidbody that the collider is attached.")]
 	public float impact;
+	public float stabSpeedTreshold;
 
 	private Rigidbody rb;
 
 	private GameObject hitEffect, bloodEffect, woodEffect;
 
-	float now;
 	bool flag;
 
 	private void Awake()
 	{
-		now = Time.time;
 		rb = GetComponent<Rigidbody>();
 		bloodEffect = (GameObject)Resources.Load("BloodHitEffect");
 		woodEffect = (GameObject)Resources.Load("WoodHitEffect");
@@ -31,7 +30,9 @@ public class ThrownWeapon : MonoBehaviour
 	{
 		if (flag)
 			return;
-		if (other.TryGetComponent(out MaterialData mat) && mat.CanBeStabbed)
+
+		Debug.Log(rb.velocity.magnitude);
+		if (other.TryGetComponent(out MaterialData mat) && mat.CanBeStabbed && rb.velocity.magnitude >= stabSpeedTreshold)
 		{
 			if (mat.material == Material.Flesh)
 			{
@@ -56,12 +57,11 @@ public class ThrownWeapon : MonoBehaviour
 			}
 			flag = true;
 		}
-		else if (Time.time - now >= 0.05f)
+		else
         {
             var c = Instantiate(hitEffect);
             c.transform.position = other.ClosestPointOnBounds(transform.position);
             c.transform.rotation = other.transform.rotation;
-			flag = true;
         }
 
         if ((other.TryGetComponent(out Health health)) && other.TryGetComponent(out EnemyAI ai) && ai.vulnerable)
