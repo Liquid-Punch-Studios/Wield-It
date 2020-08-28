@@ -4519,7 +4519,6 @@ GameObject:
   - component: {fileID: 7087866767131454229}
   - component: {fileID: 5836921169904673652}
   - component: {fileID: 7173637101978379050}
-  - component: {fileID: 366378606291090640}
   - component: {fileID: 5598466554452085535}
   m_Layer: 0
   m_Name: WoodHitEffect
@@ -9304,7 +9303,7 @@ AudioSource:
   m_GameObject: {fileID: 2459887284377830376}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 53d91959c14464a4cad285078b122d18, type: 3}
   m_PlayOnAwake: 0
@@ -9401,7 +9400,7 @@ AudioSource:
   m_GameObject: {fileID: 2459887284377830376}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: bee05a898c3199543ab28f8a0f20e3ff, type: 3}
   m_PlayOnAwake: 0
@@ -9498,7 +9497,7 @@ AudioSource:
   m_GameObject: {fileID: 2459887284377830376}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 07be392f5140e48458648e2a624800ea, type: 3}
   m_PlayOnAwake: 0
@@ -9595,7 +9594,7 @@ AudioSource:
   m_GameObject: {fileID: 2459887284377830376}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 483719f407497c2439a47f8aa0a700ff, type: 3}
   m_PlayOnAwake: 0
@@ -9692,7 +9691,7 @@ AudioSource:
   m_GameObject: {fileID: 2459887284377830376}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
+  OutputAudioMixerGroup: {fileID: 7116416366580906412, guid: 39c4cdb5d56f6ee44acdf77c22bcc0c5,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: d1fbb66d69b771645ba0e7178b78096a, type: 3}
   m_PlayOnAwake: 0
@@ -9741,102 +9740,6 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!82 &366378606291090640
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2459887284377830376}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
