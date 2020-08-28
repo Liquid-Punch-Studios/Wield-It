@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,10 +53,36 @@ public class Movement : MonoBehaviour
 		get { return slamming; }
 	}
 
-	private int onGround = 0;
+	private int onGroundDepth = 0;
+	public int OnGroundDepth
+	{
+		get => onGroundDepth;
+		set
+		{
+			var old = onGroundDepth;
+			if (old != value)
+			{
+				onGroundDepth = value;
+				if (old > 0 ^ value > 0)
+					OnOnGroundChanged(EventArgs.Empty);
+				OnOnGroundDepthChanged(EventArgs.Empty);
+			}
+		}
+	}
+	public event EventHandler OnGroundDepthChanged;
+	protected virtual void OnOnGroundDepthChanged(EventArgs e)
+	{
+		OnGroundDepthChanged?.Invoke(this, EventArgs.Empty);
+	}
+
 	public bool OnGround
 	{
-		get { return onGround > 0 || Time.time - lastGround < coyoteTime; }
+		get { return OnGroundDepth > 0 || Time.time - lastGround < coyoteTime; }
+	}
+	public event EventHandler OnGroundChanged;
+	protected virtual void OnOnGroundChanged(EventArgs e)
+	{
+		OnGroundChanged?.Invoke(this, EventArgs.Empty);
 	}
 
 	public LayerMask groundLayerMask;
@@ -125,7 +152,7 @@ public class Movement : MonoBehaviour
 
 	public void ResetState()
 	{
-		onGround = 0;
+		OnGroundDepth = 0;
 		dashing = slamming = false;
 		move = 0;
 	}
@@ -165,17 +192,17 @@ public class Movement : MonoBehaviour
 	{
 		if ((1 << other.gameObject.layer & groundLayerMask.value) != 0)
 		{
-			onGround++;
-			if (onGround == 1)
+			OnGroundDepth++;
+			if (OnGroundDepth == 1)
 				landAudio?.PlayRandom(0.1f);
 
-			if (onGround > 0)
+			if (OnGround)
 			{
 				if (slamming && other.TryGetComponent<SlamBreak>(out SlamBreak breaker))
 				{
 					breaker.Break();
 					rb.AddForce(100f * Vector3.down, ForceMode.Impulse);
-					onGround--;
+					OnGroundDepth--;
 				}
 
 				airJumpLeft = airJumpCount;
@@ -191,9 +218,9 @@ public class Movement : MonoBehaviour
 	{
 		if ((1 << other.gameObject.layer & groundLayerMask.value) != 0)
 		{
-			onGround--;
+			OnGroundDepth--;
 
-			if (onGround < 1)
+			if (!OnGround)
 			{
 				lastGround = Time.time;
 				animator.ResetTrigger("fell");
