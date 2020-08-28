@@ -22,6 +22,8 @@ public class Handler : MonoBehaviour
 
 	public int velocityCount = 10;
 	CircularBuffer<Vector3> velocityList;
+	public float throwSensitivity = 1f;
+	public float throwSpeedLimit = 50f;
 
 	private void Awake()
 	{
@@ -36,7 +38,8 @@ public class Handler : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		velocityList.Add(weaponRb.velocity);
+		Vector2 delta = GameManager.Instance.controls.Player.Wield.ReadValue<Vector2>();
+		velocityList.Add(delta);
 	}
 
 	private Rigidbody playerRb;
@@ -100,8 +103,11 @@ public class Handler : MonoBehaviour
 
 		Vector3 pos = weaponRb.position;
 		Quaternion rot = weaponRb.rotation;
-		Vector3 vel = velocity;
-		//Vector3 vel = velocityList.Aggregate((s, v) => s + v) / velocityList.Count;
+
+		//Vector3 vel = velocity;
+		Vector3 vel = velocityList.Aggregate((s, v) => s + v) * throwSensitivity / velocityList.Count;
+		vel = vel.normalized * Mathf.Min(vel.magnitude, throwSpeedLimit);
+
 		Debug.LogWarning($"Average velocity: {vel}");
 		Vector3 ang = weaponRb.angularVelocity;
 
