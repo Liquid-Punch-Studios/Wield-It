@@ -294,7 +294,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.5875244
+      - time: 0.52003974
         functionName: AttackStart
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 624eba03dac92824f9a0960923535c71,
@@ -339,7 +339,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.5558912
+      - time: 0.48533908
         functionName: AttackStart
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 624eba03dac92824f9a0960923535c71,
@@ -384,7 +384,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.564196
+      - time: 0.5243187
         functionName: AttackStart
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 624eba03dac92824f9a0960923535c71,

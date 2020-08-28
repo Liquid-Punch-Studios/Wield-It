@@ -124,7 +124,7 @@ public class GameManager : Singleton<GameManager>
 				//Time.timeScale = 0.25f;
 				//Time.fixedDeltaTime *= 0.25f;
 			}
-			else if (controls.Player.Angle.triggered)
+			else if (controls.UI.MouseClick.triggered)
 			{
 				playerHealth.Hp = playerHealth.MaxHp;
 				playerStamina.Sp = playerStamina.MaxSp;

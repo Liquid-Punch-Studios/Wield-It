@@ -34,6 +34,11 @@ public class ThrownWeapon : MonoBehaviour
 		Debug.Log(rb.velocity.magnitude);
 		if (other.TryGetComponent(out MaterialData mat) && mat.CanBeStabbed && rb.velocity.magnitude >= stabSpeedTreshold)
 		{
+
+			if (!other.gameObject.isStatic)
+				foreach (Collider c in gameObject.GetComponentsInChildren<Collider>())
+					c.enabled = false;
+					
 			if (mat.material == Material.Flesh)
 			{
 				var p = Instantiate(bloodEffect);
@@ -49,6 +54,7 @@ public class ThrownWeapon : MonoBehaviour
 
 			rb.velocity = Vector3.zero;
 			rb.angularVelocity = Vector3.zero;
+			rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
 			rb.isKinematic = true;
 			transform.SetParent(other.transform, true);
 			if (other.attachedRigidbody != null)
