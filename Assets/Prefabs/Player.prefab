@@ -2239,6 +2239,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 7041604922001476238}
   weapon: {fileID: 0}
+  velocityCount: 5
+  throwSensitivity: 2
+  throwSpeedLimit: 40
   shoulderOffset: {x: 0, y: 0}
   armLength: 1.5
   fixedWeaponAngle: 0
