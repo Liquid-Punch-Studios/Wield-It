@@ -75,9 +75,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87cdedf4e067804cb4de46ec1b910ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerLayerMask:
-    serializedVersion: 2
-    m_Bits: 8704
   damage: 100
   impact: 20
 --- !u!65 &3065561393951848160
@@ -173,7 +170,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: de64e2f037e8a5343ab4efe8fec3f77e,
         type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de64e2f037e8a5343ab4efe8fec3f77e, type: 3}

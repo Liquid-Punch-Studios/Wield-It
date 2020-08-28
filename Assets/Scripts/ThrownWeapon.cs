@@ -41,6 +41,7 @@ public class ThrownWeapon : MonoBehaviour
 			}
 			else if (mat.material == Material.Wood)
 			{
+				gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Ground");
 				var p = Instantiate(woodEffect);
 				p.transform.position = other.ClosestPointOnBounds(transform.position);
 			}

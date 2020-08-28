@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6846553269090558007}
   - component: {fileID: 2485105196633891465}
   - component: {fileID: 1614991900588305616}
+  - component: {fileID: 6028686550185325033}
   m_Layer: 0
   m_Name: Door.009
   m_TagString: Untagged
@@ -110,6 +111,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6028686550185325033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108937547610129618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 3
+  destructionTimer: 2
+  fadeSpeed: 0.5
 --- !u!1 &1246512094030077236
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,6 +139,7 @@ GameObject:
   - component: {fileID: 703273866559357998}
   - component: {fileID: 6149248173800485993}
   - component: {fileID: 8063286947887670688}
+  - component: {fileID: 4161307678251644603}
   m_Layer: 0
   m_Name: Door.013
   m_TagString: Untagged
@@ -220,6 +237,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4161307678251644603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246512094030077236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 3
+  destructionTimer: 2
+  fadeSpeed: 0.5
 --- !u!1 &1835988364075892047
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +265,7 @@ GameObject:
   - component: {fileID: 2777889131861148673}
   - component: {fileID: 6835119681175781462}
   - component: {fileID: 6550184804607178391}
+  - component: {fileID: 925580925255273849}
   m_Layer: 0
   m_Name: Door.012
   m_TagString: Untagged
@@ -330,6 +363,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &925580925255273849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835988364075892047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 3
+  destructionTimer: 2
+  fadeSpeed: 0.5
 --- !u!1 &2405887168502846858
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +391,7 @@ GameObject:
   - component: {fileID: 3965609026989093720}
   - component: {fileID: 6304949876830654047}
   - component: {fileID: 3973352436939412706}
+  - component: {fileID: 9155016788037471208}
   m_Layer: 0
   m_Name: Door.004
   m_TagString: Untagged
@@ -440,6 +489,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.39619687, y: 1.1378846, z: 0.10581038}
   m_Center: {x: 0.025053173, y: 0.013625436, z: -0.00565242}
+--- !u!114 &9155016788037471208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2405887168502846858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 3
+  destructionTimer: 2
+  fadeSpeed: 0.5
 --- !u!1 &2653681070070263605
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +517,7 @@ GameObject:
   - component: {fileID: 2099891446203299607}
   - component: {fileID: 4076708736009505282}
   - component: {fileID: 2402541404266644134}
+  - component: {fileID: 3597119400968613179}
   m_Layer: 0
   m_Name: Door.006
   m_TagString: Untagged
@@ -550,6 +615,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3597119400968613179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653681070070263605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 3
+  destructionTimer: 2
+  fadeSpeed: 0.5
 --- !u!1 &3706237733842487393
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +1003,7 @@ GameObject:
   - component: {fileID: 9152167956324445871}
   - component: {fileID: 5551093171013184082}
   - component: {fileID: 6289237879410682488}
+  - component: {fileID: 5457884625734279925}
   m_Layer: 0
   m_Name: Door.016
   m_TagString: Untagged
@@ -1020,6 +1101,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5457884625734279925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4690458735114770162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 3
+  destructionTimer: 2
+  fadeSpeed: 0.5
 --- !u!1 &4887810683199618425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1129,7 @@ GameObject:
   - component: {fileID: 3419788846869014993}
   - component: {fileID: 4927512637214589394}
   - component: {fileID: 4979873044426784271}
+  - component: {fileID: 5601268364470784223}
   m_Layer: 0
   m_Name: Door.008
   m_TagString: Untagged
@@ -1130,6 +1227,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5601268364470784223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4887810683199618425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 3
+  destructionTimer: 2
+  fadeSpeed: 0.5
 --- !u!1 &5471720346917526896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,6 +1365,7 @@ GameObject:
   - component: {fileID: 7885269304882955970}
   - component: {fileID: 2519633755178668288}
   - component: {fileID: 8025160173746271617}
+  - component: {fileID: 7298926394061105975}
   m_Layer: 0
   m_Name: Door.014
   m_TagString: Untagged
@@ -1350,6 +1463,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7298926394061105975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037507351759715924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 3
+  destructionTimer: 2
+  fadeSpeed: 0.5
 --- !u!1 &6196165134594560372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1491,7 @@ GameObject:
   - component: {fileID: 2321326968671929248}
   - component: {fileID: 8854490398744442704}
   - component: {fileID: 1931806120534342796}
+  - component: {fileID: 702350637386498316}
   m_Layer: 0
   m_Name: Door.015
   m_TagString: Untagged
@@ -1460,6 +1589,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &702350637386498316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6196165134594560372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 3
+  destructionTimer: 2
+  fadeSpeed: 0.5
 --- !u!1 &6221216666433623385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,6 +1617,7 @@ GameObject:
   - component: {fileID: 7765741896134653513}
   - component: {fileID: 4734162555083907675}
   - component: {fileID: 8968695360453049778}
+  - component: {fileID: 1601205956198333183}
   m_Layer: 0
   m_Name: Door.017
   m_TagString: Untagged
@@ -1570,6 +1715,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1601205956198333183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6221216666433623385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 3
+  destructionTimer: 2
+  fadeSpeed: 0.5
 --- !u!1 &6477067544478285979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,6 +1879,7 @@ GameObject:
   - component: {fileID: 1429639867443692716}
   - component: {fileID: 7334777618212979911}
   - component: {fileID: 4362848722526303118}
+  - component: {fileID: 8883184151230268704}
   m_Layer: 0
   m_Name: Door.007
   m_TagString: Untagged
@@ -1816,6 +1977,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8883184151230268704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718262479716178818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 3
+  destructionTimer: 2
+  fadeSpeed: 0.5
 --- !u!1 &8795937381035424147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,6 +2005,7 @@ GameObject:
   - component: {fileID: 8265842391243709124}
   - component: {fileID: 4070324890593302279}
   - component: {fileID: 4314210773664203543}
+  - component: {fileID: 5605870149105324221}
   m_Layer: 0
   m_Name: Door.010
   m_TagString: Untagged
@@ -1926,6 +2103,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5605870149105324221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8795937381035424147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1a6fb033d1ba41a4a14df100715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyType: 3
+  destructionTimer: 2
+  fadeSpeed: 0.5
 --- !u!1001 &819839703122858404
 PrefabInstance:
   m_ObjectHideFlags: 0
