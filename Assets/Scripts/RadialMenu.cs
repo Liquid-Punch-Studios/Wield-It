@@ -81,6 +81,7 @@ public class RadialMenu : MonoBehaviour
 
     void Start()
     {
+        controls = GameManager.Instance.controls;
         player = GameObject.Find("Player");
         handler = player.GetComponent<Handler>();
         playerHealth = GameObject.Find("Player").GetComponent<Health>();
@@ -161,19 +162,6 @@ public class RadialMenu : MonoBehaviour
                 ChangeWeapon();
             }
         }
-    }
-
-
-    private void OnEnable()
-    {
-        if (controls == null)
-            controls = new Controls();
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
     }
 
     public void Reload()

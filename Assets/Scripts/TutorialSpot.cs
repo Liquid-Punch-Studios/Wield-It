@@ -18,6 +18,7 @@ public class TutorialSpot : MonoBehaviour
 
     private void Start()
     {
+        controls = GameManager.Instance.controls;
         buttonAnim = button.GetComponent<Animator>();
         //tutorialAnim = tutorial.GetComponent<Animator>();
     }
@@ -68,18 +69,6 @@ public class TutorialSpot : MonoBehaviour
         yield return new WaitForSeconds(1);
         tutorial.SetActive(false);
         yield return null;
-    }
-
-    private void OnEnable()
-    {
-        if (controls == null)
-            controls = new Controls();
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
     }
 }
 

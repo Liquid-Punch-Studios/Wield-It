@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
 	// Start is called before the first frame update
 	private void Start()
 	{
+		controls = GameManager.Instance.controls;
 		game = GameObject.FindObjectOfType<GameManager>();
 		settings = GameObject.FindObjectOfType<SettingsManager>();
 
@@ -45,17 +46,6 @@ public class PlayerController : MonoBehaviour
 
 	private Controls controls;
 
-	private void OnEnable()
-	{
-		if (controls == null)
-			controls = new Controls();
-		controls.Enable();
-	}
-
-	private void OnDisable()
-	{
-		controls.Disable();
-	}
 
 	/// Helper function for math-like positive modulus
 	public static float Mod(float x, float m)

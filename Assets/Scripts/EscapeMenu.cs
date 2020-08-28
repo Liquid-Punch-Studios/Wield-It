@@ -27,7 +27,7 @@ public class EscapeMenu : MonoBehaviour
 
     private void Start()
     {
-        
+        controls = GameManager.Instance.controls;
         escapeMenu = transform.Find("DarkMask").Find("EscapeMenu").gameObject;
         settingsMenu = transform.Find("DarkMask").Find("Settings").gameObject;
         darkMask = transform.Find("DarkMask").gameObject;
@@ -94,21 +94,6 @@ public class EscapeMenu : MonoBehaviour
             darkMask.SetActive(false);
         }
     }
-
-
-    private void OnEnable()
-    {
-        if (controls == null)
-            controls = new Controls();
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
-    }
-
-
 
     public void ResumeClick()
     {

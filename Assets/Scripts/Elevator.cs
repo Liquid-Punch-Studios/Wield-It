@@ -25,6 +25,7 @@ public class Elevator : MonoBehaviour
 			GameObject.Find("Level Changer").GetComponentInChildren<LevelChanger>().LoadNextLevel();
 			//progress.CompleteLevel();
 			door.isKinematic = false;
+			GameManager.Instance.controls.Player.Disable();
 		}
 	}
 
