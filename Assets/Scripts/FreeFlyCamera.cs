@@ -13,19 +13,12 @@ public class FreeFlyCamera : MonoBehaviour
 	private Vector3 velocity;
 	private Vector3 angularVelocity;
 
-	private void OnEnable()
-	{
-		if (controls == null)
-			controls = new Controls();
-		controls.Enable();
-	}
+    private void Start()
+    {
+		controls = GameManager.Instance.controls;
+    }
 
-	private void OnDisable()
-	{
-		controls.Disable();
-	}
-
-	private void FixedUpdate()
+    private void FixedUpdate()
 	{
 		if (controls.Spectator.Turn.ReadValue<float>() > 0f)
 		{

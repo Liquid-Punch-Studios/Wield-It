@@ -82,7 +82,6 @@ public class GameManager : Singleton<GameManager>
 
 		player = GameObject.FindGameObjectWithTag("Player");
 		weapon = GameObject.FindGameObjectWithTag("MainWeapon");
-		
 		playerHealth = player.GetComponent<Health>();
 		
 		playerStamina = player.GetComponent<Stamina>();

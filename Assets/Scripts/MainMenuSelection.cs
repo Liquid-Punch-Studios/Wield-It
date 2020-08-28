@@ -28,7 +28,7 @@ public class MainMenuSelection : MonoBehaviour
     private bool settingsOn = false;
     private bool creditsOn = false;
     private float divider = 1000;
-    private Controls cont;
+    private Controls controls;
     private Animator cameraAnim;
     private float scrollPosition;
     private bool prevSettings = false;
@@ -40,6 +40,7 @@ public class MainMenuSelection : MonoBehaviour
     private void Start()
     {
         Load();
+        controls = GameManager.Instance.controls;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         woodSounds = GameObject.Find("WoodImpact").GetComponent<AudioPlayer>();
@@ -54,10 +55,10 @@ public class MainMenuSelection : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (!creditsOn && cont.UI.MouseClick.triggered)
+        if (!creditsOn && controls.UI.MouseClick.triggered)
         {
             RaycastHit hit;
-            Vector2 vec = cont.UI.Mouse.ReadValue<Vector2>();
+            Vector2 vec = controls.UI.Mouse.ReadValue<Vector2>();
             Ray ray = cam.ScreenPointToRay(vec);
             if (Physics.Raycast(ray, out hit))
             {
@@ -194,7 +195,7 @@ public class MainMenuSelection : MonoBehaviour
             }
         }
 
-        else if (creditsOn && (Keyboard.current.anyKey.wasPressedThisFrame || cont.UI.MouseClick.triggered))
+        else if (creditsOn && (Keyboard.current.anyKey.wasPressedThisFrame || controls.UI.MouseClick.triggered))
         {
             creditsOn = false;
             credits.GetComponent<Animator>().SetBool("isSet", false);
@@ -202,7 +203,7 @@ public class MainMenuSelection : MonoBehaviour
         }
 
 
-        Vector2 scrollMovement = cont.UI.Scroll.ReadValue<Vector2>();
+        Vector2 scrollMovement = controls.UI.Scroll.ReadValue<Vector2>();
         Vector3.SmoothDamp(carrier.transform.position, new Vector3(carrier.transform.position.x, scrollPosition, carrier.transform.position.z)
             , ref velocity, .5f, .25f, Time.fixedDeltaTime);
         carrier.transform.position += velocity;
@@ -247,18 +248,6 @@ public class MainMenuSelection : MonoBehaviour
         }
     }
 
-
-    private void OnEnable()
-    {
-        if (cont == null)
-            cont = new Controls();
-        cont.Enable();
-    }
-
-    private void OnDisable()
-    {
-        cont.Disable();
-    }
 
     IEnumerator PlayButtonClick(string objName)
     {
