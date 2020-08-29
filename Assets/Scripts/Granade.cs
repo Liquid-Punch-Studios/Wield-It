@@ -32,10 +32,13 @@ public class Granade : MonoBehaviour
 
         foreach(RaycastHit rc in rcs)
         {
+            if (rc.collider.attachedRigidbody == null)
+                continue;
             var distanceToRaycast = (transform.position - rc.transform.position).magnitude;
             if (rc.transform.TryGetComponent(out SlamBreak sb) && distanceToRaycast < 3)
                 sb.Break();
-            if (rc.transform.TryGetComponent(out Health health))
+            
+            if (rc.collider.attachedRigidbody.transform.TryGetComponent(out Health health))
             {
                 Debug.Log(rc.distance);
                 var damage = (100 / distanceToRaycast);

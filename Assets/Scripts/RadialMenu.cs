@@ -133,15 +133,16 @@ public class RadialMenu : MonoBehaviour
             mousePos.y -= Screen.height / 2f;
             float angle = 0;
 
-            if (mousePos != Vector2.zero)
+            if (mousePos != Vector2.zero && mousePos.magnitude > Screen.height / 20f)
             {
                 angle = Mathf.Atan2(mousePos.y, -mousePos.x) * 180 / Mathf.PI;
                 angle += 90;
                 if (angle < 0)
                     angle += 360;
+                segment = (int)Mathf.Floor(angle / segmentAngle);
             }
+            
 
-            segment = (int)Mathf.Floor(angle / segmentAngle);
             highlight.transform.rotation = Quaternion.Euler(0, 0, -segment * segmentAngle);
         }
 

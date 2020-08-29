@@ -57,6 +57,8 @@ public class Sword : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if (other.attachedRigidbody == null)
+			return;
 		if (other.gameObject != user && other.attachedRigidbody.TryGetComponent(out Health health))
 		{
 			if (triggerTracker.ContainsKey(other.gameObject))
