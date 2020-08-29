@@ -181,6 +181,8 @@ public class RadialMenu : MonoBehaviour
             var Image = weapon.Holder.GetComponent<Image>();
             Image.sprite = weapon.sprite;
             Image.preserveAspect = true;
+            Image.rectTransform.sizeDelta = new Vector2(Image.rectTransform.sizeDelta.x * (Screen.height / 600f), Image.rectTransform.sizeDelta.y);
+            
 
             var radian = (-90 - (segmentAngle * menu.IndexOf(weapon)) - (segmentAngle / 2)) * Mathf.PI / 180;
 
