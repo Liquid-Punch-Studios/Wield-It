@@ -110,7 +110,7 @@ public class RadialMenu : MonoBehaviour
 
     private void Update()
     {
-        if (menuOpened && controls.UI.Tab.triggered)
+        if (menuOpened && controls.UI.TabRelease.triggered)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -118,8 +118,11 @@ public class RadialMenu : MonoBehaviour
             menuObj.SetActive(false);
             menuOpened = false;
             InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
+
+            ChangeWeapon();
+
         }
-        if (menuOpened)
+        else if (menuOpened)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -140,18 +143,6 @@ public class RadialMenu : MonoBehaviour
 
             segment = (int)Mathf.Floor(angle / segmentAngle);
             highlight.transform.rotation = Quaternion.Euler(0, 0, -segment * segmentAngle);
-
-            if (controls.UI.MouseRelease.triggered)
-            {
-                ChangeWeapon();
-
-                menuObj.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                Time.timeScale = 1;
-                menuOpened = false;
-                InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
-            }
         }
 
         else 
