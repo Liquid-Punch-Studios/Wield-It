@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6539418603611401564}
   - component: {fileID: 202298852343646082}
   - component: {fileID: 7443083314423854844}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Grenade Thrown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,6 +307,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: HitEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 1020884129286210536, guid: b4f6e91911274464f8b1b3f57a846e88,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020965918323159242, guid: b4f6e91911274464f8b1b3f57a846e88,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021154263848286230, guid: b4f6e91911274464f8b1b3f57a846e88,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 1230422252558412055, guid: b4f6e91911274464f8b1b3f57a846e88,
         type: 3}
       propertyPath: m_audioClip
@@ -425,6 +440,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: weapon_granade
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e894163d031cd8d4e8e085a4145a05db,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e894163d031cd8d4e8e085a4145a05db, type: 3}
