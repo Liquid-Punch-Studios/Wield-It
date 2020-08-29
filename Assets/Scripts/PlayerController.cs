@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
 	private GameManager game;
 	private SettingsManager settings;
 
+	private Animator animator;
+	private Rigidbody rb;
+	private float moveSpeed;
+
 	private Health health;
 	private Stamina stamina;
 	private Handler handler;
@@ -44,6 +48,10 @@ public class PlayerController : MonoBehaviour
 		stamina = GetComponent<Stamina>();
 		handler = GetComponent<Handler>();
 		movement = GetComponent<Movement>();
+
+		rb = GetComponent<Rigidbody>();
+		moveSpeed = GetComponent<Movement>().moveSpeed;
+		animator = GetComponentInChildren<Animator>();
 	}
 
 	
@@ -76,7 +84,10 @@ public class PlayerController : MonoBehaviour
 		movement.move = horizontal;
 		if (controls.Player.Move.triggered)
 			ChangeDirection(horizontal);
-		
+
+		animator.SetFloat("speed X", rb.velocity.x / moveSpeed);
+		animator.SetFloat("speed Y", rb.velocity.y);
+
 		if (controls.Player.Dash.triggered)
 		{
 			var dash = controls.Player.Dash.ReadValue<float>();
@@ -120,8 +131,6 @@ public class PlayerController : MonoBehaviour
 			points.Enqueue(startPoint - handGfx.position);
 			startPoint = handGfx.position;
 		}
-			
-
 	}
 
 	public void DisablePlayerController()
