@@ -32,7 +32,7 @@ public class ThrownWeapon : MonoBehaviour
 			return;
 
 		Debug.Log(rb.velocity.magnitude);
-		if (other.TryGetComponent(out MaterialData mat) && mat.CanBeStabbed && rb.velocity.magnitude >= stabSpeedTreshold)
+		if (other.attachedRigidbody.TryGetComponent(out MaterialData mat) && mat.CanBeStabbed && rb.velocity.magnitude >= stabSpeedTreshold)
 		{
 
 			if (!other.gameObject.isStatic)

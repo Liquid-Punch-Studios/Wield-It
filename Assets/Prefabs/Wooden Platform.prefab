@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1769955003917028267}
   - component: {fileID: 313452332770260749}
   - component: {fileID: 5133817964757276326}
+  - component: {fileID: 8682438353730439858}
+  - component: {fileID: 7194178106077634486}
   m_Layer: 11
   m_Name: Wooden Platform
   m_TagString: Untagged
@@ -65,6 +67,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.049384, y: 0.45306778, z: 2.8181767}
   m_Center: {x: -0.73893833, y: 0.09608269, z: -2.3872821}
+--- !u!114 &8682438353730439858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769955003917028266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4892ee8e4b4f54b4db85026dbf43f946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: 0
+--- !u!54 &7194178106077634486
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769955003917028266}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &283581811820565544
 PrefabInstance:
   m_ObjectHideFlags: 0

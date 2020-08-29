@@ -279,6 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8799733477826926698}
   - component: {fileID: 8649449162016599965}
+  - component: {fileID: 8873477237840150182}
   - component: {fileID: 1872778504202429059}
   - component: {fileID: 8731814232768387378}
   m_Layer: 0
@@ -321,6 +322,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8873477237840150182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3063922121868005435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4892ee8e4b4f54b4db85026dbf43f946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: 0
 --- !u!65 &1872778504202429059
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2153,15 +2167,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b554e7378ba999848a6daaa8ca1e5985, type: 3}
---- !u!1 &2246934392369957365 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: b554e7378ba999848a6daaa8ca1e5985,
-    type: 3}
-  m_PrefabInstance: {fileID: 7786543413215531260}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2987556935475608550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: b554e7378ba999848a6daaa8ca1e5985,
+    type: 3}
+  m_PrefabInstance: {fileID: 7786543413215531260}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2246934392369957365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: b554e7378ba999848a6daaa8ca1e5985,
     type: 3}
   m_PrefabInstance: {fileID: 7786543413215531260}
   m_PrefabAsset: {fileID: 0}
