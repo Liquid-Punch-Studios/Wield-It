@@ -70,6 +70,8 @@ public class PlayerController : MonoBehaviour
 		{
 			playerGfx.localScale = new Vector3(dir * Mathf.Abs(playerGfx.localScale.x), playerGfx.localScale.y, playerGfx.localScale.z);
 			handGfx.localScale = new Vector3(handGfx.localScale.x, dir * Mathf.Abs(handGfx.localScale.y), handGfx.localScale.z);
+			var weapon = handler.weapon.transform;
+			weapon.localScale = new Vector3( weapon.localScale.x, dir * Mathf.Abs(weapon.localScale.y), weapon.localScale.z);
 		}
 	}
 
@@ -81,7 +83,7 @@ public class PlayerController : MonoBehaviour
 		if (controls.Player.Move.triggered)
 			ChangeDirection(horizontal);
 
-		animator.SetFloat("speed X", rb.velocity.x / moveSpeed);
+		animator.SetFloat("speed X", Mathf.Abs(rb.velocity.x / moveSpeed));
 		animator.SetFloat("speed Y", rb.velocity.y);
 
 		if (controls.Player.Dash.triggered)
