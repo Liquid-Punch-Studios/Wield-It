@@ -9,6 +9,33 @@ using UnityEngine.Events;
 
 public class GameSettings
 {
+	[XmlIgnore]
+	public readonly Dictionary<Language, string[]> displayModes = new Dictionary<Language, string[]>()
+	{
+		{Language.English , new string[] {"Fullscreen", "Windowed"} },
+		{Language.Turkish , new string[] {"Tam Ekran" , "Pencere" } },
+	};
+	[XmlIgnore]
+	public readonly Dictionary<Language, string> languages = new Dictionary<Language, string>()
+	{
+		{Language.English , "English"},
+		{Language.Turkish , "Türkçe"},
+	};
+
+	[XmlIgnore]
+	public readonly Dictionary<Language, string[]> difficulties = new Dictionary<Language, string[]>()
+	{
+		{Language.English , new string[] { "Easy", "Medium", "Hard" }},
+		{Language.Turkish , new string[] { "Kolay", "Normal", "Zor" }},
+	};
+
+	[XmlIgnore]
+	public readonly Dictionary<Language, string[]> qualities = new Dictionary<Language, string[]>()
+	{
+		{Language.English , new string[] { "Ultra", "Very High", "High", "Medium", "Low", "Very Low" } },
+		{Language.Turkish , new string[] { "Üstün", "Çok Yüksek", "Yüksek", "Orta", "Düşük", "Çok Düşük" } },
+	};
+
 	private bool saved = false;
 	[XmlIgnore]
 	public bool Saved
