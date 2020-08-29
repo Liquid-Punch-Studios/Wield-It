@@ -230,10 +230,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 0163b69a3d811e343b7b88d9f4f2cf43, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.6101311
-  m_Height: 7.719496
+  m_Radius: 1.0641932
+  m_Height: 3.6696591
   m_Direction: 1
-  m_Center: {x: 0.08192698, y: 2.6339498, z: 0}
+  m_Center: {x: 0.20654757, y: 0.6090311, z: 0}
 --- !u!114 &6523973393883214785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +385,7 @@ MonoBehaviour:
   - {fileID: 643867784740365805}
   - {fileID: 1286890780439443350}
   playOnAwake: 0
+  currentAudio: {fileID: 0}
 --- !u!82 &1880486184363348986
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1200,6 +1201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9170204154039963685}
+  - component: {fileID: 6767128396152212372}
   m_Layer: 0
   m_Name: Bone.001
   m_TagString: Untagged
@@ -1222,6 +1224,20 @@ Transform:
   m_Father: {fileID: 2195296214284586314}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6767128396152212372
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5363836448878649441}
+  m_Material: {fileID: 13400000, guid: 0163b69a3d811e343b7b88d9f4f2cf43, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.5870634
+  m_Height: 3.834828
+  m_Direction: 1
+  m_Center: {x: 0.18620017, y: 1.914879, z: -0.00000015081616}
 --- !u!1 &5879642510519089438
 GameObject:
   m_ObjectHideFlags: 0
