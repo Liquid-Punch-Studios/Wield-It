@@ -9,10 +9,11 @@ using UnityEngine.Audio;
 public class AudioPlayer : MonoBehaviour
 {
 	public AudioSource[] audioList;
-
 	public bool playOnAwake = false;
-
 	public event System.EventHandler<int> Triggered;
+	public event System.EventHandler ClipEnded;
+
+	private AudioSource currentAudio;
 
 	private void Awake()
 	{
@@ -23,18 +24,21 @@ public class AudioPlayer : MonoBehaviour
 	public void PlayRandom(float pitchShift = 0)
 	{
 		int index = Random.Range(0, audioList.Length);
-		var audio = audioList[index];
-		audio.pitch = Mathf.Clamp(Random.Range(1 - pitchShift, 1 + pitchShift), 0.1f, 10f);
-		audio.Play(); // TODO: Check if sound replays or plays a new one
+		currentAudio = audioList[index];
+		currentAudio.pitch = Mathf.Clamp(Random.Range(1 - pitchShift, 1 + pitchShift), 0.1f, 10f);
+		currentAudio.Play(); // TODO: Check if sound replays or plays a new one
+		StartCoroutine(WaitUntilClipEnds());
 		Triggered?.Invoke(this, index);
+
 	}
 
 	public void PlayOneShotRandom(float pitchShift = 0)
 	{
 		int index = Random.Range(0, audioList.Length);
-		var audio = audioList[index];
-		audio.pitch = Mathf.Clamp(Random.Range(1 - pitchShift, 1 + pitchShift), 0.1f, 10f);
-		audio.PlayOneShot(audio.clip);
+		currentAudio = audioList[index];
+		currentAudio.pitch = Mathf.Clamp(Random.Range(1 - pitchShift, 1 + pitchShift), 0.1f, 10f);
+		currentAudio.PlayOneShot(currentAudio.clip);
+		StartCoroutine(WaitUntilClipEnds());
 		Triggered?.Invoke(this, index);
 	}
 
@@ -43,9 +47,18 @@ public class AudioPlayer : MonoBehaviour
 		if (audioIndex < audioList.Length)
 		{
 			audioList[audioIndex].Play(); // TODO: Check if sound replays or plays a new one
+			StartCoroutine(WaitUntilClipEnds());
 			Triggered?.Invoke(this, audioIndex);
 		}
 		else
 			Debug.LogError("Invalid audio index: " + audioIndex);
 	}
+	
+	public IEnumerator WaitUntilClipEnds()
+    {
+		Debug.Log( currentAudio.clip.name + " Playing / Length: " + currentAudio.clip.length);
+		yield return new WaitForSeconds(currentAudio.clip.length);
+		Debug.Log("Clip Ended");
+		ClipEnded?.Invoke(this, null);
+    }
 }
