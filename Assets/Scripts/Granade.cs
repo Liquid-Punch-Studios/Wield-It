@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,16 +7,18 @@ public class Granade : MonoBehaviour
 {
     public float timer;
     GameObject Explosion;
-    
+    CinemachineImpulseSource impulse;
     void Start()
     {
         Explosion = Resources.Load<GameObject>("ExplosionEffect");
+        impulse = GetComponent<CinemachineImpulseSource>();
         StartCoroutine(Explode());
     }
 
     public IEnumerator Explode()
     {
         yield return new WaitForSeconds(timer);
+        impulse.GenerateImpulse();
         var ex = Instantiate(Explosion);
         ex.transform.position = transform.position;
         Harm();

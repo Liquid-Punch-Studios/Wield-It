@@ -146,8 +146,10 @@ public class EscapeMenu : MonoBehaviour
 
     public void Violence()
     {
+        var settings = SettingsManager.Instance.Settings;
         Screen.fullScreen = !Screen.fullScreen;
-        GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text = Screen.fullScreen ? "Windowed" : "Fullscreen";
+        GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text = 
+            Screen.fullScreen ? settings.displayModes[settings.Language][1] : settings.displayModes[settings.Language][0];
     }
 
     float AddPercent(float value, int percent) => (Mathf.RoundToInt(value * 100) + percent) / 100f;
@@ -199,21 +201,29 @@ public class EscapeMenu : MonoBehaviour
     {
         var settings = SettingsManager.Instance.Settings;
         settings.Difficulty = (Difficulty)((int)(settings.Difficulty + 1) % Enum.GetNames(typeof(Difficulty)).Length);
-        GameObject.Find("Difficulty Value").GetComponent<TextMeshProUGUI>().text = settings.Difficulty.ToString();
+        GameObject.Find("Difficulty Value").GetComponent<TextMeshProUGUI>().text = 
+            settings.difficulties[settings.Language][(int)settings.Difficulty];
     }
 
     public void LanguageNext()
     {
         var settings = SettingsManager.Instance.Settings;
         settings.Language = (Language)((int)(settings.Language + 1) % Enum.GetNames(typeof(Language)).Length);
-        GameObject.Find("Language Value").GetComponent<TextMeshProUGUI>().text = settings.Language.ToString();
+        GameObject.Find("Language Value").GetComponent<TextMeshProUGUI>().text = settings.languages[settings.Language];
+        GameObject.Find("Difficulty Value").GetComponent<TextMeshProUGUI>().text =
+            settings.difficulties[settings.Language][(int)settings.Difficulty];
+        GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text =
+            !Screen.fullScreen ? settings.displayModes[settings.Language][1] : settings.displayModes[settings.Language][0];
+        GameObject.Find("Quality Value").GetComponent<TextMeshProUGUI>().text =
+            settings.qualities[settings.Language][QualitySettings.GetQualityLevel()];
     }
 
     public void QualityNext()
     {
         var settings = SettingsManager.Instance.Settings;
         settings.GraphicsQuality = (settings.GraphicsQuality + 1) % QualitySettings.names.Length;
-        GameObject.Find("Quality Value").GetComponent<TextMeshProUGUI>().text = QualitySettings.names[settings.GraphicsQuality];
+        GameObject.Find("Quality Value").GetComponent<TextMeshProUGUI>().text = 
+            settings.qualities[settings.Language][QualitySettings.GetQualityLevel()];
     }
 
     private void Load()
@@ -222,9 +232,9 @@ public class EscapeMenu : MonoBehaviour
         GameObject.Find("Music Value").GetComponent<TextMeshProUGUI>().text = "%" + GetPercent(settings.MusicVolume);
         GameObject.Find("Sound Value").GetComponent<TextMeshProUGUI>().text = "%" + GetPercent(settings.EffectsVolume);
         GameObject.Find("Sensitivity Value").GetComponent<TextMeshProUGUI>().text = settings.Sensitivity.ToString();
-        GameObject.Find("Difficulty Value").GetComponent<TextMeshProUGUI>().text = settings.Difficulty.ToString();
-        GameObject.Find("Language Value").GetComponent<TextMeshProUGUI>().text = settings.Language.ToString();
-        GameObject.Find("Quality Value").GetComponent<TextMeshProUGUI>().text = QualitySettings.names[settings.GraphicsQuality];
-        GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text = !Screen.fullScreen ? "Windowed" : "Fullscreen";
+        GameObject.Find("Difficulty Value").GetComponent<TextMeshProUGUI>().text = settings.difficulties[settings.Language][(int)settings.Difficulty];
+        GameObject.Find("Language Value").GetComponent<TextMeshProUGUI>().text = settings.languages[settings.Language];
+        GameObject.Find("Quality Value").GetComponent<TextMeshProUGUI>().text = settings.qualities[settings.Language][QualitySettings.GetQualityLevel()];
+        GameObject.Find("Violence Value").GetComponent<TextMeshProUGUI>().text = !Screen.fullScreen ? settings.displayModes[settings.Language][1] : settings.displayModes[settings.Language][0];
     }
 }

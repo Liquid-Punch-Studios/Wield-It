@@ -110,20 +110,21 @@ public class MainMenuSelection : MonoBehaviour
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
                         //settings.DisplayMode = Screen.fullScreen ? FullScreenMode.Windowed : FullScreenMode.FullScreenWindow;
                         Screen.fullScreen = !Screen.fullScreen;
-                        textComponent.text = Screen.fullScreen ? "Windowed" : "Fullscreen";
+                        textComponent.text = Screen.fullScreen ? 
+                            settings.displayModes[settings.Language][1] : settings.displayModes[settings.Language][0];
 
                         break;
 
                     case "Quality":
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
                         settings.GraphicsQuality = (settings.GraphicsQuality + 1) % QualitySettings.names.Length;
-                        textComponent.text = QualitySettings.names[settings.GraphicsQuality];
+                        textComponent.text = settings.qualities[settings.Language][QualitySettings.GetQualityLevel()];
                         break;
 
                     case "Difficulty":
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
                         settings.Difficulty = (Difficulty)((int)(settings.Difficulty + 1) % Enum.GetNames(typeof(Difficulty)).Length);
-                        textComponent.text = settings.Difficulty.ToString();
+                        textComponent.text = settings.difficulties[settings.Language][(int)settings.Difficulty];
                         break;
 
                     case "Music":
@@ -187,7 +188,13 @@ public class MainMenuSelection : MonoBehaviour
                     case "Language":
                         textComponent = hit.collider.gameObject.GetComponentInChildren<TextMeshPro>();
                         settings.Language = (Language)((int)(settings.Language + 1) % Enum.GetNames(typeof(Language)).Length);
-                        textComponent.text = settings.Language.ToString();
+                        textComponent.text = settings.languages[settings.Language];
+                        GameObject.Find("DifficultyVal").GetComponent<TMP_Text>().text = 
+                            settings.difficulties[settings.Language][(int)settings.Difficulty];
+                        GameObject.Find("QualityVal").GetComponent<TMP_Text>().text = 
+                            settings.qualities[settings.Language][QualitySettings.GetQualityLevel()];
+                        GameObject.Find("DisplayModeVal").GetComponent<TMP_Text>().text =
+                            Screen.fullScreen ? settings.displayModes[settings.Language][1] : settings.displayModes[settings.Language][0];
                         break;
                     default:
                         break;
@@ -282,9 +289,15 @@ public class MainMenuSelection : MonoBehaviour
     {
         var settings = SettingsManager.Instance.Settings;
 
-        GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = settings.Difficulty.ToString();
-        GameObject.Find("QualityVal").GetComponent<TextMeshPro>().text = QualitySettings.names[settings.GraphicsQuality];
-        GameObject.Find("DisplayModeVal").GetComponent<TextMeshPro>().text = Screen.fullScreen ? "Fullscreen" : "Windowed";
+        GameObject.Find("DifficultyVal").GetComponent<TextMeshPro>().text = 
+            settings.difficulties[settings.Language][(int)settings.Difficulty];
+
+        GameObject.Find("QualityVal").GetComponent<TextMeshPro>().text = 
+            settings.qualities[settings.Language][QualitySettings.GetQualityLevel()];
+
+        GameObject.Find("DisplayModeVal").GetComponent<TextMeshPro>().text = 
+            Screen.fullScreen ? settings.displayModes[settings.Language][0] : settings.displayModes[settings.Language][1];
+
         GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text  = "%" + Mathf.Round(settings.MusicVolume * 100);
         if (settings.MusicMuted)
             GameObject.Find("MusicVal").GetComponent<TextMeshPro>().text = "Muted";
@@ -292,9 +305,10 @@ public class MainMenuSelection : MonoBehaviour
         GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "%" + Mathf.Round(settings.EffectsVolume * 100);
         if (settings.EffectsMuted)
             GameObject.Find("SoundVal").GetComponent<TextMeshPro>().text = "Muted";
-        GameObject.Find("LanguageVal").GetComponent<TextMeshPro>().text = settings.Language.ToString();
-        GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>().text = settings.Sensitivity.ToString("F2", CultureInfo.InvariantCulture);
 
+        GameObject.Find("LanguageVal").GetComponent<TextMeshPro>().text = settings.languages[settings.Language];
+        GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>().text = 
+            settings.Sensitivity.ToString("F2", CultureInfo.InvariantCulture);
     }
 
 }

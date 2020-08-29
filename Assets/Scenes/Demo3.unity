@@ -11513,6 +11513,12 @@ PrefabInstance:
       objectReference: {fileID: 334001319}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 298ab2437a92c0a439c0b68f1c5080d4, type: 3}
+--- !u!54 &640123605 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7041604921001397303, guid: 298ab2437a92c0a439c0b68f1c5080d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 640123604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &641337966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16108,6 +16114,11 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 243472011}
+    - target: {fileID: 6280579918362714661, guid: 31b2390d5c479234e90972d42b8e08d3,
+        type: 3}
+      propertyPath: followTarget
+      value: 
+      objectReference: {fileID: 640123605}
     - target: {fileID: 6280579918362714662, guid: 31b2390d5c479234e90972d42b8e08d3,
         type: 3}
       propertyPath: m_LocalPosition.x
