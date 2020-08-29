@@ -73,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3620429045305377355}
   - component: {fileID: 3139870097405718558}
+  - component: {fileID: 1586542434}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -105,8 +106,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 3.8893354, z: 5.353392}
-  m_Center: {x: 0.000000018505315, y: -0.205179, z: 0.000000034341607}
+  m_Size: {x: 0.53731924, y: 3.8893354, z: 5.353392}
+  m_Center: {x: -0.23134036, y: -0.205179, z: 0.000000060867954}
+--- !u!114 &1586542434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052088235412224928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4892ee8e4b4f54b4db85026dbf43f946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: 0
 --- !u!1 &2000589415982482843
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,6 +136,7 @@ GameObject:
   - component: {fileID: 1872952770870891690}
   - component: {fileID: 6523973393883214785}
   - component: {fileID: 4192275797026981199}
+  - component: {fileID: 2141816130903751465}
   m_Layer: 0
   m_Name: Spear Knight
   m_TagString: Untagged
@@ -267,6 +282,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   hp: 100
+--- !u!114 &2141816130903751465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000589415982482843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4892ee8e4b4f54b4db85026dbf43f946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: 3
 --- !u!1 &2055349111367132358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9170204154039963685}
   - component: {fileID: 6767128396152212372}
+  - component: {fileID: 1856740033948776819}
   m_Layer: 0
   m_Name: Bone.001
   m_TagString: Untagged
@@ -1238,6 +1267,19 @@ CapsuleCollider:
   m_Height: 3.834828
   m_Direction: 1
   m_Center: {x: 0.18620017, y: 1.914879, z: -0.00000015081616}
+--- !u!114 &1856740033948776819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5363836448878649441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4892ee8e4b4f54b4db85026dbf43f946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: 3
 --- !u!1 &5879642510519089438
 GameObject:
   m_ObjectHideFlags: 0
