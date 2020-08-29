@@ -24,6 +24,7 @@ public class Handler : MonoBehaviour
 	CircularBuffer<Vector3> velocityList;
 	public float throwSensitivity = 1f;
 	public float throwSpeedLimit = 50f;
+	public float thresholdMultiplier = 10f;
 
 	private void Awake()
 	{
@@ -108,7 +109,12 @@ public class Handler : MonoBehaviour
 		Vector3 vel = velocityList.Aggregate((s, v) => s + v) * throwSensitivity / velocityList.Count;
 		vel = vel.normalized * Mathf.Min(vel.magnitude, throwSpeedLimit);
 
-		Debug.LogWarning($"Average velocity: {vel}");
+		if (vel.magnitude < thresholdMultiplier * throwSensitivity)
+			return;
+
+		vel += playerRb.velocity;
+
+		//Debug.LogWarning($"Average velocity: {vel}");
 		Vector3 ang = weaponRb.angularVelocity;
 
 		var obj = Instantiate(thrownWeaponPrefab, pos, rot);

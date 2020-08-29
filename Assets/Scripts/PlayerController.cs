@@ -73,10 +73,6 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	int maxPoint = 10;
-	Queue<Vector3> points = new Queue<Vector3>();
-	Vector3 startPoint;
-
 	// FixedUpdate is called once per physics frame
 	private void FixedUpdate()
 	{
@@ -113,23 +109,9 @@ public class PlayerController : MonoBehaviour
 		{
 			if (handler.weapon.GetComponent<Sword>().throwable)
 			{
-				Vector3 sum = new Vector3();
-				foreach(Vector3 p in points)
-                {
-					sum += p;
-                }
 
-				handler.Throw(-8 * sum);
+				handler.Throw(Vector2.zero);
 			}
-		}
-		else if (Mouse.current.leftButton.isPressed)
-        {
-			if (points.Count >= maxPoint)
-            {
-				points.Dequeue();
-            }
-			points.Enqueue(startPoint - handGfx.position);
-			startPoint = handGfx.position;
 		}
 	}
 
