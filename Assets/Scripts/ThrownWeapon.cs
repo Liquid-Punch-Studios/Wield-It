@@ -30,22 +30,12 @@ public class ThrownWeapon : MonoBehaviour
 	{
 		if (flag)
 			return;
+		
 
-		Debug.Log(rb.velocity.magnitude);
-		if (other.attachedRigidbody.TryGetComponent(out MaterialData mat) && mat.CanBeStabbed && rb.velocity.magnitude >= stabSpeedTreshold)
+		if (other.TryGetComponent(out MaterialData mat) && mat.CanBeStabbed && rb.velocity.magnitude >= stabSpeedTreshold)
 		{
 
-			if (!other.gameObject.isStatic)
-				foreach (Collider c in gameObject.GetComponentsInChildren<Collider>())
-					c.enabled = false;
-					
-			if (mat.material == Material.Flesh)
-			{
-				var p = Instantiate(bloodEffect);
-				p.transform.position = other.ClosestPointOnBounds(transform.position);
-				p.transform.parent = other.transform;
-			}
-			else if (mat.material == Material.Wood)
+			if (mat.material == Material.Wood)
 			{
 				gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Ground");
 				var p = Instantiate(woodEffect);
@@ -57,9 +47,30 @@ public class ThrownWeapon : MonoBehaviour
 			rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
 			rb.isKinematic = true;
 			transform.SetParent(other.transform, true);
+
+			if (!other.gameObject.isStatic)
+				foreach (Collider c in gameObject.GetComponentsInChildren<Collider>())
+					c.enabled = false;
+			
 			if (other.attachedRigidbody != null)
 			{
 				other.attachedRigidbody.AddForceAtPosition(impact * rb.velocity, transform.position, ForceMode.Impulse);
+				bool hasHealth = other.attachedRigidbody.TryGetComponent(out Health health);
+				bool hasAI = other.attachedRigidbody.TryGetComponent(out EnemyAI ai);
+				if ((!hasAI && hasHealth) || (hasAI && ai.vulnerable))
+					health.ReceiveDamage(damage);
+				if (mat.material == Material.Flesh && ai.vulnerable)
+				{
+					var p = Instantiate(bloodEffect);
+					p.transform.position = other.ClosestPointOnBounds(transform.position);
+					p.transform.parent = other.transform;
+				}
+				else if (mat.material == Material.Flesh && !ai.vulnerable)
+				{
+					var c = Instantiate(hitEffect);
+					c.transform.position = other.ClosestPointOnBounds(transform.position);
+					c.transform.rotation = other.transform.rotation;
+				}
 			}
 			flag = true;
 		}
@@ -68,11 +79,11 @@ public class ThrownWeapon : MonoBehaviour
             var c = Instantiate(hitEffect);
             c.transform.position = other.ClosestPointOnBounds(transform.position);
             c.transform.rotation = other.transform.rotation;
+			foreach (Collider col in GetComponents<Collider>())
+				if(col.isTrigger)
+					col.enabled = false;
         }
 
-        if ((other.TryGetComponent(out Health health)) && other.TryGetComponent(out EnemyAI ai) && ai.vulnerable)
-		{
-			health.ReceiveDamage(damage);
-        }
+        
 	}
 }

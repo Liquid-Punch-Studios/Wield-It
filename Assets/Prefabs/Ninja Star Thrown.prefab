@@ -62,11 +62,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87cdedf4e067804cb4de46ec1b910ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerLayerMask:
-    serializedVersion: 2
-    m_Bits: 8704
   damage: 20
   impact: 20
+  stabSpeedTreshold: 0
 --- !u!136 &3464880321284994579
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -77,8 +75,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 1.21
+  m_Radius: 0.28269988
+  m_Height: 0.56539977
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5964426404388555348

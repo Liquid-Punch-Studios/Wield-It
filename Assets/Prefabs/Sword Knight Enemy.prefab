@@ -138,6 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2566321534095601739}
   - component: {fileID: 34095542308216921}
+  - component: {fileID: 4745127591698798496}
   m_Layer: 0
   m_Name: Bone.001
   m_TagString: Untagged
@@ -174,6 +175,19 @@ CapsuleCollider:
   m_Height: 2.9317644
   m_Direction: 1
   m_Center: {x: 0.23099943, y: 1.6752068, z: -0.00000021534208}
+--- !u!114 &4745127591698798496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634339466193485839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4892ee8e4b4f54b4db85026dbf43f946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: 3
 --- !u!1 &2055851629861190899
 GameObject:
   m_ObjectHideFlags: 0

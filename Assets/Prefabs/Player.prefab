@@ -2245,9 +2245,9 @@ MonoBehaviour:
   hand: {fileID: 7041604922001476238}
   weapon: {fileID: 0}
   velocityCount: 5
-  throwSensitivity: 0.5
+  throwSensitivity: 1
   throwSpeedLimit: 40
-  thresholdSpeed: 7.5
+  thresholdMultiplier: 10
   shoulderOffset: {x: 0, y: 0}
   armLength: 1.5
   fixedWeaponAngle: 0
