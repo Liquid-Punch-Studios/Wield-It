@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public enum AIState
@@ -69,9 +70,10 @@ public class EnemyAI : MonoBehaviour
         else
 			transform.rotation = Quaternion.LookRotation(Vector3.back, Vector3.up);
 
+		animator.SetFloat("speed X", Mathf.Sign(enemyToPlayer.x) * rb.velocity.x / movement.moveSpeed);
+
 
 		movement.move = 0;
-
 		switch (State)
 		{
 			case AIState.Idle:
@@ -109,6 +111,11 @@ public class EnemyAI : MonoBehaviour
 					animator.SetInteger("attackType", rnd.Next(0, 4));
 					animator.SetTrigger("attack");
 					lastAttackTime = Time.fixedTime;
+				}
+				else if (Math.Abs(enemyToPlayer.x) < 2f)
+				{
+					float move = Mathf.Sign(-enemyToPlayer.x);
+					movement.move = move;
 				}
 				break;
 			case AIState.Stun:

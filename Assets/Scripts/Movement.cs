@@ -182,10 +182,6 @@ public class Movement : MonoBehaviour
 			slamming = false;
 			animator.SetBool("slam", false);
 		}
-			
-
-		animator.SetFloat("speed X", Mathf.Abs(rb.velocity.x / moveSpeed));
-		animator.SetFloat("speed Y", rb.velocity.y);
 	}
 
 	private void OnTriggerEnter(Collider other)
