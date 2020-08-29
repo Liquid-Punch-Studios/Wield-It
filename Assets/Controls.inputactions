@@ -479,6 +479,14 @@
                     "id": "c4055920-377d-4548-82af-ee745cfa0a54",
                     "expectedControlType": "Button",
                     "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "TabRelease",
+                    "type": "Button",
+                    "id": "6a320eee-70f0-4073-9557-149459c7922b",
+                    "expectedControlType": "Button",
+                    "processors": "",
                     "interactions": "Press(behavior=1)"
                 }
             ],
@@ -546,6 +554,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Tab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5038ec7d-46bb-45a1-9656-824e6b9b831a",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TabRelease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

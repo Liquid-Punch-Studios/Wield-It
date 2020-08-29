@@ -492,6 +492,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""c4055920-377d-4548-82af-ee745cfa0a54"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""TabRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""6a320eee-70f0-4073-9557-149459c7922b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
                     ""interactions"": ""Press(behavior=1)""
                 }
             ],
@@ -561,6 +569,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Tab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5038ec7d-46bb-45a1-9656-824e6b9b831a"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TabRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -592,6 +611,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_UI_Scroll = m_UI.FindAction("Scroll", throwIfNotFound: true);
         m_UI_Exit = m_UI.FindAction("Exit", throwIfNotFound: true);
         m_UI_Tab = m_UI.FindAction("Tab", throwIfNotFound: true);
+        m_UI_TabRelease = m_UI.FindAction("TabRelease", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -801,6 +821,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_Scroll;
     private readonly InputAction m_UI_Exit;
     private readonly InputAction m_UI_Tab;
+    private readonly InputAction m_UI_TabRelease;
     public struct UIActions
     {
         private @Controls m_Wrapper;
@@ -811,6 +832,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Scroll => m_Wrapper.m_UI_Scroll;
         public InputAction @Exit => m_Wrapper.m_UI_Exit;
         public InputAction @Tab => m_Wrapper.m_UI_Tab;
+        public InputAction @TabRelease => m_Wrapper.m_UI_TabRelease;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -838,6 +860,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Tab.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTab;
                 @Tab.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTab;
                 @Tab.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTab;
+                @TabRelease.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTabRelease;
+                @TabRelease.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTabRelease;
+                @TabRelease.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTabRelease;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -860,6 +885,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Tab.started += instance.OnTab;
                 @Tab.performed += instance.OnTab;
                 @Tab.canceled += instance.OnTab;
+                @TabRelease.started += instance.OnTabRelease;
+                @TabRelease.performed += instance.OnTabRelease;
+                @TabRelease.canceled += instance.OnTabRelease;
             }
         }
     }
@@ -891,5 +919,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnScroll(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
         void OnTab(InputAction.CallbackContext context);
+        void OnTabRelease(InputAction.CallbackContext context);
     }
 }
