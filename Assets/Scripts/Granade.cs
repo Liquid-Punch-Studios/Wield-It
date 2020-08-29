@@ -29,20 +29,22 @@ public class Granade : MonoBehaviour
 
         foreach(RaycastHit rc in rcs)
         {
+            var distanceToRaycast = (transform.position - rc.transform.position).magnitude;
+            if (rc.transform.TryGetComponent(out SlamBreak sb) && distanceToRaycast < 3)
+                sb.Break();
             if (rc.transform.TryGetComponent(out Health health))
             {
                 Debug.Log(rc.distance);
-                var damage = (100 / (transform.position - rc.transform.position).magnitude);
+                var damage = (100 / distanceToRaycast);
                 if(rc.transform.gameObject != GameManager.Instance.player)
                     health.ReceiveDamage(damage);
             }
 
             if (rc.transform.TryGetComponent(out Rigidbody rb))
             {
-                var divider = (transform.position - rc.transform.position).magnitude;
-                if (divider != 0)
+                if (distanceToRaycast != 0)
                     //TODO: Change values to make perfect explosion :)
-                    rb.AddExplosionForce(500 / divider, transform.position, 10, 0.5f, ForceMode.Impulse);
+                    rb.AddExplosionForce(500 / distanceToRaycast, transform.position, 10, 0.5f, ForceMode.Impulse);
             }
                 
                 
