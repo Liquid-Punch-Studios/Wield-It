@@ -235,7 +235,7 @@ public class MainMenuSelection : MonoBehaviour
 
         if (settingsOn)
         {
-            if (scrollMovement.y != 0 && scrollPosition != scrollMax && scrollPosition != scrollMin)
+            if (scrollMovement.y != 0 && scrollPosition != scrollMax && scrollPosition != scrollMin && !audio.currentAudio.isPlaying)
                 audio.PlayRandom();
             scrollPosition += scrollMovement.y / divider;
             scrollPosition = scrollPosition < scrollMin ? scrollMin : scrollPosition;
