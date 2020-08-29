@@ -37,6 +37,9 @@ public class MainMenuSelection : MonoBehaviour
     public AudioPlayer musics;
     private AudioPlayer woodSounds;
     private AudioPlayer chainSounds;
+    public AudioSource plusSound;
+    public AudioSource minusSound;
+
     private void Start()
     {
         Load();
@@ -134,6 +137,7 @@ public class MainMenuSelection : MonoBehaviour
                         settings.MusicVolume = AddPercent(settings.MusicVolume, 10);
                         textComponent = GameObject.Find("MusicVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + Mathf.Round(settings.MusicVolume * 100);
+                        plusSound.PlayOneShot(plusSound.clip);
                         break;
 
                     case "MusicMinus":
@@ -141,6 +145,7 @@ public class MainMenuSelection : MonoBehaviour
                         settings.MusicVolume = AddPercent(settings.MusicVolume, -10);
                         textComponent = GameObject.Find("MusicVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + Mathf.Round(settings.MusicVolume * 100);
+                        minusSound.PlayOneShot(minusSound.clip);
                         break;
 
                     case "Sound":
@@ -154,6 +159,7 @@ public class MainMenuSelection : MonoBehaviour
                         settings.EffectsVolume = AddPercent(settings.EffectsVolume, 10);
                         textComponent = GameObject.Find("SoundVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + Mathf.Round(settings.EffectsVolume * 100);
+                        plusSound.PlayOneShot(plusSound.clip);
                         break;
 
                     case "SoundMinus":
@@ -161,18 +167,21 @@ public class MainMenuSelection : MonoBehaviour
                         settings.EffectsVolume = AddPercent(settings.EffectsVolume, -10);
                         textComponent = GameObject.Find("SoundVal").GetComponent<TextMeshPro>();
                         textComponent.text = "%" + Mathf.Round(settings.EffectsVolume * 100);
+                        minusSound.PlayOneShot(minusSound.clip);
                         break;
 
                     case "SensitivityPlus":
                         settings.Sensitivity = AddPercent(settings.Sensitivity, 5);
                         textComponent = GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>();
                         textComponent.text = settings.Sensitivity.ToString("F2", CultureInfo.InvariantCulture);
+                        plusSound.PlayOneShot(plusSound.clip);
                         break;
 
                     case "SensitivityMinus":
                         settings.Sensitivity = AddPercent(settings.Sensitivity, -5);
                         textComponent = GameObject.Find("SensitivityVal").GetComponent<TextMeshPro>();
                         textComponent.text = settings.Sensitivity.ToString("F2", CultureInfo.InvariantCulture);
+                        minusSound.PlayOneShot(minusSound.clip);
                         break;
 
                     case "Language":
@@ -186,10 +195,10 @@ public class MainMenuSelection : MonoBehaviour
 
                 if (hit.rigidbody != null)
                 {
-                    hit.rigidbody.AddForce(ray.direction * 400);
-                    if (hit.transform.tag == "Wood")
+                    hit.collider.attachedRigidbody.AddForce(ray.direction * 400);
+                    if (hit.collider.transform.CompareTag("Wood"))
                         woodSounds.PlayRandom(0.1f);
-                    else if (hit.transform.tag == "Chain")
+                    else if (hit.collider.transform.CompareTag("Chain"))
                         chainSounds.PlayRandom(0.1f);
                 }
             }
