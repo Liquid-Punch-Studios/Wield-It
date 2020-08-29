@@ -12,8 +12,8 @@ public class AudioPlayer : MonoBehaviour
 	public bool playOnAwake = false;
 	public event System.EventHandler<int> Triggered;
 	public event System.EventHandler ClipEnded;
-
-	private AudioSource currentAudio;
+	[HideInInspector]
+	public AudioSource currentAudio;
 
 	private void Awake()
 	{
@@ -56,7 +56,7 @@ public class AudioPlayer : MonoBehaviour
 	
 	public IEnumerator WaitUntilClipEnds()
     {
-		Debug.Log( currentAudio.clip.name + " Playing / Length: " + currentAudio.clip.length);
+		Debug.Log(currentAudio.clip.name + " Playing / Length: " + currentAudio.clip.length);
 		yield return new WaitForSeconds(currentAudio.clip.length);
 		Debug.Log("Clip Ended");
 		ClipEnded?.Invoke(this, null);
