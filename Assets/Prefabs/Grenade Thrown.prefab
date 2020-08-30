@@ -82,6 +82,7 @@ MonoBehaviour:
   damage: 0
   impact: 20
   stabSpeedTreshold: 0
+  isStabbed: 0
 --- !u!135 &202298852343646082
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -132,10 +133,10 @@ MonoBehaviour:
       m_DecayTime: 0.7
       m_ScaleWithImpact: 1
       m_HoldForever: 0
-    m_ImpactRadius: 100
+    m_ImpactRadius: 30
     m_DirectionMode: 0
     m_DissipationMode: 2
-    m_DissipationDistance: 1000
+    m_DissipationDistance: 30
 --- !u!1001 &3472666150930873808
 PrefabInstance:
   m_ObjectHideFlags: 0
