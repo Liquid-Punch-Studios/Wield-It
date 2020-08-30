@@ -2247,7 +2247,7 @@ MonoBehaviour:
   velocityCount: 5
   throwSensitivity: 1
   throwSpeedLimit: 40
-  thresholdMultiplier: 10
+  thresholdMultiplier: 5
   shoulderOffset: {x: 0, y: 0}
   armLength: 1.5
   fixedWeaponAngle: 0
