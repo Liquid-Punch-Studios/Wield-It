@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 3
+  deadLine: 1
 --- !u!114 &6539418603611401564
 MonoBehaviour:
   m_ObjectHideFlags: 0

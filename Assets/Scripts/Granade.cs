@@ -6,6 +6,7 @@ using UnityEngine;
 public class Granade : MonoBehaviour
 {
     public float timer;
+    public float deadLine = 3;
     GameObject Explosion;
     CinemachineImpulseSource impulse;
     void Start()
@@ -35,18 +36,32 @@ public class Granade : MonoBehaviour
             if (rc.collider.attachedRigidbody == null)
                 continue;
             var distanceToRaycast = (transform.position - rc.transform.position).magnitude;
-            if (rc.transform.TryGetComponent(out SlamBreak sb) && distanceToRaycast < 3)
-                sb.Break();
-            
-            if (rc.collider.attachedRigidbody.transform.TryGetComponent(out Health health))
+            if (rc.transform.TryGetComponent(out SlamBreak sb) && distanceToRaycast < 3.5f)
             {
-                Debug.Log(rc.distance);
-                var damage = (100 / distanceToRaycast);
-                if(rc.transform.gameObject != GameManager.Instance.player)
-                    health.ReceiveDamage(damage);
+                sb.Break();
+                continue;
             }
 
-            if (rc.transform.TryGetComponent(out Rigidbody rb))
+            var hasHealth = rc.collider.attachedRigidbody.transform.TryGetComponent(out Health health);
+            var isPlayer = rc.transform == GameManager.Instance.player.transform;
+
+            if (!isPlayer)
+            {
+                if (hasHealth && distanceToRaycast < deadLine)
+                    health.ReceiveDamage(300);
+                else if (hasHealth)
+                {
+                    var damage = (150 / distanceToRaycast);
+                    if (rc.transform.gameObject != GameManager.Instance.player)
+                        health.ReceiveDamage(damage);
+                }
+            }
+
+            var hasRigidbody = rc.transform.TryGetComponent(out Rigidbody rb);
+
+            if (hasRigidbody && distanceToRaycast < deadLine)
+                rb.AddExplosionForce(500, transform.position, 10, 0.5f, ForceMode.Impulse);
+            else if (hasRigidbody)
             {
                 if (distanceToRaycast != 0)
                     //TODO: Change values to make perfect explosion :)
