@@ -42,9 +42,9 @@ public class MainMenuSelection : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
         Load();
         controls = GameManager.Instance.controls;
-        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         woodSounds = GameObject.Find("WoodImpact").GetComponent<AudioPlayer>();
         chainSounds = GameObject.Find("ChainImpact").GetComponent<AudioPlayer>();
