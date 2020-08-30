@@ -130,3 +130,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+UIElementsSchema/UIElements.xsd
+UIElementsSchema/UnityEditor.PackageManager.UI.xsd
+UIElementsSchema/UnityEditor.UIElements.Debugger.xsd
+*.xsd
