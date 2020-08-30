@@ -16,7 +16,19 @@ public class GameManager : Singleton<GameManager>
 
 	public Controls controls;
 
-	public Transform respawnPoint;
+	private Transform respawnPoint;
+	public Transform RespawnPoint
+    {
+		get
+        {
+			return respawnPoint;
+        }
+        set
+        {
+			respawnPoint = value;
+			spawnPoint = respawnPoint.position;
+        }
+    }
 
 	private Health playerHealth;
 	private Stamina playerStamina;
@@ -87,7 +99,7 @@ public class GameManager : Singleton<GameManager>
 		playerStamina = player.GetComponent<Stamina>();
 		playerMovement = player.GetComponent<Movement>();
 		playerRb = player.GetComponent<Rigidbody>();
-		spawnPoint = respawnPoint.position;
+		spawnPoint = transform.position;
 
 		if (weapon != null)
         {
