@@ -61,6 +61,7 @@ public class Sword : MonoBehaviour
 			return;
 		if (other.gameObject != user && other.attachedRigidbody.TryGetComponent(out Health health))
 		{
+			var hasAI = other.TryGetComponent(out EnemyAI ai);
 			if (triggerTracker.ContainsKey(other.gameObject))
 			{
 				if (triggerTracker[other.gameObject]++ > 0)
@@ -75,7 +76,7 @@ public class Sword : MonoBehaviour
 				{
 					GameObject p, di;
 					di = Instantiate(damageIndicator);
-					if (other.TryGetComponent(out EnemyAI ai) && ai.vulnerable)
+					if (hasAI && ai.vulnerable)
                     {
 						var damage = damageFactor * relative.magnitude;
 						health.ReceiveDamage(damage);
@@ -100,7 +101,7 @@ public class Sword : MonoBehaviour
 			}
 			else
 			{
-				if (weaponRb.velocity.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold)
+				if (weaponRb.velocity.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold && hasAI && ai.vulnerable)
 				{
 					health.ReceiveDamage(damageFactor * weaponRb.velocity.magnitude);
 					Debug.Log((int)(damageFactor * weaponRb.velocity.magnitude));
