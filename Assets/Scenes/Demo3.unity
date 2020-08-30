@@ -1312,6 +1312,7 @@ MonoBehaviour:
   - {fileID: 52428468}
   - {fileID: 52428467}
   playOnAwake: 1
+  currentAudio: {fileID: 0}
 --- !u!114 &52428471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24173,7 +24174,6 @@ MonoBehaviour:
   hand: {fileID: 1349554546}
   deadPlayerPrefab: {fileID: 1582817328237454169, guid: 84460e26217b05148940f81b611f731b,
     type: 3}
-  respawnPoint: {fileID: 338433427}
 --- !u!4 &1333048184
 Transform:
   m_ObjectHideFlags: 0
@@ -24182,7 +24182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333048182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.51, y: 0.71, z: 0}
+  m_LocalPosition: {x: -37.36, y: 2, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
