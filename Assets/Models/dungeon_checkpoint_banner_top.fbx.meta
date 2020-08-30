@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 38d844e988d983942ac0acebadaa20b7
+guid: f874943c4c2d7f14e8ac8978819c1fd7
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
-      74: -623603649343465320
-    second: Scene
-  - first:
       74: 1107111139152292698
     second: banner|stone_fist_action
+  - first:
+      74: -623603649343465320
+    second: Scene
   externalObjects: {}
   materials:
     materialImportMode: 1
