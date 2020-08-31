@@ -88,8 +88,6 @@ public class Sword : MonoBehaviour
 						IndicateDamage(damage, other.attachedRigidbody.transform.Find("DISpawn"));
 						var particleKind = bloodHitParticle;
 						if(other.TryGetComponent(out MaterialData mat))
-							particleKind = hitParticle;
-							/*
 							switch (mat.material)
 							{
 								case Material.Wood:
@@ -99,8 +97,7 @@ public class Sword : MonoBehaviour
 								case Material.Metal:
 									particleKind = hitParticle;
 									break;
-							}*/
-
+							}
 						p = Instantiate(particleKind);
 						
 					}
