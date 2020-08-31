@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ThrownWeapon : MonoBehaviour
@@ -13,9 +14,10 @@ public class ThrownWeapon : MonoBehaviour
 
 	private Rigidbody rb;
 
-	private GameObject hitEffect, bloodEffect, woodEffect;
+	private GameObject hitEffect, bloodEffect, woodEffect, damageIndicator;
 
 	bool flag;
+	public bool isStabbed = false;
 
 	private void Awake()
 	{
@@ -23,6 +25,7 @@ public class ThrownWeapon : MonoBehaviour
 		bloodEffect = (GameObject)Resources.Load("BloodHitEffect");
 		woodEffect = (GameObject)Resources.Load("WoodHitEffect");
 		hitEffect = (GameObject)Resources.Load("HitEffect");
+		damageIndicator = (GameObject)Resources.Load("DamageIndicator");
 	}
 
 
@@ -34,7 +37,6 @@ public class ThrownWeapon : MonoBehaviour
 
 		if (other.TryGetComponent(out MaterialData mat) && mat.CanBeStabbed && rb.velocity.magnitude >= stabSpeedTreshold)
 		{
-
 			if (mat.material == Material.Wood)
 			{
 				gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Ground");
@@ -47,6 +49,7 @@ public class ThrownWeapon : MonoBehaviour
 			rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
 			rb.isKinematic = true;
 			transform.SetParent(other.transform, true);
+			isStabbed = true;
 
 			if (!other.gameObject.isStatic)
 				foreach (Collider c in gameObject.GetComponentsInChildren<Collider>())
@@ -58,7 +61,11 @@ public class ThrownWeapon : MonoBehaviour
 				bool hasHealth = other.attachedRigidbody.TryGetComponent(out Health health);
 				bool hasAI = other.attachedRigidbody.TryGetComponent(out EnemyAI ai);
 				if ((!hasAI && hasHealth) || (hasAI && ai.vulnerable))
+                {
 					health.ReceiveDamage(damage);
+					IndicateDamage(damage, other.attachedRigidbody.transform.Find("DISpawn"));
+				}
+					
 				if (mat.material == Material.Flesh && ai.vulnerable)
 				{
 					var p = Instantiate(bloodEffect);
@@ -76,14 +83,33 @@ public class ThrownWeapon : MonoBehaviour
 		}
 		else
         {
-            var c = Instantiate(hitEffect);
-            c.transform.position = other.ClosestPointOnBounds(transform.position);
-            c.transform.rotation = other.transform.rotation;
-			foreach (Collider col in GetComponents<Collider>())
-				if(col.isTrigger)
-					col.enabled = false;
+			if (!other.isTrigger)
+			{
+				var c = Instantiate(hitEffect);
+				c.transform.position = other.ClosestPointOnBounds(transform.position);
+				c.transform.rotation = other.transform.rotation;
+				foreach (Collider col in GetComponents<Collider>())
+					if (col.isTrigger)
+						col.enabled = false;
+			}
         }
 
         
+	}
+	void IndicateDamage(float damage, Transform DISpawn)
+	{
+		if (DISpawn == null)
+			return;
+		var di = Instantiate(damageIndicator);
+		if (damage > 0)
+
+			di.GetComponentInChildren<TextMeshPro>().text = "-" + (int)damage;
+
+		else
+		{
+			di.transform.Find("Block").gameObject.SetActive(true);
+			di.GetComponentInChildren<TextMeshPro>().gameObject.SetActive(false);
+		}
+		di.transform.position = DISpawn.transform.position;
 	}
 }
