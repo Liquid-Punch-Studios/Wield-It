@@ -19,6 +19,7 @@ public class Sword : MonoBehaviour
 
 	private GameObject hitParticle;
 	private GameObject bloodHitParticle;
+	private GameObject woodParticle;
 	public GameObject thrownWeaponPrefab;
 	public bool throwable = false;
 
@@ -37,6 +38,7 @@ public class Sword : MonoBehaviour
 		damageIndicator = (GameObject)Resources.Load("DamageIndicator");
 		bloodHitParticle = (GameObject)Resources.Load("BloodHitEffect");
 		hitParticle = (GameObject)Resources.Load("HitEffect");
+		woodParticle = (GameObject)Resources.Load("WoodHitEffect");
 		stamina = user.GetComponent<Stamina>();
 		weaponRb = GetComponent<Rigidbody>();
 		handlerRb = user.GetComponent<Rigidbody>();
@@ -59,9 +61,12 @@ public class Sword : MonoBehaviour
 	{
 		if (other.attachedRigidbody == null)
 			return;
-		if (other.gameObject != user && other.attachedRigidbody.TryGetComponent(out Health health))
+
+		var hasAI = other.attachedRigidbody.TryGetComponent(out EnemyAI ai);
+		var hasHealth = other.attachedRigidbody.TryGetComponent(out Health health);
+		if (other.attachedRigidbody.gameObject != user && hasHealth)
 		{
-			var hasAI = other.TryGetComponent(out EnemyAI ai);
+			
 			if (triggerTracker.ContainsKey(other.gameObject))
 			{
 				if (triggerTracker[other.gameObject]++ > 0)
@@ -69,33 +74,47 @@ public class Sword : MonoBehaviour
 			}
 			else
 				triggerTracker.Add(other.gameObject, 1);
-			if (other.TryGetComponent<Rigidbody>(out Rigidbody otherRb))
+			if (other.attachedRigidbody.TryGetComponent<Rigidbody>(out Rigidbody otherRb))
 			{
 				var relative = weaponRb.velocity - otherRb.velocity;
 				if (relative.sqrMagnitude > damageSpeedTreshold * damageSpeedTreshold)
 				{
-					GameObject p, di;
-					di = Instantiate(damageIndicator);
-					if (hasAI && ai.vulnerable)
+					GameObject p;
+
+					if ((!hasAI && hasHealth) || (hasAI && ai.vulnerable))
                     {
 						var damage = damageFactor * relative.magnitude;
 						health.ReceiveDamage(damage);
-						p = Instantiate(bloodHitParticle);
-						di.GetComponentInChildren<TextMeshPro>().text = "-" + (int)damage;
+						IndicateDamage(damage, other.attachedRigidbody.transform.Find("DISpawn"));
+						var particleKind = bloodHitParticle;
+						if(other.TryGetComponent(out MaterialData mat))
+							particleKind = hitParticle;
+							/*
+							switch (mat.material)
+							{
+								case Material.Wood:
+									particleKind = woodParticle;
+									break;
+
+								case Material.Metal:
+									particleKind = hitParticle;
+									break;
+							}*/
+
+						p = Instantiate(particleKind);
+						
 					}
                     else
                     {
 						p = Instantiate(hitParticle);
-						di.transform.Find("Block").gameObject.SetActive(true);
-						di.GetComponentInChildren<TextMeshPro>().gameObject.SetActive(false);
+						
 					}
 						
 					
 					var clash = other.ClosestPoint(transform.position);
 					
 					p.transform.position = clash;
-					p.transform.parent = other.transform;
-					di.transform.position = other.transform.Find("DISpawn").position;
+					p.transform.parent = other.attachedRigidbody.transform;
 					otherRb.AddForce(weaponRb.velocity * 1000);
 				}
 			}
@@ -112,6 +131,23 @@ public class Sword : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	void IndicateDamage(float damage , Transform DISpawn)
+    {
+		if (DISpawn == null)
+			return;
+		var di = Instantiate(damageIndicator);
+		if (damage > 0)
+
+			di.GetComponentInChildren<TextMeshPro>().text = "-" + (int)damage;
+
+        else
+        {
+			di.transform.Find("Block").gameObject.SetActive(true);
+			di.GetComponentInChildren<TextMeshPro>().gameObject.SetActive(false);
+		}
+		di.transform.position = DISpawn.transform.position;
 	}
 
 	private void OnTriggerStay(Collider other)

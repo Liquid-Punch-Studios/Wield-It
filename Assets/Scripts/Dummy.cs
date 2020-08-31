@@ -17,6 +17,7 @@ public class Dummy : Health
 
     private void Dummy_DamageReceived(object sender, float e)
     {
+        Debug.Log("Girdi");
         if (Random.Range(0f, 1f) < 0.5f)
             animator.SetTrigger("hit1");
         else

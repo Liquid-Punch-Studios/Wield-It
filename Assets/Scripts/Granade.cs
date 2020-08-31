@@ -1,17 +1,19 @@
 ﻿using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Granade : MonoBehaviour
 {
     public float timer;
     public float deadLine = 3;
-    GameObject Explosion;
+    GameObject Explosion, damageIndicator;
     CinemachineImpulseSource impulse;
     void Start()
     {
         Explosion = Resources.Load<GameObject>("ExplosionEffect");
+        damageIndicator = (GameObject)Resources.Load("DamageIndicator");
         impulse = GetComponent<CinemachineImpulseSource>();
         StartCoroutine(Explode());
     }
@@ -48,12 +50,19 @@ public class Granade : MonoBehaviour
             if (!isPlayer)
             {
                 if (hasHealth && distanceToRaycast < deadLine)
+                {
                     health.ReceiveDamage(300);
+                    IndicateDamage(300, rc.collider.attachedRigidbody.transform.Find("DISpawn"));
+                }
                 else if (hasHealth)
                 {
                     var damage = (150 / distanceToRaycast);
                     if (rc.transform.gameObject != GameManager.Instance.player)
+                    {
                         health.ReceiveDamage(damage);
+                        IndicateDamage(damage, rc.collider.attachedRigidbody.transform.Find("DISpawn"));
+                    }
+                        
                 }
             }
 
@@ -67,8 +76,23 @@ public class Granade : MonoBehaviour
                     //TODO: Change values to make perfect explosion :)
                     rb.AddExplosionForce(500 / distanceToRaycast, transform.position, 10, 0.5f, ForceMode.Impulse);
             }
-                
-                
+        }
+
+        void IndicateDamage(float damage, Transform DISpawn)
+        {
+            if (DISpawn == null)
+                return;
+            var di = Instantiate(damageIndicator);
+            if (damage > 0)
+
+                di.GetComponentInChildren<TextMeshPro>().text = "-" + (int)damage;
+
+            else
+            {
+                di.transform.Find("Block").gameObject.SetActive(true);
+                di.GetComponentInChildren<TextMeshPro>().gameObject.SetActive(false);
+            }
+            di.transform.position = DISpawn.transform.position;
         }
     }
 }
