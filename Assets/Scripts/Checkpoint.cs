@@ -5,17 +5,18 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     private bool hasPassed = false;
-    Animator animator;
+    Animator[] animators;
     private void Start()
     {
-        animator = GetComponentInChildren<Animator>();
+        animators = GetComponentsInChildren<Animator>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (!hasPassed)
             if(other.transform == GameManager.Instance.player.transform)
             {
-                animator.SetTrigger("isSet");
+                foreach(Animator anim in animators)
+                    anim.SetTrigger("isSet");
                 GameManager.Instance.RespawnPoint = transform.Find("RespawnPoint");
                 hasPassed = true;
             }
