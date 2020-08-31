@@ -16,8 +16,7 @@ public class ThrownWeapon : MonoBehaviour
 
 	private GameObject hitEffect, bloodEffect, woodEffect, damageIndicator;
 
-	bool flag;
-	public bool isStabbed = false;
+	bool isStabbed = false;
 
 	private void Awake()
 	{
@@ -31,7 +30,7 @@ public class ThrownWeapon : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (flag)
+		if (isStabbed)
 			return;
 		
 
@@ -79,7 +78,6 @@ public class ThrownWeapon : MonoBehaviour
 					c.transform.rotation = other.transform.rotation;
 				}
 			}
-			flag = true;
 		}
 		else
         {
@@ -93,9 +91,8 @@ public class ThrownWeapon : MonoBehaviour
 						col.enabled = false;
 			}
         }
-
-        
 	}
+        
 	void IndicateDamage(float damage, Transform DISpawn)
 	{
 		if (DISpawn == null)

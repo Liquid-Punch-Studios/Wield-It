@@ -722,6 +722,7 @@ MonoBehaviour:
   - {fileID: 7877483320279060829}
   - {fileID: 3886722147190547545}
   playOnAwake: 0
+  currentAudio: {fileID: 0}
 --- !u!82 &7877483320279060829
 AudioSource:
   m_ObjectHideFlags: 0
@@ -953,10 +954,10 @@ MonoBehaviour:
       m_DecayTime: 0.7
       m_ScaleWithImpact: 1
       m_HoldForever: 0
-    m_ImpactRadius: 100
+    m_ImpactRadius: 3
     m_DirectionMode: 0
     m_DissipationMode: 2
-    m_DissipationDistance: 1000
+    m_DissipationDistance: 6
 --- !u!1 &4093378145844070304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,8 +1254,6 @@ GameObject:
   - component: {fileID: 9057914721081831267}
   - component: {fileID: 67320682074215765}
   - component: {fileID: 6040350363139828140}
-  - component: {fileID: 744021001744559643}
-  - component: {fileID: 1367095149993238451}
   m_Layer: 11
   m_Name: dungeon_breakable_ground
   m_TagString: Untagged
@@ -1326,32 +1325,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &744021001744559643
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5471720346917526896}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.9757538, y: 0.25128978, z: 5.271543}
-  m_Center: {x: -3.6840286, y: -0.072720334, z: -2.5957487}
---- !u!65 &1367095149993238451
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5471720346917526896}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.0804672, y: 0.25128978, z: 5.302458}
-  m_Center: {x: 3.7529945, y: -0.072720334, z: -2.5802913}
 --- !u!1 &6037507351759715924
 GameObject:
   m_ObjectHideFlags: 0
