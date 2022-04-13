@@ -33,8 +33,6 @@ public class ThrownWeapon : MonoBehaviour
 		if (isStabbed || other.isTrigger)
 			return;
 
-		Debug.LogError(other.gameObject.name);
-
 		if (other.TryGetComponent(out MaterialData mat) && mat.CanBeStabbed && rb.velocity.magnitude >= stabSpeedTreshold)
 		{
 			if (mat.material == Material.Wood)
@@ -51,12 +49,16 @@ public class ThrownWeapon : MonoBehaviour
 			transform.SetParent(other.transform, true);
 			isStabbed = true;
 
-			if (!other.gameObject.isStatic)
-				foreach (Collider c in gameObject.GetComponentsInChildren<Collider>())
-					c.enabled = false;
-			
 			if (other.attachedRigidbody != null)
 			{
+				if (other.attachedRigidbody.isKinematic)
+                {
+					foreach (Collider c in gameObject.GetComponentsInChildren<Collider>())
+					{
+						Debug.LogError(other.gameObject.name);
+						c.enabled = false;
+					}
+				}
 				other.attachedRigidbody.AddForceAtPosition(impact * rb.velocity, transform.position, ForceMode.Impulse);
 				bool hasHealth = other.attachedRigidbody.TryGetComponent(out Health health);
 				bool hasAI = other.attachedRigidbody.TryGetComponent(out EnemyAI ai);
@@ -82,15 +84,12 @@ public class ThrownWeapon : MonoBehaviour
 		}
 		else
         {
-			if (!other.isTrigger)
-			{
-				var c = Instantiate(hitEffect);
-				c.transform.position = other.ClosestPointOnBounds(transform.position);
-				c.transform.rotation = other.transform.rotation;
-				foreach (Collider col in GetComponents<Collider>())
-					if (col.isTrigger)
-						col.enabled = false;
-			}
+			var c = Instantiate(hitEffect);
+			c.transform.position = other.ClosestPointOnBounds(transform.position);
+			c.transform.rotation = other.transform.rotation;
+			foreach (Collider col in GetComponents<Collider>())
+				if (col.isTrigger)
+					col.enabled = false;
         }
 	}
         

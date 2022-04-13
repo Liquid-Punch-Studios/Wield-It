@@ -120,7 +120,7 @@ public class Handler : MonoBehaviour
 		var obj = Instantiate(thrownWeaponPrefab, pos, rot);
 		radialWeapon.Amount--;
 
-		throwableRemain.text = radialWeapon.Amount + "/" + radialWeapon.maxAmount;
+		//throwableRemain.text = radialWeapon.Amount + "/" + radialWeapon.maxAmount;
 		
 		if (obj.TryGetComponent<Rigidbody>(out Rigidbody rb))
 		{

@@ -58,6 +58,9 @@ public class WeaponRack : MonoBehaviour
 
                 if (!flag)
                 {
+                    foreach (var item in radial.menu)
+                        if (item.name == weaponType.ToString())
+                            item.Amount = item.maxAmount;
                     radial.AddWeapon(sprite, prefab, weaponType.ToString());
                     di.transform.Find("Text").GetComponent<TextMeshPro>().text = weaponType.ToString() + " refilled";
                     Instantiate(di, player.transform.Find("DISpawn").transform.position, Quaternion.identity);
