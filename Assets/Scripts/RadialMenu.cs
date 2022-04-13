@@ -170,12 +170,15 @@ public class RadialMenu : MonoBehaviour
 
         else 
         {
-            //if (menu.Count > 0)
-            //    foreach (var i in menu)
-            //    {
-            //        if (i.amountChanged)
-            //            throwableRemain.text = i.Amount + "/" + i.maxAmount;
-            //    }
+            if (menu.Count > 0)
+                foreach (var i in menu)
+                {
+                    if (i.amountChanged)
+                    {
+                        throwableRemain.text = i.Amount + "/" + i.maxAmount;
+                        i.amountChanged = false;
+                    }
+                }
             if (menu[segment].Amount <= 0)
             {
                 menu.RemoveAt(segment);

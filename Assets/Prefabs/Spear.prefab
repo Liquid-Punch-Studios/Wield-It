@@ -103,7 +103,7 @@ MonoBehaviour:
   damageFactor: 0.5
   damageSpeedTreshold: 15
   staminaDrainFactor: 1.5
-  thrownWeaponPrefab: {fileID: 6930268576762927494, guid: 596775a1e254d534e90a4a313d1100fc,
+  thrownWeaponPrefab: {fileID: 8417234880191271460, guid: 596775a1e254d534e90a4a313d1100fc,
     type: 3}
   throwable: 1
 --- !u!65 &5713121544115293137
