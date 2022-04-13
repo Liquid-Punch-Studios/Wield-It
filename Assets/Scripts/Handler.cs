@@ -118,8 +118,9 @@ public class Handler : MonoBehaviour
 		Vector3 ang = weaponRb.angularVelocity;
 
 		var obj = Instantiate(thrownWeaponPrefab, pos, rot);
+		radialWeapon.Amount--;
 
-		throwableRemain.text = radialWeapon.Amount + "/5";
+		throwableRemain.text = radialWeapon.Amount + "/" + radialWeapon.maxAmount;
 		
 		if (obj.TryGetComponent<Rigidbody>(out Rigidbody rb))
 		{

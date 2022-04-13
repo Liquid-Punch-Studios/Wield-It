@@ -5538,6 +5538,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2550693307891167174, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550693307891167174, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550693307891167174, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550693307891167174, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550693307891167174, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142351037633308123, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7711114945737053056, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
         type: 3}
       propertyPath: m_Name
@@ -5647,6 +5677,104 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711114945737053061, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 97b4fa8b0e4ad904298c89b590e9c74b,
+        type: 3}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 97b4fa8b0e4ad904298c89b590e9c74b,
+        type: 3}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[4].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0fbfa9e10f4f2754094c729738a72311,
+        type: 3}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[4].prefab
+      value: 
+      objectReference: {fileID: 333943903199510007, guid: 5f165c668a068a443b4ed07bc025e0e5,
+        type: 3}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[4].name
+      value: Granade
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[3].name
+      value: Kunai
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[2].name
+      value: Kunai
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[3].prefab
+      value: 
+      objectReference: {fileID: 5606402994583295706, guid: 42995e29872dca1499c9122e01767640,
+        type: 3}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 5606402994583295706, guid: 42995e29872dca1499c9122e01767640,
+        type: 3}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 583b6f33862541748ae5b37ae031097a,
+        type: 3}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[1].name
+      value: NinjaStar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 5606402994583295706, guid: b558377cb34dfc044acabf15dc7f8f8a,
+        type: 3}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[0].maxAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[1].maxAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711114945737053063, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: menu.Array.data[2].maxAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711114946254393075, guid: ea70f98924d2d244d8c3dfaf8f9a8adf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea70f98924d2d244d8c3dfaf8f9a8adf, type: 3}

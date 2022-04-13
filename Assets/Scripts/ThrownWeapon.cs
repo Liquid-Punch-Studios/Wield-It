@@ -30,9 +30,10 @@ public class ThrownWeapon : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (isStabbed)
+		if (isStabbed || other.isTrigger)
 			return;
-		
+
+		Debug.LogError(other.gameObject.name);
 
 		if (other.TryGetComponent(out MaterialData mat) && mat.CanBeStabbed && rb.velocity.magnitude >= stabSpeedTreshold)
 		{
