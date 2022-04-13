@@ -23,6 +23,7 @@ public class RadialMenu : MonoBehaviour
     Handler handler;
     Health playerHealth;
     TextMeshProUGUI throwableRemain;
+    TextMeshProUGUI weaponName;
 
     public static int segment;
     float segmentAngle;
@@ -56,12 +57,17 @@ public class RadialMenu : MonoBehaviour
         public string name;
         public Sprite sprite;
         public GameObject prefab;
+        public int maxAmount;
+        public bool amountChanged;
+        
 
-        private int amount = 5;
+        private int amount;
         public int Amount
         {
             get { return amount; }
-            set { amount = value; }
+            set { amount = value;
+                amountChanged = true;
+            }
         }
 
         private Image image;
@@ -75,12 +81,26 @@ public class RadialMenu : MonoBehaviour
                 holder = value;
             }
         }
+
+        public Weapon(Sprite sprite, GameObject prefab, string name)
+        {
+            this.name = name;
+            this.prefab = prefab;
+            this.sprite = sprite;
+            maxAmount = 5;
+            Amount = maxAmount;
+        }
+
+        private Weapon()
+        {
+        }
     };
 
     public List<Weapon> menu;
 
     void Start()
     {
+        foreach (var i in menu) i.Amount = i.maxAmount;
         controls = GameManager.Instance.controls;
         player = GameObject.Find("Player");
         handler = player.GetComponent<Handler>();
@@ -89,10 +109,12 @@ public class RadialMenu : MonoBehaviour
         menuObj = GameObject.Find("Menu");
         highlight = GameObject.Find("Highlight").GetComponent<Image>();
         throwableRemain = GameObject.Find("ThrowableRemaining").GetComponent<TextMeshProUGUI>();
+        weaponName = GameObject.Find("WeaponName").GetComponent<TextMeshProUGUI>();
         throwableRemain.enabled = false;
         Reload();
         ChangeWeapon();
         menuObj.SetActive(false);
+        
     }
 
     public void FixedUpdate()
@@ -141,15 +163,23 @@ public class RadialMenu : MonoBehaviour
                     angle += 360;
                 segment = (int)Mathf.Floor(angle / segmentAngle);
             }
-            
 
+            weaponName.text = menu[segment].name;
             highlight.transform.rotation = Quaternion.Euler(0, 0, -segment * segmentAngle);
         }
 
         else 
         {
-            if(menu[segment].Amount <= 0)
+            //if (menu.Count > 0)
+            //    foreach (var i in menu)
+            //    {
+            //        if (i.amountChanged)
+            //            throwableRemain.text = i.Amount + "/" + i.maxAmount;
+            //    }
+            if (menu[segment].Amount <= 0)
             {
+                menu.RemoveAt(segment);
+                Reload();
                 segment = 0;
                 ChangeWeapon();
             }
@@ -160,7 +190,6 @@ public class RadialMenu : MonoBehaviour
     {
         segmentAngle = (360 / menu.Count);
         highlight.fillAmount = (360 - segmentAngle) / 360f;
-        
         foreach ( Transform tr in baseTextObj.transform)
         {
             Destroy(tr.gameObject);
@@ -203,15 +232,22 @@ public class RadialMenu : MonoBehaviour
             weapon.transform.rotation = player.transform.Find("Hand").rotation;
             weapon.GetComponent<Sword>().user = player;
             throwableRemain.enabled = weapon.GetComponent<Sword>().throwable;
+            throwableRemain.text = menu[segment].Amount + "/" + menu[segment].maxAmount;
             weapon.GetComponent<ConfigurableJoint>().connectedBody = player.transform.Find("Hand").GetComponent<Rigidbody>();
             handler.weapon = weapon;
             handler.WeaponRb = weapon.GetComponent<Rigidbody>();
 
-            if (weapon.TryGetComponent(out Mace _))
-            {
-                for (int i = weapon.transform.childCount-1; i >= 0 ; i--)
-                    weapon.transform.GetChild(i).parent = null;
-            }
+            //if (weapon.TryGetComponent(out Mace _))
+            //{
+            //    for (int i = weapon.transform.childCount-1; i >= 0 ; i--)
+            //        weapon.transform.GetChild(i).parent = null;
+            //}
         }
+    }
+    
+    public void AddWeapon(Sprite sprite, GameObject prefab, string name)
+    {
+        menu.Add(new Weapon(sprite, prefab, name));
+        Reload();
     }
 }

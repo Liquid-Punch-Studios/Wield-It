@@ -166,7 +166,7 @@ public class GameSettings
 
 	#region Audio
 	[Range(0f, 1f)]
-	private float masterVolume = 1;
+	private float masterVolume = 1f;
 	public float MasterVolume
 	{
 		get { return masterVolume; }
@@ -246,7 +246,7 @@ public class GameSettings
 	public event EventHandler EffectsSoundChanged;
 
 	[Range(0f, 1f)]
-	private float musicVolume = 1;
+	private float musicVolume = 0.5f;
 	public float MusicVolume
 	{
 		get { return musicVolume; }
