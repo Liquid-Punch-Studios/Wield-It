@@ -9,7 +9,7 @@ BoxCollider:
   m_GameObject: {fileID: 144998683698876826}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2.5356522, y: 0.11801773, z: 1.2935956}
   m_Center: {x: 0.18653893, y: -0.009669632, z: -0.0030109882}
@@ -23,6 +23,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2390402920931676296}
   - component: {fileID: 6220278280732488640}
+  - component: {fileID: 7526468278840842258}
   - component: {fileID: 2645406421761717636}
   - component: {fileID: 8621085891631748287}
   m_Layer: 13
@@ -62,6 +63,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.47, y: 0.22, z: 1.47}
   m_Center: {x: 2.06, y: 0, z: 0}
+--- !u!65 &7526468278840842258
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8417234880191271460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5356522, y: 0.27, z: 1.2935956}
+  m_Center: {x: 0.18653893, y: -0.009669632, z: -0.0030109882}
 --- !u!114 &2645406421761717636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +91,9 @@ MonoBehaviour:
   damage: 70
   impact: 15
   stabSpeedTreshold: 15
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!54 &8621085891631748287
 Rigidbody:
   m_ObjectHideFlags: 0
