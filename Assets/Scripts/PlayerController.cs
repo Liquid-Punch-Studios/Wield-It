@@ -88,9 +88,9 @@ public class PlayerController : MonoBehaviour
 
 		if (controls.Player.Dash.triggered)
 		{
-			var dash = controls.Player.Dash.ReadValue<float>();
-			if (movement.Dash(dash))
-				ChangeDirection(dash);
+			var dir = controls.Player.Move.ReadValue<float>();
+			if (movement.Dash(dir))
+				ChangeDirection(dir);
 		}
 
 		if (controls.Player.Slam.triggered)
