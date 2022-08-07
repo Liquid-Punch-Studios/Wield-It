@@ -83,7 +83,7 @@ public class Movement : MonoBehaviour
 	protected virtual void OnOnGroundChanged(EventArgs e)
 	{
 		OnGroundChanged?.Invoke(this, EventArgs.Empty);
-		animator.SetBool("onGround", OnGround);
+		//animator.SetBool("onGround", OnGround);
 	}
 
 	public LayerMask groundLayerMask;

@@ -12,6 +12,8 @@ public class ThrownWeapon : MonoBehaviour
 	public float impact;
 	public float stabSpeedTreshold;
 
+	public LayerMask layerMask;
+
 	private Rigidbody rb;
 
 	private GameObject hitEffect, bloodEffect, woodEffect, damageIndicator;
@@ -30,8 +32,17 @@ public class ThrownWeapon : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (isStabbed || other.isTrigger)
+		if (isStabbed && (1 << other.gameObject.layer & layerMask.value) != 0)
+        {
+			if (other.GetComponent<Rigidbody>().velocity.y < 0)
+				this.transform.Find("weapon_spear").GetComponent<Collider>().enabled = true;
+			else
+				this.transform.Find("weapon_spear").GetComponent<Collider>().enabled = false;
+		}
+		if (isStabbed || other.isTrigger || (1 << other.gameObject.layer & layerMask.value) != 0)
 			return;
+		
+
 
 		if (other.TryGetComponent(out MaterialData mat) && mat.CanBeStabbed && rb.velocity.magnitude >= stabSpeedTreshold)
 		{
@@ -55,7 +66,6 @@ public class ThrownWeapon : MonoBehaviour
                 {
 					foreach (Collider c in gameObject.GetComponentsInChildren<Collider>())
 					{
-						Debug.LogError(other.gameObject.name);
 						c.enabled = false;
 					}
 				}
@@ -88,9 +98,12 @@ public class ThrownWeapon : MonoBehaviour
 			c.transform.position = other.ClosestPointOnBounds(transform.position);
 			c.transform.rotation = other.transform.rotation;
 			foreach (Collider col in GetComponents<Collider>())
+            {
 				if (col.isTrigger)
 					col.enabled = false;
-        }
+            }
+			this.transform.Find("weapon_spear").GetComponent<Collider>().enabled = true;
+		}
 	}
         
 	void IndicateDamage(float damage, Transform DISpawn)
