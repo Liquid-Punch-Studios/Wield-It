@@ -281,7 +281,12 @@ public class MainMenuSelection : MonoBehaviour
     IEnumerator ExitButtonClick()
     {
         yield return new WaitForSeconds(1);
-        Application.Quit();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+              Application.Quit();
+        #endif
+        //Application.Quit();
         yield return null;
     }
 
