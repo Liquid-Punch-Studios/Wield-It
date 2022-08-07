@@ -2740,22 +2740,22 @@ PrefabInstance:
     - target: {fileID: 3552952971657245897, guid: b55c7ec7baf86a74f96a219817f170c3,
         type: 3}
       propertyPath: m_text
-      value: Press [Q] or [E] to dash sideways
+      value: Press [Shift] to dash sideways
       objectReference: {fileID: 0}
     - target: {fileID: 3552952971657245897, guid: b55c7ec7baf86a74f96a219817f170c3,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 33
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3552952971657245897, guid: b55c7ec7baf86a74f96a219817f170c3,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3552952971657245897, guid: b55c7ec7baf86a74f96a219817f170c3,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3552952971657245897, guid: b55c7ec7baf86a74f96a219817f170c3,
         type: 3}
@@ -2830,12 +2830,12 @@ PrefabInstance:
     - target: {fileID: 6986047968715829319, guid: b55c7ec7baf86a74f96a219817f170c3,
         type: 3}
       propertyPath: texts.Array.data[0]
-      value: Press [Q] or [E] to dash sideways
+      value: Press [Shift] to dash sideways
       objectReference: {fileID: 0}
     - target: {fileID: 6986047968715829319, guid: b55c7ec7baf86a74f96a219817f170c3,
         type: 3}
       propertyPath: texts.Array.data[1]
-      value: "[Q] ve [E] tu\u015Flar\u0131yla yanlara at\u0131l\u0131n"
+      value: "[Shift] tu\u015Fuyla yanlara at\u0131l\u0131n"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b55c7ec7baf86a74f96a219817f170c3, type: 3}
@@ -6838,17 +6838,17 @@ PrefabInstance:
     - target: {fileID: 6280579918362714662, guid: 31b2390d5c479234e90972d42b8e08d3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0000009463461
+      value: -0.0000014195192
       objectReference: {fileID: 0}
     - target: {fileID: 6280579918362714662, guid: 31b2390d5c479234e90972d42b8e08d3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0718012
+      value: 2.6077018
       objectReference: {fileID: 0}
     - target: {fileID: 6280579918362714662, guid: 31b2390d5c479234e90972d42b8e08d3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23
+      value: -33
       objectReference: {fileID: 0}
     - target: {fileID: 6280579918362714662, guid: 31b2390d5c479234e90972d42b8e08d3,
         type: 3}
@@ -14231,7 +14231,7 @@ Transform:
   m_GameObject: {fileID: 1334746635}
   m_LocalRotation: {x: 0.000000106110335, y: 0.000000023658654, z: -2.5104278e-15,
     w: 1}
-  m_LocalPosition: {x: -0.0000009463461, y: 2.0718012, z: -23}
+  m_LocalPosition: {x: -0.0000014195192, y: 2.6077018, z: -33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
