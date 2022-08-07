@@ -134,7 +134,11 @@ public class EscapeMenu : MonoBehaviour
 
     public void QuitClick()
     {
-        Application.Quit();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+              Application.Quit();
+        #endif
     }
 
     public void BackClick()
