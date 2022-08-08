@@ -189,7 +189,7 @@ public class Movement : MonoBehaviour
 	{
 		if ((1 << other.gameObject.layer & groundLayerMask.value) != 0)
 		{
-			OnGroundDepth++;
+			OnGroundDepth = 1;
 			if (OnGroundDepth == 1)
 				landAudio?.PlayRandom(0.1f);
 
