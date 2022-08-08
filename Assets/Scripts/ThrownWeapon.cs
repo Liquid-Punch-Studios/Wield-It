@@ -102,7 +102,8 @@ public class ThrownWeapon : MonoBehaviour
 				if (col.isTrigger)
 					col.enabled = false;
             }
-			this.transform.Find("weapon_spear").GetComponent<Collider>().enabled = true;
+			if (this.transform.Find("weapon_spear") != null)
+				this.transform.Find("weapon_spear").GetComponent<Collider>().enabled = true;
 		}
 	}
         

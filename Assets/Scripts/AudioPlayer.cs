@@ -27,7 +27,8 @@ public class AudioPlayer : MonoBehaviour
 		currentAudio = audioList[index];
 		currentAudio.pitch = Mathf.Clamp(Random.Range(1 - pitchShift, 1 + pitchShift), 0.1f, 10f);
 		currentAudio.Play(); // TODO: Check if sound replays or plays a new one
-		StartCoroutine(WaitUntilClipEnds());
+		if(gameObject.activeInHierarchy)
+			StartCoroutine(WaitUntilClipEnds());
 		Triggered?.Invoke(this, index);
 
 	}
