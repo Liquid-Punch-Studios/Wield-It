@@ -1,0 +1,17 @@
+root = true
+
+[*.{txt,cs,cginc,shader}]
+insert_final_newline = true
+indent_style = tab
+indent_size = 4
+trim_trailing_whitespace = false
+end_of_line = lf
+charset = utf-8
+
+[*.{inputactions,json}]
+insert_final_newline = false
+indent_style = tab
+indent_size = 4
+trim_trailing_whitespace = false
+end_of_line = lf
+charset = utf-8

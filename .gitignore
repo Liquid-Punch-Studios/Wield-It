@@ -1,4 +1,12 @@
 # =========================
+# Blender
+# =========================
+
+# Blender backup files
+*.blend1
+*.blend1.meta
+
+# =========================
 # Unity
 # =========================
 
@@ -14,8 +22,8 @@
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
 
-# Asset meta data should only be ignored when the corresponding asset is also ignored
-!/[Aa]ssets/**/*.meta
+# Recordings can get excessive in size
+/[Rr]ecordings/
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
@@ -46,8 +54,6 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
-*.blend1
-*.blend1.meta
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -61,6 +67,7 @@ sysinfo.txt
 *.apk
 *.aab
 *.unitypackage
+*.app
 
 # Crashlytics generated file
 crashlytics-build.properties
