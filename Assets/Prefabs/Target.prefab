@@ -305,7 +305,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1932979, y: 1.1196249, z: 0.19329692}
+  m_Size: {x: 0.1932979, y: 0.94, z: 0.19329692}
   m_Center: {x: -0.00031437585, y: -0.4981648, z: 0.00012756293}
 --- !u!59 &7307375402540889194
 HingeJoint:
@@ -451,8 +451,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1932979, y: 1.1196249, z: 0.19329692}
-  m_Center: {x: -0.00031437585, y: -0.4981648, z: 0.00012756293}
+  m_Size: {x: 0.1932979, y: 0.58, z: 0.19329692}
+  m_Center: {x: -0.00031437585, y: -0.62, z: 0.00012756293}
 --- !u!59 &7307375401584748616
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -597,7 +597,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1932979, y: 1.1554344, z: 0.19329692}
+  m_Size: {x: 0.1932979, y: 0.99, z: 0.19329692}
   m_Center: {x: -0.000314867, y: -0.51606905, z: 0.0001280331}
 --- !u!59 &7307375401199189249
 HingeJoint:
@@ -743,8 +743,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1932979, y: 1.1554344, z: 0.19329692}
-  m_Center: {x: -0.000314867, y: -0.51606905, z: 0.0001280331}
+  m_Size: {x: 0.1932979, y: 0.59, z: 0.19329692}
+  m_Center: {x: -0.000314867, y: -0.57, z: 0.0001280331}
 --- !u!59 &7307375401815711117
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -889,7 +889,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1932979, y: 1.1554344, z: 0.19329692}
+  m_Size: {x: 0.1932979, y: 0.83, z: 0.19329692}
   m_Center: {x: -0.000314867, y: -0.51606905, z: 0.0001280331}
 --- !u!59 &7307375402386245521
 HingeJoint:
@@ -1035,7 +1035,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1932979, y: 1.1196249, z: 0.19329692}
+  m_Size: {x: 0.1932979, y: 0.91, z: 0.19329692}
   m_Center: {x: -0.00031437585, y: -0.4981648, z: 0.00012756293}
 --- !u!59 &7307375402131967364
 HingeJoint:
@@ -1083,6 +1083,8 @@ GameObject:
   - component: {fileID: 8633829783599274343}
   - component: {fileID: 759561112106591057}
   - component: {fileID: 6464364923380801448}
+  - component: {fileID: 3253535615895874621}
+  - component: {fileID: 4527143261601129923}
   m_Layer: 0
   m_Name: dungeon_log1
   m_TagString: Untagged
@@ -1151,6 +1153,32 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &3253535615895874621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722833077687659380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4892ee8e4b4f54b4db85026dbf43f946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: 0
+--- !u!65 &4527143261601129923
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722833077687659380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5327063, y: 0.94465685, z: 0.10595235}
+  m_Center: {x: 0.07079667, y: -0.009677248, z: -0.0013372955}
 --- !u!1 &7307375401019612776
 GameObject:
   m_ObjectHideFlags: 0
