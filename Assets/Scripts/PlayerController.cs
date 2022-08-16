@@ -1,7 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+public enum MovementActions
+{
+	Idle,
+	Jump,
+	DoubleJump,
+	Dash,
+	AirDash,
+	Slam
+}
 
 [SelectionBase]
 public class PlayerController : MonoBehaviour
@@ -30,6 +39,25 @@ public class PlayerController : MonoBehaviour
 
 	const float sensitivity = 0.02f;
 
+    private MovementActions movementState;
+    public MovementActions MovementState {
+		get => movementState;
+		set {
+			lastMovementState = movementState;
+			if(lastMovementState != value)
+            {
+				stateChanged = true;
+				lastMovementStateTime = Time.time;
+				movementState = value;
+			}
+			
+		}
+	}
+    private MovementActions lastMovementState;
+	private float lastMovementStateTime;
+
+	private bool stateChanged;
+
 	// Awake is called once during the lifetime of the script, on its initial awake state, prior to any other functions
 	private void Awake()
 	{
@@ -52,13 +80,25 @@ public class PlayerController : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		moveSpeed = GetComponent<Movement>().moveSpeed;
 		animator = GetComponentInChildren<Animator>();
+
+		MovementState = MovementActions.Idle;
+		lastMovementState = MovementActions.Idle;
 	}
 
-	
+    private void OnEnable()
+    {
+		if (movement == null) movement = GetComponent<Movement>();
+		movement.OnGroundSet += Movement_OnGroundSet;
 
+	}
 
-	/// Helper function for math-like positive modulus
-	public static float Mod(float x, float m)
+    private void OnDisable()
+    {
+		movement.OnGroundSet -= Movement_OnGroundSet;
+	}
+
+    /// Helper function for math-like positive modulus
+    public static float Mod(float x, float m)
 	{
 		var r = x % m;
 		return r < 0 ? r + m : r;
@@ -78,6 +118,105 @@ public class PlayerController : MonoBehaviour
 	// FixedUpdate is called once per physics frame
 	private void FixedUpdate()
 	{
+		
+		switch (MovementState)
+        {
+			case MovementActions.Idle:
+				//to Jump
+				if (controls.Player.Jump.triggered)
+					MovementState = MovementActions.Jump;
+				//to Dash
+				else if (controls.Player.Dash.triggered)
+					MovementState = MovementActions.Dash;
+				break;
+
+			case MovementActions.Jump:
+
+				//do Jump
+				if (stateChanged)
+                {
+					movement.Jump();
+					stateChanged = false;
+                }
+
+				//to Idle (with Movement_OnGroundSet)
+				//to DoubleJump
+				if (controls.Player.Jump.triggered && Time.time - lastMovementStateTime > 0.05f)
+					MovementState = MovementActions.DoubleJump;
+				//to AirDash
+				else if (controls.Player.Dash.triggered)
+					MovementState = MovementActions.AirDash;
+				//to Slam
+				else if (controls.Player.Slam.triggered)
+					MovementState = MovementActions.Slam;
+				break;
+
+			case MovementActions.DoubleJump:
+
+				//do DoubleJump
+				if (stateChanged)
+				{
+					movement.Jump();
+					stateChanged = false;
+				}
+
+				//to Idle (with Movement_OnGroundSet)
+				//to AirDash
+				if (controls.Player.Dash.triggered)
+					MovementState = MovementActions.AirDash;
+				//to Slam
+				else if (controls.Player.Slam.triggered)
+					MovementState = MovementActions.Slam;
+				break;
+
+			case MovementActions.Dash:
+				if (stateChanged)
+				{
+					var dir = controls.Player.Move.ReadValue<float>();
+					stateChanged = false;
+					if (movement.Dash(dir))
+						ChangeDirection(dir);
+				}
+				//to Idle (with animation end)
+				//to Jump
+				if (controls.Player.Jump.triggered)
+					MovementState = MovementActions.Jump;
+				else if (controls.Player.Slam.triggered)
+					MovementState = MovementActions.Slam;
+
+				break;
+
+			case MovementActions.AirDash:
+				if (stateChanged)
+				{
+					var dir = controls.Player.Move.ReadValue<float>();
+					stateChanged = false;
+					if (movement.Dash(dir))
+						ChangeDirection(dir);
+				}
+				//to Idle (with animation end)
+				//to DoubleJump
+				if (controls.Player.Jump.triggered)
+					MovementState =MovementActions.DoubleJump;
+				else if (controls.Player.Slam.triggered)
+					MovementState = MovementActions.Slam;
+				break;
+
+			case MovementActions.Slam:
+				//do Slam
+				if (stateChanged)
+				{
+					movement.Slam();
+					stateChanged = false;
+				}
+
+				//to Idle (and with animation end and Movement_OnGroundChanged)
+				//to DoubleJump (if last jump)
+				if (controls.Player.Jump.triggered && lastMovementState == MovementActions.Jump)
+					MovementState = MovementActions.DoubleJump;
+				break;
+        }
+
 		float horizontal = controls.Player.Move.ReadValue<float>();
 		movement.move = horizontal;
 		if (controls.Player.Move.triggered)
@@ -86,20 +225,20 @@ public class PlayerController : MonoBehaviour
 		animator.SetFloat("speed X", Mathf.Abs(rb.velocity.x / moveSpeed));
 		animator.SetFloat("speed Y", rb.velocity.y);
 
-		if (controls.Player.Dash.triggered)
-		{
-			var dir = controls.Player.Move.ReadValue<float>();
-			if (movement.Dash(dir))
-				ChangeDirection(dir);
-		}
+        //if (controls.Player.Dash.triggered)
+        //{
+        //    var dir = controls.Player.Move.ReadValue<float>();
+        //    if (movement.Dash(dir))
+        //        ChangeDirection(dir);
+        //}
 
-		if (controls.Player.Slam.triggered)
-			movement.Slam();
-		else if (controls.Player.Jump.triggered)
-			movement.Jump();
+        //if (controls.Player.Slam.triggered)
+        //    movement.Slam();
+        //else if (controls.Player.Jump.triggered)
+        //    movement.Jump();
 
-		// Weapon movement delta
-		Vector2 wield = controls.Player.Wield.ReadValue<Vector2>();
+        // Weapon movement delta
+        Vector2 wield = controls.Player.Wield.ReadValue<Vector2>();
 		handler.Wield(wield * sensitivity * SettingsManager.Instance.Settings.Sensitivity);
 
 		
@@ -124,5 +263,9 @@ public class PlayerController : MonoBehaviour
 	public void EnablePlayerController()
 	{
 		controls.Player.Enable();
+	}
+	private void Movement_OnGroundSet(object sender, System.EventArgs e)
+	{
+		MovementState = MovementActions.Idle;
 	}
 }

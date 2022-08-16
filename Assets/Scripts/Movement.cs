@@ -80,9 +80,12 @@ public class Movement : MonoBehaviour
 		get { return OnGroundDepth > 0 || Time.time - lastGround < coyoteTime; }
 	}
 	public event EventHandler OnGroundChanged;
+	public event EventHandler OnGroundSet;
 	protected virtual void OnOnGroundChanged(EventArgs e)
 	{
 		OnGroundChanged?.Invoke(this, EventArgs.Empty);
+		if (OnGround)
+			OnGroundSet?.Invoke(this, EventArgs.Empty);
 		//animator.SetBool("onGround", OnGround);
 	}
 
@@ -94,14 +97,14 @@ public class Movement : MonoBehaviour
 	public bool Jump()
 	{
 		Vector2 vel = rb.velocity; // Don't touch X axis
-		if (OnGround && stamina.UseStamina(jumpCost))
+		if (OnGround /*&& stamina.UseStamina(jumpCost)*/)
 		{
 			vel.y = jumpSpeed;
 			rb.velocity = vel;
 			animator.SetTrigger("jump");
 			jumpAudio?.PlayRandom(0.1f);
 		}
-		else if (airJumpLeft > 0 && stamina.UseStamina(airJumpCost))
+		else if (airJumpLeft > 0 /*&& stamina.UseStamina(airJumpCost)*/)
 		{
 			vel.y = airJumpSpeed;
 			rb.velocity = vel;
@@ -126,7 +129,7 @@ public class Movement : MonoBehaviour
 
 	public bool Dash(float direction)
 	{
-		if (stamina.UseStamina(dashCost))
+		if (true/*stamina.UseStamina(dashCost)*/)
 		{
 			rb.velocity = Vector3.right * (lastDashDir = Mathf.Sign(direction)) * dashSpeed;
 			animator.SetTrigger("dash");
@@ -140,7 +143,7 @@ public class Movement : MonoBehaviour
 
 	public bool Slam()
 	{
-		if (!OnGround && stamina.UseStamina(slamCost))
+		if (!OnGround /*&& stamina.UseStamina(slamCost)*/)
 		{
 			rb.velocity = Vector3.down * slamSpeed;
 			animator.SetBool("slam", true);
