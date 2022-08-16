@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class TutorialSpot : MonoBehaviour
 {
     public LayerMask triggerLayerMask;
     public GameObject button;
     public GameObject tutorial;
+    public Sprite keyboardButton;
+    public Sprite psButton;
 
     private bool playerInCollider;
     private Controls controls;
@@ -16,19 +19,37 @@ public class TutorialSpot : MonoBehaviour
     private Animator buttonAnim;
     private Animator tutorialAnim;
 
+    private Gamepad gamepad;
+    private Keyboard keyboard;
+    private Mouse mouse;
+
     private void Start()
     {
         controls = GameManager.Instance.controls;
         buttonAnim = button.GetComponent<Animator>();
+        gamepad = Gamepad.current;
+        keyboard = Keyboard.current;
+        mouse = Mouse.current;
         //tutorialAnim = tutorial.GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
+        if (gamepad != null && gamepad.wasUpdatedThisFrame)
+        {
+            button.GetComponent<Image>().sprite = psButton;
+        }
+
+        if (keyboard.wasUpdatedThisFrame || mouse.wasUpdatedThisFrame)
+        {
+            button.GetComponent<Image>().sprite = keyboardButton;
+        }
+
         if (playerInCollider)
         {
             if (controls.Player.Interaction.triggered)
             {
+                
                 button.SetActive(false);
                 tutorial.SetActive(true);
 
@@ -46,7 +67,6 @@ public class TutorialSpot : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if ((1 << other.gameObject.layer & triggerLayerMask.value) != 0)
         {
             button.SetActive(true);
