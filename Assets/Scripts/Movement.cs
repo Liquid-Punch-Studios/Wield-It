@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
 	public float dashSpeedMin = 10;
 	public float dashCost = 50;
 	public float maxAirdash = 1;
-	public float airdash;
+	private float airDashLeft;
 	public AudioPlayer dashAudio;
 	private bool dashing;
 	public bool Dashing
@@ -55,48 +55,37 @@ public class Movement : MonoBehaviour
 		get { return slamming; }
 	}
 
-	private int onGroundDepth = 0;
-	public int OnGroundDepth
-	{
-		get => onGroundDepth;
-		set
-		{
-			var old = onGroundDepth;
-			if (old != value)
-			{
-				onGroundDepth = value;
-				if (old > 0 ^ value > 0)
-					OnOnGroundChanged(EventArgs.Empty);
-				OnOnGroundDepthChanged(EventArgs.Empty);
-			}
-		}
-	}
-	public event EventHandler OnGroundDepthChanged;
-	protected virtual void OnOnGroundDepthChanged(EventArgs e)
-	{
-		OnGroundDepthChanged?.Invoke(this, EventArgs.Empty);
-	}
-
-	public bool OnGround
-	{
-		get { return OnGroundDepth > 0 || Time.time - lastGround < coyoteTime; }
-	}
-	public event EventHandler OnGroundChanged;
-	public event EventHandler OnGroundSet;
-	protected virtual void OnOnGroundChanged(EventArgs e)
-	{
-		OnGroundChanged?.Invoke(this, EventArgs.Empty);
-		if (OnGround)
-			OnGroundSet?.Invoke(this, EventArgs.Empty);
-		//animator.SetBool("onGround", OnGround);
-	}
-
 	public LayerMask groundLayerMask;
 
 	private Rigidbody rb;
 	private Stamina stamina;
 	private Health health;
-	public bool Jump()
+
+	private float lastYVelocity;
+	private SphereCollider feetCollider;
+    public bool OnGround {
+		get => onGround;
+        set
+        {
+			if (onGround != value)
+            {
+				onGround = value;
+				if (onGround) OnOnGroundSet(EventArgs.Empty);
+				onGroundEnter = onGround;
+				onGroundExit = !onGround;
+            }
+        }
+	}
+    private bool onGround = true;
+	private bool onGroundEnter;
+	private bool onGroundExit;
+	public event EventHandler OnGroundSet;
+	protected virtual void OnOnGroundSet(EventArgs e)
+    {
+		OnGroundSet?.Invoke(this, EventArgs.Empty);
+    }
+
+    public bool Jump()
 	{
 		Vector2 vel = rb.velocity; // Don't touch X axis
 		if (OnGround /*&& stamina.UseStamina(jumpCost)*/)
@@ -158,7 +147,7 @@ public class Movement : MonoBehaviour
 
 	public void ResetState()
 	{
-		OnGroundDepth = 0;
+		//OnGroundDepth = 0;
 		dashing = slamming = false;
 		move = 0;
 	}
@@ -169,11 +158,40 @@ public class Movement : MonoBehaviour
 		stamina = GetComponent<Stamina>();
 		health = gameObject.GetComponent<Health>();
 		health.HpChanged += Health_HpChanged;
-		airdash = maxAirdash;
+		airDashLeft = maxAirdash;
+		feetCollider = GetComponent<SphereCollider>();
 	}
 
 	private void FixedUpdate()
 	{
+		Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.down * 0.6f, 0.5f, groundLayerMask.value);
+		OnGround = colliders.Length > 0;
+
+		if (onGroundEnter)
+        {
+			landAudio?.PlayRandom(0.1f);
+
+            foreach (Collider other in colliders)
+			{
+				if (slamming && other.TryGetComponent<SlamBreak>(out SlamBreak breaker))
+				{
+					breaker.Break();
+					rb.AddForce(100f * Vector3.down, ForceMode.Impulse);
+				}
+            }
+
+			airJumpLeft = airJumpCount;
+			slamming = false;
+			animator.SetTrigger("fell");
+			onGroundEnter = false;
+        }
+
+		if (onGroundExit)
+		{
+			animator.ResetTrigger("fell");
+			onGroundExit = false;
+		}
+
 		// Apply some force in the direction we want to
 		// move if we're not already moving in that vector with enough speed
 		float speed = OnGround ? moveSpeed : airMoveSpeed;
@@ -189,48 +207,9 @@ public class Movement : MonoBehaviour
 			slamming = false;
 			animator.SetBool("slam", false);
 		}
+
+
 	}
-
-	private void OnTriggerEnter(Collider other)
-	{
-		if ((1 << other.gameObject.layer & groundLayerMask.value) != 0)
-		{
-			OnGroundDepth++;
-			if (OnGroundDepth == 1)
-				landAudio?.PlayRandom(0.1f);
-
-			if (OnGround)
-			{
-				if (slamming && other.TryGetComponent<SlamBreak>(out SlamBreak breaker))
-				{
-					breaker.Break();
-					rb.AddForce(100f * Vector3.down, ForceMode.Impulse);
-					OnGroundDepth--;
-				}
-
-				airJumpLeft = airJumpCount;
-				slamming = false;
-				animator.SetTrigger("fell");
-			}
-		}
-	}
-
-	private float lastGround;
-
-	private void OnTriggerExit(Collider other)
-	{
-		if ((1 << other.gameObject.layer & groundLayerMask.value) != 0)
-		{
-			OnGroundDepth--;
-
-			if (!OnGround)
-			{
-				lastGround = Time.time;
-				animator.ResetTrigger("fell");
-			}
-		}
-	}
-
 
     private void Health_HpChanged(object sender, System.EventArgs e)
     {

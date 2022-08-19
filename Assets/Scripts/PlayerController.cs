@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour
 				if (stateChanged)
                 {
 					movement.Jump();
+					movement.OnGround = false;
 					stateChanged = false;
                 }
 
@@ -187,9 +188,9 @@ public class PlayerController : MonoBehaviour
 				break;
 
 			case MovementActions.AirDash:
-				if (stateChanged && movement.airdash > 0)
+				if (stateChanged && movement.airDashLeft > 0)
 				{
-					movement.airdash--;
+					movement.airDashLeft--;
 					var dir = controls.Player.Move.ReadValue<float>();
 					stateChanged = false;
 					if (movement.Dash(dir))
@@ -268,6 +269,6 @@ public class PlayerController : MonoBehaviour
 	private void Movement_OnGroundSet(object sender, System.EventArgs e)
 	{
 		MovementState = MovementActions.Idle;
-		movement.airdash = movement.maxAirdash;
+		movement.airDashLeft = movement.maxAirdash;
 	}
 }
