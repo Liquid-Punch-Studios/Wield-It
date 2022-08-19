@@ -704,6 +704,18 @@ MonoBehaviour:
   - {fileID: 4170931804724787737}
   playOnAwake: 0
   currentAudio: {fileID: 0}
+--- !u!114 &7567576354540909002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340141157067503380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be553779c33cea45af11c75ad250cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4986339935529740524
 GameObject:
   m_ObjectHideFlags: 0
