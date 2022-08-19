@@ -61,8 +61,6 @@ public class Movement : MonoBehaviour
 	private Stamina stamina;
 	private Health health;
 
-	private float lastYVelocity;
-	private SphereCollider feetCollider;
     public bool OnGround {
 		get => onGround;
         set
@@ -80,6 +78,7 @@ public class Movement : MonoBehaviour
 	private bool onGroundEnter;
 	private bool onGroundExit;
 	public event EventHandler OnGroundSet;
+	private float lastGround;
 	protected virtual void OnOnGroundSet(EventArgs e)
     {
 		OnGroundSet?.Invoke(this, EventArgs.Empty);
@@ -159,13 +158,12 @@ public class Movement : MonoBehaviour
 		health = gameObject.GetComponent<Health>();
 		health.HpChanged += Health_HpChanged;
 		airDashLeft = maxAirdash;
-		feetCollider = GetComponent<SphereCollider>();
 	}
 
 	private void FixedUpdate()
 	{
 		Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.down * 0.6f, 0.5f, groundLayerMask.value);
-		OnGround = colliders.Length > 0;
+		OnGround = colliders.Length > 0 || Time.time - lastGround < coyoteTime;
 
 		if (onGroundEnter)
         {
@@ -188,6 +186,7 @@ public class Movement : MonoBehaviour
 
 		if (onGroundExit)
 		{
+			lastGround = Time.time;
 			animator.ResetTrigger("fell");
 			onGroundExit = false;
 		}
