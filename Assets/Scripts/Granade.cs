@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Granade : MonoBehaviour
 {
-	public float timer = 3;
+	public float timer = 2;
 
 	public float damage = 100;
 	public float force = 100;
@@ -23,9 +24,13 @@ public class Granade : MonoBehaviour
 	public Animator animator;
 	public AnimationClip steamupClip;
 
+	private PostProcessVolume volume;
+	private ChromaticAberration ca;
 	void Start()
 	{
 		StartCoroutine(Explode());
+		volume = GameObject.Find("Post-process Volume").GetComponent<PostProcessVolume>();
+		ca = volume.profile.GetSetting<ChromaticAberration>();
 	}
 
 	public IEnumerator Explode()
@@ -35,7 +40,15 @@ public class Granade : MonoBehaviour
 		yield return new WaitForSeconds(steamupClip.length);
 		impulse.GenerateImpulse();
 		Instantiate(ExplosionEffect, transform.position, Quaternion.identity);
+		//Chromatic Abberation
+		ca.intensity.Override(1f);
 		Harm();
+		foreach (Transform child in transform) child.gameObject.SetActive(false);
+		for (float intensity = 1f; intensity > 0; intensity -= 0.1f)
+		{
+			ca.intensity.Override(intensity);
+			yield return new WaitForSeconds(0.1f);
+		}
 		Destroy(gameObject);
 	}
 
