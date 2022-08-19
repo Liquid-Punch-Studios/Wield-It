@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
 	public float dashSpeedMin = 10;
 	public float dashCost = 50;
 	public float maxAirdash = 1;
-	private float airDashLeft;
+	public float airDashLeft;
 	public AudioPlayer dashAudio;
 	private bool dashing;
 	public bool Dashing
