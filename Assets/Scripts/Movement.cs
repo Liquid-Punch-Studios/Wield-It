@@ -36,6 +36,8 @@ public class Movement : MonoBehaviour
 	public float dashSpeed = 25;
 	public float dashSpeedMin = 10;
 	public float dashCost = 50;
+	public float maxAirdash = 1;
+	public float airdash;
 	public AudioPlayer dashAudio;
 	private bool dashing;
 	public bool Dashing
@@ -167,6 +169,7 @@ public class Movement : MonoBehaviour
 		stamina = GetComponent<Stamina>();
 		health = gameObject.GetComponent<Health>();
 		health.HpChanged += Health_HpChanged;
+		airdash = maxAirdash;
 	}
 
 	private void FixedUpdate()
