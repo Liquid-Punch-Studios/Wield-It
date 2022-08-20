@@ -26,11 +26,13 @@ public class Granade : MonoBehaviour
 
 	private PostProcessVolume volume;
 	private ChromaticAberration ca;
+	private Transform playerTransform;
 	void Start()
 	{
 		StartCoroutine(Explode());
 		volume = GameObject.Find("Post-process Volume").GetComponent<PostProcessVolume>();
 		ca = volume.profile.GetSetting<ChromaticAberration>();
+		playerTransform = GameObject.Find("Player").transform;
 	}
 
 	public IEnumerator Explode()
@@ -40,15 +42,20 @@ public class Granade : MonoBehaviour
 		yield return new WaitForSeconds(steamupClip.length);
 		impulse.GenerateImpulse();
 		Instantiate(ExplosionEffect, transform.position, Quaternion.identity);
-		//Chromatic Abberation
-		ca.intensity.Override(1f);
 		Harm();
-		foreach (Transform child in transform) child.gameObject.SetActive(false);
-		for (float intensity = 1f; intensity > 0; intensity -= 0.1f)
-		{
-			ca.intensity.Override(intensity);
-			yield return new WaitForSeconds(0.1f);
-		}
+		//Chromatic Abberation
+		Vector3 offset = playerTransform.position - transform.position;
+		if (offset.sqrMagnitude < TotalRadius * TotalRadius)
+        {
+			Debug.DrawLine(playerTransform.position, transform.position);
+            float startIntensity = 1f - (1f / (TotalRadius + 2 - offset.magnitude));
+			foreach (Transform child in transform) child.gameObject.SetActive(false);
+			for (float intensity = startIntensity; intensity > 0; intensity -= 0.1f)
+			{
+				ca.intensity.Override(intensity);
+				yield return new WaitForSeconds(0.1f);
+			}
+        }
 		Destroy(gameObject);
 	}
 
