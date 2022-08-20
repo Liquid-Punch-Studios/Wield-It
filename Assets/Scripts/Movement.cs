@@ -68,21 +68,17 @@ public class Movement : MonoBehaviour
 			if (onGround != value)
             {
 				onGround = value;
-				if (onGround) OnOnGroundSet(EventArgs.Empty);
-				onGroundEnter = onGround;
-				onGroundExit = !onGround;
             }
         }
 	}
     private bool onGround = true;
-	private bool onGroundEnter;
-	private bool onGroundExit;
 	public event EventHandler OnGroundSet;
 	private float lastGround;
 	protected virtual void OnOnGroundSet(EventArgs e)
     {
 		OnGroundSet?.Invoke(this, EventArgs.Empty);
     }
+	private Collider[] colliders;
 
     public bool Jump()
 	{
@@ -158,38 +154,38 @@ public class Movement : MonoBehaviour
 		health = gameObject.GetComponent<Health>();
 		health.HpChanged += Health_HpChanged;
 		airDashLeft = maxAirdash;
+		colliders = new Collider[5];
 	}
-
-	private void FixedUpdate()
+	int lastColliderCount = 0;
+    private void FixedUpdate()
 	{
-		Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.down * 0.6f, 0.5f, groundLayerMask.value);
-		OnGround = colliders.Length > 0 || Time.time - lastGround < coyoteTime;
-
-		if (onGroundEnter)
+		int colliderCount = Physics.OverlapSphereNonAlloc(transform.position + Vector3.down * 0.6f, 0.5f, colliders, groundLayerMask.value);
+		if (lastColliderCount > 0 && colliderCount == 0)
+        {
+			lastGround = Time.time;
+			animator.ResetTrigger("fell");
+        }
+		else if (lastColliderCount == 0 && colliderCount > 0)
         {
 			landAudio?.PlayRandom(0.1f);
 
-            foreach (Collider other in colliders)
+			for (int i = 0; i < colliderCount; i++)
 			{
-				if (slamming && other.TryGetComponent<SlamBreak>(out SlamBreak breaker))
+				if (slamming && colliders[i].TryGetComponent<SlamBreak>(out SlamBreak breaker))
 				{
 					breaker.Break();
 					rb.AddForce(100f * Vector3.down, ForceMode.Impulse);
+					break;
 				}
-            }
-
+			}
+			OnOnGroundSet(EventArgs.Empty);
 			airJumpLeft = airJumpCount;
 			slamming = false;
 			animator.SetTrigger("fell");
-			onGroundEnter = false;
         }
+		lastColliderCount = colliderCount;
 
-		if (onGroundExit)
-		{
-			lastGround = Time.time;
-			animator.ResetTrigger("fell");
-			onGroundExit = false;
-		}
+		OnGround = colliderCount > 0 || Time.time - lastGround < coyoteTime;
 
 		// Apply some force in the direction we want to
 		// move if we're not already moving in that vector with enough speed
