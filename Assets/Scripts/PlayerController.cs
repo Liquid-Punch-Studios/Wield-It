@@ -53,7 +53,8 @@ public class PlayerController : MonoBehaviour
 			
 		}
 	}
-    private MovementActions lastMovementState;
+    [HideInInspector]
+	public MovementActions lastMovementState;
 	private float lastMovementStateTime;
 
 	private bool stateChanged;
