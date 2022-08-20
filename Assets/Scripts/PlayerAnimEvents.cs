@@ -7,7 +7,8 @@ public class PlayerAnimEvents : MonoBehaviour
     private PlayerController pc;
     public void ToIdleState()
     {
-        pc.MovementState = MovementActions.Idle;
+		if (pc.lastMovementState == MovementActions.Idle)
+			pc.MovementState = MovementActions.Idle;
     }
     void Start()
     {
