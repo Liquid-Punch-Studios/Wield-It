@@ -6106,6 +6106,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spear Knight (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2000589415982482843, guid: f401efb43e354f04ab5a0713e2ac1575,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3058660383971324153, guid: f401efb43e354f04ab5a0713e2ac1575,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9152,7 +9157,7 @@ Transform:
   m_GameObject: {fileID: 767698320}
   m_LocalRotation: {x: 0.000000106110335, y: 0.000000023658654, z: -2.5104278e-15,
     w: 1}
-  m_LocalPosition: {x: -11.430024, y: -2.8982, z: -23}
+  m_LocalPosition: {x: -11.430025, y: -2.3622994, z: -33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -17707,7 +17712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1593036931}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1543400046
@@ -18482,6 +18487,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c51681bd87849754e89e4bbc90e33abe, type: 3}
+--- !u!1 &1593036931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 692646983003928825, guid: c51681bd87849754e89e4bbc90e33abe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1593036930}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1596126369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18968,6 +18979,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spear Knight (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000589415982482843, guid: f401efb43e354f04ab5a0713e2ac1575,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3058660383971324153, guid: f401efb43e354f04ab5a0713e2ac1575,
         type: 3}
@@ -22485,6 +22501,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spear Knight (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2000589415982482843, guid: f401efb43e354f04ab5a0713e2ac1575,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3058660383971324153, guid: f401efb43e354f04ab5a0713e2ac1575,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22894,17 +22915,17 @@ PrefabInstance:
     - target: {fileID: 6280579918362714662, guid: 31b2390d5c479234e90972d42b8e08d3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.430024
+      value: -11.430025
       objectReference: {fileID: 0}
     - target: {fileID: 6280579918362714662, guid: 31b2390d5c479234e90972d42b8e08d3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8982
+      value: -2.3622994
       objectReference: {fileID: 0}
     - target: {fileID: 6280579918362714662, guid: 31b2390d5c479234e90972d42b8e08d3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23
+      value: -33
       objectReference: {fileID: 0}
     - target: {fileID: 6280579918362714662, guid: 31b2390d5c479234e90972d42b8e08d3,
         type: 3}
@@ -23926,6 +23947,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spear Knight (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000589415982482843, guid: f401efb43e354f04ab5a0713e2ac1575,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3058660383971324153, guid: f401efb43e354f04ab5a0713e2ac1575,
         type: 3}
