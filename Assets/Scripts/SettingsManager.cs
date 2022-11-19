@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -35,9 +35,9 @@ public class SettingsManager : Singleton<SettingsManager>
 		GraphicsApplied = true;
 	}
 
-	private void Awake()
+	protected override void Awake()
 	{
-
+		base.Awake();
 		FilePath = Path.Combine(Application.persistentDataPath, "settings.xml");
 		if (File.Exists(FilePath))
 		{

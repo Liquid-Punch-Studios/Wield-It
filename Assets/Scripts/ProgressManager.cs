@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,8 +10,9 @@ public class ProgressManager : Singleton<ProgressManager>
 
 	public string FilePath { get; private set; }
 
-	private void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
 		FilePath = Path.Combine(Application.persistentDataPath, "progress.json");
 	}
 
