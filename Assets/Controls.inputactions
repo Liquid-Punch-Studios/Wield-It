@@ -11,7 +11,8 @@
                     "id": "1aec33c3-9b55-4620-9c2c-7a21a2dd2161",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
@@ -19,7 +20,8 @@
                     "id": "dc890858-0c13-4aa8-91c6-b27b6d96462a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Slam",
@@ -27,7 +29,8 @@
                     "id": "cca7b228-c552-453e-8a13-1105dfa52472",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Wield",
@@ -35,7 +38,8 @@
                     "id": "0f641628-e188-4e61-a238-1160dccc46fb",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Angle",
@@ -43,7 +47,8 @@
                     "id": "7ada5061-8388-4911-a1a8-4c2ba01f33a5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Dash",
@@ -51,7 +56,8 @@
                     "id": "8046a645-cc1d-4b62-9641-8b76e34c0118",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Interaction",
@@ -59,7 +65,8 @@
                     "id": "75f43a28-0a52-4a48-a60d-c9c7cf6d4bac",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "EscapeMenu",
@@ -67,7 +74,8 @@
                     "id": "69f93ba8-746a-47c7-9964-0c2dae55c945",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "ClickRelease",
@@ -75,7 +83,8 @@
                     "id": "bde1e516-71b2-44a7-80e6-4dcd1a0b86c2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -377,7 +386,8 @@
                     "id": "3ddcf87c-8a64-4961-85a2-d2aba76b178b",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Fly",
@@ -385,7 +395,8 @@
                     "id": "e8e3e747-8ccb-4cc7-aea8-6cec697b0233",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Look",
@@ -393,7 +404,8 @@
                     "id": "128a8b29-8ab1-4cc3-80f5-109b7198eac9",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Turn",
@@ -401,7 +413,8 @@
                     "id": "407c9280-0d4b-4e50-a15b-0c0147b05809",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -582,7 +595,8 @@
                     "id": "43e6d4ae-16b2-44ae-b2a6-3c8881e77245",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MouseClick",
@@ -590,7 +604,8 @@
                     "id": "44f11227-ac14-4827-b665-3cc759df9850",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "MouseRelease",
@@ -598,7 +613,8 @@
                     "id": "9eaa0cb8-51ed-4c9f-b1c2-da1e8e48070a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Scroll",
@@ -606,7 +622,8 @@
                     "id": "7114a289-e6d8-41f6-8555-65178cabe23c",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Exit",
@@ -614,7 +631,8 @@
                     "id": "1b6f24fd-ac0f-4e2c-a4e0-4bc8793fe3b2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Tab",
@@ -622,7 +640,8 @@
                     "id": "c4055920-377d-4548-82af-ee745cfa0a54",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "TabRelease",
@@ -630,7 +649,8 @@
                     "id": "6a320eee-70f0-4073-9557-149459c7922b",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
