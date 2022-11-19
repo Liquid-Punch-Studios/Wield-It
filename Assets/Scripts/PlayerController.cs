@@ -32,11 +32,11 @@ public class PlayerController : MonoBehaviour
 	public Transform playerGfx;
 	public Transform handGfx;
 
+	private Controls controls;
+
 	/// <summary>
 	/// How much the hand moves in relation to the mouse delta
 	/// </summary>
-	private Controls controls;
-
 	const float sensitivity = 0.02f;
 
     private MovementActions movementState;
@@ -88,14 +88,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+		EnablePlayerController();
 		if (movement == null) movement = GetComponent<Movement>();
 		movement.OnGroundSet += Movement_OnGroundSet;
-
 	}
 
     private void OnDisable()
     {
 		movement.OnGroundSet -= Movement_OnGroundSet;
+		DisablePlayerController();
 	}
 
     /// Helper function for math-like positive modulus
@@ -261,11 +262,11 @@ public class PlayerController : MonoBehaviour
 
 	public void DisablePlayerController()
     {
-		controls.Player.Disable();
+		GameManager.Instance.controls.Player.Disable();
     }
 	public void EnablePlayerController()
 	{
-		controls.Player.Enable();
+		GameManager.Instance.controls.Player.Enable();
 	}
 	private void Movement_OnGroundSet(object sender, System.EventArgs e)
 	{

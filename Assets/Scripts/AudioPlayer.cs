@@ -57,9 +57,9 @@ public class AudioPlayer : MonoBehaviour
 	
 	public IEnumerator WaitUntilClipEnds()
     {
-		Debug.Log(currentAudio.clip.name + " Playing / Length: " + currentAudio.clip.length);
+		//Debug.Log(currentAudio.clip.name + " Playing / Length: " + currentAudio.clip.length);
 		yield return new WaitForSeconds(currentAudio.clip.length);
-		Debug.Log("Clip Ended");
+		//Debug.Log("Clip Ended");
 		ClipEnded?.Invoke(this, null);
     }
 }

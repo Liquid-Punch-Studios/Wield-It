@@ -115,14 +115,14 @@ public class Movement : MonoBehaviour
 
 	public bool Dash(float direction)
 	{
-		if (true/*stamina.UseStamina(dashCost)*/)
-		{
+		//if (stamina.UseStamina(dashCost))
+		//{
 			rb.velocity = Vector3.right * (lastDashDir = Mathf.Sign(direction)) * dashSpeed;
 			animator.SetTrigger("dash");
 			dashAudio?.PlayRandom(0.1f);
-		}
-		else
-			return false;
+		//}
+		//else
+		//	return false;
 
 		return dashing = true;
 	}
