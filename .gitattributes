@@ -1,154 +1,169 @@
-# Auto detect text files and perform LF normalization
-*   text=auto
-
-# Source Code
-*.cginc  text
-*.cs     text diff=csharp
-*.shader text
-
-Assets/TextMesh[[:space:]]Pro/** linguist-vendored
-Assets/Plugins/**                linguist-vendored
+Assets/TextMesh[[:space:]]Pro/**  linguist-vendored
+Assets/Plugins/**                 linguist-vendored
 
 # Macro for Unity YAML-based asset files.
-[attr]unityyaml -text merge=unityyamlmerge diff
+[attr]unityyaml  merge=unityyamlmerge  eol=lf
 
 # Macro for all binary files that should use Git LFS.
-[attr]lfs -text filter=lfs -diff merge=lfs
+[attr]lfs  filter=lfs  diff=lfs  merge=lfs
 
 # Unity YAML
-*.anim               unityyaml
-*.asmdef             unityyaml
-*.asset              unityyaml
-*.brush              unityyaml
-*.controller         unityyaml
-*.flare              unityyaml
-*.fontsettings       unityyaml
-*.giparams           unityyaml
-*.guiskin            unityyaml
-*.mask               unityyaml
-*.mat                unityyaml
-*.meta               unityyaml
-*.mixer              unityyaml
-*.overrideController unityyaml
-*.physicMaterial     unityyaml
-*.physicsMaterial2D  unityyaml
-*.playable           unityyaml
-*.prefab             unityyaml
-*.preset             unityyaml
-*.renderTexture      unityyaml
-*.shadervariants     unityyaml
-*.spriteatlas        unityyaml
-*.terrainlayer       unityyaml
-*.unity              unityyaml
+*.anim                unityyaml
+*.asmdef              unityyaml
+*.asset               unityyaml
+*.brush               unityyaml
+*.controller          unityyaml
+*.flare               unityyaml
+*.fontsettings        unityyaml
+*.giparams            unityyaml
+*.guiskin             unityyaml
+*.mask                unityyaml
+*.mat                 unityyaml
+*.meta                unityyaml
+*.mixer               unityyaml
+*.overrideController  unityyaml
+*.physicMaterial      unityyaml
+*.physicsMaterial2D   unityyaml
+*.playable            unityyaml
+*.prefab              unityyaml
+*.preset              unityyaml
+*.renderTexture       unityyaml
+*.shadervariants      unityyaml
+*.spriteatlas         unityyaml
+*.terrainlayer        unityyaml
+*.unity               unityyaml
 
-*.asmdef -text diff
+*.asmdef  -text  diff
 
 # Unity Binary Assets
-*.cubemap          lfs
-*.unitypackage     lfs
-*[Tt]errain*.asset -unityyaml lfs
-LightingData.asset -unityyaml lfs
-NavMesh.asset      -unityyaml lfs
+*.cubemap           binary  lfs
+*.unitypackage      binary  lfs
+*[Tt]errain*.asset  binary  lfs
+LightingData.asset  binary  lfs
+NavMesh.asset       binary  lfs
 
 # Unity Input System
-*.inputactions eol=lf
+*.inputactions  eol=lf
 
 # Unity Auto-Generated
-*.meta linguist-generated
+*.meta  linguist-generated
 
-*.3dm        lfs
-*.3ds        lfs
-*.7z         lfs
-*.FBX        lfs
-*.abc        lfs
-*.afdesign   lfs
-*.afphoto    lfs
-*.aif        lfs
-*.aiff       lfs
-*.apk        lfs
-*.apng       lfs
-*.asf        lfs
-*.atsc       lfs
-*.avi        lfs
-*.bin        lfs
-*.blend      lfs
-*.bmp        lfs
-*.bz2        lfs
-*.c4d        lfs
-*.clip       lfs
-*.collada    lfs
-*.dae        lfs
-*.dds        lfs
-*.dfx        lfs
-*.dll        lfs
-*.dxf        lfs
-*.eot        lfs
-*.exe        lfs
-*.exr        lfs
-*.fbx        lfs
-*.flv        lfs
-*.gif        lfs
-*.glb        lfs
-*.gltf       lfs
-*.gz         lfs
-*.hdr        lfs
-*.iff        lfs
-*.it         lfs
-*.jas        lfs
-*.jpeg       lfs
-*.jpg        lfs
-*.kpp        lfs
-*.kra        lfs
-*.leo        lfs
-*.lwo        lfs
-*.lwo2       lfs
-*.lws        lfs
-*.lxo        lfs
-*.ma         lfs
-*.max        lfs
-*.mb         lfs
-*.mdb        lfs
-*.mdd        lfs
-*.mod        lfs
-*.mov        lfs
-*.mp3        lfs
-*.mp4        lfs
-*.mpeg       lfs
-*.mpg        lfs
-*.obj        lfs
-*.ogg        lfs
-*.ogv        lfs
-*.otf        lfs
-*.pdb        lfs
-*.pdf        lfs
-*.pict       lfs
-*.ply        lfs
-*.png        lfs
-*.psd        lfs
-*.rar        lfs
-*.rns        lfs
-*.s3m        lfs
-*.skel.bytes lfs
-*.skp        lfs
-*.so         lfs
-*.stl        lfs
-*.svg        lfs
-*.svgz       lfs
-*.tar        lfs
-*.tga        lfs
-*.tif        lfs
-*.tiff       lfs
-*.ttf        lfs
-*.usd        lfs
-*.usda       lfs
-*.usdc       lfs
-*.wav        lfs
-*.webm       lfs
-*.webp       lfs
-*.wmv        lfs
-*.woff       lfs
-*.woff2      lfs
-*.xcf        lfs
-*.xm         lfs
-*.zip        lfs
-*.ztl        lfs
+*.3dm         lfs
+*.3ds         lfs
+*.3gp         lfs
+*.3gpp        lfs
+*.7z          lfs
+*.abc         lfs
+*.afdesign    lfs
+*.afphoto     lfs
+*.ai          lfs
+*.aif         lfs
+*.aiff        lfs
+*.apk         lfs
+*.apng        lfs
+*.as          lfs
+*.asf         lfs
+*.asx         lfs
+*.atsc        lfs
+*.avi         lfs
+*.bin         lfs
+*.blend       lfs
+*.bmp         lfs
+*.bz2         lfs
+*.c4d         lfs
+*.clip        lfs
+*.dae         lfs
+*.dds         lfs
+*.dfx         lfs
+*.dll         lfs
+*.dxf         lfs
+*.eot         lfs
+*.eps         lfs
+*.exe         lfs
+*.exr         lfs
+*.fbx         lfs
+*.fla         lfs
+*.flv         lfs
+*.gif         lfs
+*.gifv        lfs
+*.glb         lfs
+*.gltf        lfs
+*.gz          lfs
+*.hdr         lfs
+*.ico         lfs
+*.iff         lfs
+*.it          lfs
+*.jar         lfs
+*.jas         lfs
+*.jng         lfs
+*.jp2         lfs
+*.jpeg        lfs
+*.jpg         lfs
+*.jpx         lfs
+*.jxr         lfs
+*.kar         lfs
+*.kpp         lfs
+*.kra         lfs
+*.leo         lfs
+*.lwo         lfs
+*.lwo2        lfs
+*.lws         lfs
+*.lxo         lfs
+*.m4a         lfs
+*.m4v         lfs
+*.ma          lfs
+*.max         lfs
+*.mb          lfs
+*.mdb         lfs
+*.mdd         lfs
+*.mid         lfs
+*.midi        lfs
+*.mng         lfs
+*.mod         lfs
+*.mov         lfs
+*.mp3         lfs
+*.mp4         lfs
+*.mpeg        lfs
+*.mpg         lfs
+*.o           lfs
+*.obj         lfs
+*.ogg         lfs
+*.ogv         lfs
+*.otf         lfs
+*.pdb         lfs
+*.pdf         lfs
+*.pict        lfs
+*.ply         lfs
+*.png         lfs
+*.psb         lfs
+*.psd         lfs
+*.pyc         lfs
+*.ra          lfs
+*.rar         lfs
+*.rns         lfs
+*.s3m         lfs
+*.skel.bytes  lfs
+*.skp         lfs
+*.so          lfs
+*.stl         lfs
+*.swc         lfs
+*.swf         lfs
+*.tar         lfs
+*.tga         lfs
+*.tif         lfs
+*.tiff        lfs
+*.ttf         lfs
+*.usd         lfs
+*.usda        lfs
+*.usdc        lfs
+*.wav         lfs
+*.wbmp        lfs
+*.webm        lfs
+*.webp        lfs
+*.wmv         lfs
+*.woff        lfs
+*.woff2       lfs
+*.xcf         lfs
+*.xm          lfs
+*.zip         lfs
+*.ztl         lfs
